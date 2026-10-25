@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "source": "fresh clone from https://github.com/kxn/nvn-kgsl.git",
+  "tested_commit": "455592eaf022c8f6b05b4d0a156c2525195d9bcc",
+  "passed": true,
+  "authored_tests": 27,
+  "android_translation_units": 29,
+  "public_tree_files": 1320,
+  "archives_fully_audited": 9,
+  "gpu_execution": false,
+  "original_game_execution": false,
+  "private_inputs": false,
+  "github_ci": {
+    "url": "https://github.com/kxn/nvn-kgsl/actions/runs/40152061967",
+    "conclusion": "success"
+  }
+}
