@@ -1,0 +1,369 @@
+{
+  "name": "public-depth-sampled-gpu-candidate",
+  "gpu_execution": false,
+  "android_execution": false,
+  "source_snapshot": [
+    {
+      "path": "nvn-native/CMakeLists.txt",
+      "before_sha256": "04584df98c96df066e638776c04ce673c9ed53b483c9b067de52d5117e72f4c7",
+      "sha256": "e58cee0eb87bdb1f267e805a77ea11961c741930c62e403efaa23bbba8c8a34d",
+      "bytes": 83258,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/CMakeLists.txt",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_draw_record.inc",
+      "before_sha256": "4029730368e67022d2abec5cb1b1a94acf0dc9424a4338202484c939f1c99761",
+      "sha256": "ab218b8b8374bd6d2c9a6ca84f6dd79a9d72a877c2644bcfe85bdd418c1e6fd3",
+      "bytes": 20556,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/src/nvn_pipeline_draw_record.inc",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tests/d2r_bridge/public_depth_sampled_failure.c",
+      "before_sha256": null,
+      "sha256": "998cd46c5e0cac1f3b8be5700434f63bbf4065ae99d7bb8e0ff9b8ee3a8ecebf",
+      "bytes": 5362,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tests/d2r_bridge/public_depth_sampled_failure.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tests/public_depth_sampled_layout.c",
+      "before_sha256": null,
+      "sha256": "1a23a6482b0af5b374785923d3c4ee060cf4d867e529fc61718c301dd87f393d",
+      "bytes": 1422,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tests/public_depth_sampled_layout.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tests/public_depth_sampled_probe.c",
+      "before_sha256": null,
+      "sha256": "684843957c4ee22261548523561bc42f8e5e83c772f750206510aae2d7de02d0",
+      "bytes": 19997,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tests/public_depth_sampled_probe.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tests/test_public_depth_sampled_validation.py",
+      "before_sha256": null,
+      "sha256": "da760d26eab76084905f45d314af7acea2440159ae6c0715985acb1bacbc84a2",
+      "bytes": 3566,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tests/test_public_depth_sampled_validation.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/build_android_probe.py",
+      "before_sha256": "4ea4bd71a5826cc72aa6b016f25d1b1d09f4ae94b9aef2d66489b304b381ec12",
+      "sha256": "646a06faaf4f086b054b0582a1e52a1a67dc6722fea65cc3e99eb4d9e81c437d",
+      "bytes": 66310,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tools/build_android_probe.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/check_public_depth_sampled_probe.py",
+      "before_sha256": null,
+      "sha256": "b4652d1de693acce6968088231518c3bb03859c489adce3e988a18459f7155dc",
+      "bytes": 8509,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tools/check_public_depth_sampled_probe.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/public_depth_sampled_oracle.py",
+      "before_sha256": null,
+      "sha256": "8fc3e504a87c9f6fce2673ccb21899039f1a13a06abfccd3b3244ec4fbf3f11d",
+      "bytes": 1152,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tools/public_depth_sampled_oracle.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/public_depth_sampled_qualification.py",
+      "before_sha256": null,
+      "sha256": "c3d606a5fc3c4138f133a4b5f38fe1a89d403ea47410667e7a011334f92105d2",
+      "bytes": 6585,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tools/public_depth_sampled_qualification.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/public_depth_sampled_runner.py",
+      "before_sha256": null,
+      "sha256": "bcc3bfdb3cd2779eaa6ac0c528e28bea847c854eab6b07578cb96a167dd75e3b",
+      "bytes": 1383,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tools/public_depth_sampled_runner.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/public_depth_sampled_validation.py",
+      "before_sha256": null,
+      "sha256": "26b1c73db5f4914280d0d7083604e629ecdb8dd780cf28021c2d161ea3db67e9",
+      "bytes": 6169,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tools/public_depth_sampled_validation.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/run_android_probe.py",
+      "before_sha256": "5f9bd4cc7f7ab26fc4cc8a8b95b8770f4093a02d1926e0540b985900970413ad",
+      "sha256": "ec3d320f5925954169753bce324a7459e22a61f9a3a5912dd546ffbef6194065",
+      "bytes": 56163,
+      "snapshot": "candidates/public-depth-sampled-gpu-candidate/source/nvn-native/tools/run_android_probe.py",
+      "base_equals_root": true
+    }
+  ],
+  "records": [
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/public-depth-sampled-gpu-candidate/inputs-v3/check.json",
+        "bytes": 1697923,
+        "sha256": "35bac76bb0d2a4bb9aef31f610bfc353eaee544e80e08637f2f7dc2f301ce295"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "public-nvn-depth-sampled-qualification-v1",
+        "passed": true,
+        "gpu_execution": false,
+        "android_execution": false,
+        "producer_sha256": "c3d606a5fc3c4138f133a4b5f38fe1a89d403ea47410667e7a011334f92105d2",
+        "normal_root": "${LEGACY_WORKTREE}",
+        "header": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/inputs-v3/public-depth-sampled-qualification.h",
+        "pipeline_check": "${LEGACY_WORKTREE}/.local/nvn-native/graphics-full55-front-storage-no-storage-v1/check.json",
+        "runtime_fdl_check": "${LEGACY_WORKTREE}/.local/nvn-native/runtime-fdl-front-storage-integrated-v1/check.json",
+        "runtime_fdl_library": "${LEGACY_WORKTREE}/.local/nvn-native/runtime-fdl-front-storage-integrated-v1/library/libnn_fdl_metadata.a",
+        "casc_source_check": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/inputs-v3/casc-original-prerequisite/original/check.json",
+        "sample_pair_index": 49,
+        "gather_pair_index": 94,
+        "submissions": 144,
+        "files": 144,
+        "finishes": 144,
+        "original_control_bytes": 2176,
+        "original_C1_bytes": 256,
+        "compare_sampler": false,
+        "source_swizzle": "R001",
+        "scope": "original public SAMPLE and GatherR+FragDepth with authored actual depth-source bindings; not D2R execution or original NVIDIA oracle"
+      },
+      "container_counts": {
+        "native_libraries": 3,
+        "cases": 72,
+        "canonical": 72,
+        "source_formats": 3,
+        "inputs": 7384,
+        "artifacts": 12
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 7384,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 12,
+          "missing": [],
+          "mismatches": []
+        }
+      }
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/public-depth-sampled-gpu-candidate/host-v1/check.json",
+        "bytes": 1762229,
+        "sha256": "26ed0de317fbe8b1a2e59a3a1b9cc83b0cd3b4bfb94df6efb050edf80999621a"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "public-depth-sampled-host-v1",
+        "passed": false,
+        "gpu_execution": false,
+        "android_execution": false
+      },
+      "container_counts": {
+        "inputs": 7913,
+        "artifacts": 36
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 7913,
+          "missing": [],
+          "mismatches": [
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/snapshot/nvn-native/tools/public_depth_sampled_qualification.py",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/snapshot/nvn-native/tools/check_public_depth_sampled_probe.py",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/snapshot/nvn-native/tests/public_depth_sampled_probe.c",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/snapshot/nvn-native/tests/d2r_bridge/public_depth_sampled_failure.c",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/snapshot/nvn-native/src/nvn_pipeline_draw_record.inc"
+          ]
+        },
+        "artifacts": {
+          "checked": 36,
+          "missing": [],
+          "mismatches": [
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/host-v1/gcc/0.o",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/host-v1/gcc/1.o",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/host-v1/gcc/2.o",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/public-depth-sampled-gpu-candidate/host-v1/gcc/public-depth-sampled-failure"
+          ]
+        }
+      }
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/public-depth-sampled-gpu-candidate/host-v2/check.json",
+        "bytes": 1933133,
+        "sha256": "f45e1df9039e7a798343d803f872134fc8019bcdc6d8b00719dae977fbdcfbb3"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "public-depth-sampled-host-v1",
+        "passed": true,
+        "gpu_execution": false,
+        "android_execution": false,
+        "actual_ndk_cmake_link": true,
+        "cli_conflict_negatives": 3,
+        "host_actual_submitted_ib_rectangles_per_sanitizer": 144,
+        "host_out_of_bounds_scissor_rejections_per_sanitizer": 432,
+        "unknown_owner_scope": "HOST failure seams intentionally retain entire owner graph; no fabricated GPU execution/completion"
+      },
+      "container_counts": {
+        "oracle": 26,
+        "host_failures": 8,
+        "inputs": 7914,
+        "artifacts": 418
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 7914,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 418,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "oracle_summary": {
+        "passed": true,
+        "public_nvn": true,
+        "submissions": 144,
+        "finishes": 144,
+        "files": 144,
+        "sample_channel_checks": 1020816,
+        "max_sample_channel_error": 0,
+        "gather_depth_pixels": 255204,
+        "Gather_D32F_exact": true,
+        "canonical_guard_bytes": 2397744,
+        "readonly_byte_checks": 21823488,
+        "full_raw_bytes": 3833856,
+        "zero_color_draws": 72,
+        "copy_wrappers": 24,
+        "call_wrappers": 24,
+        "same_handle_replays": 72,
+        "original_C1_bytes": 256,
+        "compare_sampler": false,
+        "synthetic_only": true,
+        "gpu_execution": false,
+        "negative_cases": 38,
+        "positive_cases": 144,
+        "original_C1_preserved": true
+      }
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/public-depth-sampled-gpu-candidate/apk-v1/build-record.json",
+        "bytes": 3450445,
+        "sha256": "44713eee15d1e78f4141fdbb5c18c9873ea15b4072c654a49c781b84894ddfac"
+      },
+      "facts": {
+        "schema": 1,
+        "shader_check": null,
+        "shader_case": null,
+        "nvn_api": false,
+        "compute_call": false,
+        "compute_indirect": false,
+        "compute_indirect_validation": null,
+        "maxwell_check": null,
+        "graphics_check": null,
+        "graphics_draw_batch": false,
+        "device_inspect": false,
+        "nvn_graphics_check": null,
+        "texture_check": null,
+        "nvn_external_image_check": null,
+        "external_image_slots": null,
+        "nvn_window_check": null,
+        "window_slots": null,
+        "window_source_check": null,
+        "window_source_slots": null,
+        "fullsize_display_check": null,
+        "fullsize_display_slots": null,
+        "nvn_counter_check": null,
+        "nvn_copy_check": null,
+        "iocoherent_inspect": false,
+        "bc_sampled_check": null,
+        "texture_texels_check": null,
+        "volume_texture_check": null,
+        "buffer_texture_check": null,
+        "volume_shadow_check": null,
+        "public_volume_copy_check": null,
+        "clear_color_check": null,
+        "public_copy_check": null,
+        "public_copy_call": false,
+        "public_packaged_copy_check": null,
+        "block_copy_check": null,
+        "texture_conversion_check": null,
+        "native_pipeline_check": null,
+        "native_depth_check": null,
+        "native_depth_sampled_check": null,
+        "native_depth_shadow_check": null,
+        "native_gather_check": null,
+        "native_graphics_storage_check": null,
+        "native_sampler_mip_check": null,
+        "native_color_target_check": null,
+        "nvn_pipeline_runtime_views_check": null,
+        "nvn_pipeline_check": null,
+        "nvn_pipeline_call": false,
+        "casc_gather_depth_check": null,
+        "nvn_color_target_check": null,
+        "nvn_pipeline_buffer_check": null,
+        "nvn_pipeline_bc_check": null,
+        "nvn_pipeline_sampled_check": null,
+        "nvn_pipeline_bc_mips_check": null,
+        "nvn_pipeline_gob_check": null,
+        "nvn_texture_bridge_check": null,
+        "texture_bridge_diagnostics": false,
+        "nvn_sampler_check": null,
+        "nvn_texture_check": null,
+        "texture_device_flags": null,
+        "texture_noaccess_pool": false,
+        "texture_modes": false,
+        "texture_uncached_pools": false,
+        "texture_descriptor_flags": 0,
+        "ahb_inspect": false,
+        "ahb_graphics_check": null,
+        "ahb_present_check": null,
+        "activity": "android.app.NativeActivity",
+        "d2r_host": null,
+        "compute_driverparams_check": null,
+        "scope": "Standalone native KGSL qualification; no real ARM64 game module execution"
+      },
+      "container_counts": {
+        "source": 905,
+        "commands": 6,
+        "compiled_inputs": 7390,
+        "public_depth_sampled_check": 28,
+        "nvn_contract": 9,
+        "tools": 11,
+        "artifacts": 2
+      },
+      "direct_hash_validation": {
+        "artifacts": {
+          "checked": 2,
+          "missing": [],
+          "mismatches": []
+        }
+      }
+    }
+  ],
+  "status": "unfrozen-work-in-progress",
+  "patch": {
+    "path": ".local/nvn-native/standalone-pending-draft/candidates/public-depth-sampled-gpu-candidate/unfrozen-wip.patch",
+    "bytes": 73564,
+    "sha256": "29be7db75edd34add40c03c4be11fcda107b0acea3ce2e81edc0dfc5a2466786"
+  },
+  "proprietary_artifacts_excluded": true
+}

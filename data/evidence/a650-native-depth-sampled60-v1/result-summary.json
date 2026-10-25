@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "source_record_sha256": "3ef954d42ae0fb111e7566a3f91b701fba265bc080c1324b5eb8ff2a46bafc43",
+  "scope": "Metadata extracted from authored native GPU qualification. Full build records and source snapshots are withheld because transitive records may contain original game shader data. This is not original D2R execution.",
+  "native_pipeline_verified": true,
+  "stopped": true,
+  "installed_apk_sha256": "86fbf82b2146bd16333545ed7fa6e5662759b9972b01c81e5340dae9cebc0ca7",
+  "result": {
+    "run_nonce": "0875c9ffaaab4691bd30b7abd4a4f57d",
+    "run_directory": "pipeline-0875c9ffaaab4691bd30b7abd4a4f57d",
+    "schema": 1,
+    "operation": "native_depth_sampled",
+    "uid": 10234,
+    "chip_id": 100990978,
+    "stage": "complete",
+    "errno": 0,
+    "cleanup_errno": 0,
+    "resources_retained": false,
+    "programs": 30,
+    "owners": 30,
+    "submissions": 180,
+    "finishes": 60,
+    "files": 60,
+    "completed_cases": 60,
+    "replays": 30,
+    "inflight_owner_checks": 2592,
+    "guard_byte_checks": 794640,
+    "readonly_byte_checks": 9747760,
+    "private_depth_cpu_access": false,
+    "cpu_image_conversion": false,
+    "nvn_api": false,
+    "game_modules_executed": false,
+    "compare_sampler": false,
+    "same_job_replay": true,
+    "pixel_oracle_on_host": true,
+    "bad_case": 4294967295,
+    "bad_byte": 18446744073709551615,
+    "passed": true
+  },
+  "native_pipeline_verification": {
+    "passed": true,
+    "channel_checks": 188400,
+    "max_error": 1,
+    "guard_byte_checks": 794640,
+    "readonly_byte_checks": 9747760
+  },
+  "force_stop": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "final_pidof": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": ""
+  }
+}

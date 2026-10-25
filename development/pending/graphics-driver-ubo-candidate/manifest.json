@@ -1,0 +1,469 @@
+{
+  "name": "graphics-driver-ubo-candidate",
+  "gpu_execution": false,
+  "android_execution": false,
+  "source_snapshot": [
+    {
+      "path": "nvn-native/include/nvn_native/pipeline.h",
+      "before_sha256": "887903e4b63c13e05bac0db3b38e55e24c1a8ea75b67d686184f5bea4674b7ff",
+      "sha256": "5d692308b059bb0f7aa7224f88787623dce63cb9ff338c65a4c53ace5286b1fd",
+      "bytes": 6252,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/include/nvn_native/pipeline.h",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_nvn.h",
+      "before_sha256": "79836d78d0a18488053ebd1dcb3fbd04c31bee42c8dc25abf6e9ab4a69693cd5",
+      "sha256": "0176196b46736ccdf8f7413b40939701b636701c6199ed09ad327a7dff1d6822",
+      "bytes": 2958,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/include/nvn_native/pipeline_nvn.h",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_recipe.h",
+      "before_sha256": "a3ed67d79da30b8bf0fb10a7338580610fb6db4afbb54f228af89c091899c2be",
+      "sha256": "659c2ca8df15ab2c83b21df6125517e6f87577d33fc9ad8e8de0dfe04e7fc1d0",
+      "bytes": 2947,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/include/nvn_native/pipeline_recipe.h",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_runtime_constants.h",
+      "before_sha256": null,
+      "sha256": "2238ea0ab6831b4f6afff879b28b91a5f7fdc0fcc9c5c9f48280f23f795cb185",
+      "bytes": 3135,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/include/nvn_native/pipeline_runtime_constants.h",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_shader.h",
+      "before_sha256": "8d109672722ea680a475843565cc59266081f62564da02637dbfa0f536e0a282",
+      "sha256": "58b377b16a0eba951ce949c9ad379e3a52054061d81b6c0551fb5e003beeb678",
+      "bytes": 2680,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/include/nvn_native/pipeline_shader.h",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/shader/graphics_ir3.c",
+      "before_sha256": "384975150dde3913838e968c7646e900d175a43ff7fbe5cd334b6e9d00e0dcca",
+      "sha256": "353f3b25a790698d01a111078d1e9f2a1008d5ada8520fc559a42a291c9d5e45",
+      "bytes": 27202,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/shader/graphics_ir3.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/shader/ir3_runtime_constants_overlay.py",
+      "before_sha256": null,
+      "sha256": "4e9c46a0fcec0bbbde085bed5b3dc356880ef3bf6df2491155496290ad76f565",
+      "bytes": 3687,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/shader/ir3_runtime_constants_overlay.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/shader/pipeline_artifact.cc",
+      "before_sha256": "a17356888be694330abf4ea983927476b797e1ad625ecc1eeed95d7211ced5bc",
+      "sha256": "0cf99b6af0c0b7a6ef6a7fe9c5eddaca402838209964785ebe89a571d9b6cda5",
+      "bytes": 25762,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/shader/pipeline_artifact.cc",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/shaders/runtime_constants.frag",
+      "before_sha256": null,
+      "sha256": "3b33d324ad59957c529223ccfd7ceda0ddb18c754cd04d7e8d13e4bb1193d5ce",
+      "bytes": 319,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/shaders/runtime_constants.frag",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/shaders/runtime_constants.vert",
+      "before_sha256": null,
+      "sha256": "4281e0f6ad9eaa09aef38f961b2cd5e12e3e87fd6c095e7a35c25240cad3587f",
+      "bytes": 705,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/shaders/runtime_constants.vert",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/nvn.c",
+      "before_sha256": "baa176380b2628f42b6bb2f5dcc3dae32ddd1b11402101eaac758a7376ecae51",
+      "sha256": "519462c107f1f7c64cf81bc35910df256e2d2aa90fb8aa3a9767c60448746015",
+      "bytes": 181368,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/nvn.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_draw_prepare.inc",
+      "before_sha256": "d4095a872fc14efb52069d16b82dd8853a7bdbcbc0d57a737e64cc4dc5815cf0",
+      "sha256": "e410f3e55d59e4e75cb833eff8af2c2a90132d4959bab9434640dd87e9588004",
+      "bytes": 41798,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/nvn_pipeline_draw_prepare.inc",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_draw_submit.inc",
+      "before_sha256": "4607cfd494cda462fc57e3d85c48547c05afd8173cca51ceefb01919b36a2e15",
+      "sha256": "72edd88b84978744fa6169e854f4b9e3724433b5b3f63b2665cb93ae3aa0034c",
+      "bytes": 15644,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/nvn_pipeline_draw_submit.inc",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_source.inc",
+      "before_sha256": "ad99d675b1431f7939e1ba70e8af5a325b7fee1e3aa0c6740b37abea8305083c",
+      "sha256": "0a5ec838387eb02df9dd6d9fce2a660bb38d475f7704914c1d7c28677faae0b1",
+      "bytes": 7897,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/nvn_pipeline_source.inc",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/pipeline.c",
+      "before_sha256": "68b41b8c22df359496fcf4b362b537327e6ee9e2716293701a8856ce549bff5e",
+      "sha256": "8e9cc662ee755c5ad7889df482ebbda1e7dda8e1a4263f00f5d4cddb7a886fc7",
+      "bytes": 41068,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/pipeline.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/pipeline_frontend.c",
+      "before_sha256": "3c22e6eb8b539b473b77a5b5d281ea719111102f65eb7e5967661bde23d3d6a1",
+      "sha256": "3928a68eed53fbfc1fc1ff8aa139948477498036b7c4883bf3bc7173e6d26272",
+      "bytes": 8711,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/pipeline_frontend.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/pipeline_program.c",
+      "before_sha256": "c41cef55838bd66ce0fb12aecda718ede052e4cf4a884649d93afccde6bcd7a2",
+      "sha256": "d748e88f77a1db24706e0c1e1b64a2a1bd5ad1c712037244a86c79b6fa65d436",
+      "bytes": 16333,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/pipeline_program.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/pipeline_runtime_constants.c",
+      "before_sha256": null,
+      "sha256": "c06636afceb5dfde37a1683b7a266a78941441d44112ced2657424e0fff6fa7e",
+      "bytes": 7513,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/pipeline_runtime_constants.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/pipeline_shader.c",
+      "before_sha256": "2f7598fd48c2511622946eb08bf949a8075aeb5bf7d6d9e5e1c4a75e943d18e3",
+      "sha256": "99c1e9dde9118b13438cb8d37d59a082cdb0ead5dcf32ab5703266a06299301c",
+      "bytes": 18620,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/pipeline_shader.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/src/texture_bridge_core.inc",
+      "before_sha256": "2ab167bfeb538fd9567159b271280d72a7412ed85acc68b962c045df69b83f5e",
+      "sha256": "943d63a286a127ca41d6f7a7f1ad793f321ef0c6236341389b9ce5c82bb9e8ed",
+      "bytes": 13089,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/src/texture_bridge_core.inc",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tests/d2r_bridge/pipeline_runtime_constants.c",
+      "before_sha256": null,
+      "sha256": "86d062b25d2ed0226a0cdee5c2b79bebd70e49f706ad641f0f123b935b227d66",
+      "bytes": 12588,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tests/d2r_bridge/pipeline_runtime_constants.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tests/d2r_bridge/runtime_constants.c",
+      "before_sha256": null,
+      "sha256": "e124a0a24663b5db94ead4d06deb16e31cadff7daa8344f0429920db8531cf21",
+      "bytes": 10318,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tests/d2r_bridge/runtime_constants.c",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/build_ir3.py",
+      "before_sha256": "2bd26c3cc5501cf7b031499c8d4e8f223ca38b3b0db3c281a9c7e8272dc3e173",
+      "sha256": "95bc52020e29aa488b3edebd8e6761d11129dd475db048302749a7c93c700da1",
+      "bytes": 9245,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tools/build_ir3.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/check_pipeline_runtime_constants.py",
+      "before_sha256": null,
+      "sha256": "52b072975e3b758d794f8dac288737fa8c34ef713ea4eba3e9d5dcc117a1c8d2",
+      "bytes": 6882,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tools/check_pipeline_runtime_constants.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/check_runtime_constants.py",
+      "before_sha256": null,
+      "sha256": "330f7a0bd19d36b9b2db4d5fc163db88d02e74b1352fde46b627af64e83113ad",
+      "bytes": 7494,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tools/check_runtime_constants.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/check_runtime_constants_legacy.py",
+      "before_sha256": null,
+      "sha256": "f195e71ccd2806d9f4f3be8ada13834d7774dd264236134731d4cc924536970f",
+      "bytes": 4438,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tools/check_runtime_constants_legacy.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/check_runtime_constants_original.py",
+      "before_sha256": null,
+      "sha256": "97f849dfb45d8f0b62dcb338adfc8422129f590e1cbe0fec763f87f12f442be2",
+      "bytes": 5697,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tools/check_runtime_constants_original.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/compile_runtime_constants.py",
+      "before_sha256": null,
+      "sha256": "b50effaa06a400b7998f0a7c5e217ad81c9061555af305b979eb3bf0677db320",
+      "bytes": 4327,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tools/compile_runtime_constants.py",
+      "base_equals_root": true
+    },
+    {
+      "path": "nvn-native/tools/package_graphics_pipelines.py",
+      "before_sha256": "355046dc2541251932a4a4b5c6bf41282d08cc6104516e676a332e4a74de69b2",
+      "sha256": "02382b7cffbfba301f7ee2c367445efacebbaa7b9cba2ab04a909100dec50184",
+      "bytes": 31291,
+      "snapshot": "candidates/graphics-driver-ubo-candidate/source/nvn-native/tools/package_graphics_pipelines.py",
+      "base_equals_root": true
+    }
+  ],
+  "records": [
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/.local/authored-runtime-v3/check.json",
+        "bytes": 70745,
+        "sha256": "9ddd51629ab96b6b8138e0b854fabc0a87ba22444246e8e7eaa468d15b009838"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "native-authored-runtime-constants-v1",
+        "passed": true,
+        "gpu_execution": false,
+        "compiler_record": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/.local/ir3-runtime-v1/build-record.json",
+        "scope": "Actual standalone NIR/IR3 source compilation only; no GPU/publicNVN/game execution"
+      },
+      "container_counts": {
+        "cases": 6,
+        "commands": 43,
+        "inputs": 40,
+        "artifacts": 122
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 40,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 122,
+          "missing": [],
+          "mismatches": []
+        }
+      }
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/.local/runtime-host-v2/check.json",
+        "bytes": 652713,
+        "sha256": "0a9c3c315fa5e785cfc3b89390ee0b4075f0cca452e9af70221a181f0dd849d9"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "native-runtime-constants-host-v1",
+        "passed": true,
+        "host_only": true,
+        "android_execution": false,
+        "gpu_execution": false,
+        "scope": "Actual typed VS driver params and residual native UBO table/direct indexed indirect-count Draw roles + FDL/native encoder; HOST RAM/owner/fault/transaction checks and nonexecuted API29 links only, not GPU/publicNVN/game"
+      },
+      "container_counts": {
+        "host": 24,
+        "inputs": 2499,
+        "artifacts": 483
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 2499,
+          "missing": [],
+          "mismatches": [
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/tools/package_graphics_pipelines.py",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/src/pipeline.c",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/src/pipeline_runtime_constants.c",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/tests/d2r_bridge/runtime_constants.c",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/include/nvn_native/pipeline_nvn.h",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/include/nvn_native/pipeline_runtime_constants.h"
+          ]
+        },
+        "artifacts": {
+          "checked": 483,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "host_total_jobs": 576,
+      "host_total_assertions": 1161412
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/.local/original-runtime-normal-v2/check.json",
+        "bytes": 1003827,
+        "sha256": "9e62fdf2c8fb22dfca4b42c2ce58a66e609b102c918d75efdb9e7ba2fffac97f"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "runtime-constants-original25-normal-diagnostic-v1",
+        "passed": true,
+        "gpu_execution": false,
+        "android_execution": false,
+        "scope": "Normal standalone compiler using unchanged actual original VS and fixed original diagnostic FS/full source-control-C1 provenance; explicit preexisting authored specialization, not observed game pairing or GPU/publicNVN qualification"
+      },
+      "container_counts": {
+        "results": 25,
+        "counts": 6,
+        "historical_producer_sources": 3,
+        "inputs": 3375,
+        "artifacts": 814
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 3375,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 814,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "counts": {
+        "original_vs": 25,
+        "previous_native_successes": 10,
+        "previous_driver_gates": 12,
+        "previous_residual_ubo_gates": 3,
+        "new_native_recipes": 25,
+        "native_stage_bins_unchanged": 50
+      },
+      "result_counts": []
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/.local/public-runtime-host-v2/check.json",
+        "bytes": 1473503,
+        "sha256": "1c704452a1782684b47d99aa3cf62210b4de7cf5f006949ffa0b6cb22defad58"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "public-original-source-runtime-constants-host-v1",
+        "passed": true,
+        "host_only": true,
+        "gpu_execution": false,
+        "android_execution": false
+      },
+      "container_counts": {
+        "results": 2,
+        "commands": 57,
+        "inputs": 5260,
+        "artifacts": 56
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 5260,
+          "missing": [],
+          "mismatches": [
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/src/pipeline.c",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/src/nvn_pipeline_draw_prepare.inc",
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/nvn-native/tests/d2r_bridge/runtime_constants.c"
+          ]
+        },
+        "artifacts": {
+          "checked": 56,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "result_counts": [
+        {
+          "checks": 20930,
+          "original_pairs": 25,
+          "mock_submits": 150,
+          "mock_failed_submits": 50,
+          "negative_cases": 10,
+          "gpu_execution": false
+        },
+        {
+          "checks": 20930,
+          "original_pairs": 25,
+          "mock_submits": 150,
+          "mock_failed_submits": 50,
+          "negative_cases": 10,
+          "gpu_execution": false
+        }
+      ]
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/graphics-driver-ubo-candidate/tree/.local/legacy-runtime-normal-v1/check.json",
+        "bytes": 4115933,
+        "sha256": "a5b72744493951ebed741f332a34cd1ccd179cb298055754ed312ab2151bca59"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "runtime-constants-legacy-native-byte-regression-v1",
+        "passed": true,
+        "gpu_execution": false,
+        "android_execution": false,
+        "native_pair_invocations": 293,
+        "default_profiles_unchanged": true,
+        "original_pairings_unchanged": true,
+        "scope": "Current normal compiler reruns only existing explicit native pair commands; historical sources/outputs remain immutable byte references, not relabelled as current deployment qualification"
+      },
+      "container_counts": {
+        "artifact_comparisons": 9,
+        "checks": 293,
+        "historical_producer_origins": 5,
+        "inputs": 12146,
+        "artifacts": 4122
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 12146,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 4122,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "artifact_comparisons": {
+        ".vs.bin": 293,
+        ".fs.bin": 293,
+        ".link.json": 198,
+        ".vs.io.json": 293,
+        ".fs.io.json": 293,
+        ".pipeline.h": 104,
+        ".pipeline.json": 104,
+        ".pipeline.types.json": 104,
+        ".pipeline.storage.json": 4
+      }
+    }
+  ],
+  "status": "unfrozen-work-in-progress",
+  "patch": {
+    "path": ".local/nvn-native/standalone-pending-draft/candidates/graphics-driver-ubo-candidate/unfrozen-wip.patch",
+    "bytes": 134163,
+    "sha256": "99f38f57c2a91105bfff03f0d6fb5b492fda0b4e78202e4e562d00e4c6d35f26"
+  },
+  "proprietary_artifacts_excluded": true
+}

@@ -1,0 +1,49 @@
+#version 450
+// SPDX-License-Identifier: MIT
+// Raw blocks only. No format decoding or CPU/shader-API runtime.
+// Every invocation exclusively owns ONE ALIGNED DESTINATION DWORD.
+layout(local_size_x=8,local_size_y=8,local_size_z=1) in;
+layout(set=0,binding=0,std430) readonly buffer Source { uint data[]; } src;
+layout(set=0,binding=1,std430) buffer Destination { uint data[]; } dst;
+layout(set=0,binding=2,std140) uniform Params {
+ uint canonicalBase,canonicalLayerStride,widthGobs,blockHeightLog2;
+ uint regionXBytes,regionYRows,rowBytes,rows;
+ uint linearRowStride,linearImageStride,layers,direction;
+ uint linearSpan,linearWords,dispatchWidth,reserved;
+} p;
+// Same published Generic16Bx2 address primitive as existing gob_copy.comp.
+uint gobOffset(uint x,uint y) {
+ uint h=1u<<p.blockHeightLog2;
+ return (y>>(3u+p.blockHeightLog2))*512u*h*p.widthGobs+(x>>6u)*512u*h+((y&((8u*h)-1u))>>3u)*512u+
+  ((x%64u)/32u)*256u+((y%8u)/2u)*64u+((x%32u)/16u)*32u+(y%2u)*16u+(x%16u);
+}
+uint sourceByte(uint address) {return (src.data[address>>2u]>>((address&3u)*8u))&255u;}
+void main() {
+ uvec3 id=gl_WorkGroupID*gl_WorkGroupSize+gl_LocalInvocationID;
+ uint destination,mask=0u,value=0u;
+ if(p.direction==0u){
+  uint word=id.x+id.y*p.dispatchWidth;
+  if(word>=p.linearWords)return;
+  destination=word*4u;
+  for(uint lane=0u;lane<4u;lane++){
+   uint byte=destination+lane;
+   if(byte>=p.linearSpan)continue;
+   uint layer=byte/p.linearImageStride,within=byte%p.linearImageStride;
+   uint row=within/p.linearRowStride,x=within%p.linearRowStride;
+   if(layer>=p.layers||row>=p.rows||x>=p.rowBytes)continue;
+   uint address=p.canonicalBase+layer*p.canonicalLayerStride+gobOffset(p.regionXBytes+x,p.regionYRows+row);
+   mask|=255u<<(lane*8u);value|=sourceByte(address)<<(lane*8u);
+  }
+ }else{
+  uint x=(p.regionXBytes&~3u)+id.x*4u;
+  if(x>=p.regionXBytes+p.rowBytes||id.y>=p.rows||id.z>=p.layers)return;
+  destination=p.canonicalBase+id.z*p.canonicalLayerStride+gobOffset(x,p.regionYRows+id.y);
+  for(uint lane=0u;lane<4u;lane++){
+   uint absolute=x+lane;
+   if(absolute<p.regionXBytes||absolute>=p.regionXBytes+p.rowBytes)continue;
+   uint address=id.z*p.linearImageStride+id.y*p.linearRowStride+absolute-p.regionXBytes;
+   mask|=255u<<(lane*8u);value|=sourceByte(address)<<(lane*8u);
+  }
+ }
+ if(mask!=0u){uint old=dst.data[destination>>2u];dst.data[destination>>2u]=(old&~mask)|(value&mask);}
+}

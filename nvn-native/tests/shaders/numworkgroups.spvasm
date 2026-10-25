@@ -1,0 +1,49 @@
+; SPDX-License-Identifier: MIT
+; Qualification-only source. Not an original or replacement game shader.
+; Workgroup0 stores NumWorkgroups.xyz and a fixed canary to SSBO0.
+OpCapability Shader
+OpMemoryModel Logical GLSL450
+OpEntryPoint GLCompute %main "main" %num_groups %workgroup_id
+OpExecutionMode %main LocalSize 1 1 1
+OpDecorate %num_groups BuiltIn NumWorkgroups
+OpDecorate %workgroup_id BuiltIn WorkgroupId
+OpDecorate %Block Block
+OpMemberDecorate %Block 0 Offset 0
+OpDecorate %output DescriptorSet 0
+OpDecorate %output Binding 0
+%void = OpTypeVoid
+%fn = OpTypeFunction %void
+%bool = OpTypeBool
+%b3 = OpTypeVector %bool 3
+%u32 = OpTypeInt 32 0
+%u3 = OpTypeVector %u32 3
+%u4 = OpTypeVector %u32 4
+%Block = OpTypeStruct %u4
+%in_u3 = OpTypePointer Input %u3
+%out_block = OpTypePointer StorageBuffer %Block
+%out_u4 = OpTypePointer StorageBuffer %u4
+%zero = OpConstant %u32 0
+%zero3 = OpConstantComposite %u3 %zero %zero %zero
+%canary = OpConstant %u32 324508639
+%num_groups = OpVariable %in_u3 Input
+%workgroup_id = OpVariable %in_u3 Input
+%output = OpVariable %out_block StorageBuffer
+%main = OpFunction %void None %fn
+%entry = OpLabel
+%id = OpLoad %u3 %workgroup_id
+%eq = OpIEqual %b3 %id %zero3
+%first = OpAll %bool %eq
+OpSelectionMerge %merge None
+OpBranchConditional %first %write %merge
+%write = OpLabel
+%groups = OpLoad %u3 %num_groups
+%x = OpCompositeExtract %u32 %groups 0
+%y = OpCompositeExtract %u32 %groups 1
+%z = OpCompositeExtract %u32 %groups 2
+%value = OpCompositeConstruct %u4 %x %y %z %canary
+%pointer = OpAccessChain %out_u4 %output %zero
+OpStore %pointer %value
+OpBranch %merge
+%merge = OpLabel
+OpReturn
+OpFunctionEnd

@@ -1,0 +1,3192 @@
+{
+  "schema": 1,
+  "classification": "authored test inputs and shader GPU readbacks; no game artwork/source/control/C1/binaries",
+  "archives": [
+    {
+      "file": "full-readbacks.zip",
+      "bytes": 363521,
+      "sha256": "1a724c2c9a00762de32df2e411a3c0177154a48fc67a333d93c6b0be9f64e840",
+      "members": [
+        {
+          "name": "depth-color-000.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-000.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-001.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-001.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-002.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-002.raw",
+          "bytes": 12288,
+          "sha256": "56e05a77c75f1a83af13aaeecdf8cf16ab8d99a77c54086c02d2b2242631de79",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-003.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-003.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-004.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-004.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-005.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-005.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-006.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-006.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-007.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-007.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-008.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-008.raw",
+          "bytes": 8192,
+          "sha256": "a7cad8bed064e75d280794e2b791dfa204c25fe3e91546a9e98b9734cb70319f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-009.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-009.raw",
+          "bytes": 8192,
+          "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-010.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-010.raw",
+          "bytes": 12288,
+          "sha256": "56e05a77c75f1a83af13aaeecdf8cf16ab8d99a77c54086c02d2b2242631de79",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-011.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-011.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-012.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-012.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-013.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-013.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-014.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-014.raw",
+          "bytes": 12288,
+          "sha256": "56e05a77c75f1a83af13aaeecdf8cf16ab8d99a77c54086c02d2b2242631de79",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-015.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-015.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-016.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-016.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-017.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-017.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-018.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-018.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-019.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-019.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-020.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-020.raw",
+          "bytes": 8192,
+          "sha256": "5f51fc5c56ad096559727df9c9bb56a71bc39f306e95e36a073575d6d8175d01",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-021.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-021.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-022.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-022.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-023.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-023.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-024.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-024.raw",
+          "bytes": 12288,
+          "sha256": "56e05a77c75f1a83af13aaeecdf8cf16ab8d99a77c54086c02d2b2242631de79",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-025.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-025.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-026.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-026.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-027.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-027.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-028.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-028.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-029.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-029.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-030.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-030.raw",
+          "bytes": 8192,
+          "sha256": "a7cad8bed064e75d280794e2b791dfa204c25fe3e91546a9e98b9734cb70319f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-031.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-031.raw",
+          "bytes": 8192,
+          "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-032.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-032.raw",
+          "bytes": 12288,
+          "sha256": "56e05a77c75f1a83af13aaeecdf8cf16ab8d99a77c54086c02d2b2242631de79",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-033.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-033.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-034.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-034.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-035.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-035.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-036.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-036.raw",
+          "bytes": 12288,
+          "sha256": "56e05a77c75f1a83af13aaeecdf8cf16ab8d99a77c54086c02d2b2242631de79",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-037.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-037.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-038.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-038.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-039.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-039.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-040.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-040.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-041.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-041.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-042.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-042.raw",
+          "bytes": 8192,
+          "sha256": "5f51fc5c56ad096559727df9c9bb56a71bc39f306e95e36a073575d6d8175d01",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-043.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-043.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-044.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-044.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-045.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-045.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-046.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-046.raw",
+          "bytes": 24576,
+          "sha256": "4842641e64c8888b421570e7668bfdfb0ff25070b24a191f83020fcb95da8222",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-047.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-047.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-048.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-048.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-049.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-049.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-050.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-050.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-051.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-051.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-052.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-052.raw",
+          "bytes": 16384,
+          "sha256": "3530849577df153cfbbf53a893919dab6af07aa0201f9a95a857c21ed9303099",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-053.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-053.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-054.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-054.raw",
+          "bytes": 24576,
+          "sha256": "4842641e64c8888b421570e7668bfdfb0ff25070b24a191f83020fcb95da8222",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-055.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-055.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-056.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-056.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-057.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-057.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-058.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-058.raw",
+          "bytes": 24576,
+          "sha256": "4842641e64c8888b421570e7668bfdfb0ff25070b24a191f83020fcb95da8222",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-059.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-059.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-060.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-060.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-061.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-061.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-062.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-062.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-063.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-063.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-064.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-064.raw",
+          "bytes": 16384,
+          "sha256": "3495a51c7cdcef8a2d5e3eb423cfa137aa279d5a9b1927a2b43b030ca5fa1076",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-065.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-065.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-066.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-066.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-067.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-067.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-068.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-068.raw",
+          "bytes": 24576,
+          "sha256": "4842641e64c8888b421570e7668bfdfb0ff25070b24a191f83020fcb95da8222",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-069.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-069.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-070.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-070.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-071.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-071.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-072.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-072.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-073.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-073.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-074.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-074.raw",
+          "bytes": 16384,
+          "sha256": "3530849577df153cfbbf53a893919dab6af07aa0201f9a95a857c21ed9303099",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-075.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-075.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-076.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-076.raw",
+          "bytes": 24576,
+          "sha256": "4842641e64c8888b421570e7668bfdfb0ff25070b24a191f83020fcb95da8222",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-077.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-077.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-078.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-078.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-079.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-079.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-080.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-080.raw",
+          "bytes": 24576,
+          "sha256": "4842641e64c8888b421570e7668bfdfb0ff25070b24a191f83020fcb95da8222",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-081.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-081.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-082.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-082.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-083.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-083.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-084.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-084.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-085.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-085.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-086.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-086.raw",
+          "bytes": 16384,
+          "sha256": "3495a51c7cdcef8a2d5e3eb423cfa137aa279d5a9b1927a2b43b030ca5fa1076",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-087.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-087.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-088.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-088.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-089.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-089.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-090.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-090.raw",
+          "bytes": 24576,
+          "sha256": "d4ab1101370be363aedbb642daf46f857adead499feb5e1c7413c17af2025b60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-091.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-091.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-092.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-092.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-093.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-093.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-094.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-094.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-095.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-095.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-096.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-096.raw",
+          "bytes": 16384,
+          "sha256": "bea31d406eb602e9c8840b39e988d2e39e33725d92fa6137181ff381aef41e6a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-097.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-097.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-098.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-098.raw",
+          "bytes": 24576,
+          "sha256": "d4ab1101370be363aedbb642daf46f857adead499feb5e1c7413c17af2025b60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-099.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-099.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-100.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-100.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-101.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-101.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-102.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-102.raw",
+          "bytes": 24576,
+          "sha256": "d4ab1101370be363aedbb642daf46f857adead499feb5e1c7413c17af2025b60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-103.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-103.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-104.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-104.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-105.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-105.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-106.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-106.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-107.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-107.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-108.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-108.raw",
+          "bytes": 16384,
+          "sha256": "b2d73e7017ed38761c53f5b6c7f656bb8b4f67300b034da9f32c3a557df27573",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-109.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-109.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-110.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-110.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-111.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-111.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-112.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-112.raw",
+          "bytes": 24576,
+          "sha256": "d4ab1101370be363aedbb642daf46f857adead499feb5e1c7413c17af2025b60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-113.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-113.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-114.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-114.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-115.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-115.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-116.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-116.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-117.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-117.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-118.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-118.raw",
+          "bytes": 16384,
+          "sha256": "bea31d406eb602e9c8840b39e988d2e39e33725d92fa6137181ff381aef41e6a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-119.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-119.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-120.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-120.raw",
+          "bytes": 24576,
+          "sha256": "d4ab1101370be363aedbb642daf46f857adead499feb5e1c7413c17af2025b60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-121.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-121.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-122.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-122.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-123.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-123.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-124.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-124.raw",
+          "bytes": 24576,
+          "sha256": "d4ab1101370be363aedbb642daf46f857adead499feb5e1c7413c17af2025b60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-125.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-125.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-126.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-126.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-127.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-127.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-128.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-128.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-129.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-129.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-130.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-130.raw",
+          "bytes": 16384,
+          "sha256": "b2d73e7017ed38761c53f5b6c7f656bb8b4f67300b034da9f32c3a557df27573",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-131.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-131.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        }
+      ]
+    },
+    {
+      "file": "failed-full-readbacks.zip",
+      "bytes": 363023,
+      "sha256": "071b299d2070c002a874731f74494e7e73454a77bd507900218b49024f6a4501",
+      "members": [
+        {
+          "name": "depth-color-000.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-000.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-001.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-001.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-002.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-002.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-003.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-003.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-004.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-004.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-005.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-005.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-006.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-006.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-007.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-007.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-008.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-008.raw",
+          "bytes": 8192,
+          "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-009.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-009.raw",
+          "bytes": 8192,
+          "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-010.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-010.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-011.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-011.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-012.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-012.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-013.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-013.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-014.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-014.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-015.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-015.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-016.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-016.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-017.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-017.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-018.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-018.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-019.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-019.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-020.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-020.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-021.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-021.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-022.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-022.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-023.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-023.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-024.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-024.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-025.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-025.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-026.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-026.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-027.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-027.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-028.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-028.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-029.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-029.raw",
+          "bytes": 12288,
+          "sha256": "a777ea8ba273ec415964c55b5fb94f626132653f4b1f377865e5e4183e2dae94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-030.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-030.raw",
+          "bytes": 8192,
+          "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-031.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-031.raw",
+          "bytes": 8192,
+          "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-032.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-032.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-033.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-033.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-034.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-034.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-035.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-035.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-036.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-036.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-037.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-037.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-038.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-038.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-039.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-039.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-040.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-040.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-041.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-041.raw",
+          "bytes": 12288,
+          "sha256": "8705391547824bda0e6874e73bc5ec79b23ad274e4e8f314902a1fc4943f9243",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-042.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-042.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-043.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-043.raw",
+          "bytes": 8192,
+          "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-044.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-044.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-045.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-045.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-046.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-046.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-047.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-047.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-048.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-048.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-049.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-049.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-050.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-050.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-051.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-051.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-052.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-052.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-053.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-053.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-054.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-054.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-055.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-055.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-056.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-056.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-057.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-057.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-058.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-058.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-059.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-059.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-060.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-060.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-061.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-061.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-062.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-062.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-063.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-063.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-064.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-064.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-065.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-065.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-066.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-066.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-067.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-067.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-068.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-068.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-069.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-069.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-070.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-070.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-071.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-071.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-072.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-072.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-073.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-073.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-074.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-074.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-075.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-075.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-076.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-076.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-077.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-077.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-078.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-078.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-079.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-079.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-080.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-080.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-081.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-081.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-082.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-082.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-083.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-083.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-084.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-084.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-085.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-085.raw",
+          "bytes": 24576,
+          "sha256": "ca8ea560932fbdb3768430792bd591652d89a389727160cce2e1fdb95aac4e16",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-086.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-086.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-087.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-087.raw",
+          "bytes": 16384,
+          "sha256": "6d7d89dfde15eb91eda4a5d8455718a38a018b7c5d1045045b1a71b80c85b810",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-088.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-088.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-089.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-089.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-090.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-090.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-091.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-091.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-092.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-092.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-093.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-093.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-094.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-094.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-095.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-095.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-096.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-096.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-097.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-097.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-098.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-098.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-099.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-099.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-100.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-100.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-101.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-101.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-102.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-102.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-103.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-103.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-104.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-104.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-105.raw",
+          "bytes": 24576,
+          "sha256": "0e0e5734ea77d704f86072a19dc13a9b113153280f0a1c2442534028c4185698",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-105.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-106.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-106.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-107.raw",
+          "bytes": 32768,
+          "sha256": "7f57c82d9f08307de07092ba7e65a3ac3f17f1809b5706ac7d57455361b836ff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-107.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-108.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-108.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-109.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-109.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-110.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-110.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-111.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-111.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-112.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-112.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-113.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-113.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-114.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-114.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-115.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-115.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-116.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-116.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-117.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-117.raw",
+          "bytes": 24576,
+          "sha256": "4b2696b4813ac16c108bf8d0e2d1555a753a60d75c0cccce98bd7d1ae08b90bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-118.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-118.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-119.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-119.raw",
+          "bytes": 16384,
+          "sha256": "4fe7b59af6de3b665b67788cc2f99892ab827efae3a467342b3bb4e3bc8e5bfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-120.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-120.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-121.raw",
+          "bytes": 32768,
+          "sha256": "91dd47e9463ba71796a8c4c6cbb271c14693242ce227d40d36d5693a110c6cdb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-121.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-122.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-122.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-123.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-123.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-124.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-124.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-125.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-125.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-126.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-126.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-127.raw",
+          "bytes": 24576,
+          "sha256": "770bf0edaed846fee0179105f2aa1d34a20e7d1e13d81531967b19070d34636f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-127.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-128.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-128.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-129.raw",
+          "bytes": 32768,
+          "sha256": "cc829df62ead35f91ad2bc3afe97488cff279355d2c5ba368ff48dbfb28b631d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-129.raw",
+          "bytes": 24576,
+          "sha256": "28ec0f747a7ab71a80ff8e457109f1ec8c344974a1845891a3cd6c9b7b09b8c7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-130.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-130.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-color-131.raw",
+          "bytes": 24576,
+          "sha256": "cfc1b14bc78859f866e2f38375653f8c1473fe5a2c9fc73c188f40968fc82ea2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "depth-z-131.raw",
+          "bytes": 16384,
+          "sha256": "3035aac5fb87474c303702f9030301b4e6bb7aee93be3710b8ab8dcea201db70",
+          "suffix": ".raw"
+        }
+      ]
+    }
+  ],
+  "historical_result_preserved": true,
+  "normal_records_zip_not_copied": true,
+  "source_snapshot_zip_not_copied": true,
+  "cross_checked_original_member_manifest": true
+}

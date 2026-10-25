@@ -1,0 +1,44 @@
+#version 450
+// SPDX-License-Identifier: MIT. 3D Generic16Bx2 raw blocks, no BC decoding.
+// A slice participates in depth GOB interleaving; never arrayLayer*stride.
+layout(local_size_x=8,local_size_y=8,local_size_z=1) in;
+layout(set=0,binding=0,std430) readonly buffer Source { uint data[]; } src;
+layout(set=0,binding=1,std430) buffer Destination { uint data[]; } dst;
+layout(set=0,binding=2,std140) uniform Params {
+ uint canonicalBase,canonicalSlabStride,widthGobs,blockDepthLog2;
+ uint regionXBytes,regionYRows,rowBytes,rows;
+ uint linearRowStride,linearImageStride,slices,direction;
+ uint linearSpan,linearWords,dispatchWidth,baseZ;
+} p;
+uint volumeOffset(uint x,uint y,uint z) {
+ uint depth=1u<<p.blockDepthLog2;
+ return (z>>p.blockDepthLog2)*p.canonicalSlabStride+(y>>3u)*p.widthGobs*512u*depth+
+  (x>>6u)*512u*depth+(z&(depth-1u))*512u+
+  ((x%64u)/32u)*256u+((y%8u)/2u)*64u+((x%32u)/16u)*32u+(y%2u)*16u+(x%16u);
+}
+uint sourceByte(uint address){return(src.data[address>>2u]>>((address&3u)*8u))&255u;}
+void main(){
+ uvec3 id=gl_WorkGroupID*gl_WorkGroupSize+gl_LocalInvocationID;
+ uint destination,mask=0u,value=0u;
+ if(p.direction==0u){
+  uint word=id.x+id.y*p.dispatchWidth;if(word>=p.linearWords)return;
+  destination=word*4u;
+  for(uint lane=0u;lane<4u;lane++){
+   uint byte=destination+lane;if(byte>=p.linearSpan)continue;
+   uint slice=byte/p.linearImageStride,within=byte%p.linearImageStride,row=within/p.linearRowStride,x=within%p.linearRowStride;
+   if(slice>=p.slices||row>=p.rows||x>=p.rowBytes)continue;
+   uint address=p.canonicalBase+volumeOffset(p.regionXBytes+x,p.regionYRows+row,p.baseZ+slice);
+   mask|=255u<<(lane*8u);value|=sourceByte(address)<<(lane*8u);
+  }
+ }else{
+  uint x=(p.regionXBytes&~3u)+id.x*4u;
+  if(x>=p.regionXBytes+p.rowBytes||id.y>=p.rows||id.z>=p.slices)return;
+  destination=p.canonicalBase+volumeOffset(x,p.regionYRows+id.y,p.baseZ+id.z);
+  for(uint lane=0u;lane<4u;lane++){
+   uint absolute=x+lane;if(absolute<p.regionXBytes||absolute>=p.regionXBytes+p.rowBytes)continue;
+   uint address=id.z*p.linearImageStride+id.y*p.linearRowStride+absolute-p.regionXBytes;
+   mask|=255u<<(lane*8u);value|=sourceByte(address)<<(lane*8u);
+  }
+ }
+ if(mask!=0u){uint old=dst.data[destination>>2u];dst.data[destination>>2u]=(old&~mask)|(value&mask);}
+}

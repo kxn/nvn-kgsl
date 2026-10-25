@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "passed": true,
+  "gpu_execution": false,
+  "android_execution": false,
+  "ADB_calls": 0,
+  "normal_inventory_dispatch": true,
+  "profile_negatives": 5,
+  "primary_failures_not_hidden": [
+    {
+      "stopped": true,
+      "primary_errno": 35,
+      "primary_stage": "draw-submit",
+      "secondary_error_retained": true,
+      "mock_calls": 12
+    },
+    {
+      "stopped": false,
+      "primary_errno": 35,
+      "primary_stage": "draw-submit",
+      "secondary_error_retained": true,
+      "mock_calls": 12
+    }
+  ],
+  "default_OFF": true,
+  "invalid_ON_rejected": true,
+  "build_record_sha256": "34346b2b9afec3f244fcbc0151ca18dd614dad86c4362fb617fcb2c394bc15ea",
+  "inputs": {
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/runner_local_proof_v4.py": "4d4335dc58333760fecb23b21258bd0cd453619da30af6d6389ab371a42dcf51",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/nvn-native/tools/front_facing_runner.py": "783b16d56e4e0a659d8388163eceec89c01aa98672b650bc8eed6121c1ee5800",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/nvn-native/tools/run_android_probe.py": "c7cdbf5d467ef9287d2a1cf123ec32b73f7cac8c0d2555b77d8533481a746c71",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/nvn-native/tools/pipeline_runner.py": "1a3ab76ce7df6bc2391bc942024556b984426a70e0eaa24522341734aa84f459",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/nvn-native/CMakeLists.txt": "d889569cfacb3109d5402d7ffcec8352cbc36ca2fbd9c85e895724405b7c11d7"
+  }
+}

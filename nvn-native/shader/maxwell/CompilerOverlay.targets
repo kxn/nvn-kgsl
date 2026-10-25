@@ -1,0 +1,8 @@
+<Project>
+  <Target Name="NvnIsolatedIadd" BeforeTargets="CoreCompile" Condition="'$(MSBuildProjectName)' == 'Ryujinx.Graphics.Shader'">
+    <ItemGroup>
+      <Compile Remove="Instructions/InstEmitIntegerArithmetic.cs" />
+      <Compile Include="$(NvnShaderOverlay)/InstEmitIntegerArithmetic.cs" />
+    </ItemGroup>
+  </Target>
+</Project>

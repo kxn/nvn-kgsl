@@ -1,0 +1,43 @@
+# Appended only to an isolated, pinned Mesa source copy by build_ir3.py.
+nvn_ir3_compile = executable(
+  'nvn-ir3-compile', ['../ir3/nvn_ir3_compile.c', '../ir3/nvn_cs_artifact.cc', freedreno_xml_header_files],
+  include_directories: [inc_freedreno, inc_include, inc_src],
+  link_with: [libfreedreno_ir3, libfreedreno_layout],
+  cpp_args: ['-DFD_NO_DEPRECATED_PACK'],
+  dependencies: [idep_nir, idep_mesautil, idep_libir3decode],
+  build_by_default: false,
+)
+nvn_spirv_ir3 = executable(
+  'nvn-spirv-ir3', ['../ir3/nvn_spirv_ir3.c', '../ir3/nvn_compute_artifact.cc', freedreno_xml_header_files],
+  include_directories: [inc_freedreno, inc_include, inc_src],
+  link_with: [libfreedreno_ir3, libfreedreno_layout],
+  cpp_args: ['-DFD_NO_DEPRECATED_PACK'],
+  dependencies: [idep_nir, idep_vtn, idep_mesautil, idep_libir3decode],
+  build_by_default: false,
+)
+nvn_graphics_ir3 = executable(
+  'nvn-graphics-ir3', ['../ir3/nvn_graphics_ir3.c', '../ir3/nvn_graphics_artifact.cc', freedreno_xml_header_files],
+  include_directories: [inc_freedreno, inc_include, inc_src],
+  link_with: [libfreedreno_ir3, libfreedreno_layout],
+  cpp_args: ['-DFD_NO_DEPRECATED_PACK'],
+  dependencies: [idep_nir, idep_vtn, idep_mesautil, idep_libir3decode],
+  build_by_default: false,
+)
+
+nvn_pipeline_ir3 = executable(
+  'nvn-pipeline-ir3', ['../ir3/nvn_pipeline_ir3.c', '../ir3/nvn_pipeline_artifact.cc', freedreno_xml_header_files],
+  include_directories: [inc_freedreno, inc_include, inc_src],
+  link_with: [libfreedreno_ir3, libfreedreno_layout],
+  cpp_args: ['-DFD_NO_DEPRECATED_PACK'],
+  dependencies: [idep_nir, idep_vtn, idep_mesautil, idep_libir3decode],
+  build_by_default: false,
+)
+
+nvn_pipeline_platform = executable(
+  'nvn-pipeline-platform', ['../ir3/nvn_pipeline_platform.cc', freedreno_xml_header_files],
+  include_directories: [inc_freedreno, inc_include, inc_src],
+  link_with: [libfreedreno_ir3, libfreedreno_layout],
+  cpp_args: ['-DFD_NO_DEPRECATED_PACK'],
+  dependencies: [idep_nir, idep_mesautil, idep_libir3decode],
+  build_by_default: false,
+)

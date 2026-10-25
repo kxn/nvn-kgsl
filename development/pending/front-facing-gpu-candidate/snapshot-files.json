@@ -1,0 +1,102 @@
+[
+  {
+    "path": "HANDOFF.md",
+    "bytes": 7179,
+    "sha256": "999474fc0f1f0ef3060208dbf711762381a97b276751f6b800b445ee9601737a"
+  },
+  {
+    "path": "dependencies.json",
+    "bytes": 526,
+    "sha256": "2f624d979c3cacfaa9fc7a9bc4f107b7f40a972baf4e85a6a5da88fc46b8910b"
+  },
+  {
+    "path": "freeze-proof.json",
+    "bytes": 1142,
+    "sha256": "ee9b9b26497338f9bf3345aae5c6db2c9baa97eda2b189b5033bd6a765c3443f"
+  },
+  {
+    "path": "manifest.json",
+    "bytes": 10456,
+    "sha256": "3657f964f8ba0873a86c43036e20c7bdbc123083d16579d1f8b43b42f921ee53"
+  },
+  {
+    "path": "minimal-promote.patch",
+    "bytes": 54376,
+    "sha256": "a4ce5d04c4b751f3cb82c76148ffdb7918635a03264629d1b9c0a4f52bdc1543"
+  },
+  {
+    "path": "ready.json",
+    "bytes": 2131,
+    "sha256": "27625aa0511550850c9bea99108d4911ce96130f0c37d43f82c44e53242b8bcc"
+  },
+  {
+    "path": "rebase-v2.json",
+    "bytes": 4688,
+    "sha256": "e57092bd4113bb27c16e173973bf554e0a1cbf814da5ff91e482ce74132c99fb"
+  },
+  {
+    "path": "runner-local-proof-v4.json",
+    "bytes": 1631,
+    "sha256": "f17b22c0b32fcab795d749822956ad71cb82d91ad9690aeb304bf7c91c35f3ff"
+  },
+  {
+    "path": "runtime-refresh-v3.json",
+    "bytes": 1990,
+    "sha256": "a89d59ec18997004eae0416faca4a2360868ed8efdb432491b00935920a6870f"
+  },
+  {
+    "path": "source/nvn-native/CMakeLists.txt",
+    "bytes": 79837,
+    "sha256": "d889569cfacb3109d5402d7ffcec8352cbc36ca2fbd9c85e895724405b7c11d7"
+  },
+  {
+    "path": "source/nvn-native/tests/d2r_bridge/front_facing_probe_host.c",
+    "bytes": 3571,
+    "sha256": "079ea03049a48bfb985adc94e63956f7895fedcb923bfe0021ceb36aa0c43cf5"
+  },
+  {
+    "path": "source/nvn-native/tests/front_facing_probe.c",
+    "bytes": 11003,
+    "sha256": "dcd558a32746874e1be16e6e0f0cbea64c11cb4e18ad7e23413f08ded784ebea"
+  },
+  {
+    "path": "source/nvn-native/tests/test_front_facing_validation.py",
+    "bytes": 4800,
+    "sha256": "71c47d6ffa7ea5acec2fc9fc630bd7806b9d1350070849908776cbfb9c86ce4e"
+  },
+  {
+    "path": "source/nvn-native/tools/build_android_probe.py",
+    "bytes": 65120,
+    "sha256": "55c7e02e6ddfe0e4439de77c56e42899e15aa9936c86eb9540ddf1253331cac8"
+  },
+  {
+    "path": "source/nvn-native/tools/check_front_facing_probe.py",
+    "bytes": 6728,
+    "sha256": "c44490172e4fc9f9a3da9889f50b9bdb7366cc51ccd0ed1882e1a3fe53157e8c"
+  },
+  {
+    "path": "source/nvn-native/tools/front_facing_qualification.py",
+    "bytes": 8824,
+    "sha256": "1496fd186a413439aa921102ebfd24475182ca289be786c4b6c93a1d8bb5b48f"
+  },
+  {
+    "path": "source/nvn-native/tools/front_facing_runner.py",
+    "bytes": 1394,
+    "sha256": "783b16d56e4e0a659d8388163eceec89c01aa98672b650bc8eed6121c1ee5800"
+  },
+  {
+    "path": "source/nvn-native/tools/front_facing_validation.py",
+    "bytes": 6384,
+    "sha256": "5623aacc7de9dd1fc1f4201253e1ca56fc8be9a61d34ab81a8742085f1eff4ea"
+  },
+  {
+    "path": "source/nvn-native/tools/run_android_probe.py",
+    "bytes": 55962,
+    "sha256": "c7cdbf5d467ef9287d2a1cf123ec32b73f7cac8c0d2555b77d8533481a746c71"
+  },
+  {
+    "path": "source-files.json",
+    "bytes": 2405,
+    "sha256": "638eac8e502c64f1c1c4b29961bfb449533bc878364343a80bf04ae0fe08c626"
+  }
+]

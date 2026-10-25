@@ -1,0 +1,593 @@
+{
+  "schema": 1,
+  "classification": "authored test inputs and shader GPU readbacks; no game artwork/source/control/C1/binaries",
+  "archives": [
+    {
+      "file": "full-readbacks.zip",
+      "bytes": 42472,
+      "sha256": "75283d03a3f07d2c1df8266e454bbf8467e126e033c878835d1797f36ab28fa3",
+      "members": [
+        {
+          "name": "gather-000.raw",
+          "bytes": 12288,
+          "sha256": "d2a548470d84f35bd86860fa7c22321de3628ca523a010be98c7925baf175126",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-001.raw",
+          "bytes": 12288,
+          "sha256": "27a79f142f2c6f9cb8af500931889ed724c303c023f9c4893546e7df956bf3f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-002.raw",
+          "bytes": 12288,
+          "sha256": "03429e5d996c97024a4a77d408e7cbb19329424fd8eb5a11c5c32022e7ce533d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-003.raw",
+          "bytes": 12288,
+          "sha256": "755c8c52f8222ffb6baef33eb198a138c90c105ea70bb6a83c1ba305a6c94d67",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-004.raw",
+          "bytes": 12288,
+          "sha256": "8ba76e476651a46a22602268fb46f11360d897ba7f402b0775e6ffb9a4f58369",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-005.raw",
+          "bytes": 12288,
+          "sha256": "f18bc7f9d44e3df6d297181af5f689fcbf7b69c59f8f6dcdab9abb0139e7aff3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-006.raw",
+          "bytes": 12288,
+          "sha256": "0794178a531a3026610c3c33614d17df94837b1882cfa4027677782e00d0a85c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-007.raw",
+          "bytes": 12288,
+          "sha256": "0818adf374fa8b9d4b81c9700fb7bb96cf3eabf71d9019383e7ded1310a3ac15",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-008.raw",
+          "bytes": 12288,
+          "sha256": "93e51331615735967293e110dd7176a6c29c20bf0d027cc458b48e4fc048d440",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-009.raw",
+          "bytes": 12288,
+          "sha256": "56daae44f16f619d4e63e97b0c1a13ec8460bb86b5e092913dec9cdabca410cd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-010.raw",
+          "bytes": 12288,
+          "sha256": "d5c75f8d864e8e34bee6d6acf938763771fa9ceb5fa6275df411b4c7b6a617f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-011.raw",
+          "bytes": 12288,
+          "sha256": "cc2bb0fc92259ad9684c78956b97ce180d0219600510fd015ab1bb2a41886b9c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-012.raw",
+          "bytes": 12288,
+          "sha256": "d2a548470d84f35bd86860fa7c22321de3628ca523a010be98c7925baf175126",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-013.raw",
+          "bytes": 12288,
+          "sha256": "27a79f142f2c6f9cb8af500931889ed724c303c023f9c4893546e7df956bf3f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-014.raw",
+          "bytes": 12288,
+          "sha256": "03429e5d996c97024a4a77d408e7cbb19329424fd8eb5a11c5c32022e7ce533d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-015.raw",
+          "bytes": 12288,
+          "sha256": "755c8c52f8222ffb6baef33eb198a138c90c105ea70bb6a83c1ba305a6c94d67",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-016.raw",
+          "bytes": 12288,
+          "sha256": "8ba76e476651a46a22602268fb46f11360d897ba7f402b0775e6ffb9a4f58369",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-017.raw",
+          "bytes": 12288,
+          "sha256": "f18bc7f9d44e3df6d297181af5f689fcbf7b69c59f8f6dcdab9abb0139e7aff3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-018.raw",
+          "bytes": 12288,
+          "sha256": "0794178a531a3026610c3c33614d17df94837b1882cfa4027677782e00d0a85c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-019.raw",
+          "bytes": 12288,
+          "sha256": "0818adf374fa8b9d4b81c9700fb7bb96cf3eabf71d9019383e7ded1310a3ac15",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-020.raw",
+          "bytes": 12288,
+          "sha256": "93e51331615735967293e110dd7176a6c29c20bf0d027cc458b48e4fc048d440",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-021.raw",
+          "bytes": 12288,
+          "sha256": "56daae44f16f619d4e63e97b0c1a13ec8460bb86b5e092913dec9cdabca410cd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-022.raw",
+          "bytes": 12288,
+          "sha256": "d5c75f8d864e8e34bee6d6acf938763771fa9ceb5fa6275df411b4c7b6a617f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-023.raw",
+          "bytes": 12288,
+          "sha256": "cc2bb0fc92259ad9684c78956b97ce180d0219600510fd015ab1bb2a41886b9c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-024.raw",
+          "bytes": 12288,
+          "sha256": "e0d4db15a93c56f73173b4350d9ef66fea523028076d46fe6b5397e26b7d851f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-025.raw",
+          "bytes": 12288,
+          "sha256": "4e982a411c9aba4c7b45a03feab190bd82543d9598283680f4432427d35070e0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-026.raw",
+          "bytes": 12288,
+          "sha256": "c388c6d8b427a2f95f251974db62ac922039d8543327614dc94fef89cc1a7028",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-027.raw",
+          "bytes": 12288,
+          "sha256": "1f1868884b400402182dbe7b0dbea71fb5159556b29318b6faadd94c0d998ed6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-028.raw",
+          "bytes": 12288,
+          "sha256": "5ce9db751ae4411a91f08b07debbad1259228fe8418d95cb415d099b59dd790d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-029.raw",
+          "bytes": 12288,
+          "sha256": "95a2e1c394923956ed583d22c777981ab512c0b85b0c0120b163667a61e5fdc4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-030.raw",
+          "bytes": 12288,
+          "sha256": "444a6ed824f279d040ecd58a45c124b964ff701f47621eec6e6ccb6873ae9ce3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-031.raw",
+          "bytes": 12288,
+          "sha256": "8ce84af2b69163764addaf83907bc2e5f37fbad09fba9b7c7c55024943221836",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-032.raw",
+          "bytes": 12288,
+          "sha256": "08f002e151b07b44bab7cc2399c5f880f009bb9492c439f67bffd8db00ba4295",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-033.raw",
+          "bytes": 12288,
+          "sha256": "0dec2e4ac782762babc451f4d2ed5226c1e4d14fc117d3fc53410b84462b59aa",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-034.raw",
+          "bytes": 12288,
+          "sha256": "b711f8d3accb16f08805fc4a28b63a31aafd0e199377aebc2d6e7ffe24d95c51",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-035.raw",
+          "bytes": 12288,
+          "sha256": "39865f35c9e2d3742193b9ad86c97617ba620dcbb21e39a45806ec33f7a0bab1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-036.raw",
+          "bytes": 12288,
+          "sha256": "e0d4db15a93c56f73173b4350d9ef66fea523028076d46fe6b5397e26b7d851f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-037.raw",
+          "bytes": 12288,
+          "sha256": "4e982a411c9aba4c7b45a03feab190bd82543d9598283680f4432427d35070e0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-038.raw",
+          "bytes": 12288,
+          "sha256": "c388c6d8b427a2f95f251974db62ac922039d8543327614dc94fef89cc1a7028",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-039.raw",
+          "bytes": 12288,
+          "sha256": "1f1868884b400402182dbe7b0dbea71fb5159556b29318b6faadd94c0d998ed6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-040.raw",
+          "bytes": 12288,
+          "sha256": "5ce9db751ae4411a91f08b07debbad1259228fe8418d95cb415d099b59dd790d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-041.raw",
+          "bytes": 12288,
+          "sha256": "95a2e1c394923956ed583d22c777981ab512c0b85b0c0120b163667a61e5fdc4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-042.raw",
+          "bytes": 12288,
+          "sha256": "444a6ed824f279d040ecd58a45c124b964ff701f47621eec6e6ccb6873ae9ce3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-043.raw",
+          "bytes": 12288,
+          "sha256": "8ce84af2b69163764addaf83907bc2e5f37fbad09fba9b7c7c55024943221836",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-044.raw",
+          "bytes": 12288,
+          "sha256": "08f002e151b07b44bab7cc2399c5f880f009bb9492c439f67bffd8db00ba4295",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-045.raw",
+          "bytes": 12288,
+          "sha256": "0dec2e4ac782762babc451f4d2ed5226c1e4d14fc117d3fc53410b84462b59aa",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-046.raw",
+          "bytes": 12288,
+          "sha256": "b711f8d3accb16f08805fc4a28b63a31aafd0e199377aebc2d6e7ffe24d95c51",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-047.raw",
+          "bytes": 12288,
+          "sha256": "39865f35c9e2d3742193b9ad86c97617ba620dcbb21e39a45806ec33f7a0bab1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-048.raw",
+          "bytes": 12288,
+          "sha256": "e9102b84cd8d87a843786e4cb840535ca3abf94ee3731cd96c56f244285051f2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-049.raw",
+          "bytes": 12288,
+          "sha256": "e12d22a1b741b8ed9ae90933ddad8eba95c2677dee07bff45d279979196a5db7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-050.raw",
+          "bytes": 12288,
+          "sha256": "97a3906841ff81f34b2a9e91387a1bd9ff5a151057278ad9cdf0173edcf83778",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-051.raw",
+          "bytes": 12288,
+          "sha256": "af19a7ed5401f58ce04909a8b37105d7ab3680661ffdc063c046738fbec4d253",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-052.raw",
+          "bytes": 12288,
+          "sha256": "909ce79a08031bea601f84143a13a3c53ba94c1ebc4472a2630e13d7823aae34",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-053.raw",
+          "bytes": 12288,
+          "sha256": "b8713640681e4ff26884d3aec3965320b56294fa6306fcfae7663f36b1b5bc3e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-054.raw",
+          "bytes": 12288,
+          "sha256": "c1814369085b28f350aa0c50289f13a84e9898dfb2d16ba763b50ff32efd8ef7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-055.raw",
+          "bytes": 12288,
+          "sha256": "f2058c1344e2f01083dbf427f3708c964d38ac5ba4bca4d4356f6a9cd9e4199d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-056.raw",
+          "bytes": 12288,
+          "sha256": "2f6435fbe61107f1022f651c9590d7e5f8aabddd0e624d031fdb24cd82af76b3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-057.raw",
+          "bytes": 12288,
+          "sha256": "7f222386f715fc124bff30af26fd25f2511a2f2741e20c3c131c27c1df83b23f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-058.raw",
+          "bytes": 12288,
+          "sha256": "74c35049073292a81a434df5bc754377a05b86f0cb671e7dcdf16ad830c45cba",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-059.raw",
+          "bytes": 12288,
+          "sha256": "d2e0c038a6db5c5ee89950d821b075e9573fa2d1ef5377bac41501f31ac6a268",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-060.raw",
+          "bytes": 12288,
+          "sha256": "e9102b84cd8d87a843786e4cb840535ca3abf94ee3731cd96c56f244285051f2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-061.raw",
+          "bytes": 12288,
+          "sha256": "e12d22a1b741b8ed9ae90933ddad8eba95c2677dee07bff45d279979196a5db7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-062.raw",
+          "bytes": 12288,
+          "sha256": "97a3906841ff81f34b2a9e91387a1bd9ff5a151057278ad9cdf0173edcf83778",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-063.raw",
+          "bytes": 12288,
+          "sha256": "af19a7ed5401f58ce04909a8b37105d7ab3680661ffdc063c046738fbec4d253",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-064.raw",
+          "bytes": 12288,
+          "sha256": "909ce79a08031bea601f84143a13a3c53ba94c1ebc4472a2630e13d7823aae34",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-065.raw",
+          "bytes": 12288,
+          "sha256": "b8713640681e4ff26884d3aec3965320b56294fa6306fcfae7663f36b1b5bc3e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-066.raw",
+          "bytes": 12288,
+          "sha256": "c1814369085b28f350aa0c50289f13a84e9898dfb2d16ba763b50ff32efd8ef7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-067.raw",
+          "bytes": 12288,
+          "sha256": "f2058c1344e2f01083dbf427f3708c964d38ac5ba4bca4d4356f6a9cd9e4199d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-068.raw",
+          "bytes": 12288,
+          "sha256": "2f6435fbe61107f1022f651c9590d7e5f8aabddd0e624d031fdb24cd82af76b3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-069.raw",
+          "bytes": 12288,
+          "sha256": "7f222386f715fc124bff30af26fd25f2511a2f2741e20c3c131c27c1df83b23f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-070.raw",
+          "bytes": 12288,
+          "sha256": "74c35049073292a81a434df5bc754377a05b86f0cb671e7dcdf16ad830c45cba",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-071.raw",
+          "bytes": 12288,
+          "sha256": "d2e0c038a6db5c5ee89950d821b075e9573fa2d1ef5377bac41501f31ac6a268",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-072.raw",
+          "bytes": 12288,
+          "sha256": "0f99f594a80f5c64639153e204f36fc046af24a1105882ddeed1d2d4953e85f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-073.raw",
+          "bytes": 12288,
+          "sha256": "4424e6b61d400c9dc2b67ac6e9cb5ed2993e616b42be972bbfb4e045a55f2d97",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-074.raw",
+          "bytes": 12288,
+          "sha256": "b6a1f5ac69d106c8e50b793ec6eae3588f060a42c077e4472ad141f393785ba0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-075.raw",
+          "bytes": 12288,
+          "sha256": "411c45750fca288bcc54f35287cbc54d879987805092eb16d60124747c2e1296",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-076.raw",
+          "bytes": 12288,
+          "sha256": "11a7e812c931e7c2a651cdd0936ea1865e42eb3a4c00b04f4f05ea2792cc856d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-077.raw",
+          "bytes": 12288,
+          "sha256": "0c8084428077d000c8ad2fb56be3cdf09a0901fac51902ad71c694a897d6c263",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-078.raw",
+          "bytes": 12288,
+          "sha256": "d870f0fcb8e1c44a673daf32b33a003b421485fde0ebc7e50fe69298d289491d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-079.raw",
+          "bytes": 12288,
+          "sha256": "4489efce2e60c806e9df23bd69952e76487e16fc2ab19ad6b647def38d363619",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-080.raw",
+          "bytes": 12288,
+          "sha256": "4ebbc9559732fb2e258115a1ea077f23f8aa3b012ce6ee5abe30df1d5e9104c6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-081.raw",
+          "bytes": 12288,
+          "sha256": "4fae0fabc14c0bf75753abc3ac713c9afea2082069a25ed6220917f839b8c5c6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-082.raw",
+          "bytes": 12288,
+          "sha256": "20eb7c5b19d3f19a9b4a7e6aa7e4742b2aef69bcb03776639c500ea2cc1f0106",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-083.raw",
+          "bytes": 12288,
+          "sha256": "b2aa674f06c9bf4bb5f23548be5e056b730cbe4c03639a4da696dbe41e24ca28",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-084.raw",
+          "bytes": 12288,
+          "sha256": "0f99f594a80f5c64639153e204f36fc046af24a1105882ddeed1d2d4953e85f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-085.raw",
+          "bytes": 12288,
+          "sha256": "4424e6b61d400c9dc2b67ac6e9cb5ed2993e616b42be972bbfb4e045a55f2d97",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-086.raw",
+          "bytes": 12288,
+          "sha256": "b6a1f5ac69d106c8e50b793ec6eae3588f060a42c077e4472ad141f393785ba0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-087.raw",
+          "bytes": 12288,
+          "sha256": "411c45750fca288bcc54f35287cbc54d879987805092eb16d60124747c2e1296",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-088.raw",
+          "bytes": 12288,
+          "sha256": "11a7e812c931e7c2a651cdd0936ea1865e42eb3a4c00b04f4f05ea2792cc856d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-089.raw",
+          "bytes": 12288,
+          "sha256": "0c8084428077d000c8ad2fb56be3cdf09a0901fac51902ad71c694a897d6c263",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-090.raw",
+          "bytes": 12288,
+          "sha256": "d870f0fcb8e1c44a673daf32b33a003b421485fde0ebc7e50fe69298d289491d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-091.raw",
+          "bytes": 12288,
+          "sha256": "4489efce2e60c806e9df23bd69952e76487e16fc2ab19ad6b647def38d363619",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-092.raw",
+          "bytes": 12288,
+          "sha256": "4ebbc9559732fb2e258115a1ea077f23f8aa3b012ce6ee5abe30df1d5e9104c6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-093.raw",
+          "bytes": 12288,
+          "sha256": "4fae0fabc14c0bf75753abc3ac713c9afea2082069a25ed6220917f839b8c5c6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-094.raw",
+          "bytes": 12288,
+          "sha256": "20eb7c5b19d3f19a9b4a7e6aa7e4742b2aef69bcb03776639c500ea2cc1f0106",
+          "suffix": ".raw"
+        },
+        {
+          "name": "gather-095.raw",
+          "bytes": 12288,
+          "sha256": "b2aa674f06c9bf4bb5f23548be5e056b730cbe4c03639a4da696dbe41e24ca28",
+          "suffix": ".raw"
+        }
+      ]
+    }
+  ],
+  "historical_result_preserved": true,
+  "normal_records_zip_not_copied": true,
+  "source_snapshot_zip_not_copied": true,
+  "cross_checked_original_member_manifest": true
+}

@@ -1,0 +1,366 @@
+{
+  "schema": 1,
+  "kind": "pinned-khronos-offline-texture-verifier-source-closure-v1",
+  "repository": "https://github.com/KhronosGroup/VK-GL-CTS",
+  "commit": "a119e62de3bb38dae67f05abee8acd011e0c729c",
+  "license": "Apache-2.0; original headers retained. Only common texture/math utilities and generic-vector headers; no API renderer compiled.",
+  "files": {
+    "framework/common/tcuArray.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuArray.hpp",
+      "sha256": "99ba6413a54bc59e8d19722d7fe4e917582fb7cfae763c9eb3de411138fda798",
+      "bytes": 1728,
+      "git_blob": "c2f81f8c317a6ba1999c73a1335c7936bd33023e"
+    },
+    "framework/common/tcuDefs.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuDefs.cpp",
+      "sha256": "c8e66db95edbb47f4d2e9169529c003326754c874961dcf7300f399a30d35aee",
+      "bytes": 6539,
+      "git_blob": "a96c4a9f642cd452330da6da8e8ffab9b822e329"
+    },
+    "framework/common/tcuDefs.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuDefs.hpp",
+      "sha256": "ee5f9e339bf015524c513f853bb0cf20033fafa39f232addfe4cac22b5aae24d",
+      "bytes": 7684,
+      "git_blob": "9f662ecb6f4615984c74777c48c6622ed031f84d"
+    },
+    "framework/common/tcuFloat.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuFloat.cpp",
+      "sha256": "e4c717ed46b10d710fdd432e917a76285792df07cc20fe68467a80f24f68ff09",
+      "bytes": 971,
+      "git_blob": "ddff2393b55d38a5c63d27040cff0b813a6b9d92"
+    },
+    "framework/common/tcuFloat.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuFloat.hpp",
+      "sha256": "d9f0c63b8e26f6ae9b346e09e045415d90afd6cd31c2acee6432d5a28661eae9",
+      "bytes": 22799,
+      "git_blob": "23c75d963352872e1e0b0bdbf819088131883649"
+    },
+    "framework/common/tcuFormatUtil.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuFormatUtil.hpp",
+      "sha256": "3f03680bda994b6dfe9ab3ec95ba2979fdd51381e5baa6fb19971fb78c71399c",
+      "bytes": 7461,
+      "git_blob": "fe78f18ee28bb527a127c57f48c2937cc2b89818"
+    },
+    "framework/common/tcuMatrix.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuMatrix.hpp",
+      "sha256": "78ec38235926fd07519d358f36c8f169a41742ad5bb4701008638e0f736d1fe3",
+      "bytes": 19827,
+      "git_blob": "7131ee9b2ddee05de1327d482346c60f63556876"
+    },
+    "framework/common/tcuRGBA.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuRGBA.hpp",
+      "sha256": "89b0f4f73659190474a0177e58596e5db280e3b82a6f67b54deef4b3fda6a46d",
+      "bytes": 7537,
+      "git_blob": "19212b302e0c4e8550dd1f15610a895a813a77c6"
+    },
+    "framework/common/tcuSRGB8Lut.inl": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuSRGB8Lut.inl",
+      "sha256": "43cc99309fb48262162c1cb9c60449a04f764ccc3e8f4aacfa5b710a4551c21b",
+      "bytes": 3606,
+      "git_blob": "f38a499c88e8bada2758b0185c6c2ad6f77843da"
+    },
+    "framework/common/tcuSurface.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuSurface.hpp",
+      "sha256": "037e3ce90b2d5a4ea790b6fddb0ca5eb7d3ed3121cf6c8cc5b00f3d3d30aae55",
+      "bytes": 3949,
+      "git_blob": "ed52fa59c62db1ca7c6d01183f56c47f42cceca9"
+    },
+    "framework/common/tcuTestLog.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTestLog.hpp",
+      "sha256": "8f1dc2d1927df973e8f185028443241d7eb128cb9483803f45f14f7b52789aad",
+      "bytes": 17231,
+      "git_blob": "78a6b037469e145f6d122cf0e64df9fd689139a5"
+    },
+    "framework/common/tcuTexLookupVerifier.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTexLookupVerifier.cpp",
+      "sha256": "5b040b471b9ce7bdc67062e13ff320eb729189c98340ba32cc395f57127b018c",
+      "bytes": 122752,
+      "git_blob": "25619af4e5d24798f4a409a8e44ed22de45b0b67"
+    },
+    "framework/common/tcuTexLookupVerifier.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTexLookupVerifier.hpp",
+      "sha256": "83cfe78ce5cdaf0004fd53f02e4af0279f5b76ba03ed34707e81812d211e1313",
+      "bytes": 10518,
+      "git_blob": "4a1a7c330d2e98f9ffb9031465cdcda9a091dc4d"
+    },
+    "framework/common/tcuTexVerifierUtil.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTexVerifierUtil.cpp",
+      "sha256": "b559471b3453397129939ecd03fb8a27c377479699a3ea49938ac63cd08e27f1",
+      "bytes": 5868,
+      "git_blob": "513e692c2e73e5b83b1c0c915db6119b26d0f202"
+    },
+    "framework/common/tcuTexVerifierUtil.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTexVerifierUtil.hpp",
+      "sha256": "5c042d2d6ab0ad52e0218751a19e8d1cadde13766b1fec273633a7e050783d9c",
+      "bytes": 4379,
+      "git_blob": "10cde566ed34a8c296fe852ffc2bec3cf6a8fd70"
+    },
+    "framework/common/tcuTexture.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTexture.cpp",
+      "sha256": "05f3816820094d0e2627fa64e44e6d8a43acd532e0ec8a84afb0a4e3e26d7073",
+      "bytes": 186865,
+      "git_blob": "0f8f8a3babd49bb88c39338cf8d2190dd549c0a9"
+    },
+    "framework/common/tcuTexture.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTexture.hpp",
+      "sha256": "d97b39a87335f86bd75f70f3727d67b999ff05d00e218d9fc8166fac9010f3e3",
+      "bytes": 56262,
+      "git_blob": "58a2d83795c57cf1b85cb059a55122bf6cce99c8"
+    },
+    "framework/common/tcuTextureUtil.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTextureUtil.cpp",
+      "sha256": "b4cd138725a3f9110271ae1ee151140dd56d2aa8c5d9448e9741c275018b88df",
+      "bytes": 81382,
+      "git_blob": "0d419770f4cbd85059303073d197646932bc405a"
+    },
+    "framework/common/tcuTextureUtil.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuTextureUtil.hpp",
+      "sha256": "bda59f466fbd999e91ab4b9ee6f4b241c8432363ba8603e241c0d4faea79d3d5",
+      "bytes": 9301,
+      "git_blob": "158b033ad9f199d620d3634da7beff1f8f672003"
+    },
+    "framework/common/tcuVector.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuVector.hpp",
+      "sha256": "a05b5f256f0e6570727e4c09e2e400265b839c7a363e4fb2cc4ab19899168561",
+      "bytes": 14053,
+      "git_blob": "f9a0452e23e5d59e47a4b900d17f689d44e7aa8e"
+    },
+    "framework/common/tcuVectorType.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuVectorType.hpp",
+      "sha256": "843d7971a93e502b4a8cd31a7d16778ce85e8c31cb29a743619f78321cb708d5",
+      "bytes": 2653,
+      "git_blob": "74294b603272fbf2c399c0208c5603dcca56aff6"
+    },
+    "framework/common/tcuVectorUtil.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/common/tcuVectorUtil.hpp",
+      "sha256": "b2b4b93e2fe8464dcf48fd850e4c4a154172f5e770a6b46143c69e62ad0c4db9",
+      "bytes": 17148,
+      "git_blob": "790c7a497c0010c3e987934863efe5655cd2bc2a"
+    },
+    "framework/delibs/debase/deDefs.c": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deDefs.c",
+      "sha256": "b1fc5477277b08fc76716f02a0f7aa001350292b84de2c6924f07d37a4d54d7d",
+      "bytes": 4744,
+      "git_blob": "e1eff67bf8ea2703d8453f3d8ec2eef0b2305347"
+    },
+    "framework/delibs/debase/deDefs.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deDefs.h",
+      "sha256": "bc1e03b4afda3786ae8b2ac4b23c0aa8e1be94346ce7aaee5a7f15a8c31a7064",
+      "bytes": 16315,
+      "git_blob": "f69b67b8e556826f0aac1bda3eb34ca6cd8e38b1"
+    },
+    "framework/delibs/debase/deFloat16.c": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deFloat16.c",
+      "sha256": "01b047e5fab99d170216a8a4ca81e84d268674c3f80d70a0a129cd76fb971cc1",
+      "bytes": 19842,
+      "git_blob": "36ed96bd92711fb2de7bf636acaaa518cc53cd41"
+    },
+    "framework/delibs/debase/deFloat16.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deFloat16.h",
+      "sha256": "98f4b01a58de559ec189612cf8380b15a446620473cd148b4acbe6c6977c7c4e",
+      "bytes": 3935,
+      "git_blob": "e2f776e3405f826dd763af7d1057fdf362c284ec"
+    },
+    "framework/delibs/debase/deInt32.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deInt32.h",
+      "sha256": "bbeba4c1d2d8be77a865cbef96390fed115532500087036df2b097ccfe4f4047",
+      "bytes": 25812,
+      "git_blob": "d0986ad7cded5ad4b21bce9154a7db038c61857a"
+    },
+    "framework/delibs/debase/deMath.c": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deMath.c",
+      "sha256": "cf5356e2b81fc32f83e9da8cc9da4b767172c9acdb992222b68d255deb91e53f",
+      "bytes": 5590,
+      "git_blob": "289045fdda45fd21619eba18fad01605a369910b"
+    },
+    "framework/delibs/debase/deMath.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deMath.h",
+      "sha256": "250b7b08c7c0d4402e98a6b04483f4a1540a7e7d0c47018ddb5cbf1711253f6d",
+      "bytes": 13949,
+      "git_blob": "9a7d9b3e14f892b274a281d7be7ec6869b82e294"
+    },
+    "framework/delibs/debase/deMemory.c": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deMemory.c",
+      "sha256": "ce6fe1a5f0d7e75cba75a1c6dfb319282ff8fc47d992f6d1ef99ea57cc051315",
+      "bytes": 10229,
+      "git_blob": "39178b6f19ac0545c55eb9706e8f9bd7c37d5762"
+    },
+    "framework/delibs/debase/deMemory.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deMemory.h",
+      "sha256": "907f62b158973186ea784483317344b2fb3182e193821fa3b69490724f3ce96c",
+      "bytes": 2681,
+      "git_blob": "9c13acd067ef301320539c6e15bd351a5f10419c"
+    },
+    "framework/delibs/debase/deRandom.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deRandom.h",
+      "sha256": "49d2520417974b062d83f0f9b01ebaeaebc1b388f13e399cf85bc74ec73d2ccb",
+      "bytes": 1852,
+      "git_blob": "5bdd71c95781d8eea42a5cc7010f190ce0102ae0"
+    },
+    "framework/delibs/debase/deString.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/debase/deString.h",
+      "sha256": "21795d8627fba6a96702d9556ed37fe10ced54b73f3ffb00005b6ead22b47b26",
+      "bytes": 1313,
+      "git_blob": "ea63a7419828583d4dd3c6f9eb5f2c4ad99bbc1e"
+    },
+    "framework/delibs/decpp/deArrayBuffer.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deArrayBuffer.cpp",
+      "sha256": "07d81e53082c7b50cfe8e45dbcde3945df4134f451ab6907a028a4423ef29d5f",
+      "bytes": 6281,
+      "git_blob": "91e2852d421fcbcef29b8300278ec5b3a53878c4"
+    },
+    "framework/delibs/decpp/deArrayBuffer.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deArrayBuffer.hpp",
+      "sha256": "716510094b9b8eacb60649cde24f86bc2f8cf83b60a907b44e34dcd81ae8dcf3",
+      "bytes": 6716,
+      "git_blob": "eb70a5f310ac4c85de2a2090f4b9bd609bc94570"
+    },
+    "framework/delibs/decpp/deArrayUtil.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deArrayUtil.hpp",
+      "sha256": "cb9a446376ead86b593c76a8370ce34243705fcc767ac24d2c03eabf2c98c24a",
+      "bytes": 1620,
+      "git_blob": "8e98651c506d558a06695b17759a2a5b74d4ac4a"
+    },
+    "framework/delibs/decpp/deDefs.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deDefs.cpp",
+      "sha256": "24ae0896c96f08a946ea2cfb8e87a455a97ba529e70346692368e64659b35470",
+      "bytes": 1299,
+      "git_blob": "9113da7383ed647788fcf7a45e757e9fbef26729"
+    },
+    "framework/delibs/decpp/deDefs.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deDefs.hpp",
+      "sha256": "e6ccb5d52287004f921bdf4e421225c827b723c8d177ad6e69dde28ddbf5835b",
+      "bytes": 7454,
+      "git_blob": "db7b7dd7849104d0a0af30f2e51f6392ee1bb5a9"
+    },
+    "framework/delibs/decpp/deFilePath.cpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deFilePath.cpp",
+      "sha256": "3d76968c3587236858a2739eb9f7f663e3af4d215091e0760b3040fdf1a4d1cd",
+      "bytes": 9300,
+      "git_blob": "3e304e2d270df74c165075ce81b0083dcad0fbec"
+    },
+    "framework/delibs/decpp/deFilePath.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deFilePath.hpp",
+      "sha256": "7183f31bdab79a939b24116dc8553b7b694501b4bf796ef26fdaf5a09186a8e3",
+      "bytes": 3401,
+      "git_blob": "3275d2127666a2e1ff77e36630c87a245dbdcb2d"
+    },
+    "framework/delibs/decpp/deMeta.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deMeta.hpp",
+      "sha256": "dfb37a7a046b401f1bcae777222695c69a7e953e841476121837b8cc7aed9d10",
+      "bytes": 1444,
+      "git_blob": "1d9b8ca6eec20d2c9b82585b62f9a04475d29949"
+    },
+    "framework/delibs/decpp/deRandom.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deRandom.hpp",
+      "sha256": "510b4dd9f2f83bae570478a064e3993bea25fc08a56820404d0496196228fa07",
+      "bytes": 7070,
+      "git_blob": "efbf2f3751c8800827a83b56af9829554dbb0866"
+    },
+    "framework/delibs/decpp/deStringUtil.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/delibs/decpp/deStringUtil.hpp",
+      "sha256": "f58807dd084f66a5a23a7a05921a47cc42925290b18280d3de7221ebd13f47c2",
+      "bytes": 1743,
+      "git_blob": "461a129f12696e90f3beabfc877753d45ebd8e0c"
+    },
+    "framework/qphelper/qpCrashHandler.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/qphelper/qpCrashHandler.h",
+      "sha256": "c92d5f48acf46329ee980874b4948c7860e39368c8e63b549724ea097af578f5",
+      "bytes": 1679,
+      "git_blob": "ca39feaec0eaa5dd84cb907557fc4e323749d522"
+    },
+    "framework/qphelper/qpDebugOut.c": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/qphelper/qpDebugOut.c",
+      "sha256": "bf3c82f95bdc08ea90fd44a1691d2ac4de445a2d5a90daec344a7611e66c7918",
+      "bytes": 5751,
+      "git_blob": "3204788deffdb5d57895eb75537ce813afbf4031"
+    },
+    "framework/qphelper/qpDebugOut.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/qphelper/qpDebugOut.h",
+      "sha256": "9c2b916a8ef9cedf5ad729a2f3ff177d9e6ed1afeb0116260a5d11d3c7367b33",
+      "bytes": 1501,
+      "git_blob": "2e4435af7eba9d0378a88d8bbf8f7587d01bdfe8"
+    },
+    "framework/qphelper/qpTestLog.h": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/qphelper/qpTestLog.h",
+      "sha256": "251ec70cda6b0e6c393f6b6271a847e4ad971b40f79c1e8b44a40a5df3bac6ef",
+      "bytes": 11918,
+      "git_blob": "49e8a08e3bfdbb4ad114dbcb882e6f9be8fd9861"
+    },
+    "framework/referencerenderer/rrDefs.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/referencerenderer/rrDefs.hpp",
+      "sha256": "ab23509b70d17c15d32036fdeca5fffacadf931872b433200772b6693d0ddc19",
+      "bytes": 1597,
+      "git_blob": "0522260d6d506922cd70e96a788151254ccd920b"
+    },
+    "framework/referencerenderer/rrGenericVector.hpp": {
+      "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/framework/referencerenderer/rrGenericVector.hpp",
+      "sha256": "8dbbf8a00528e133c0ed0e8a67e0e7ceb434fcc626438280bb0d82bfa3bedf71",
+      "bytes": 3880,
+      "git_blob": "6cdfad24051cc5b636e898ee2ad8c341f9fcdc7e"
+    }
+  },
+  "cpp_sources": [
+    "framework/common/tcuDefs.cpp",
+    "framework/common/tcuFloat.cpp",
+    "framework/common/tcuTexture.cpp",
+    "framework/common/tcuTextureUtil.cpp",
+    "framework/common/tcuTexLookupVerifier.cpp",
+    "framework/common/tcuTexVerifierUtil.cpp",
+    "framework/delibs/decpp/deDefs.cpp",
+    "framework/delibs/decpp/deFilePath.cpp",
+    "framework/delibs/decpp/deArrayBuffer.cpp"
+  ],
+  "c_sources": [
+    "framework/delibs/debase/deDefs.c",
+    "framework/delibs/debase/deMath.c",
+    "framework/delibs/debase/deFloat16.c",
+    "framework/delibs/debase/deMemory.c",
+    "framework/qphelper/qpDebugOut.c"
+  ],
+  "include_directories": [
+    "framework/common",
+    "framework/delibs/debase",
+    "framework/delibs/deutil",
+    "framework/delibs/decpp",
+    "framework/qphelper",
+    "framework/referencerenderer"
+  ],
+  "HQ_profile": {
+    "derivateBits": 18,
+    "lodBits": 6,
+    "coordBits": [
+      20,
+      20,
+      0
+    ],
+    "uvwBits": [
+      7,
+      7,
+      0
+    ],
+    "filtered_storage_units": 2,
+    "nearest_storage_units": 0
+  },
+  "authored_native_mip_v1_source": {
+    "shaders/sampler_mip.vert": "5c37bd42a1580e38086dae667d37fbebb0ddc85ca9e284687bbcb086012f696c",
+    "shaders/sampler_mip.frag": "aa6b51a92c4b7fae8dbc1a40c550537954954534f49fc2ca4fb5c9401bcdb14b",
+    "tests/sampler_mip_cases.h": "a06fb16ebfe81ef1921a28e9f782798c270dcc43ebf7c56fe62c167e7e62cdd1",
+    "tests/sampler_mip_probe.c": "65b86eaef6deeb8593598f5409f41890a8b80cd72ed1d3a941b3635ed43cd187",
+    "tools/sampler_mip_validation.py": "4c03ed72a20dd49b03400d24cb97f80c0478b6451b938a201aae93d36b37df8d"
+  },
+  "profile_source": {
+    "url": "https://raw.githubusercontent.com/KhronosGroup/VK-GL-CTS/a119e62de3bb38dae67f05abee8acd011e0c729c/modules/gles3/functional/es3fTextureFilteringTests.cpp",
+    "sha256": "5d9067b55bd6dcb0d306fd4483330b57a65bca68c626a9f3de995a1e6f605b29",
+    "bytes": 80246,
+    "repository_path": "modules/gles3/functional/es3fTextureFilteringTests.cpp",
+    "HQ_lines": [
+      347,
+      348,
+      361,
+      700
+    ],
+    "license": "Apache-2.0; original source headers retained in downloaded cache",
+    "compiled": false
+  }
+}

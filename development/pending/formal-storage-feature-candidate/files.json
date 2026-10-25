@@ -1,0 +1,42 @@
+[
+  {
+    "path": "nvn-native/CMakeLists.txt",
+    "before": "04584df98c96df066e638776c04ce673c9ed53b483c9b067de52d5117e72f4c7",
+    "after": "8766e21ab17cd9e01a232ba235a7c89b0fcca980205b44d033ce6b3f132a8f97"
+  },
+  {
+    "path": "nvn-native/adapters/d2r/host_bridge.c",
+    "before": "eaee21c79fba6f266e689e9f9a12bd30e752a923e9b3b0cf9d72d1982b762501",
+    "after": "4c4187c7116e438c862da978f465f0d2181b0326a55236ddf5949306d5a20251"
+  },
+  {
+    "path": "nvn-native/tools/build_d2r_host.py",
+    "before": "16324433feec1afad6ccba1961c24eb49612eeee46f553bb41da9c8d3befd5a3",
+    "after": "93977ac4460eab8f96776db28d8db056211d77f5f29b57b83b7cf0debbd6c53e"
+  },
+  {
+    "path": "nvn-native/tools/build_d2r_activity.py",
+    "before": "9c089527eedcedf930dd57eafa2296da1cfcebcb4201fdf6fff448ec4d247994",
+    "after": "cbd3f1e6ed01bd619e5b3595c50a844068a6a39fc8cdf985c028f92e7c881cb8"
+  },
+  {
+    "path": "nvn-native/tools/build_d2r_activity_apk.py",
+    "before": "6a666802894b0e2e4f9f9f5e264d86c92df8e3f4f7d3c415ca2d7534979d29e4",
+    "after": "9696485e584c06ab2ae6218779f19761849b0be6f95f00fecb8dc3e6350747c4"
+  },
+  {
+    "path": "nvn-native/tools/run_d2r_host.py",
+    "before": "e1c79266bcb5654cc2520144858c51882ab9e6e5c0945ab6a12af26975f7afdd",
+    "after": "a343f94f71399cb6db1361fc16ae7b1f2e61761fd287071d5ff5160a656f273a"
+  },
+  {
+    "path": "nvn-native/tools/graphics_storage_feature.py",
+    "before": null,
+    "after": "cdd8fd91b28f8f4fbbdf573a09a5449196ce09b17f564ee40762fa78dd475efc"
+  },
+  {
+    "path": "nvn-native/tools/check_graphics_storage_feature.py",
+    "before": null,
+    "after": "edc5bde83a06418ab8c13bf35b54e28681731511d127804d6f08182a69bd9e77"
+  }
+]

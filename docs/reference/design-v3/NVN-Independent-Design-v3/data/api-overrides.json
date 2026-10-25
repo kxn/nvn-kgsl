@@ -1,0 +1,79 @@
+{
+  "nvnCommandBufferGetMemoryCallbackData": {
+    "signature": "ABI冲突：重建头为void返回，但getter合同要求userdata指针；未核实前不得生成可调用shim",
+    "abi_confidence": "ABI-GATE",
+    "phase": "P2-扩展；ABI冲突门禁",
+    "gap": "v3 A1：nvn_protos.h:467的void返回与用途冲突；先恢复真实返回ABI，不凭名称推定void*即已验证",
+    "mapping": "host recorder userdata查询；正式wrapper被ABI门禁阻断；typed-v1内部函数可明确返回void*"
+  },
+  "nvnCommandBufferCopyCommands": {
+    "usage": "将源命令当前记录复制到目标；typed-v1定义浅复制记录并保留嵌套Call边，正式NVN行为须独立资格",
+    "timing": "typed-v1在调用时复制源record值；嵌套Call仍引用其target版本；不递归flatten资源和执行期字节",
+    "mapping": "core.copy_record_snapshot_preserve_call_edges；D2R现OP_CALL实现不能证明NVN Copy合同",
+    "lifetime": "源record快照与嵌套target引用分别保活；预算/失败事务见recording-abi-contract；未知raw格式不得准入",
+    "gap": "v3 A5：Copy/Call差异、嵌套复制和可变命令存储必须通过目标profile鉴别；私有typed-v1不冒充NVN规范"
+  },
+  "nvnCommandBufferBeginRecording": {
+    "timing": "host recorder进入RECORDING；typed-v1不额外写synthetic BEGIN，不以Begin重置Add起算的arena used计数",
+    "mapping": "Recorder状态机和事务存储；guest可见预算由ABI profile定义，与host IR/native包空间独立",
+    "gap": "v3 A2/A3：真实SDK对象inline字段、空记录和计费规则需profile；不能照候选sizeof或内部字节码预算写guest"
+  },
+  "nvnCommandBufferGetCommandMemorySize": {
+    "timing": "host立即查询Command arena的Size；typed-v1 used按Add起算，不按Begin起算",
+    "mapping": "core arena accounting；公开Size/Used/Free由目标ABI profile定义，不返回native IB/descriptor缓存用量",
+    "gap": "v3 A3/A4：保留guest可观察command/control预算；私有typed-v1的32Bcontrol记录不代表正式NVN计费"
+  },
+  "nvnCommandBufferGetCommandMemoryUsed": {
+    "timing": "host立即查询Command arena的Used；typed-v1 used按Add起算，不按Begin起算",
+    "mapping": "core arena accounting；公开Size/Used/Free由目标ABI profile定义，不返回native IB/descriptor缓存用量",
+    "gap": "v3 A3/A4：保留guest可观察command/control预算；私有typed-v1的32Bcontrol记录不代表正式NVN计费"
+  },
+  "nvnCommandBufferGetCommandMemoryFree": {
+    "timing": "host立即查询Command arena的Free；typed-v1 used按Add起算，不按Begin起算",
+    "mapping": "core arena accounting；公开Size/Used/Free由目标ABI profile定义，不返回native IB/descriptor缓存用量",
+    "gap": "v3 A3/A4：保留guest可观察command/control预算；私有typed-v1的32Bcontrol记录不代表正式NVN计费"
+  },
+  "nvnCommandBufferGetControlMemorySize": {
+    "timing": "host立即查询Control arena的Size；typed-v1 used按Add起算，不按Begin起算",
+    "mapping": "core arena accounting；公开Size/Used/Free由目标ABI profile定义，不返回native IB/descriptor缓存用量",
+    "gap": "v3 A3/A4：保留guest可观察command/control预算；私有typed-v1的32Bcontrol记录不代表正式NVN计费"
+  },
+  "nvnCommandBufferGetControlMemoryUsed": {
+    "timing": "host立即查询Control arena的Used；typed-v1 used按Add起算，不按Begin起算",
+    "mapping": "core arena accounting；公开Size/Used/Free由目标ABI profile定义，不返回native IB/descriptor缓存用量",
+    "gap": "v3 A3/A4：保留guest可观察command/control预算；私有typed-v1的32Bcontrol记录不代表正式NVN计费"
+  },
+  "nvnCommandBufferGetControlMemoryFree": {
+    "timing": "host立即查询Control arena的Free；typed-v1 used按Add起算，不按Begin起算",
+    "mapping": "core arena accounting；公开Size/Used/Free由目标ABI profile定义，不返回native IB/descriptor缓存用量",
+    "gap": "v3 A3/A4：保留guest可观察command/control预算；私有typed-v1的32Bcontrol记录不代表正式NVN计费"
+  },
+  "nvnQueueFenceSync": {
+    "lifetime": "sync对象保存generation/ticket；早于fence的工作可见范围依据flags；v3：Sync ObjectGeneration与每次FenceEpoch分离，wait必须按已确定锁存边界引用对应epoch",
+    "gap": "v3 A7：录制后重Fence的epoch锁存需资格，不允许简单读取最新对象ticket"
+  },
+  "nvnCommandBufferFenceSync": {
+    "lifetime": "保留signal位置；不能偷换成CPU录制完成或整个queue finish；v3：Sync ObjectGeneration与每次FenceEpoch分离，wait必须按已确定锁存边界引用对应epoch",
+    "gap": "v3 A7：录制后重Fence的epoch锁存需资格，不允许简单读取最新对象ticket"
+  },
+  "nvnQueueWaitSync": {
+    "lifetime": "不得等待未来自身导致死锁；sync generation保留；v3：Sync ObjectGeneration与每次FenceEpoch分离，wait必须按已确定锁存边界引用对应epoch",
+    "gap": "v3 A7：录制后重Fence的epoch锁存需资格，不允许简单读取最新对象ticket"
+  },
+  "nvnCommandBufferWaitSync": {
+    "lifetime": "无value/mode/location/flags参数；不能继承D2R nop；sync寿命至完成；v3：Sync ObjectGeneration与每次FenceEpoch分离，wait必须按已确定锁存边界引用对应epoch",
+    "gap": "v3 A7：录制后重Fence的epoch锁存需资格，不允许简单读取最新对象ticket"
+  },
+  "nvnCommandBufferWaitEvent": {
+    "lifetime": "没有location/flags参数；CPU更新与cache可见性分离；mask/compare规则需oracle；v3 M10：精确event word走SYNC_POLL/SIGNAL协议，不加入阻塞producer的普通WAR reader；普通邻接数据仍跟踪",
+    "gap": "waitMode精确比较规则需oracle；v3：CPU/GPU原子和cache scope独立资格；未知stale-raw event word不得lazy fault形成自锁"
+  },
+  "nvnCommandBufferSignalEvent": {
+    "lifetime": "保留CPU event竞争、跨queue、signal位置；有等待不等于自动cacheflush；v3 M10：精确event word走SYNC_POLL/SIGNAL协议，不加入阻塞producer的普通WAR reader；普通邻接数据仍跟踪",
+    "gap": "event flags/比较模式的重建ABI须逐枚举验证；v3：CPU/GPU原子和cache scope独立资格；未知stale-raw event word不得lazy fault形成自锁"
+  },
+  "nvnEventSignal": {
+    "lifetime": "CPU和GPU竞争的原子性/SET/ADD按ABI；不能只改host影子；v3 M10：精确event word走SYNC_POLL/SIGNAL协议，不加入阻塞producer的普通WAR reader；普通邻接数据仍跟踪",
+    "gap": "v3：CPU/GPU原子和cache scope独立资格；未知stale-raw event word不得lazy fault形成自锁"
+  }
+}

@@ -1,0 +1,256 @@
+{
+  "schema": 1,
+  "scope": "Raw64x64 RGBA AHB/window test frames only, uniform/gradient/corner-marker fixture pixels. No game modules, game artwork, original shader binaries or Android screenshots/system UI. Historical window test used translated original shaders with authored scalar/vertex/pattern inputs; this is fixture pixels evidence, not original shader redistribution or original game execution.",
+  "files": [
+    {
+      "file": "a650-ahb-direct-ahb-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-ahb-direct-ahb-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "fdabc87dc078a703bbc62c36fa06dad38f227a870111df52c58335f9d2e1aa35"
+    },
+    {
+      "file": "a650-ahb-direct-ahb-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "681fb3b6afd0011eb7e7c865a8fdb7f49ad8be7b5c3835fe64e493e753dbda80"
+    },
+    {
+      "file": "a650-ahb-direct-ahb-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-0-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-0-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-0-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-0-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-1-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-1-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-1-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-1-window-slot-1-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-0-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-0-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-0-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-0-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-1-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-1-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-1-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n2-gen-2-window-slot-1-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-0-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-0-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-0-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-0-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-1-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-1-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-1-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-1-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-2-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-2-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-2-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-1-window-slot-2-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-0-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-0-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-0-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-0-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-1-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-1-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-1-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-1-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-2-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-2-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-2-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c"
+    },
+    {
+      "file": "a650-nvn-window-n3-gen-2-window-slot-2-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-present-ahb-case-0.rgba",
+      "bytes": 16384,
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63"
+    },
+    {
+      "file": "a650-present-ahb-case-1.rgba",
+      "bytes": 16384,
+      "sha256": "fdabc87dc078a703bbc62c36fa06dad38f227a870111df52c58335f9d2e1aa35"
+    },
+    {
+      "file": "a650-present-ahb-case-2.rgba",
+      "bytes": 16384,
+      "sha256": "681fb3b6afd0011eb7e7c865a8fdb7f49ad8be7b5c3835fe64e493e753dbda80"
+    },
+    {
+      "file": "a650-present-ahb-case-3.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-present-first-present.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    },
+    {
+      "file": "a650-present-recreated-window-present.rgba",
+      "bytes": 16384,
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010"
+    }
+  ]
+}

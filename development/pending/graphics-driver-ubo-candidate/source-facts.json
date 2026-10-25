@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "scope": "read-only public hardware/compiler source facts; no GPU or game qualification",
+  "primary_local_sources": {
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/freedreno/ir3/ir3_shader.h": "c6b2b543f8c87d8c4e4814a7ae2cfd35525960d8d0223a0d1662e258edf10aca",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/freedreno/ir3/ir3_nir.c": "5eff1e9fab4f1ec097756953d081ddf1470401cc3d0b28f365970983dec381f3",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/freedreno/ir3/ir3_nir_analyze_ubo_ranges.c": "af32b5dd24bfa26cf8808cff32463e4c7732c3f4578a7de7e1ce0fbbf387a558",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/gallium/drivers/freedreno/ir3/ir3_const.h": "7a9bd60ce74e719d29e932d048dd619dd931a28f68edfd981d131963a2b7e413",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/gallium/drivers/freedreno/a6xx/fd6_const.cc": "b23c58f21069d8ed7777bca74f94c1e1e1b4a046ccd8c2d2517fceae82b8808d",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/gallium/drivers/freedreno/a6xx/fd6_draw.cc": "0df699d53d5f182f6712c32a0f399632b7640cf609351612748d2514a4dc9d2f",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/freedreno/registers/adreno/adreno_pm4.xml": "f8137e5d31a3cfce27cba0a8bc269e460067dca9ccb95e620404b7fc752913fb",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1/source/mesa-26.2.5/src/freedreno/registers/adreno/a6xx_descriptors.xml": "6eb6ecd53653a3beb1d09c5855e5550bedc318b410eac870b5a99d8a3c61ce7d"
+  },
+  "driver_dwords": [
+    "draw_id",
+    "vtxid_base",
+    "instid_base",
+    "vtxcnt_max"
+  ],
+  "direct_mapping": {
+    "vtxid_base": "indexed: signed base_vertex bit pattern; nonindexed: first",
+    "instid_base": "base_instance from actual Draw",
+    "draw_id": "native caller explicit; public DrawID mapping not yet established"
+  },
+  "indirect_mapping": "CP_DRAW_INDIRECT_MULTI DST_OFF vec4 VS const update from hardware: {draw_id,first_vertex,first_instance,0}; offset0 disables",
+  "dynamic_ubo": "A6XX native descriptor contains GPUVA49 plus size17..31 in vec4s; ST6_UBO direct table; actual residual binding mask after real NIR push lowering",
+  "original_diagnostics": {
+    "count": 25,
+    "driver_dwords4": 12,
+    "remaining_native_ubo_count2": 3,
+    "native_ubo2_indices": [
+      6,
+      15,
+      19
+    ],
+    "ubo_binding_basis": "actual LDC binding1/full reflected original C1; not API0/1"
+  },
+  "limits": [
+    "driver word4 indexed/UCP/streamout and FS driver domains remain unsupported",
+    "unknown/dynamic descriptor selection remains unsupported",
+    "public DrawID unsupported until independent API mapping evidence",
+    "no CPU reads indirect/index buffers",
+    "whole typed facts have no native qualification until defaultOFF consumer and actual GPU qualifier pass"
+  ]
+}

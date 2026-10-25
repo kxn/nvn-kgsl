@@ -1,0 +1,82 @@
+[
+  {
+    "path": "DESIGN.md",
+    "bytes": 4497,
+    "sha256": "7f094bd48864efc7a644432b96f75bf32423ffd762efec3acf352214e6473684"
+  },
+  {
+    "path": "manifest.json",
+    "bytes": 15006,
+    "sha256": "a8d1ba3088308efcc23aaf40b1d4d548688e576c441eb39f97542bb55f456ce0"
+  },
+  {
+    "path": "source/nvn-native/CMakeLists.txt",
+    "bytes": 83258,
+    "sha256": "e58cee0eb87bdb1f267e805a77ea11961c741930c62e403efaa23bbba8c8a34d"
+  },
+  {
+    "path": "source/nvn-native/src/nvn_pipeline_draw_record.inc",
+    "bytes": 20556,
+    "sha256": "ab218b8b8374bd6d2c9a6ca84f6dd79a9d72a877c2644bcfe85bdd418c1e6fd3"
+  },
+  {
+    "path": "source/nvn-native/tests/d2r_bridge/public_depth_sampled_failure.c",
+    "bytes": 5362,
+    "sha256": "998cd46c5e0cac1f3b8be5700434f63bbf4065ae99d7bb8e0ff9b8ee3a8ecebf"
+  },
+  {
+    "path": "source/nvn-native/tests/public_depth_sampled_layout.c",
+    "bytes": 1422,
+    "sha256": "1a23a6482b0af5b374785923d3c4ee060cf4d867e529fc61718c301dd87f393d"
+  },
+  {
+    "path": "source/nvn-native/tests/public_depth_sampled_probe.c",
+    "bytes": 19997,
+    "sha256": "684843957c4ee22261548523561bc42f8e5e83c772f750206510aae2d7de02d0"
+  },
+  {
+    "path": "source/nvn-native/tests/test_public_depth_sampled_validation.py",
+    "bytes": 3566,
+    "sha256": "da760d26eab76084905f45d314af7acea2440159ae6c0715985acb1bacbc84a2"
+  },
+  {
+    "path": "source/nvn-native/tools/build_android_probe.py",
+    "bytes": 66310,
+    "sha256": "646a06faaf4f086b054b0582a1e52a1a67dc6722fea65cc3e99eb4d9e81c437d"
+  },
+  {
+    "path": "source/nvn-native/tools/check_public_depth_sampled_probe.py",
+    "bytes": 8514,
+    "sha256": "bba5d5568acba5e650249241826fbd14e994a83096638e32b32ff4a0934affa3"
+  },
+  {
+    "path": "source/nvn-native/tools/public_depth_sampled_oracle.py",
+    "bytes": 1152,
+    "sha256": "8fc3e504a87c9f6fce2673ccb21899039f1a13a06abfccd3b3244ec4fbf3f11d"
+  },
+  {
+    "path": "source/nvn-native/tools/public_depth_sampled_qualification.py",
+    "bytes": 6585,
+    "sha256": "c3d606a5fc3c4138f133a4b5f38fe1a89d403ea47410667e7a011334f92105d2"
+  },
+  {
+    "path": "source/nvn-native/tools/public_depth_sampled_runner.py",
+    "bytes": 1383,
+    "sha256": "bcc3bfdb3cd2779eaa6ac0c528e28bea847c854eab6b07578cb96a167dd75e3b"
+  },
+  {
+    "path": "source/nvn-native/tools/public_depth_sampled_validation.py",
+    "bytes": 6169,
+    "sha256": "26b1c73db5f4914280d0d7083604e629ecdb8dd780cf28021c2d161ea3db67e9"
+  },
+  {
+    "path": "source/nvn-native/tools/run_android_probe.py",
+    "bytes": 56163,
+    "sha256": "ec3d320f5925954169753bce324a7459e22a61f9a3a5912dd546ffbef6194065"
+  },
+  {
+    "path": "unfrozen-wip.patch",
+    "bytes": 73569,
+    "sha256": "da63a598a306b599954b4ed04bbe6bc04c637d59a6c4fbcc6946754dfaeaace6"
+  }
+]

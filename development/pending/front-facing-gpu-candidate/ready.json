@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "kind": "raw-native-front-facing-gpu-candidate-v1",
+  "source_frozen": true,
+  "passed_HOST_NDK_normal_build": true,
+  "GPU_qualified": false,
+  "android_execution": false,
+  "ADB_calls": 0,
+  "owned_files": 10,
+  "expected_GPU": {
+    "draws": 384,
+    "jobs": 320,
+    "submissions": 640,
+    "finishes": 640,
+    "files": 512,
+    "full_raw_bytes": 14680064
+  },
+  "files": {
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/minimal-promote.patch": "a4ce5d04c4b751f3cb82c76148ffdb7918635a03264629d1b9c0a4f52bdc1543",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/source-files.json": "2b7ffde6729aaca72e8d8ba5155e0a9907f4bdbbdf26d4085e3c5432af90f0ba",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/freeze-proof.json": "277c48f4ecae218301e7d61373396ce28202615dcd4612da13a0fab6fa7af773",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/HANDOFF.md": "393f71e7c3c8d8e50473b8ae30ca46cbf36e115a101b0474c895047e4ba1fa19",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/dependencies.json": "78b05559f0583470494bbfb304a3f4fe65a14b83729f60127661adeb59554f0a",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/rebase-v2.json": "e57092bd4113bb27c16e173973bf554e0a1cbf814da5ff91e482ce74132c99fb",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/runtime-refresh-v3.json": "a89d59ec18997004eae0416faca4a2360868ed8efdb432491b00935920a6870f",
+    "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/runner-local-proof-v4.json": "e0809e3e1ebad70682d712b58edd18f5e201bb25ebde6df4ee402ae54b9956fe"
+  },
+  "boundaries": [
+    "authored raw-native only; no original Maxwell/public NVN/game credit",
+    "A650 GRAS faceness bit10 follows actual pinned Gallium; actual device qualification pending",
+    "original FS12 unknown texture106 and SampleID remain strict reject",
+    "shared hooks relative immutable hooks-baseline-v2; preserve ROOT subsequent Source/plumbing/SBO semantic changes"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "families": [
+    {
+      "family": "a650-native-graphics-storage192-v1",
+      "archives": 1,
+      "uncompressed_bytes": 13369344,
+      "compressed_bytes": 237586
+    },
+    {
+      "family": "a650-native-depth-sampled60-v1",
+      "archives": 1,
+      "uncompressed_bytes": 983040,
+      "compressed_bytes": 15569
+    },
+    {
+      "family": "a650-native-depth396-v1",
+      "archives": 2,
+      "uncompressed_bytes": 11894784,
+      "compressed_bytes": 726544
+    },
+    {
+      "family": "a650-native-depth432-v1",
+      "archives": 1,
+      "uncompressed_bytes": 6193152,
+      "compressed_bytes": 366049
+    },
+    {
+      "family": "a650-native-gather96-v1",
+      "archives": 1,
+      "uncompressed_bytes": 1179648,
+      "compressed_bytes": 42472
+    },
+    {
+      "family": "a650-native-sampler576-v1",
+      "archives": 1,
+      "uncompressed_bytes": 14155776,
+      "compressed_bytes": 1895981
+    },
+    {
+      "family": "a650-canonical-depth648-v1",
+      "archives": 1,
+      "uncompressed_bytes": 14524416,
+      "compressed_bytes": 620707
+    }
+  ],
+  "window_raw_files": 50,
+  "all_old_normal_record_and_source_snapshot_zips_withheld": true,
+  "reason": "Some include original Maxwell/SPIR-V/NIR/IR3/control/C1 or SDK headers in transitive source/record snapshots; only authored raw readback ZIPs and explicit scalar metadata are distributed."
+}

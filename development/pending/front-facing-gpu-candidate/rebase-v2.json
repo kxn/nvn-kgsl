@@ -1,0 +1,100 @@
+{
+  "scope": "ROOT explicitly authorized src/include refresh; shared hooks own semantic delta applied zero-fuzz to current ROOT, original baseline preserved",
+  "source_headers": [
+    {
+      "path": "nvn-native/src/nvn.c",
+      "before": "84965b9f1fa7a1bfbe65b789236c3813bcb8f5a558f3c44be9888a893dc5c520",
+      "after": "fd9a28ec7884c89562c1a26eafae65ce15926228d265f0d7a9574214899f2ec9"
+    },
+    {
+      "path": "nvn-native/src/nvn_command_draw_projection.inc",
+      "before": "39110467d9652ea4559257f57031ff119959d589f856f98071e2d65d70225fd3",
+      "after": "53d6e9d1468ff1a973e07c84349ab6659c4b1bb9abbb3bf84b57863d2f595db5"
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_draw_prepare.inc",
+      "before": "3defceb143cf60a5422f1391fc3f8fc66e28949c8334791e331f1e923559b68b",
+      "after": "ac5fc162b091727fa1723da13b3138f8c03560c65b95f0f2e43c2adca4084309"
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_draw_record.inc",
+      "before": "3e5c2c423136c41b2bd6a267ff75583bc4252b03348636ac3e2b9c25bbff662a",
+      "after": "4029730368e67022d2abec5cb1b1a94acf0dc9424a4338202484c939f1c99761"
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_draw_submit.inc",
+      "before": "14173b11c81f49dd129ddf360b2a8f554720635d63d7dda3e37d908963e9c286",
+      "after": "4607cfd494cda462fc57e3d85c48547c05afd8173cca51ceefb01919b36a2e15"
+    },
+    {
+      "path": "nvn-native/src/nvn_pipeline_source.inc",
+      "before": "711be17b07b455a5bda6647bd086114927a9ebf4f54f2f5ebcdc0b294722f222",
+      "after": "548668b03399e9ec15e10fbc027648c690e9b714098a11ade7ee9f725f6963ec"
+    },
+    {
+      "path": "nvn-native/src/pipeline_program.c",
+      "before": "b39557b4cd32074bb72b87e727397aa756a2b440c5f74931614ef09524385ce2",
+      "after": "c41cef55838bd66ce0fb12aecda718ede052e4cf4a884649d93afccde6bcd7a2"
+    },
+    {
+      "path": "nvn-native/src/pipeline_shader.c",
+      "before": "7f449d37f42c8033dc485ee1d76382e67e6636f03cdb04da0fc7aceefa97129d",
+      "after": "2f7598fd48c2511622946eb08bf949a8075aeb5bf7d6d9e5e1c4a75e943d18e3"
+    },
+    {
+      "path": "nvn-native/src/texture_bridge_core.inc",
+      "before": "a08d13c71d662a92667dbff6a69f0c673a2c6a0e02733c2f9df1429f4139e4e5",
+      "after": "2ab167bfeb538fd9567159b271280d72a7412ed85acc68b962c045df69b83f5e"
+    },
+    {
+      "path": "nvn-native/src/pipeline_storage.c",
+      "before": null,
+      "after": "7d160537cabdb8c2a7999be6a524a5b1844afb49bec5970e4dcc74e1ee531829"
+    },
+    {
+      "path": "nvn-native/src/pipeline.c",
+      "before": "bc3e16e3d351c6d4f8474e9df3b5a52c2bb0fb2ea0d54bfe1cc7b9eede5dc685",
+      "after": "68b41b8c22df359496fcf4b362b537327e6ee9e2716293701a8856ce549bff5e"
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline.h",
+      "before": "73fc5db85ba4316990fd83b1c456985cb30e56ce2925407dab1647c11bcc0a09",
+      "after": "887903e4b63c13e05bac0db3b38e55e24c1a8ea75b67d686184f5bea4674b7ff"
+    },
+    {
+      "path": "nvn-native/include/nvn_native/offline_graphics.h",
+      "before": "1b7fcf2ff32e39ca959c78ccef15bf0f7aff7443550de9f61c54518390038f96",
+      "after": "039541db574583b841ef085bcfc23b13957fc1c4cf8cc089d3ed76f6570cf946"
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_native_program.h",
+      "before": "34a0a8acf7688805482687245439b64ba29e225aceb1cd41de3227ae44cd29eb",
+      "after": "c7dddf13712b6d79c4ea99246c09aca94c43e4c9517d79516eed1eab0ee50e6e"
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_nvn.h",
+      "before": "6a84db934b84385a74260779459bd9cf0a2375df34190bbb8fd2a157e96e1755",
+      "after": "ff05fee4ce5cbe93f5abb12cf93d824cb5b2d68b0cd2825026209137a55d5ba7"
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_program.h",
+      "before": "8c9140656efc688f3de86ab3551ca503bb318192118b4e04da6b19b84ceb8f74",
+      "after": "205a48d2a168386ea1b7fd9eea964f6a7e18b21b784b4120cdfa28777b5f4928"
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_shader.h",
+      "before": "4ce0ff0866d50fa59e584b0c7a5b4b1ec90990ef60553e8934884422566c0f56",
+      "after": "8d109672722ea680a475843565cc59266081f62564da02637dbfa0f536e0a282"
+    },
+    {
+      "path": "nvn-native/include/nvn_native/pipeline_storage.h",
+      "before": null,
+      "after": "148cb868e1d69550091530a4987cad7f4a7d8811356ff61c2265d007b062b92e"
+    }
+  ],
+  "hooks_baseline": {
+    "nvn-native/CMakeLists.txt": "cf2bc83eb9713c934f92df991ebcebec351ed69631b8c40d89e4252e67056021",
+    "nvn-native/tools/build_android_probe.py": "202897ec4aa05ed3bf5b3882af6a12096fe5c74e43354b2344b5996c46cc5b13",
+    "nvn-native/tools/run_android_probe.py": "e14ff4c28853501a7a2a131e06c58bbddf6e28b4745fd1e4bf195466cb3473e7"
+  }
+}

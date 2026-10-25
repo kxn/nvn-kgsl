@@ -1,0 +1,473 @@
+--- a/nvn-native/CMakeLists.txt
++++ b/nvn-native/CMakeLists.txt
+@@ -183,6 +183,10 @@
+ set(NVN_D2R_VOLUME_COPY_HEADER "" CACHE FILEPATH "Optional verified normal true3D raw-block kernel, default empty")
+ set(NVN_D2R_CLEAR_COLOR_HEADER "" CACHE FILEPATH "Optional verified native constant-clear kernel, default empty")
+ option(NVN_D2R_COLOR_TARGETS "Enable typed public canonical color targets in the original host" OFF)
++option(NVN_D2R_GRAPHICS_STORAGE "Enable typed VS/FS storage in the original host" OFF)
++if(NVN_D2R_GRAPHICS_STORAGE AND NOT NVN_D2R_HOST_BRIDGE)
++  message(FATAL_ERROR "Original graphics storage requires the original host bridge")
++endif()
+ option(NVN_D2R_DEPTH_TARGETS "Enable canonical depth load/Draw/store in the original host" OFF)
+ option(NVN_D2R_DEPTH_SAMPLED "Enable typed noncompare depth sampling in the original host" OFF)
+ if(NVN_D2R_DEPTH_SAMPLED AND (NOT NVN_D2R_DEPTH_TARGETS OR NOT NVN_D2R_SAMPLED_IMAGES))
+@@ -315,6 +319,14 @@
+       endif()
+       target_sources(nvn_kgsl PRIVATE src/color_target.c src/color_target_shadow.c)
+       target_compile_definitions(nvn_kgsl PRIVATE NN_NVN_COLOR_TARGETS=1 NN_PIPELINE_COLOR_TARGETS=1)
++    endif()
++    if(NVN_D2R_GRAPHICS_STORAGE)
++      if(NOT NVN_D2R_GRAPHICS_PIPELINE_HEADER OR NOT NVN_D2R_PIPELINE_TARGET_FDL_LIBRARY)
++        message(FATAL_ERROR "Original graphics storage requires a typed storage archive and verified runtime FDL")
++      endif()
++      target_sources(nvn_kgsl PRIVATE src/pipeline_storage.c)
++      target_compile_definitions(nvn_kgsl PRIVATE NN_NVN_GRAPHICS_STORAGE=1 NN_PIPELINE_GRAPHICS_STORAGE=1)
++      target_compile_definitions(nvn_d2r_host_bridge PRIVATE NN_NVN_GRAPHICS_STORAGE=1)
+     endif()
+     if(NVN_D2R_DEPTH_TARGETS)
+       if(NOT NVN_D2R_COLOR_TARGETS OR NOT NVN_D2R_GRAPHICS_PIPELINE_HEADER OR
+--- a/nvn-native/adapters/d2r/host_bridge.c
++++ b/nvn-native/adapters/d2r/host_bridge.c
+@@ -215,6 +215,15 @@
+ #endif
+         if(e)unsupported("offline graphics source registration","nvnDeviceInitialize",e,"graphics-source-cache");
+         check_diagnostic("nvnDeviceInitialize","graphics-source-cache");
++#if defined(NN_NVN_GRAPHICS_STORAGE) && NN_NVN_GRAPHICS_STORAGE
++#ifndef NN_GRAPHICS_PIPELINE_HAS_TEXTURE_TYPES
++#error Native graphics storage requires an explicitly published typed storage archive
++#endif
++        e=nn_nvn_register_pipeline_storage_archive(device,&NN_GRAPHICS_PIPELINE_STORAGE_ARCHIVE);
++        if(e)unsupported("typed storage archive registration","nvnDeviceInitialize",e,"graphics-storage");
++        check_diagnostic("nvnDeviceInitialize","graphics-storage");
++        fprintf(stderr,"[native NVN D2R] native_graphics_storage: exact_program_sidecar=true immutable_per_draw_descriptors=true unknown_reflection_rejected=true\n");
++#endif
+ #if defined(NN_NVN_DEPTH_TARGETS) && NN_NVN_DEPTH_TARGETS
+ #ifndef NN_GRAPHICS_PIPELINE_HAS_DEPTH_ARCHIVE
+ #error Native depth requires an explicitly published typed depth archive
+--- a/nvn-native/tools/build_d2r_host.py
++++ b/nvn-native/tools/build_d2r_host.py
+@@ -24,6 +24,7 @@
+ from offline_compute_cache import build as build_compute_cache
+ from texture_bridge_bundle import build as build_texture_bridge
+ from graphics_pipeline_cache import build as build_graphics_pipeline_cache
++from graphics_storage_feature import prepare as prepare_graphics_storage, audit as audit_graphics_storage, validate_options as validate_graphics_storage
+ from shader_source_feature import prepare as prepare_shader_sources, audit as audit_shader_sources, validate_options as validate_shader_sources
+ 
+ 
+@@ -63,6 +64,7 @@
+     parser.add_argument('--sampled-images', action='store_true', help='Explicit actual FDL FLOAT2D sampled owners; requires graphics/runtime FDL/block kernel, default OFF')
+     parser.add_argument('--sampled-mip-filter', action='store_true', help='Explicit richer normalized2D sampler profile; requires sampled images, default OFF')
+     parser.add_argument('--gather', action='store_true', help='Explicit typed TG4 consumer; requires graphics/native views, public depth Draw remains separate, default OFF')
++    parser.add_argument('--graphics-storage', action='store_true', help='Explicit typed VS/FS storage; requires published storage recipes and runtime FDL, default OFF')
+     parser.add_argument('--depth-targets', action='store_true', help='Explicit canonical depth load/Draw/store; requires color targets and normal depth FDL/A2D/runtime checks, default OFF')
+     parser.add_argument('--depth-sampled', action='store_true', help='Typed noncompare depth sampling; requires depth targets and sampled images, default OFF')
+     parser.add_argument('--depth-fdl-check', type=Path, help='Verified normal actual depth FDL metadata archive')
+@@ -80,6 +82,7 @@
+     if args.color_targets and not all((args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check)):
+         parser.error('--color-targets requires graphics, runtime FDL and block-copy checks')
+     try:
++        validate_graphics_storage(args.graphics_storage,args.graphics_pipeline_check,args.pipeline_target_fdl_check)
+         validate_shader_sources(args.shader_source_check,args.graphics_pipeline_check)
+         validate_sampled_options(args.sampled_images,args.sampled_mip_filter,args.gather,args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check,args.texture_bridge_check)
+         validate_depth_options(args.depth_targets,args.depth_fdl_check,args.depth_a2d_check,args.depth_runtime_check,args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check,args.color_targets,args.depth_sampled)
+@@ -148,6 +151,7 @@
+                    'sampled_images':args.sampled_images,'sampled_mip_filter':args.sampled_mip_filter,'gather':args.gather,
+                    'depth_targets':args.depth_targets,
+                    'depth_sampled':args.depth_sampled,
++                   'graphics_storage':args.graphics_storage,
+                    'depth_fdl_check':str(args.depth_fdl_check.resolve())if args.depth_fdl_check else None,
+                    'depth_a2d_check':str(args.depth_a2d_check.resolve())if args.depth_a2d_check else None,
+                    'depth_runtime_check':str(args.depth_runtime_check.resolve())if args.depth_runtime_check else None,
+@@ -193,6 +197,9 @@
+         depth_flags,depth_manifest,depth_inputs=prepare_native_depth(root,args.depth_targets,args.depth_fdl_check,args.depth_a2d_check,args.depth_runtime_check,args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check,target_library,args.color_targets,args.depth_sampled)
+         if args.verify and prior is not None and prior.get('native_depth_features')!=depth_manifest:
+             raise ValueError('native depth feature inputs/options changed')
++        storage_flags,storage_manifest,storage_inputs=prepare_graphics_storage(root,args.graphics_storage,args.graphics_pipeline_check,args.pipeline_target_fdl_check,target_library)
++        if args.verify and prior is not None and prior.get('native_graphics_storage')!=storage_manifest:
++            raise ValueError('native graphics storage feature inputs/options changed')
+         source_flags,source_manifest,source_inputs=prepare_shader_sources(root,args.shader_source_check,args.graphics_pipeline_check)
+         if args.verify and prior is not None and prior.get('complete_shader_sources')!=source_manifest:
+             raise ValueError('complete source catalogue inputs/options changed')
+@@ -240,6 +247,7 @@
+                  *sampled_flags,
+                  *depth_flags,
+                  *source_flags,
++                 *storage_flags,
+                  f'-DNVN_BNTX_PACKAGED_LAYOUT_EXPERIMENT={"ON" if args.bntx_packaged_layout_experiment else "OFF"}'],
+                 'configure original native host')
+         host_sources = [Path(p) for p in (build / 'host-sources.txt').read_text().splitlines()]
+@@ -266,6 +274,8 @@
+                 sources.append(boot)
+         sources.append(native / 'tools/native_depth_features.py')
+         sources += [Path(name)for name in depth_inputs]
++        sources.append(native/'tools/graphics_storage_feature.py')
++        sources += [Path(name)for name in storage_inputs]
+         sources.append(native/'tools/shader_source_feature.py')
+         sources += [Path(name)for name in source_inputs]
+         sources.append(native / 'tools/native_sampled_features.py')
+@@ -308,6 +318,8 @@
+         audit_native_sampled(native,sampled_manifest,actual_commands,bc_manifest)
+         audit_native_depth(native,depth_manifest,actual_commands)
+         audit_shader_sources(native,source_manifest,actual_commands)
++        audit_graphics_storage(native,storage_manifest,actual_commands)
++        if storage_manifest:expected.add(native/'src/pipeline_storage.c')
+         if source_manifest:expected.update((native/'src/shader_source.c',Path(source_manifest['source']),Path(source_manifest['assembly'])))
+         if args.depth_targets:expected.update(native/'src'/name for name in ('depth_attachment.c','depth_transfer.c','depth_shadow.c','pipeline_depth_archive.c'))
+         if args.depth_sampled:expected.update(native/'src'/name for name in ('depth_sampled.c','depth_sampled_native.c'))
+@@ -421,6 +433,7 @@
+                   'native_block_copy':block_manifest,
+                   'offline_graphics_pipeline': pipeline_manifest,
+                   'complete_shader_sources':source_manifest,
++                  'native_graphics_storage':storage_manifest,
+                   'nvn_contract': native_contract(native),
+                   'known_blocker': 'Partial native NVN subset. Unsupported properties/flags/services and unknown ABI calls stop explicitly; no success stubs added.'}
+         record_path.write_text(json.dumps(record, indent=2) + '\n')
+--- a/nvn-native/tools/build_d2r_activity.py
++++ b/nvn-native/tools/build_d2r_activity.py
+@@ -25,6 +25,7 @@
+ from offline_compute_cache import build as build_compute_cache
+ from texture_bridge_bundle import build as build_texture_bridge
+ from graphics_pipeline_cache import build as build_graphics_pipeline_cache
++from graphics_storage_feature import prepare as prepare_graphics_storage, audit as audit_graphics_storage, validate_options as validate_graphics_storage
+ from shader_source_feature import prepare as prepare_shader_sources, audit as audit_shader_sources, validate_options as validate_shader_sources
+ 
+ 
+@@ -65,6 +66,7 @@
+     parser.add_argument('--sampled-images', action='store_true', help='Explicit actual FDL FLOAT2D sampled owners; requires graphics/runtime FDL/block kernel, default OFF')
+     parser.add_argument('--sampled-mip-filter', action='store_true', help='Explicit richer normalized2D sampler profile; requires sampled images, default OFF')
+     parser.add_argument('--gather', action='store_true', help='Explicit typed TG4 consumer; requires graphics/native views, public depth Draw remains separate, default OFF')
++    parser.add_argument('--graphics-storage', action='store_true', help='Explicit typed VS/FS storage; requires published storage recipes and runtime FDL, default OFF')
+     parser.add_argument('--depth-targets', action='store_true', help='Explicit canonical depth load/Draw/store; requires color targets and normal depth FDL/A2D/runtime checks, default OFF')
+     parser.add_argument('--depth-sampled', action='store_true', help='Typed noncompare depth sampling; requires depth targets and sampled images, default OFF')
+     parser.add_argument('--depth-fdl-check', type=Path, help='Verified normal actual depth FDL metadata archive')
+@@ -82,6 +84,7 @@
+     if args.color_targets and not all((args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check)):
+         parser.error('--color-targets requires graphics, runtime FDL and block-copy checks')
+     try:
++        validate_graphics_storage(args.graphics_storage,args.graphics_pipeline_check,args.pipeline_target_fdl_check)
+         validate_shader_sources(args.shader_source_check,args.graphics_pipeline_check)
+         validate_sampled_options(args.sampled_images,args.sampled_mip_filter,args.gather,args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check,args.texture_bridge_check)
+         validate_depth_options(args.depth_targets,args.depth_fdl_check,args.depth_a2d_check,args.depth_runtime_check,args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check,args.color_targets,args.depth_sampled)
+@@ -154,6 +157,7 @@
+                    'sampled_images':args.sampled_images,'sampled_mip_filter':args.sampled_mip_filter,'gather':args.gather,
+                    'depth_targets':args.depth_targets,
+                    'depth_sampled':args.depth_sampled,
++                   'graphics_storage':args.graphics_storage,
+                    'depth_fdl_check':str(args.depth_fdl_check.resolve())if args.depth_fdl_check else None,
+                    'depth_a2d_check':str(args.depth_a2d_check.resolve())if args.depth_a2d_check else None,
+                    'depth_runtime_check':str(args.depth_runtime_check.resolve())if args.depth_runtime_check else None,
+@@ -209,6 +213,9 @@
+         depth_flags,depth_manifest,depth_inputs=prepare_native_depth(root,args.depth_targets,args.depth_fdl_check,args.depth_a2d_check,args.depth_runtime_check,args.graphics_pipeline_check,args.pipeline_target_fdl_check,args.block_copy_check,target_library,args.color_targets,args.depth_sampled)
+         if args.verify and prior is not None and prior.get('native_depth_features')!=depth_manifest:
+             raise ValueError('native depth feature inputs/options changed')
++        storage_flags,storage_manifest,storage_inputs=prepare_graphics_storage(root,args.graphics_storage,args.graphics_pipeline_check,args.pipeline_target_fdl_check,target_library)
++        if args.verify and prior is not None and prior.get('native_graphics_storage')!=storage_manifest:
++            raise ValueError('native graphics storage feature inputs/options changed')
+         source_flags,source_manifest,source_inputs=prepare_shader_sources(root,args.shader_source_check,args.graphics_pipeline_check)
+         if args.verify and prior is not None and prior.get('complete_shader_sources')!=source_manifest:
+             raise ValueError('complete source catalogue inputs/options changed')
+@@ -257,6 +264,7 @@
+                  *sampled_flags,
+                  *depth_flags,
+                  *source_flags,
++                 *storage_flags,
+                  f'-DNVN_BNTX_PACKAGED_LAYOUT_EXPERIMENT={"ON" if args.bntx_packaged_layout_experiment else "OFF"}'],
+                 'configure original native host')
+         host_sources = [Path(p) for p in (build / 'host-sources.txt').read_text().splitlines()]
+@@ -284,6 +292,8 @@
+                 sources.append(boot)
+         sources.append(native / 'tools/native_depth_features.py')
+         sources += [Path(name)for name in depth_inputs]
++        sources.append(native/'tools/graphics_storage_feature.py')
++        sources += [Path(name)for name in storage_inputs]
+         sources.append(native/'tools/shader_source_feature.py')
+         sources += [Path(name)for name in source_inputs]
+         sources.append(native / 'tools/native_sampled_features.py')
+@@ -328,6 +338,8 @@
+         audit_native_sampled(native,sampled_manifest,actual_commands,bc_manifest)
+         audit_native_depth(native,depth_manifest,actual_commands)
+         audit_shader_sources(native,source_manifest,actual_commands)
++        audit_graphics_storage(native,storage_manifest,actual_commands)
++        if storage_manifest:expected.add(native/'src/pipeline_storage.c')
+         if source_manifest:expected.update((native/'src/shader_source.c',Path(source_manifest['source']),Path(source_manifest['assembly'])))
+         if args.depth_targets:expected.update(native/'src'/name for name in ('depth_attachment.c','depth_transfer.c','depth_shadow.c','pipeline_depth_archive.c'))
+         if args.depth_sampled:expected.update(native/'src'/name for name in ('depth_sampled.c','depth_sampled_native.c'))
+@@ -459,6 +471,7 @@
+                   'native_volume_copy': volume_manifest,
+                   'offline_graphics_pipeline': pipeline_manifest,
+                   'complete_shader_sources':source_manifest,
++                  'native_graphics_storage':storage_manifest,
+                   'nvn_contract': native_contract(native),
+                   'known_blocker': 'Partial native NVN subset. Unsupported properties/flags/services and unknown ABI calls stop explicitly; no success stubs added.'}
+         record_path.write_text(json.dumps(record, indent=2) + '\n')
+--- a/nvn-native/tools/build_d2r_activity_apk.py
++++ b/nvn-native/tools/build_d2r_activity_apk.py
+@@ -43,6 +43,8 @@
+     if o.get('bc_sampled_fdl_check'):argv+=['--bc-sampled-fdl-check',o['bc_sampled_fdl_check']]
+     if 'depth_targets' in o and type(o['depth_targets'])is not bool:raise ValueError('depth feature option must be boolean')
+     if o.get('depth_targets'):argv+=['--depth-targets']
++    if 'graphics_storage' in o and type(o['graphics_storage'])is not bool:raise ValueError('graphics storage option must be boolean')
++    if o.get('graphics_storage'):argv+=['--graphics-storage']
+     if 'depth_sampled' in o and type(o['depth_sampled'])is not bool:raise ValueError('depth sampling option must be boolean')
+     if o.get('depth_sampled'):argv+=['--depth-sampled']
+     for key in ('depth_fdl_check','depth_a2d_check','depth_runtime_check'):
+--- a/nvn-native/tools/run_d2r_host.py
++++ b/nvn-native/tools/run_d2r_host.py
+@@ -57,6 +57,8 @@
+     if options.get('bc_sampled_fdl_check'):argv+=['--bc-sampled-fdl-check',options['bc_sampled_fdl_check']]
+     if 'depth_targets' in options and type(options['depth_targets'])is not bool:raise ValueError('depth feature option must be boolean')
+     if options.get('depth_targets'):argv+=['--depth-targets']
++    if 'graphics_storage' in options and type(options['graphics_storage'])is not bool:raise ValueError('graphics storage option must be boolean')
++    if options.get('graphics_storage'):argv+=['--graphics-storage']
+     if 'depth_sampled' in options and type(options['depth_sampled'])is not bool:raise ValueError('depth sampling option must be boolean')
+     if options.get('depth_sampled'):argv+=['--depth-sampled']
+     for key in ('depth_fdl_check','depth_a2d_check','depth_runtime_check'):
+--- /dev/null
++++ b/nvn-native/tools/graphics_storage_feature.py
+@@ -0,0 +1,96 @@
++"""Explicit original-host VS/FS storage role; independently qualified native KGSL.
++
++A published archive is a compilation input, never proof of public NVN or game
++execution. Query/selector validation remains in the independent runtime.
++"""
++from pathlib import Path
++import shlex
++from native_sampled_features import sha
++
++SOURCES = ('pipeline_storage.c',)
++MACROS = ('NN_NVN_GRAPHICS_STORAGE', 'NN_PIPELINE_GRAPHICS_STORAGE')
++
++
++def validate_options(enabled, graphics, fdl):
++    if type(enabled) is not bool:
++        raise ValueError('graphics storage switch must be an explicit boolean')
++    if enabled and not (graphics and fdl):
++        raise ValueError('--graphics-storage requires --graphics-pipeline-check and --pipeline-target-fdl-check')
++
++
++def prepare(root, enabled, graphics_check, fdl_check, target_library):
++    validate_options(enabled, graphics_check, fdl_check)
++    flags = ['-DNVN_D2R_GRAPHICS_STORAGE=' + ('ON' if enabled else 'OFF')]
++    if not enabled:
++        return flags, None, {}
++    root = Path(root).resolve()
++    native = Path(__file__).resolve().parents[1]
++    from graphics_pipeline_cache import build as verify_graphics
++    from build_runtime_fdl import verify as verify_fdl
++    header, graphics = verify_graphics(root, Path(graphics_check).resolve())
++    if graphics.get('storage_archive') is not True or graphics.get('native_texture_types') is not True:
++        raise ValueError('graphics storage requires an explicitly published normal typed storage archive')
++    library, fdl = verify_fdl(root, Path(fdl_check).resolve())
++    if not target_library or Path(target_library).resolve() != Path(library).resolve():
++        raise ValueError('graphics storage requires the same verified runtime FDL archive as targets')
++    inputs = dict(graphics['inputs'])
++    inputs.update({str(Path(fdl_check).resolve()): sha(fdl_check), **fdl['inputs'], **fdl['artifacts']})
++    for rel in ('src/pipeline_storage.c', 'src/nvn_pipeline_draw_prepare.inc',
++                'include/nvn_native/pipeline_storage.h', 'include/nvn_native/pipeline_recipe.h',
++                'src/pipeline.c', 'src/pipeline_program.c', 'src/nvn_pipeline_source.inc',
++                'include/nvn_native/nvn.h'):
++        p = native / rel
++        inputs[str(p)] = sha(p)
++    inputs[str(Path(__file__).resolve())] = sha(__file__)
++    manifest = dict(schema=1, kind='original-host-native-graphics-storage-v1',
++        graphics_storage=True, default_enabled=False,
++        graphics_check=str(Path(graphics_check).resolve()), graphics_header=str(header),
++        fdl_check=str(Path(fdl_check).resolve()), runtime_fdl_library=str(Path(library).resolve()),
++        shader_roles='typed VS/FS 32-bit read/write/size and sparse bindings; 16 slots per stage',
++        unknown_reflection='ENOTSUP; no invented compiler query answers',
++        gpu_qualification=False, original_module_execution=False, inputs=inputs)
++    return flags, manifest, inputs
++
++
++def audit(native, manifest, commands):
++    native = Path(native).resolve()
++    rows, links = [], []
++    for line in commands.splitlines():
++        argv = shlex.split(line)
++        if '-c' in argv:
++            rows.append((Path(argv[argv.index('-c') + 1]).resolve(), argv))
++        else:
++            links.append(argv)
++    enabled = manifest is not None
++    for name in SOURCES:
++        if sum(p == native / 'src' / name for p, _ in rows) != int(enabled):
++            raise ValueError('storage source missing, duplicated or unrequested: ' + name)
++    for name in ('nvn.c', 'pipeline.c', 'pipeline_program.c', *SOURCES):
++        selected = [a for p, a in rows if p == native / 'src' / name]
++        if name in SOURCES and not enabled:
++            continue
++        if len(selected) != 1:
++            raise ValueError('storage consumer missing or duplicate: ' + name)
++        for macro in MACROS:
++            prefix = '-D' + macro
++            actual = [a for a in selected[0] if a == prefix or a.startswith(prefix + '=')]
++            if actual != ([prefix + '=1'] if enabled else []):
++                raise ValueError('storage actual compile mode differs: ' + name + ' ' + macro)
++    bridges = [a for p, a in rows if p == native / 'adapters/d2r/host_bridge.c']
++    if len(bridges) != 1:
++        raise ValueError('storage bridge missing or duplicate')
++    macro = '-DNN_NVN_GRAPHICS_STORAGE'
++    actual = [a for a in bridges[0] if a == macro or a.startswith(macro + '=')]
++    if actual != ([macro + '=1'] if enabled else []):
++        raise ValueError('storage bridge actual registration mode differs')
++    if enabled:
++        header = '-DNN_NVN_OFFLINE_GRAPHICS_PIPELINE_HEADER="' + manifest['graphics_header'] + '"'
++        if header not in bridges[0]:
++            raise ValueError('storage bridge actual archive differs from checked catalogue')
++        if not any(manifest['runtime_fdl_library'] in argv for argv in links):
++            raise ValueError('storage verified FDL missing from actual link')
++        for path, value in manifest['inputs'].items():
++            if sha(path) != value:
++                raise ValueError('storage feature source/product changed: ' + path)
++    if any('/tests/' in str(p) for p, _ in rows):
++        raise ValueError('storage qualification source entered production host')
+--- /dev/null
++++ b/nvn-native/tools/check_graphics_storage_feature.py
+@@ -0,0 +1,147 @@
++#!/usr/bin/env python3
++"""Formal storage options/forwarding and actual ABI1/ABI2 ON/OFF NDK links.
++
++This is source/ELF qualification, not public NVN GPU or original game execution.
++"""
++import argparse
++import copy
++import importlib.util
++import json
++from pathlib import Path
++import shlex
++import shutil
++import subprocess
++import sys
++from graphics_storage_feature import prepare, audit, validate_options, sha
++
++
++def load(path, name):
++    spec = importlib.util.spec_from_file_location(name, path)
++    module = importlib.util.module_from_spec(spec)
++    spec.loader.exec_module(module)
++    return module
++
++
++def check(a):
++    root, ndk, out = a.root.resolve(), a.ndk.resolve(), a.out.resolve()
++    native = Path(__file__).resolve().parents[1]
++    if out.exists() or not out.is_relative_to(root / '.local'):
++        raise ValueError('fresh ignored output required')
++    out.mkdir(parents=True)
++    inputs, commands, assertions, rejections, results = {}, [], 0, [], []
++    def pin(p):
++        p = Path(p).resolve(); h = sha(p)
++        if str(p) in inputs and inputs[str(p)] != h:
++            raise ValueError('storage feature input changed: ' + str(p))
++        inputs[str(p)] = h
++    def merge(mapping):
++        for p, h in mapping.items():
++            if p in inputs and inputs[p] != h:
++                raise ValueError('storage feature dependency changed: ' + p)
++            inputs[p] = h
++    def require(v):
++        nonlocal assertions
++        if not v: raise ValueError('storage feature assertion failed')
++        assertions += 1
++    def reject(label, op):
++        try: op()
++        except (ValueError, OSError, KeyError, TypeError):
++            rejections.append(label); return
++        raise ValueError('invalid storage feature accepted: ' + label)
++    def run(argv, expected=0):
++        argv = list(map(str, argv)); p = subprocess.run(argv, text=True, capture_output=True)
++        commands.append(dict(argv=argv, returncode=p.returncode, stdout=p.stdout, stderr=p.stderr))
++        (out/'commands.json').write_text(json.dumps(commands, indent=2)+'\n')
++        if p.returncode != expected: raise ValueError((p.stdout+p.stderr)[-8000:])
++        return p.stdout, p.stderr
++    for folder in (native, root/'dm/host', root/'dm/third_party/runtime-codecs', root/'dm/third_party/libdeflate'):
++        for p in folder.rglob('*'):
++            if p.is_file() and '__pycache__' not in p.parts: pin(p)
++    for p in (a.names, root/'dm/gfx/hle_vi.c', root/'dm/gfx/hle_nv.c', ndk/'source.properties', ndk/'build/cmake/android.toolchain.cmake', Path(sys.executable).resolve()): pin(p)
++    for tool in ('cmake', 'ninja'): pin(Path(shutil.which(tool)).resolve())
++    for tool in ('clang', 'ld.lld', 'llvm-readelf'): pin(ndk/'toolchains/llvm/prebuilt/linux-x86_64/bin'/tool)
++    require(prepare(root,False,None,None,None)==(['-DNVN_D2R_GRAPHICS_STORAGE=OFF'],None,{}))
++    for enabled in (0, 1, None, 'false', 'true', [], {}):
++        reject('nonboolean storage '+repr(enabled),lambda enabled=enabled:validate_options(enabled,a.graphics_check,a.fdl_check))
++    reject('missing all prerequisites',lambda:validate_options(True,None,None))
++    reject('missing graphics',lambda:validate_options(True,None,a.fdl_check))
++    reject('missing FDL',lambda:validate_options(True,a.graphics_check,None))
++    # Use the existing records' exact normal producer paths; never rewrite an
++    # input inventory to match an isolated candidate or bypass its validators.
++    for name in ('package_graphics_stages','package_graphics_pipelines','graphics_pipeline_cache','build_runtime_fdl'):
++        sys.modules[name]=load(root/'nvn-native/tools'/(name+'.py'),name)
++    library, fdl = sys.modules['build_runtime_fdl'].verify(root,a.fdl_check)
++    flags, manifest, mapping=prepare(root,True,a.graphics_check,a.fdl_check,library);merge(mapping)
++    require(manifest['default_enabled'] is False and manifest['graphics_storage'] is True)
++    require(manifest['gpu_qualification'] is False and manifest['original_module_execution'] is False)
++    reject('different target FDL',lambda:prepare(root,True,a.graphics_check,a.fdl_check,out/'not-the-library.a'))
++    reject('unpublished storage archive',lambda:prepare(root,True,a.no_storage_check,a.fdl_check,library))
++    apk=load(native/'tools/build_d2r_activity_apk.py','storage_feature_apk')
++    cli=load(native/'tools/run_d2r_host.py','storage_feature_cli')
++    fake=out/'forwarding-fixture';fake.write_text('forwarding only; never deployment\n'); inv={str(fake):sha(fake)}
++    options=dict(host_abi=2,rewrite_abi='elfdesc',rules='native',private_gates='1',abi='arm64-v8a',execute=False,deploy=False,library_kind='shared',python=sys.executable,exefs='/original/exefs',ndk=str(ndk),jobs=4)
++    host=dict(options=options,modules=str(out/'modules'),artifacts=inv,sources=inv,tools=inv)
++    for enabled in (False,True):
++        h=copy.deepcopy(host);h['options'].update(graphics_storage=enabled,graphics_pipeline_check=str(a.graphics_check.resolve()),pipeline_target_fdl_check=str(a.fdl_check.resolve()))
++        av=apk.host_verify(h,root);h['options'].update(host_abi=1,rewrite_abi='elf')
++        for argv in (av,cli.host_verify_argv(h,root)):require(('--graphics-storage'in argv)==enabled)
++    for value in (0,1,None,'false','true',[],{}):
++        h=copy.deepcopy(host);h['options']['graphics_storage']=value
++        reject('APK nonboolean '+repr(value),lambda h=h:apk.host_verify(h,root))
++        h['options'].update(host_abi=1,rewrite_abi='elf')
++        reject('CLI nonboolean '+repr(value),lambda h=h:cli.host_verify_argv(h,root))
++    for name in ('build_d2r_host.py','build_d2r_activity.py'):
++        _,err=run([sys.executable,native/'tools'/name,'--exefs','/must-not-read','--ndk',ndk,'--out',out/'must-not-build','--graphics-storage'],2)
++        require('--graphics-storage requires'in err and not(out/'must-not-build').exists())
++    toolchain=['-DCMAKE_TOOLCHAIN_FILE='+str(ndk/'build/cmake/android.toolchain.cmake'),'-DANDROID_ABI=arm64-v8a','-DANDROID_PLATFORM=android-29']
++    for label,source,extra,diagnostic in (
++        ('without-bridge',native,['-DNVN_D2R_HOST_BRIDGE=OFF'],'Original graphics storage requires'),
++        ('without-graphics',native/'adapters/d2r/host',['-DNVN_D2R_NAMES_HEADER='+str(a.names.resolve()),'-DNVN_D2R_PIPELINE_TARGET_FDL_LIBRARY='+str(library)],'Original graphics storage requires'),
++        ('without-fdl',native/'adapters/d2r/host',['-DNVN_D2R_NAMES_HEADER='+str(a.names.resolve()),'-DNVN_D2R_GRAPHICS_PIPELINE_HEADER='+manifest['graphics_header']],'Original graphics storage requires')):
++        _,err=run(['cmake','-S',source,'-B',out/('reject-'+label),'-G','Ninja',*toolchain,'-DNVN_D2R_GRAPHICS_STORAGE=ON',*extra],1)
++        require(diagnostic in err)
++        rejections.append('CMake '+label)
++    if not a.policy_only:
++        for mode in ('host','activity'):
++            for enabled in (False,True):
++                dest=out/(mode+('-on'if enabled else'-off'));target='dmhost_activity_kgsl'if mode=='activity'else'dmhost_native_kgsl'
++                localflags,localmanifest,_=prepare(root,enabled,a.graphics_check,a.fdl_check,library)
++                run(['cmake','-S',native/'adapters/d2r'/mode,'-B',dest,'-G','Ninja','-DCMAKE_TOOLCHAIN_FILE='+str(ndk/'build/cmake/android.toolchain.cmake'),'-DANDROID_ABI=arm64-v8a','-DANDROID_PLATFORM=android-29','-DCMAKE_BUILD_TYPE=RelWithDebInfo','-DCMAKE_EXPORT_COMPILE_COMMANDS=ON','-DNVN_D2R_NAMES_HEADER='+str(a.names.resolve()),'-DNVN_D2R_GRAPHICS_PIPELINE_HEADER='+manifest['graphics_header'],'-DNVN_D2R_PIPELINE_TARGET_FDL_LIBRARY='+str(library),*localflags])
++                run(['cmake','--build',dest,'--target',target,'--parallel','4'])
++                actual,_=run(['ninja','-C',dest,'-t','commands',target]);audit(native,localmanifest,actual)
++                compiled=[]
++                for line in actual.splitlines():
++                    argv=shlex.split(line)
++                    if '-c'in argv:compiled.append(Path(argv[argv.index('-c')+1]).resolve())
++                hs=[Path(p).resolve()for p in(dest/'host-sources.txt').read_text().splitlines()]
++                require(len(hs)==len(set(hs))==36 and all(p in compiled for p in hs))
++                require(len(compiled)==len(set(compiled)))
++                core=('kgsl_probe','kgsl','nvn','compute','graphics','external_image','order','render_state','sampler_state','texture_source','texture_bridge','block_copy','counter','offline_graphics','pipeline_program','pipeline_shader','pipeline_vertex','pipeline','pipeline_archive','pipeline_source','pipeline_frontend','pipeline_resource_queries','pipeline_views')
++                expected=set(hs+[native/'src'/(n+'.c')for n in core]+[native/'android'/(n+'.c')for n in ('window_session','window_android','present','present_pacer','window_display','ahb')]+[native/'adapters/d2r/host_bridge.c'])
++                if mode=='activity':expected.add(native/'adapters/d2r/activity/activity_host.c')
++                if enabled:expected.add(native/'src/pipeline_storage.c')
++                require(set(compiled)==expected)
++
++                require(not any('/tests/'in str(p)or'/gfx/metal/'in str(p)or'/gfx/vulkan/'in str(p)for p in compiled))
++                if enabled:
++                    reject('missing pipeline macro '+mode,lambda:audit(native,localmanifest,actual.replace('-DNN_PIPELINE_GRAPHICS_STORAGE=1','')))
++                    reject('missing bridge macro '+mode,lambda:audit(native,localmanifest,actual.replace('-DNN_NVN_GRAPHICS_STORAGE=1','')))
++                    reject('duplicate storage source '+mode,lambda:audit(native,localmanifest,actual+'\n'+shlex.join(['clang','-c',str(native/'src/pipeline_storage.c'),'-o','duplicate.o'])))
++                else:
++                    reject('unrequested source '+mode,lambda:audit(native,None,actual+'\n'+shlex.join(['clang','-c',str(native/'src/pipeline_storage.c'),'-o','unrequested.o'])))
++                elf=dest/('libdmhost_activity_kgsl.so'if mode=='activity'else'dmhost_native_kgsl')
++                info,_=run([ndk/'toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-readelf','-h','-d','-s','--wide',elf])
++                require('AArch64'in info and not any(x in info.lower()for x in('libvulkan','libegl','libgles','libstdc++')))
++                require(('nn_pipeline_storage_archive_validate'in info)==enabled)
++                require(('NN_GRAPHICS_PIPELINE_STORAGE_ARCHIVE'in info)==enabled)
++                results.append(dict(mode=mode,graphics_storage=enabled,original_sources=36,compiled_sources=len(compiled),elf=str(elf),sha256=sha(elf),bytes=elf.stat().st_size,android_execution=False))
++    for p,h in inputs.items():
++        if sha(p)!=h:raise ValueError('storage feature input changed during check: '+p)
++    proof=dict(schema=1,kind='native-graphics-storage-feature-policy-v1'if a.policy_only else'native-graphics-storage-feature-links-v1',passed=True,assertions=assertions,rejections=rejections,results=results,storage_manifest=manifest,inputs=inputs,artifacts={str(p):sha(p)for p in out.rglob('*')if p.is_file()and p.suffix in('.json','.txt','.so')},gpu_execution=False,android_execution=False,original_module_execution=False)
++    (out/'check.json').write_text(json.dumps(proof,indent=2)+'\n');return out/'check.json'
++
++if __name__=='__main__':
++    p=argparse.ArgumentParser(description=__doc__)
++    for k in ('root','graphics-check','no-storage-check','fdl-check','names','ndk','out'):p.add_argument('--'+k,type=Path,required=True)
++    p.add_argument('--policy-only',action='store_true')
++    print(check(p.parse_args()))

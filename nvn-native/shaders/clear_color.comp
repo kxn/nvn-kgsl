@@ -1,0 +1,28 @@
+#version 450
+// SPDX-License-Identifier: MIT. One exclusive destination DWORD/invocation.
+// CPU supplies only one packed texel and its component storage-bit mask.
+layout(local_size_x=8,local_size_y=8,local_size_z=1) in;
+layout(set=0,binding=0,std430) buffer Destination {uint data[];} dst;
+layout(set=0,binding=2,std140) uniform Params {
+ uint linear,base,pitch,blockHeightLog2;
+ uint xBytes,yRows,rowBytes,rows;
+ uvec4 pattern,mask;
+} p;
+// Same existing published Generic16Bx2 primitive as block_copy.comp.
+uint gobOffset(uint x,uint y) {
+ uint h=1u<<p.blockHeightLog2;
+ return (y>>(3u+p.blockHeightLog2))*512u*h*(p.pitch>>6u)+(x>>6u)*512u*h+
+ ((y&((8u*h)-1u))>>3u)*512u+((x%64u)/32u)*256u+((y%8u)/2u)*64u+
+ ((x%32u)/16u)*32u+(y%2u)*16u+(x%16u);
+}
+void main() {
+ uvec3 id=gl_WorkGroupID*gl_WorkGroupSize+gl_LocalInvocationID;
+ uint x=(p.xBytes&~3u)+id.x*4u;
+ if(x>=p.xBytes+p.rowBytes||id.y>=p.rows)return;
+ uint y=p.yRows+id.y;
+ uint address=p.base+(p.linear!=0u?y*p.pitch+x:gobOffset(x,y));
+ uint word=(x>>2u)&3u,mask=p.mask[word];
+ for(uint lane=0u;lane<4u;lane++)
+  if(x+lane<p.xBytes||x+lane>=p.xBytes+p.rowBytes)mask&=~(255u<<(lane*8u));
+ if(mask!=0u){uint old=dst.data[address>>2u];dst.data[address>>2u]=(old&~mask)|(p.pattern[word]&mask);}
+}

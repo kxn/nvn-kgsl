@@ -1,0 +1,167 @@
+[
+  {
+    "path": "PLAN.md",
+    "bytes": 2682,
+    "sha256": "3c0c81fc4cef82f75d604861b4787a65867d233c80e40968607d1044c7a18793"
+  },
+  {
+    "path": "manifest.json",
+    "bytes": 19550,
+    "sha256": "9b904bf5b832cc0ee021caa9923e2dfd337d50d41ba2512f0a59ddddc9f8035f"
+  },
+  {
+    "path": "source/nvn-native/include/nvn_native/pipeline.h",
+    "bytes": 6252,
+    "sha256": "5d692308b059bb0f7aa7224f88787623dce63cb9ff338c65a4c53ace5286b1fd"
+  },
+  {
+    "path": "source/nvn-native/include/nvn_native/pipeline_nvn.h",
+    "bytes": 2958,
+    "sha256": "0176196b46736ccdf8f7413b40939701b636701c6199ed09ad327a7dff1d6822"
+  },
+  {
+    "path": "source/nvn-native/include/nvn_native/pipeline_recipe.h",
+    "bytes": 2947,
+    "sha256": "659c2ca8df15ab2c83b21df6125517e6f87577d33fc9ad8e8de0dfe04e7fc1d0"
+  },
+  {
+    "path": "source/nvn-native/include/nvn_native/pipeline_runtime_constants.h",
+    "bytes": 3135,
+    "sha256": "2238ea0ab6831b4f6afff879b28b91a5f7fdc0fcc9c5c9f48280f23f795cb185"
+  },
+  {
+    "path": "source/nvn-native/include/nvn_native/pipeline_shader.h",
+    "bytes": 2680,
+    "sha256": "58b377b16a0eba951ce949c9ad379e3a52054061d81b6c0551fb5e003beeb678"
+  },
+  {
+    "path": "source/nvn-native/shader/graphics_ir3.c",
+    "bytes": 27202,
+    "sha256": "353f3b25a790698d01a111078d1e9f2a1008d5ada8520fc559a42a291c9d5e45"
+  },
+  {
+    "path": "source/nvn-native/shader/ir3_runtime_constants_overlay.py",
+    "bytes": 3687,
+    "sha256": "4e9c46a0fcec0bbbde085bed5b3dc356880ef3bf6df2491155496290ad76f565"
+  },
+  {
+    "path": "source/nvn-native/shader/pipeline_artifact.cc",
+    "bytes": 25762,
+    "sha256": "0cf99b6af0c0b7a6ef6a7fe9c5eddaca402838209964785ebe89a571d9b6cda5"
+  },
+  {
+    "path": "source/nvn-native/shaders/runtime_constants.frag",
+    "bytes": 319,
+    "sha256": "3b33d324ad59957c529223ccfd7ceda0ddb18c754cd04d7e8d13e4bb1193d5ce"
+  },
+  {
+    "path": "source/nvn-native/shaders/runtime_constants.vert",
+    "bytes": 705,
+    "sha256": "4281e0f6ad9eaa09aef38f961b2cd5e12e3e87fd6c095e7a35c25240cad3587f"
+  },
+  {
+    "path": "source/nvn-native/src/nvn.c",
+    "bytes": 181368,
+    "sha256": "519462c107f1f7c64cf81bc35910df256e2d2aa90fb8aa3a9767c60448746015"
+  },
+  {
+    "path": "source/nvn-native/src/nvn_pipeline_draw_prepare.inc",
+    "bytes": 41798,
+    "sha256": "e410f3e55d59e4e75cb833eff8af2c2a90132d4959bab9434640dd87e9588004"
+  },
+  {
+    "path": "source/nvn-native/src/nvn_pipeline_draw_submit.inc",
+    "bytes": 15644,
+    "sha256": "72edd88b84978744fa6169e854f4b9e3724433b5b3f63b2665cb93ae3aa0034c"
+  },
+  {
+    "path": "source/nvn-native/src/nvn_pipeline_source.inc",
+    "bytes": 7897,
+    "sha256": "0a5ec838387eb02df9dd6d9fce2a660bb38d475f7704914c1d7c28677faae0b1"
+  },
+  {
+    "path": "source/nvn-native/src/pipeline.c",
+    "bytes": 41068,
+    "sha256": "8e9cc662ee755c5ad7889df482ebbda1e7dda8e1a4263f00f5d4cddb7a886fc7"
+  },
+  {
+    "path": "source/nvn-native/src/pipeline_frontend.c",
+    "bytes": 8711,
+    "sha256": "3928a68eed53fbfc1fc1ff8aa139948477498036b7c4883bf3bc7173e6d26272"
+  },
+  {
+    "path": "source/nvn-native/src/pipeline_program.c",
+    "bytes": 16333,
+    "sha256": "d748e88f77a1db24706e0c1e1b64a2a1bd5ad1c712037244a86c79b6fa65d436"
+  },
+  {
+    "path": "source/nvn-native/src/pipeline_runtime_constants.c",
+    "bytes": 7513,
+    "sha256": "c06636afceb5dfde37a1683b7a266a78941441d44112ced2657424e0fff6fa7e"
+  },
+  {
+    "path": "source/nvn-native/src/pipeline_shader.c",
+    "bytes": 18620,
+    "sha256": "99c1e9dde9118b13438cb8d37d59a082cdb0ead5dcf32ab5703266a06299301c"
+  },
+  {
+    "path": "source/nvn-native/src/texture_bridge_core.inc",
+    "bytes": 13089,
+    "sha256": "943d63a286a127ca41d6f7a7f1ad793f321ef0c6236341389b9ce5c82bb9e8ed"
+  },
+  {
+    "path": "source/nvn-native/tests/d2r_bridge/pipeline_runtime_constants.c",
+    "bytes": 12588,
+    "sha256": "86d062b25d2ed0226a0cdee5c2b79bebd70e49f706ad641f0f123b935b227d66"
+  },
+  {
+    "path": "source/nvn-native/tests/d2r_bridge/runtime_constants.c",
+    "bytes": 10318,
+    "sha256": "e124a0a24663b5db94ead4d06deb16e31cadff7daa8344f0429920db8531cf21"
+  },
+  {
+    "path": "source/nvn-native/tools/build_ir3.py",
+    "bytes": 9245,
+    "sha256": "95bc52020e29aa488b3edebd8e6761d11129dd475db048302749a7c93c700da1"
+  },
+  {
+    "path": "source/nvn-native/tools/check_pipeline_runtime_constants.py",
+    "bytes": 6882,
+    "sha256": "52b072975e3b758d794f8dac288737fa8c34ef713ea4eba3e9d5dcc117a1c8d2"
+  },
+  {
+    "path": "source/nvn-native/tools/check_runtime_constants.py",
+    "bytes": 7494,
+    "sha256": "330f7a0bd19d36b9b2db4d5fc163db88d02e74b1352fde46b627af64e83113ad"
+  },
+  {
+    "path": "source/nvn-native/tools/check_runtime_constants_legacy.py",
+    "bytes": 4438,
+    "sha256": "f195e71ccd2806d9f4f3be8ada13834d7774dd264236134731d4cc924536970f"
+  },
+  {
+    "path": "source/nvn-native/tools/check_runtime_constants_original.py",
+    "bytes": 5697,
+    "sha256": "97f849dfb45d8f0b62dcb338adfc8422129f590e1cbe0fec763f87f12f442be2"
+  },
+  {
+    "path": "source/nvn-native/tools/compile_runtime_constants.py",
+    "bytes": 4327,
+    "sha256": "b50effaa06a400b7998f0a7c5e217ad81c9061555af305b979eb3bf0677db320"
+  },
+  {
+    "path": "source/nvn-native/tools/package_graphics_pipelines.py",
+    "bytes": 31291,
+    "sha256": "02382b7cffbfba301f7ee2c367445efacebbaa7b9cba2ab04a909100dec50184"
+  },
+  {
+    "path": "source-facts.json",
+    "bytes": 3324,
+    "sha256": "2f13168be9d8a9e82abfca31bd143f5f35dded1e91922abc3ab2e44bb1862ee4"
+  },
+  {
+    "path": "unfrozen-wip.patch",
+    "bytes": 134163,
+    "sha256": "99f38f57c2a91105bfff03f0d6fb5b492fda0b4e78202e4e562d00e4c6d35f26"
+  }
+]

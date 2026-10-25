@@ -1,0 +1,10 @@
+{
+  "kxn": "5803e32592ba2cdfc6d3460bb61267453c2ee5fe",
+  "upstream": "85133c27f97f81f9ca5ba333975f1c1178675a2f",
+  "nxnative": "e454ac912ad5181ef1c137931a7c22d78bf43274",
+  "mesa": "8e557130bda2adcb87535aabe23bca0d68ff77b6",
+  "kbase_downstream": "6598829019c0746aa8e473b4ae1c980cbfa6ea4b",
+  "host_import_patch": "f122a40c2bc70017d163653ef91676133e9a7303",
+  "host_image_combined_patch": "5c8da4df76784230adf30bd25f39063478084962",
+  "kgsl_wait_classification": "be9c3dbff24b1a2a6a967c5a4ab0415adce986a9"
+}

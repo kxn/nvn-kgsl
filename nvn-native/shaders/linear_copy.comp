@@ -1,0 +1,19 @@
+#version 450
+// SPDX-License-Identifier: MIT
+// Own row-stride conversion kernel; independent source/native pitches.
+layout(local_size_x=8,local_size_y=8,local_size_z=1) in;
+layout(set=0,binding=0,std430) readonly buffer Source {uint data[];} src;
+layout(set=0,binding=1,std430) buffer Destination {uint data[];} dst;
+layout(set=0,binding=2,std140) uniform Params {
+ uint sourceBase,destinationBase,rowBytes,rows;
+ uint sourcePitch,destinationPitch;
+} p;
+void main() {
+ uvec3 invocation=gl_WorkGroupID*gl_WorkGroupSize+gl_LocalInvocationID;
+ uint x=invocation.x*4u,y=invocation.y;
+ if(x>=p.rowBytes||y>=p.rows)return;
+ uint n=min(4u,p.rowBytes-x),mask=0xffffffffu>>((4u-n)*8u);
+ uint a=(p.sourceBase+y*p.sourcePitch+x)>>2u;
+ uint b=(p.destinationBase+y*p.destinationPitch+x)>>2u;
+ dst.data[b]=(dst.data[b]&~mask)|(src.data[a]&mask);
+}

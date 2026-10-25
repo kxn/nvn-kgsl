@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.22)
+project(d2r_activity_controller C)
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+if(NOT ANDROID OR NOT ANDROID_ABI STREQUAL "arm64-v8a" OR NOT D2R_ACTIVITY_HEADER_DIR)
+ message(FATAL_ERROR "Android ARM64 and the promoted Activity header directory are required")
+endif()
+# Intentionally no add_subdirectory/STATIC driver/host/core link. dlopen only.
+add_library(nvn_d2r_activity_controller SHARED controller.c)
+target_include_directories(nvn_d2r_activity_controller PRIVATE "${D2R_ACTIVITY_HEADER_DIR}")
+target_compile_options(nvn_d2r_activity_controller PRIVATE -Wall -Wextra -Werror -fvisibility=hidden)
+target_link_options(nvn_d2r_activity_controller PRIVATE -Wl,--no-undefined -Wl,-z,max-page-size=16384)
+target_link_libraries(nvn_d2r_activity_controller PRIVATE android dl m)

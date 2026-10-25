@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "passed": true,
+  "owned_files": 10,
+  "normal_checks": [
+    {
+      "path": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/.local/qualification-v4/check.json",
+      "sha256": "51c9f350de77d0a2f3e9d56105a1d95974ccee64f751c22c96a1955597690ad2",
+      "inputs": 2494,
+      "artifacts": 61
+    },
+    {
+      "path": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/.local/host-v4/check.json",
+      "sha256": "b1a55fd4c043874747c2aa1fe1bf7ee60d5b398731fbe991982ba934b37e0bfd",
+      "inputs": 2760,
+      "artifacts": 10376
+    }
+  ],
+  "APK_record": {
+    "path": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/.local/apk-v2/build-record.json",
+    "sha256": "34346b2b9afec3f244fcbc0151ca18dd614dad86c4362fb617fcb2c394bc15ea"
+  },
+  "runner_proof": {
+    "path": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/runner-local-proof-v4.json",
+    "sha256": "e0809e3e1ebad70682d712b58edd18f5e201bb25ebde6df4ee402ae54b9956fe"
+  },
+  "gpu_execution": false,
+  "android_execution": false,
+  "ADB_calls": 0
+}

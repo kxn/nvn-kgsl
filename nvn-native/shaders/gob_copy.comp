@@ -1,0 +1,28 @@
+#version 450
+// SPDX-License-Identifier: MIT
+// Own native layout-conversion shader. No CPU pixel copy, game shader or oracle.
+// Whole4B work items are one-to-one with GOB dwords; partial final dwords retain
+// padding. Source/destination SSBO windows MUST be disjoint and range-validated.
+layout(local_size_x=8,local_size_y=8,local_size_z=1) in;
+layout(set=0,binding=0,std430) readonly buffer Source { uint data[]; } src;
+layout(set=0,binding=1,std430) buffer Destination { uint data[]; } dst;
+layout(set=0,binding=2,std140) uniform Params {
+ uint sourceBase,destinationBase,rowBytes,rows;
+ uint linearPitch,widthGobs,blockHeightLog2,direction;
+} p;
+uint gobOffset(uint x,uint y) {
+ uint h=1u<<p.blockHeightLog2;
+ return (y>>(3u+p.blockHeightLog2))*512u*h*p.widthGobs+(x>>6u)*512u*h+((y&((8u*h)-1u))>>3u)*512u+
+  ((x%64u)/32u)*256u+((y%8u)/2u)*64u+((x%32u)/16u)*32u+(y%2u)*16u+(x%16u);
+}
+void main() {
+ uvec3 invocation=gl_WorkGroupID*gl_WorkGroupSize+gl_LocalInvocationID;
+ uint x=invocation.x*4u,y=invocation.y;
+ if(x>=p.rowBytes||y>=p.rows)return;
+ uint linear=y*p.linearPitch+x,tiled=gobOffset(x,y);
+ uint a=p.sourceBase+(p.direction==0u?tiled:linear);
+ uint b=p.destinationBase+(p.direction==0u?linear:tiled);
+ uint n=min(4u,p.rowBytes-x),mask=0xffffffffu>>((4u-n)*8u);
+ uint value=src.data[a>>2u];
+ dst.data[b>>2u]=(dst.data[b>>2u]&~mask)|(value&mask);
+}

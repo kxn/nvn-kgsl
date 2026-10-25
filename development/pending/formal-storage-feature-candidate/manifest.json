@@ -1,0 +1,151 @@
+{
+  "name": "formal-storage-feature-candidate",
+  "gpu_execution": false,
+  "android_execution": false,
+  "source_snapshot": [
+    {
+      "path": "nvn-native/CMakeLists.txt",
+      "before_sha256": "04584df98c96df066e638776c04ce673c9ed53b483c9b067de52d5117e72f4c7",
+      "sha256": "8766e21ab17cd9e01a232ba235a7c89b0fcca980205b44d033ce6b3f132a8f97",
+      "bytes": 83208,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/CMakeLists.txt"
+    },
+    {
+      "path": "nvn-native/adapters/d2r/host_bridge.c",
+      "before_sha256": "eaee21c79fba6f266e689e9f9a12bd30e752a923e9b3b0cf9d72d1982b762501",
+      "sha256": "4c4187c7116e438c862da978f465f0d2181b0326a55236ddf5949306d5a20251",
+      "bytes": 52523,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/adapters/d2r/host_bridge.c"
+    },
+    {
+      "path": "nvn-native/tools/build_d2r_host.py",
+      "before_sha256": "16324433feec1afad6ccba1961c24eb49612eeee46f553bb41da9c8d3befd5a3",
+      "sha256": "93977ac4460eab8f96776db28d8db056211d77f5f29b57b83b7cf0debbd6c53e",
+      "bytes": 35370,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/tools/build_d2r_host.py"
+    },
+    {
+      "path": "nvn-native/tools/build_d2r_activity.py",
+      "before_sha256": "9c089527eedcedf930dd57eafa2296da1cfcebcb4201fdf6fff448ec4d247994",
+      "sha256": "cbd3f1e6ed01bd619e5b3595c50a844068a6a39fc8cdf985c028f92e7c881cb8",
+      "bytes": 38754,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/tools/build_d2r_activity.py"
+    },
+    {
+      "path": "nvn-native/tools/build_d2r_activity_apk.py",
+      "before_sha256": "6a666802894b0e2e4f9f9f5e264d86c92df8e3f4f7d3c415ca2d7534979d29e4",
+      "sha256": "9696485e584c06ab2ae6218779f19761849b0be6f95f00fecb8dc3e6350747c4",
+      "bytes": 10557,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/tools/build_d2r_activity_apk.py"
+    },
+    {
+      "path": "nvn-native/tools/run_d2r_host.py",
+      "before_sha256": "e1c79266bcb5654cc2520144858c51882ab9e6e5c0945ab6a12af26975f7afdd",
+      "sha256": "a343f94f71399cb6db1361fc16ae7b1f2e61761fd287071d5ff5160a656f273a",
+      "bytes": 34761,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/tools/run_d2r_host.py"
+    },
+    {
+      "path": "nvn-native/tools/graphics_storage_feature.py",
+      "before_sha256": null,
+      "sha256": "cdd8fd91b28f8f4fbbdf573a09a5449196ce09b17f564ee40762fa78dd475efc",
+      "bytes": 5226,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/tools/graphics_storage_feature.py"
+    },
+    {
+      "path": "nvn-native/tools/check_graphics_storage_feature.py",
+      "before_sha256": null,
+      "sha256": "edc5bde83a06418ab8c13bf35b54e28681731511d127804d6f08182a69bd9e77",
+      "bytes": 11487,
+      "snapshot": "candidates/formal-storage-feature-candidate/source/nvn-native/tools/check_graphics_storage_feature.py"
+    }
+  ],
+  "records": [
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/formal-storage-feature-candidate/policy-v1/check.json",
+        "bytes": 3413719,
+        "sha256": "90459c85d42493405c442d09c3702904f99cfd1e6f18d59a979b9ebdeb05e63c"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "native-graphics-storage-feature-policy-v1",
+        "passed": true,
+        "assertions": 9,
+        "gpu_execution": false,
+        "android_execution": false,
+        "original_module_execution": false
+      },
+      "container_counts": {
+        "rejections": 26,
+        "results": 0,
+        "storage_manifest": 13,
+        "inputs": 8355,
+        "artifacts": 1
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 8355,
+          "missing": [],
+          "mismatches": [
+            "${LEGACY_WORKTREE}/.local/nvn-native/parallel/formal-storage-feature-candidate/tree/nvn-native/tools/check_graphics_storage_feature.py"
+          ]
+        },
+        "artifacts": {
+          "checked": 1,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "result_counts": []
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/formal-storage-feature-candidate/links-v3/check.json",
+        "bytes": 3420976,
+        "sha256": "199eafd17130a9537509b3d83db23425f20b0cbe8c6bad47afea7e85a9e66b48"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "native-graphics-storage-feature-links-v1",
+        "passed": true,
+        "assertions": 40,
+        "gpu_execution": false,
+        "android_execution": false,
+        "original_module_execution": false
+      },
+      "container_counts": {
+        "rejections": 37,
+        "results": 4,
+        "storage_manifest": 13,
+        "inputs": 8355,
+        "artifacts": 22
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 8355,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 22,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "result_counts": []
+    }
+  ],
+  "status": "ready-thin-patch",
+  "ready": {
+    "path": ".local/nvn-native/parallel/formal-storage-feature-candidate/ready.json",
+    "bytes": 1375,
+    "sha256": "acfad19515d8140022c5499fa70b0707d28202af659afa2fe261d846c4d8d67c"
+  },
+  "patch": {
+    "path": ".local/nvn-native/parallel/formal-storage-feature-candidate/minimal-promote.patch",
+    "bytes": 35489,
+    "sha256": "52ebf246559a1657511d4b69eb03dc4a65490f806b95e98b805f9702a0fa071d"
+  },
+  "proprietary_artifacts_excluded": true
+}

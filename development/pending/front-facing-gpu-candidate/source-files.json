@@ -1,0 +1,62 @@
+[
+  {
+    "path": "nvn-native/CMakeLists.txt",
+    "baseline": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/hooks-baseline-v2/CMakeLists.txt",
+    "before": "cf2bc83eb9713c934f92df991ebcebec351ed69631b8c40d89e4252e67056021",
+    "after": "d889569cfacb3109d5402d7ffcec8352cbc36ca2fbd9c85e895724405b7c11d7"
+  },
+  {
+    "path": "nvn-native/tools/build_android_probe.py",
+    "baseline": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/hooks-baseline-v2/tools/build_android_probe.py",
+    "before": "202897ec4aa05ed3bf5b3882af6a12096fe5c74e43354b2344b5996c46cc5b13",
+    "after": "55c7e02e6ddfe0e4439de77c56e42899e15aa9936c86eb9540ddf1253331cac8"
+  },
+  {
+    "path": "nvn-native/tools/run_android_probe.py",
+    "baseline": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/hooks-baseline-v2/tools/run_android_probe.py",
+    "before": "e14ff4c28853501a7a2a131e06c58bbddf6e28b4745fd1e4bf195466cb3473e7",
+    "after": "c7cdbf5d467ef9287d2a1cf123ec32b73f7cac8c0d2555b77d8533481a746c71"
+  },
+  {
+    "path": "nvn-native/tests/front_facing_probe.c",
+    "baseline": null,
+    "before": null,
+    "after": "dcd558a32746874e1be16e6e0f0cbea64c11cb4e18ad7e23413f08ded784ebea"
+  },
+  {
+    "path": "nvn-native/tests/d2r_bridge/front_facing_probe_host.c",
+    "baseline": null,
+    "before": null,
+    "after": "079ea03049a48bfb985adc94e63956f7895fedcb923bfe0021ceb36aa0c43cf5"
+  },
+  {
+    "path": "nvn-native/tests/test_front_facing_validation.py",
+    "baseline": null,
+    "before": null,
+    "after": "71c47d6ffa7ea5acec2fc9fc630bd7806b9d1350070849908776cbfb9c86ce4e"
+  },
+  {
+    "path": "nvn-native/tools/front_facing_qualification.py",
+    "baseline": null,
+    "before": null,
+    "after": "1496fd186a413439aa921102ebfd24475182ca289be786c4b6c93a1d8bb5b48f"
+  },
+  {
+    "path": "nvn-native/tools/front_facing_validation.py",
+    "baseline": null,
+    "before": null,
+    "after": "5623aacc7de9dd1fc1f4201253e1ca56fc8be9a61d34ab81a8742085f1eff4ea"
+  },
+  {
+    "path": "nvn-native/tools/front_facing_runner.py",
+    "baseline": null,
+    "before": null,
+    "after": "783b16d56e4e0a659d8388163eceec89c01aa98672b650bc8eed6121c1ee5800"
+  },
+  {
+    "path": "nvn-native/tools/check_front_facing_probe.py",
+    "baseline": null,
+    "before": null,
+    "after": "c44490172e4fc9f9a3da9889f50b9bdb7366cc51ccd0ed1882e1a3fe53157e8c"
+  }
+]

@@ -1,0 +1,137 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Adreno KGSL 首版内存合同 v0.2</title><style>body{font:16px/1.75 system-ui,"Microsoft YaHei",sans-serif;margin:0;color:#172b37;background:#f1f5f7}main{max-width:1120px;margin:auto;padding:36px 44px;background:white}h1{font-size:29px;line-height:1.4}h2{margin-top:38px;color:#164c66;border-bottom:1px solid #d4e1e8}h3{color:#315569}a{color:#006c9e;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;padding:18px;font:13px/1.6 ui-monospace,monospace}code{font:14px ui-monospace,monospace;background:#eef3f6}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #cddce4;padding:9px;vertical-align:top}th{background:#eaf1f5}.wide{overflow:auto}nav{background:#eaf1f5;padding:18px}input{width:95%;font-size:17px;padding:10px}details{border-bottom:1px solid #d4e1e8;padding:10px}summary{cursor:pointer;font-weight:600}small{color:#526b78}@media(max-width:650px){main{padding:18px}table{min-width:650px}}@media print{body{background:white}main{padding:0}h2{break-after:avoid}nav,input{display:none}}</style></head><body><main><nav><a href="index.html">目录</a> · <a href="api-search.html">调用检索</a></nav><h1 id="Adreno-KGSL--------v0-2">Adreno KGSL 首版内存合同 v0.2</h1>
+<p>本文件取代旧章节中与本文冲突的内存伪码；不替代 NVN 公共 ABI。目标是让第一个验证阶段 可写、可审、可做确定性故障注入。它不宣称 D2R 已可运行。首版不用 VBO，不承诺任意 userptr 导入、不承诺 sparse image；普通 BO 生命周期内稳定 GPUVA 即足够启动。GPU 控制和 cache packet 仍复用固定 Mesa 路径，不能把本 host 模型当成硬件证明。</p>
+<h2 id="1-------">1. 强制不变量</h2>
+<ol><li>一个 guest 可观察 byte 的逻辑身份、实际 backing 身份、某版本 native 表示地址必须分离。Pool 销毁不立即使在途 backing 消失。</li><li>只有经 provenance 证明的 canonical backing 可以进入精确别名快路；unknown 不等于 no-alias。</li><li>mapping snapshot 不可变，解析并 pin 是一个原子 owner transaction。</li><li>内容版本为区间上的事件集合，不跨 queue 用整数 max 定义新旧。同一区间无序写为竞争，不选择胜者。</li><li>reader、writer、转换、CPU observer、未提交 plan 都持自己的 owner refs；完成一次 GPU 写不代表所有 refs 已退役。</li><li>GPU 接受提交后不可 rollback；不确定是否接受也不能直接重试或回收。</li><li>GPU 写入另一 layout 后，raw 可访问性只能在可证明的 read/write ownership 协议下开放；不以 snapshot diff 证明 byte 写集。</li><li>缓存命中只省元数据解析；当前 access reservation、内容版本和 cache domain 仍参与提交。</li></ol>
+<h2 id="2--------">2. 初版数据形状</h2>
+<p>以下是内部 C++ 风格 schema，容器由 owner 线程管理；名称不是硬件结构。</p>
+<pre>struct ObjectKey { uint64_t id, generation; };
+using PoolKey = ObjectKey;
+using BackingKey = ObjectKey;
+using QueueKey = ObjectKey; // generation 包含 context/device 重建边界
+struct Range { uint64_t begin, size; }; // checked end; 半开区间，size=0 无 effect
+struct LogicalSpan { PoolKey pool; Range bytes; };
+struct CanonicalSpan { BackingKey backing; Range bytes; };
+
+struct BackingRecord {
+  BackingKey key;
+  Provenance provenance; // OWNED_BO / VERIFIED_EXTERNAL_OBJECT / VERIFIED_HOST_ALIAS
+  uint64_t byte_size;
+  Vector&lt;CpuAlias&gt; cpu_aliases; // VA,length,object_offset,registration_generation
+  Vector&lt;NativeOwnerRef&gt; owners;
+  CachePolicy cache;
+  GranulePolicy granules;
+  RefCounts refs; // logical, prepared, cpu_lease, observer, accepted_gpu, quarantine
+  Lifecycle lifecycle; // LIVE / DETACHED / QUARANTINED / RECLAIMABLE
+};
+struct MappingExtent {
+  Range logical;
+  CanonicalSpan canonical;
+  uint64_t extent_generation;
+};
+struct MappingSnapshot {
+  ObjectKey key; PoolKey pool;
+  ImmutableVector&lt;MappingExtent&gt; extents;
+  Vector&lt;BackingRef&gt; pins;
+};
+struct ResolvedSlice {
+  CanonicalSpan canonical;
+  NativeOwnerRef owner;
+  uint64_t gpu_va, byte_size;
+  RepresentationKey representation;
+};
+struct ResolvedBinding {
+  MappingSnapshotRef mapping;
+  Vector&lt;ResolvedSlice&gt; slices;
+  RelocationProof address_proof;
+};
+struct ContentEvent {
+  ObjectKey event; CanonicalSpan written;
+  Producer producer; // sealed CPU publication or accepted queue point / reservation
+  DependencySet predecessor_events;
+};
+struct AccessLedgerCell {
+  CanonicalSpan span;
+  EventSet current_authority;
+  PointSet writer_frontier;
+  PointSet reader_frontier;
+  ReservationSet preparing;
+  Vector&lt;RepresentationVersion&gt; representations;
+};
+struct RepresentationVersion {
+  RepresentationKey representation;
+  EventSet exact_source_events; // 不可凭完成时间升级为更新版本
+  RegionCoverage valid_coverage;
+  PointSet availability;
+  CacheVisibility visibility; // production完成 与 consumer可见 分开
+};
+struct QueuePoint {
+  QueueKey queue;
+  uint64_t host_serial;
+  uint32_t kgsl_timestamp;
+  PointState state; // PREPARED / ACCEPTED / COMPLETED / FAILED / UNKNOWN
+};
+struct CommandSnapshot {
+  ObjectKey storage;
+  uint64_t sealed_writer_epoch;
+  ImmutableBytes command_bytes;
+  AbiProfileId abi;
+  Vector&lt;ObjectRef&gt; record_value_state;
+};</pre>
+<p>MappingSnapshot key 可放进旧接口的 map_epoch scalar，但必须在规范中重命名为 registry token，不能对其取 max 或用第一片 generation。跨片 binding 只有一个 snapshot key，背后完整保留 extent vector。为避免无关 remap 全池失效，cache entry 记录其依赖 extent IDs/generations 和 logical range；journal 无交集时可复用旧 resolution，更新 snapshot 关联或继续保留不变 extents。禁止仅比较 pool-global revision 然后全量重做。</p>
+<h3 id="2-1-----">2.1 身份注册</h3>
+<p>create_owned_backing 生成全局唯一 live ObjectKey。pool extent 显式引用这个 backing 及 offset。多个不同 Pool 只要引用同一 backing，所有 aliases 都归一个 ledger。外部 dma-buf/受控宿主对象必须持 owner 引用并验证对象 identity 和 offset 关系；同一个 fd 号不是 identity。未知 CPU 指针只证明虚拟区间重叠，不能证明不同 VA 不 alias。MVP 返回 <code>UNQUALIFIED_ALIAS</code> 并交还既有合格 provider，不能静默创建独立可写副本。</p>
+<p>所有算术（logical end、backing offset、GPU VA+offset、alignment round-up、extent split）先 checked add/multiply。zero length 不建立 hazard，也不能借 zero-range 导出越界地址给硬件。地址/尺寸合法性必须早于 native encode。</p>
+<h2 id="3----owner-------snapshot------">3. 单 owner + 不可变 snapshot 的并发模型</h2>
+<p>MVP 用一条 memory-owner 执行队列线性化 registry/ledger，不先实现多锁细粒度版本。入口线程可查 immutable cache，但返回缓存命中后仍向 owner 提交 access recipe。不得在持 guest-visible lock 时同步等待一个可能回调 guest 的任务。owner 不执行 guest callback。</p>
+<p>ResolveAndReserve(request) 一次 transaction：</p>
+<ol><li>验证 PoolKey/live、逻辑范围和 ABI consumption point。</li><li>取得覆盖整个范围的 extents，转换为 canonical slices；不允许洞被当零页。</li><li>pin snapshot、backing、native owner，形成不可变 resolution。</li><li>按 canonical 边界切分 ledger，并计算读写/转换 dependency recipe。</li><li>以 reservation id 占位；该 reservation 引用已解析版本，其他 prepare 看得到。</li><li>成功返回 prepared token，失败原子撤销尚未接受的 reservation/ref，不影响已 accepted 工作。</li></ol>
+<p>Remap 也是 owner transaction：验证所有新 extents 和 pins，构建完整新 snapshot，发布一次替换；旧 snapshot 不改。MVP 不支持 NVN MapVirtual 就在 capability admission 拒绝，此算法仍用于 import owner/representation 改址和未来扩展。不能以 no-VBO 为理由跳过生命周期设计。</p>
+<h2 id="4--------">4. 区间依赖算法</h2>
+<p>访问集合必须先 canonicalize，再按端点 split。范围之外 cell 不变。Access 包含 semantic effect、preservation closure、domain 和 read/write/RMW，不能用 view 身份隔离 hazard。</p>
+<ul><li>Read：从目标版本 writer frontier 取 producer 依赖；登记本访问为 reader。读不同 layout 时转换本身先作为 reader，再为 destination representation 建 write reservation。</li><li>Write：确认保留未覆盖内容所需 reads。要求 guest 顺序证明覆盖旧 writer 和 readers；生成对应 RAW/WAR/WAW 和 cache transition。完成后替换被实际覆盖区间的 authority，不影响其他区间。</li><li>RMW：同时读与写，按该硬件原子粒度记录；多个 native 副本不能共同实现同一原子位置。</li><li>无证明的冲突：输出 <code>UNORDERED_ACCESS</code> 诊断/unsupported，不替 guest 发明全局顺序。实现内部的 copy/retirement 依赖可以增加，但不得错误消除 guest 对外 wait/signal。</li><li>Read frontier 可在同 queue 且有确定支配关系时压缩为最晚点；跨 queue 保留集合。任意 publication scalar 都只是集合 registry key。</li><li>GPU 完成只消去 execution wait；domain 可见性需独立检查，不以 “timeline 完成”省掉 texture invalidate 或 CPU cache maintenance。</li></ul>
+<p>prepare 预分配 submission journal 和 pending effects。submit acceptance 使 reservation 变成 accepted queue point；尚未接受部分的 abort 只撤销它自己。转换 key 至少为 canonical span、exact_source_events、目标 layout/format/算法版本、preservation coverage。完成回调安装旧 source version 的 representation 时先比当前 authority，不能覆盖已更新 authority。</p>
+<h2 id="5----VBO--------copy">5. 无 VBO 的连续范围与 copy</h2>
+<p>普通 KGSL BO 的 gpu_base 在 owner 寿命内稳定。一个硬件 buffer descriptor 要求的连续区间必须满足其中一种：</p>
+<p>A. 一个已有 owner 完整覆盖，直接返回 offset GPUVA。 B. 资格化 import 可覆盖整个范围且共享相同 canonical backing，新增 owner 但不新增独立内容权威。 C. 形成单次消费 writable-alias connected component 的 union BO；所有访问均可重定位到同一个 union 地址体系，conversion 保留其版本语义；copy-in/out 作为普通 ledger 操作。 D. 无法证明 A/B/C，返回 <code>UNREPRESENTABLE_ALIAS</code>，不能为每个 view 单独 copy。</p>
+<p>component 包含此次 shader 可达所有 read/write/atomic views，未知动态指针范围按其已证明上界保守加入。union 超预算、有洞且不能合法初始化、跨对象原子或指针逃逸不支持就拒绝。只读 isolated copy 必须资格化为不参与 concurrent writes 的版本快照；不能普遍把执行期读取变成提交前读取。</p>
+<h2 id="6--CPU-ownership---granularity">6. CPU ownership 和 granularity</h2>
+<h3 id="6-1-MVP----lease-----------">6.1 MVP：显式 lease，不先开发信号故障引擎</h3>
+<p>BeginCpuRead(range) → ResolveAndReserve → 等所需 producer（不能持 owner 锁等待）→ raw materialize → cache visibility → return lease/可访问指针。</p>
+<p>BeginCpuWrite(range, coverageProof) → compute preservation closure → 同步已有合法 readers/writers → materialize 未覆盖 bytes → 获取 ownership → return lease。只有 proven full overwrite 才可跳过相应保存；普通页 fault 不是 full overwrite 证明。</p>
+<p>EndCpuWrite(lease, exact_or_conservative_written_range) → release/acquire CPU publication boundary → cache clean 按正确 granule → 生成 CPU ContentEvent → release lease。CPU publication 的 timeline=0 不表示无 happens-before，仍带 writer epoch 和事件身份。</p>
+<p>缓存非 coherent 时，以 cacheline 扩张 ownership，所有 overlapping native writes 必须排除。coherent 只省 CPU cache 维护，不准无序原子外读写。保护页、cacheline、layout-preservation unit 三种粒度单独保存。</p>
+<p>PreservationClosure 算法：从 effect range 开始，求其映射到所有需保留 representation 的 units；把这些 unit 映回 canonical bytes 后 union，再对 alias CPU 页/缓存粒度取闭包，直到不再增长。若越过已知 allocation ownership、超过预算或格式不可逆，返回明确 unsupported/materialization policy，不推断 padding 可丢弃。此 closure 只决定要 preserve/独占的范围，不把它变成 semantic written range。</p>
+<h3 id="6-2----lazy-observer-gate">6.2 后续 lazy observer gate</h3>
+<p>只有满足以下条件才启用：全部 CPU alias VA 受控；保护页不含控制面对象；预分配且预触 fault slots/altstack；平台 signal transport 与 park/unpark 已单独证明；owner 对该资源的工作不会等待 faulting thread 提供的 guest event；CPU 多线程写入在 guest 合法发布边界有 seal。handler 只提交固定 token 和 park，绝不执行驱动、分配、复杂查表或拿 owner mutex。若不支持本平台可靠 transport，就采用显式 CPU instrumentation/已有合格 observer，而不是写一个“应该 async-safe”的临时 handler。</p>
+<p>writer epoch：CLOSED→OPEN→SEALING→SEALED。SEALING 只在 guest 已停止该范围合法 writers 的边界启动；等已登记 leases 归零，所有 alias 改为适当保护，完成平台要求的可见性屏障后采集 dirty set，发布 SEALED。mprotect 不提供任意 guest store 的精确计数，不能假设单靠页重保护就完成 seal。新 writer 属下一 epoch；若 boundary 不能排除不经 lease 的并发 stores，该模式未资格。</p>
+<h2 id="7--------">7. 命令消费快照</h2>
+<p>typed 模式只复制规范要求的 record-value 状态，资源数据仍按执行期读取。raw-compatible 模式要求可识别 command ABI、storage owner generation 和 sealed writer epoch：seal→复制命令 bytes→解码→校验合法字段→建立资源 bindings。重用 IR key 为 storage generation、sealed bytes digest/patch generation、ABI、被引用对象 capture generations。已完成快照后改 raw bytes 不回写在途 snapshot，但这只适用于已证明允许 submit 边界捕获的 profile；执行期可修改描述符另设协议，不能混同。</p>
+<p>未 seal 的命令页不得开始解码；运行时消费者语义未核验就拒绝 raw-compatible，而不是用二次 version read 假装原子快照。既有 command bytes 与 descriptor source raw bytes 的观察器版本必须独立于图像 content version。</p>
+<h2 id="8------------">8. 提交日志、失败和退休</h2>
+<pre>enum Acceptance { NONE, PREFIX, ALL, UNKNOWN };
+struct AcceptedChunk { uint32_t index; QueuePoint point; ObjectRefSet refs; };
+struct SubmitReceipt {
+  ObjectKey transaction;
+  Acceptance acceptance;
+  Vector&lt;AcceptedChunk&gt; accepted;
+  Optional&lt;uint32_t&gt; first_unknown; // UNKNOWN 时有意义
+  RangeSet proven_unsubmitted_chunks;
+  Error submit_error;
+  Error completion_export_error; // 不撤销 accepted
+};</pre>
+<p>MVP 一 transaction 最多一个 GPU_COMMAND，所有 journal slots/refs/sync bookkeeping 预分配。状态 PREPARED→SUBMITTING→ACCEPTED→COMPLETED；另有 NOT_ACCEPTED、OUTCOME_UNKNOWN、DEVICE_LOST_QUARANTINED。禁止从 ACCEPTED 回 PREPARED。</p>
+<ul><li>NONE：每个 chunk 都有未被接受的证据（未调用，或已验证 kernel error 合同证明未接受）。只说 ioctl 返回非零不足以覆盖所有错误路径。</li><li>PREFIX：accepted 恰好是连续成功前缀，其余全部可证未接受；允许取消剩余部分，不允许重发前缀。</li><li>ALL：全部工作接受，不承诺已经完成/CPU visible。</li><li>UNKNOWN：至少一个已尝试 chunk 的接受性不能证明；仍保留已确定 accepted 的前缀，first_unknown 不得计入 proven_unsubmitted。不自动 retry。</li></ul>
+<p>GPU_COMMAND 成功后立即把 timestamp 与预分配 journal slot 原子提交。fence export 失败只记录 export_error，仍可在相同 context 上按真实 timestamp 等待；若无可用完成机制，quarantine。outcome unknown 的所有可能被 GPU 使用对象保持 quarantine，等待已验证 context teardown 保证再无访问。通知上层 device lost 不等于可 free。针对多个 backend chunks，journal 每次 ioctl 后递增，禁止在循环末尾一次性写总结果。</p>
+<p>QueuePoint 的 host_serial 为 host registry 的单调序，不等于 KGSL uint32 timestamp。timestamp wrap、context reset、empty wait-only submit 遵循固定 driver adapter；不在 core 中比较 uint32 大小。empty submission 的 completion 是真实前序+wait 集合，不能使用不推进硬件 timeline 的伪点。</p>
+<p>Reclaim(owner) 充要条件：logical refs=0，prepared refs=0，CPU leases=0，observer callbacks=0，所有 accepted GPU refs 已可证明终结，quarantine=0；随后先解除可触达 mapping/observer registration，再释放 native owner，最后回收 registry/tombstone。旧 generation 回调只能失败返回，绝不解析新对象。公开 pool finalize 可先 detach，不能强迫马上 free。</p>
+<h2 id="9---------------">9. 第一个验证阶段 与验收分层</h2>
+<p>文件边界：core/memory/identity_registry、mapping_snapshot、range_ledger、host_access_lease、submit_journal；backend/kgsl 只处理 native BO/context/cache/submit，不接收 PoolId 当 alias identity。第一个验证阶段 的 backend 为 deterministic fake，第二个验证阶段 才加入普通 KGSL BO 和单提交 adapter。</p>
+<p>host oracle：同目录 memory_model_test.py 展示最小反例断言。实现时必须扩大为随机 extent split/remap/alias 操作与全字节参考模型比较，加入每个 journal 边界故障注入。现有模型测试通过只能证明合同样例自洽，不证明 C++ 实现、signal handler、kernel 或 GPU 正确。</p>
+<p>硬件 gate（与 host验证阶段 独立）：ordinary BO CPU↔GPU checksum；cache granule policy；真实 context completion/wrap 处理；单 ioctl failure/quarantine；acquire/present 外部生命周期。custom import、VBO、未知 userptr、raw command late patch、lazy observer、compressed raw roundtrip、跨 queue timeline 外部互操作分别单独资格化。资格结果必须记录 device/driver/kernel/flags 精确组合；不得用一次 coherent buffer 成功替代整个组合验证。</p>
+<h3 id="9-1-Reservation-----------------">9.1 Reservation 的取消与真正发布（补充强制条款）</h3>
+<p>prepare 只能增加 tentative reservation，绝不提前覆盖 committed authority，也不能创建可送入 kernel 的虚构 queue timestamp。若 B prepare 依赖尚未 accepted 的 A，B 持 A 的 reservation ID，等待 A acceptance 后解析为真实 point；A 若取消，B 必须重新规划或取消，不把“未提交 A”当可等待 point。多 chunk prefix commit 只为 accepted chunks 安装新 authority/reader frontier；proven-unsubmitted suffix 回滚自己的 tentative effects，unknown chunks 隔离相关区间并停止新消费者，不能声称数据仍为提交前版本。单 queue 也需 stage/cache RAW/WAR/WAW：host FIFO 提交顺序不自动等于所有流水线访问完成顺序，不能省掉对应硬件事件/屏障。</p>
+<h3 id="9-2---------------data-frontier">9.2 同步存储与并发原子不是普通 data frontier</h3>
+<p>AccessRecipe 必须额外包含 AccessClass：DATA_READ、DATA_WRITE、DATA_RMW、SYNC_POLL、SYNC_SIGNAL、ATOMIC_RMW。第 4 节普通 RAW/WAR/WAW 仅适用于普通数据/转换访问；不能用于推导一个 signal 等待正在等待它的 poll 退休。</p>
+<p>EventAccess 记录 canonical word range、event generation、comparison predicate、signal value、release/acquire scope、native cache protocol 和 queue position。SYNC_POLL 对信号值的观察不加入该 word 的普通 read frontier；SYNC_SIGNAL 的 signal write 不等待这个 poll，真实 completion 由原事件协议产生。前后普通资源的 release/acquire 关系仍由 event 建边。只特判准确 event word，绝不把所在页或整个 backing 从数据依赖中删除。把同一个 word 当普通数据读写的调用需要已证实 ABI 语义，不自动获得 signal 例外。</p>
+<p>ATOMIC_RMW 可存在合法无总序的并发生产者：保存 atomic access group 及最终 observer 所需所有 points，不强行确定每个中间返回值顺序。准入条件是同一 canonical/native backing、相同可互操作的硬件原子 scope、alignment/width、内存序，并且没有未同步混入的非原子覆盖；native/raw 转换期间不允许两副本各做 atomic。首版不支持的跨 CPU/GPU atomic 类型明确拒绝，不能把 CPU coherent 当成原子互操作资格。</p>
+<p>CPU fault/materialization 不得 park 在将由 faulting CPU 负责 signal 的 event store 之前。同步 word 必须在注册时确定可直接访问/正确缓存的表示；未知 stale-raw event word 无法安全 lazy materialize 时提前拒绝该模式。</p></main></body></html>

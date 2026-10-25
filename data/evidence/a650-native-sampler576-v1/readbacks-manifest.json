@@ -1,0 +1,3473 @@
+{
+  "schema": 1,
+  "classification": "authored test inputs and shader GPU readbacks; no game artwork/source/control/C1/binaries",
+  "archives": [
+    {
+      "file": "full-readbacks.zip",
+      "bytes": 1895981,
+      "sha256": "f9a59bf42c8095cd81800774c3798793f1ba4b04554cf688b9cac073e1accc82",
+      "members": [
+        {
+          "name": "sampler-mip-000.raw",
+          "bytes": 24576,
+          "sha256": "c43d201646a6f427f114d94c545769435dbecdbad405f278611fc3ac72bc40dc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-001.raw",
+          "bytes": 24576,
+          "sha256": "29d9d44b31253a71c4cd9c390d4a97eec55ce56acd08dcbcd5b0bf9a7308ed1e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-002.raw",
+          "bytes": 24576,
+          "sha256": "efd4fa72c6fba7f70a59d53dfa3c81e2338098e8cff3d20502097643cc93532d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-003.raw",
+          "bytes": 24576,
+          "sha256": "ff49f8f39509b0b76f5552b738917377437d853000ed570cb8dae5b422dabe7e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-004.raw",
+          "bytes": 24576,
+          "sha256": "8f3d8c1e80c0eb31e075d378209d17404e89364779efa1cfd3f17cdfd1315e88",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-005.raw",
+          "bytes": 24576,
+          "sha256": "fc61ea8c36cac298df88abaab9848afe659fb130dc95c0dcd2a73900ed814cfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-006.raw",
+          "bytes": 24576,
+          "sha256": "efd4fa72c6fba7f70a59d53dfa3c81e2338098e8cff3d20502097643cc93532d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-007.raw",
+          "bytes": 24576,
+          "sha256": "ff49f8f39509b0b76f5552b738917377437d853000ed570cb8dae5b422dabe7e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-008.raw",
+          "bytes": 24576,
+          "sha256": "8f3d8c1e80c0eb31e075d378209d17404e89364779efa1cfd3f17cdfd1315e88",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-009.raw",
+          "bytes": 24576,
+          "sha256": "fc61ea8c36cac298df88abaab9848afe659fb130dc95c0dcd2a73900ed814cfe",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-010.raw",
+          "bytes": 24576,
+          "sha256": "e8c5850e56be6c5c4fee6af54d0a2c2f2bf6d400e848750d0fdf8afebb858dd0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-011.raw",
+          "bytes": 24576,
+          "sha256": "4dddb7997b50a2f066d132af6b4ca59e81902573afadafcf7541ff7fb6f06967",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-012.raw",
+          "bytes": 24576,
+          "sha256": "efd4fa72c6fba7f70a59d53dfa3c81e2338098e8cff3d20502097643cc93532d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-013.raw",
+          "bytes": 24576,
+          "sha256": "ff49f8f39509b0b76f5552b738917377437d853000ed570cb8dae5b422dabe7e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-014.raw",
+          "bytes": 24576,
+          "sha256": "28465b666d68f1fee633cc9053d152668b21727ad63382c8d919b2095866ca25",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-015.raw",
+          "bytes": 24576,
+          "sha256": "a68fe0c4e2f321902696c6339be6f6fe76c5e48b2adfc0d0076769097b76f731",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-016.raw",
+          "bytes": 24576,
+          "sha256": "79ad71816a910dac59b797397a1950bb71a0e3a0d6af04708f4d47f702e62b08",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-017.raw",
+          "bytes": 24576,
+          "sha256": "f766368f198c03fcc2a98f1c5b261319320d55bc1a4738c0af53f77cb8be4bc1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-018.raw",
+          "bytes": 24576,
+          "sha256": "db99205dd954adead69e405018aa8beb1269279153dd3f3743ed9ba6a2a8d5d1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-019.raw",
+          "bytes": 24576,
+          "sha256": "a6165e84023574c284fc8618971ecccb3433ec144de7e3e8dfe72ad9e9c60941",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-020.raw",
+          "bytes": 24576,
+          "sha256": "030f4c62ff78c3af2abd5cb77c1d5b9e6df76f94392d83d2c0322c6776f1b354",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-021.raw",
+          "bytes": 24576,
+          "sha256": "9d85f2290b67845f1a85dbf38d6c4ca33498b2e276cb863b9c41c4affe262e20",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-022.raw",
+          "bytes": 24576,
+          "sha256": "db99205dd954adead69e405018aa8beb1269279153dd3f3743ed9ba6a2a8d5d1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-023.raw",
+          "bytes": 24576,
+          "sha256": "a6165e84023574c284fc8618971ecccb3433ec144de7e3e8dfe72ad9e9c60941",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-024.raw",
+          "bytes": 24576,
+          "sha256": "030f4c62ff78c3af2abd5cb77c1d5b9e6df76f94392d83d2c0322c6776f1b354",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-025.raw",
+          "bytes": 24576,
+          "sha256": "9d85f2290b67845f1a85dbf38d6c4ca33498b2e276cb863b9c41c4affe262e20",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-026.raw",
+          "bytes": 24576,
+          "sha256": "43378c382b4d42636385dbc3d2777494cadfdc51651bacefdec4b4be28e28fd5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-027.raw",
+          "bytes": 24576,
+          "sha256": "6d286b883f16a50d6fac2e069c12e8aaa42a6779f884ec943aea8ca0e13cc68d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-028.raw",
+          "bytes": 24576,
+          "sha256": "db99205dd954adead69e405018aa8beb1269279153dd3f3743ed9ba6a2a8d5d1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-029.raw",
+          "bytes": 24576,
+          "sha256": "a6165e84023574c284fc8618971ecccb3433ec144de7e3e8dfe72ad9e9c60941",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-030.raw",
+          "bytes": 24576,
+          "sha256": "713861eeac041a1635ade039ed09ce683b0b237b9ba95d7a09d9f7bc62f76f2f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-031.raw",
+          "bytes": 24576,
+          "sha256": "0e2c2d912654c195430abee3686ad72886a83ce7268a66b3072e178f32730212",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-032.raw",
+          "bytes": 24576,
+          "sha256": "9eacaa7c3ae066e68128901efc84ba70d249c1a9809996b4a6e5b4c71615848f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-033.raw",
+          "bytes": 24576,
+          "sha256": "db77f798d7782f5233c25acaa4fcf9ce07b3a8fc0ee493bc2b6129cc3fe46fcc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-034.raw",
+          "bytes": 24576,
+          "sha256": "14d1b455db54834c95ab760769719c1f26e3f3aaa2a8a7d7fc5cf3bcc6b70a93",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-035.raw",
+          "bytes": 24576,
+          "sha256": "f181a5c2a3c154609a28b3ebeb4e64d6a2c08883f0f8a7fda158f0982ec3d6b5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-036.raw",
+          "bytes": 24576,
+          "sha256": "9225cab1cd9d150308c3ef3281055b63053e3664c5302ebdbe1573aa14a5d9bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-037.raw",
+          "bytes": 24576,
+          "sha256": "b5c056e2f1d3e97072d02104b7514f703d471976fcb8d91eee510c2fef0b5b74",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-038.raw",
+          "bytes": 24576,
+          "sha256": "14d1b455db54834c95ab760769719c1f26e3f3aaa2a8a7d7fc5cf3bcc6b70a93",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-039.raw",
+          "bytes": 24576,
+          "sha256": "f181a5c2a3c154609a28b3ebeb4e64d6a2c08883f0f8a7fda158f0982ec3d6b5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-040.raw",
+          "bytes": 24576,
+          "sha256": "9225cab1cd9d150308c3ef3281055b63053e3664c5302ebdbe1573aa14a5d9bf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-041.raw",
+          "bytes": 24576,
+          "sha256": "b5c056e2f1d3e97072d02104b7514f703d471976fcb8d91eee510c2fef0b5b74",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-042.raw",
+          "bytes": 24576,
+          "sha256": "139fea3d927d66589dce3cb7a1415c5f117b6588d8362b071daee34be4461ec6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-043.raw",
+          "bytes": 24576,
+          "sha256": "5e554acbeaaf0c052acf7045ced502bb1706f59717850fcd1e6527a9bd148960",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-044.raw",
+          "bytes": 24576,
+          "sha256": "14d1b455db54834c95ab760769719c1f26e3f3aaa2a8a7d7fc5cf3bcc6b70a93",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-045.raw",
+          "bytes": 24576,
+          "sha256": "f181a5c2a3c154609a28b3ebeb4e64d6a2c08883f0f8a7fda158f0982ec3d6b5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-046.raw",
+          "bytes": 24576,
+          "sha256": "0ec21f3ad5b96e1e74c320a9dbab058bc9d41d3000cd7d8dff7d9551470df9fd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-047.raw",
+          "bytes": 24576,
+          "sha256": "95ede25081e89a27f6ac7eeb40d6945609288e561acf8699ff65b4ce9460fab5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-048.raw",
+          "bytes": 24576,
+          "sha256": "66828ad1c72617ec9a3fce1e64c1c4a2ec6924dcee66812bfe92421b30c974e8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-049.raw",
+          "bytes": 24576,
+          "sha256": "07c0aae6da4eeb9f31c6b1532009c869bc3e25db817ca1cd864bbd05b67f40cc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-050.raw",
+          "bytes": 24576,
+          "sha256": "acb5e6202239319bb62dfffc2f1aeb9967d311379c8a548ba2683f3106b961f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-051.raw",
+          "bytes": 24576,
+          "sha256": "d096856a7c9c019f1d8cb0653faa03fcd252622370914ada3ef5d5257157e2c4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-052.raw",
+          "bytes": 24576,
+          "sha256": "393736fab21d1aea2894c69bed369385168334ab446ebd61292850ee15e698b6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-053.raw",
+          "bytes": 24576,
+          "sha256": "24a1f5d87ad3e860e02de00b23635fe44ca1ed098ce195bd54abbc54a877c13c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-054.raw",
+          "bytes": 24576,
+          "sha256": "acb5e6202239319bb62dfffc2f1aeb9967d311379c8a548ba2683f3106b961f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-055.raw",
+          "bytes": 24576,
+          "sha256": "d096856a7c9c019f1d8cb0653faa03fcd252622370914ada3ef5d5257157e2c4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-056.raw",
+          "bytes": 24576,
+          "sha256": "393736fab21d1aea2894c69bed369385168334ab446ebd61292850ee15e698b6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-057.raw",
+          "bytes": 24576,
+          "sha256": "24a1f5d87ad3e860e02de00b23635fe44ca1ed098ce195bd54abbc54a877c13c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-058.raw",
+          "bytes": 24576,
+          "sha256": "74e6003d9c5b2efb4cab453abf058d858484047818a36f209035b44c7804f7f5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-059.raw",
+          "bytes": 24576,
+          "sha256": "562372f7c1612e4033e3d79bff4f8129da3b12485a6dd999b471355e2527cdd7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-060.raw",
+          "bytes": 24576,
+          "sha256": "acb5e6202239319bb62dfffc2f1aeb9967d311379c8a548ba2683f3106b961f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-061.raw",
+          "bytes": 24576,
+          "sha256": "d096856a7c9c019f1d8cb0653faa03fcd252622370914ada3ef5d5257157e2c4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-062.raw",
+          "bytes": 24576,
+          "sha256": "99c6c65429f4fbb36d14fc91fecdbc613d657021baacde988b7e7aa3c4a1d6af",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-063.raw",
+          "bytes": 24576,
+          "sha256": "c9c26f9a05cff7559d5e855961a16ee92fef12b4d7532c459418a6024cf1e726",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-064.raw",
+          "bytes": 24576,
+          "sha256": "2aa3c613434c4db841346ddaeea76afa89d51a6b4754c4dd1bbcb0d95a0110d9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-065.raw",
+          "bytes": 24576,
+          "sha256": "788f22a42a8d110e85b762b7ae52a752aab27dfa50d81574f53552b6fc31b570",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-066.raw",
+          "bytes": 24576,
+          "sha256": "2e55006e79622c6946e2d4fbde27472d3b18d10c352413c20679f3bba3b4b2af",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-067.raw",
+          "bytes": 24576,
+          "sha256": "9bbc8c501b722c8bca9b3178fe3567f5effd19799b074ca8d1595e61372f9d02",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-068.raw",
+          "bytes": 24576,
+          "sha256": "deb0fc485fc3e1b5a941d51dd3672b941f0bfce09612971d0cc305cd3da078d1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-069.raw",
+          "bytes": 24576,
+          "sha256": "8eec448db8e26487bcd8e5c2bb8190fc3fcf5c70f7e0a16c7b093a1b014f7444",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-070.raw",
+          "bytes": 24576,
+          "sha256": "2e55006e79622c6946e2d4fbde27472d3b18d10c352413c20679f3bba3b4b2af",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-071.raw",
+          "bytes": 24576,
+          "sha256": "9bbc8c501b722c8bca9b3178fe3567f5effd19799b074ca8d1595e61372f9d02",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-072.raw",
+          "bytes": 24576,
+          "sha256": "deb0fc485fc3e1b5a941d51dd3672b941f0bfce09612971d0cc305cd3da078d1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-073.raw",
+          "bytes": 24576,
+          "sha256": "8eec448db8e26487bcd8e5c2bb8190fc3fcf5c70f7e0a16c7b093a1b014f7444",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-074.raw",
+          "bytes": 24576,
+          "sha256": "67611dfa0d07de5cf3dac0e23370fd3ea829dbd77e3a3a230bbfe03f01147c25",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-075.raw",
+          "bytes": 24576,
+          "sha256": "64d838e58923f20b02d3a4fa9da8c3d937b3ae20d5f3e792493e5dd8ebb8cf51",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-076.raw",
+          "bytes": 24576,
+          "sha256": "2e55006e79622c6946e2d4fbde27472d3b18d10c352413c20679f3bba3b4b2af",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-077.raw",
+          "bytes": 24576,
+          "sha256": "9bbc8c501b722c8bca9b3178fe3567f5effd19799b074ca8d1595e61372f9d02",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-078.raw",
+          "bytes": 24576,
+          "sha256": "fcb89ad05677ff271a210bcf8c837d6d24aea23eec34e070a6f2ccf0b7e64ec1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-079.raw",
+          "bytes": 24576,
+          "sha256": "2b07ad58dd0912bb8100f695b6a3a265d019c59c581502aea1996df906f42026",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-080.raw",
+          "bytes": 24576,
+          "sha256": "56d41c419de71448ff9d98f682a6c114d083e015f6188a68bf64f874445d0aa8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-081.raw",
+          "bytes": 24576,
+          "sha256": "e9698ab6b35e722796aa6da57ca31e48be0525c381aaeebcbfeb1e8f94057dae",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-082.raw",
+          "bytes": 24576,
+          "sha256": "3608ce779634c7b469ca1bd7b359494dc00384b0e46f8dab7b9f7242d88bcb19",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-083.raw",
+          "bytes": 24576,
+          "sha256": "f32dbb34defa9a57fe8faef04c488e925d25b3878bd4c3e722caba0732aae712",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-084.raw",
+          "bytes": 24576,
+          "sha256": "bc5948337de6006a563ce2c09652da708c997bf2312043b8afeb4bd1b661d6e9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-085.raw",
+          "bytes": 24576,
+          "sha256": "a3ddce0cd9e84bf520061cdf352257ffa0b7abc1a6fff6783f472f4da4163fc4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-086.raw",
+          "bytes": 24576,
+          "sha256": "3608ce779634c7b469ca1bd7b359494dc00384b0e46f8dab7b9f7242d88bcb19",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-087.raw",
+          "bytes": 24576,
+          "sha256": "f32dbb34defa9a57fe8faef04c488e925d25b3878bd4c3e722caba0732aae712",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-088.raw",
+          "bytes": 24576,
+          "sha256": "bc5948337de6006a563ce2c09652da708c997bf2312043b8afeb4bd1b661d6e9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-089.raw",
+          "bytes": 24576,
+          "sha256": "a3ddce0cd9e84bf520061cdf352257ffa0b7abc1a6fff6783f472f4da4163fc4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-090.raw",
+          "bytes": 24576,
+          "sha256": "4451226717a22cc242fcb0756bb00dd47a483682067660e50ea1887945a06106",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-091.raw",
+          "bytes": 24576,
+          "sha256": "64e505aa1a8579873ccc4e5c67bb4bd2cac64bf244caa4d64c2ba9a7343c8e38",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-092.raw",
+          "bytes": 24576,
+          "sha256": "3608ce779634c7b469ca1bd7b359494dc00384b0e46f8dab7b9f7242d88bcb19",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-093.raw",
+          "bytes": 24576,
+          "sha256": "f32dbb34defa9a57fe8faef04c488e925d25b3878bd4c3e722caba0732aae712",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-094.raw",
+          "bytes": 24576,
+          "sha256": "04ac2f32e18cc81ba7823b717de93d4f4cb425ecb5a731cd0b4611341eb2c55d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-095.raw",
+          "bytes": 24576,
+          "sha256": "e2e1ec99eeab022a662d8ead38d54806cfe9937956a4a70333335a4306266137",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-096.raw",
+          "bytes": 24576,
+          "sha256": "d4267d1ff1ee85ea56f6c6947413919171cd61212696868d0fbbea71958ecc00",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-097.raw",
+          "bytes": 24576,
+          "sha256": "6b1d5ef3b23295865b48a0f5ad009fec865a4fdad598f9874e6a5b85292ca2ea",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-098.raw",
+          "bytes": 24576,
+          "sha256": "344655f25dbdd2a7cecea467eeb3a79ff7f69846432233a54a190766c486174c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-099.raw",
+          "bytes": 24576,
+          "sha256": "484ae2719bb4f5ea8a3675d77369b14f3145c8df347f9626ebbeee96b5803532",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-100.raw",
+          "bytes": 24576,
+          "sha256": "39fd6c4214acf4a242f4f7b4d34a8c6ea8be46305baef72bf0c93f940ab5dfd4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-101.raw",
+          "bytes": 24576,
+          "sha256": "06978a8733447f8ed296f6c407a8ef7998efcd73eceed3ea55cd659a6cf21544",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-102.raw",
+          "bytes": 24576,
+          "sha256": "344655f25dbdd2a7cecea467eeb3a79ff7f69846432233a54a190766c486174c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-103.raw",
+          "bytes": 24576,
+          "sha256": "484ae2719bb4f5ea8a3675d77369b14f3145c8df347f9626ebbeee96b5803532",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-104.raw",
+          "bytes": 24576,
+          "sha256": "39fd6c4214acf4a242f4f7b4d34a8c6ea8be46305baef72bf0c93f940ab5dfd4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-105.raw",
+          "bytes": 24576,
+          "sha256": "06978a8733447f8ed296f6c407a8ef7998efcd73eceed3ea55cd659a6cf21544",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-106.raw",
+          "bytes": 24576,
+          "sha256": "fd98e09cdf7f331ac1176a5ac4fb383ab4ceee0ca55bfe727d18f53fdffb4891",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-107.raw",
+          "bytes": 24576,
+          "sha256": "8b0395f3348cf70da2988d03599737a0aa571dc827c10b9f7b605ec6b08c54f4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-108.raw",
+          "bytes": 24576,
+          "sha256": "344655f25dbdd2a7cecea467eeb3a79ff7f69846432233a54a190766c486174c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-109.raw",
+          "bytes": 24576,
+          "sha256": "484ae2719bb4f5ea8a3675d77369b14f3145c8df347f9626ebbeee96b5803532",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-110.raw",
+          "bytes": 24576,
+          "sha256": "b9cd267721ea7e5aaad25dd9879f643c4a5deb6c00c668293863363b019e3a3b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-111.raw",
+          "bytes": 24576,
+          "sha256": "e53204b115467a5d09f90f4e1e817c82e34fec2ee8c99ff69ce1608e1b115969",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-112.raw",
+          "bytes": 24576,
+          "sha256": "097ae5eb4bbb835ca4c2227f948c24f9ad498531fe3fbad52b2d2453b9ed2dae",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-113.raw",
+          "bytes": 24576,
+          "sha256": "1e1e9ee92f091fe7c0a1c1051783e5951c9c900538d4ecc02cd9f4515dc8a560",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-114.raw",
+          "bytes": 24576,
+          "sha256": "f69ca2d0c728bea24b9701732c27fd81fafcf21b58e18b9d826c8d8b65e09016",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-115.raw",
+          "bytes": 24576,
+          "sha256": "f5f52aa50a59f210187cf5e8ef9c7d6a0f08d83d7682a8f5e04a8e4fb28e53b3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-116.raw",
+          "bytes": 24576,
+          "sha256": "108b1f9e6c3955fdd463179fd3ce3970ee0f77fa8002b42273b725bce8715bec",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-117.raw",
+          "bytes": 24576,
+          "sha256": "cbffac32f6b924158342cf235ae6ea2133a870a5ae049dd23127905f247456cb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-118.raw",
+          "bytes": 24576,
+          "sha256": "f69ca2d0c728bea24b9701732c27fd81fafcf21b58e18b9d826c8d8b65e09016",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-119.raw",
+          "bytes": 24576,
+          "sha256": "f5f52aa50a59f210187cf5e8ef9c7d6a0f08d83d7682a8f5e04a8e4fb28e53b3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-120.raw",
+          "bytes": 24576,
+          "sha256": "108b1f9e6c3955fdd463179fd3ce3970ee0f77fa8002b42273b725bce8715bec",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-121.raw",
+          "bytes": 24576,
+          "sha256": "cbffac32f6b924158342cf235ae6ea2133a870a5ae049dd23127905f247456cb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-122.raw",
+          "bytes": 24576,
+          "sha256": "a66816b9e1e6da0b6cd29fc246cf9b67130845ac461578201feac1bb80bbc973",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-123.raw",
+          "bytes": 24576,
+          "sha256": "220373e661ab8a1d1016af1618dc31986110f161b1976f0e0f88369d72308d1d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-124.raw",
+          "bytes": 24576,
+          "sha256": "f69ca2d0c728bea24b9701732c27fd81fafcf21b58e18b9d826c8d8b65e09016",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-125.raw",
+          "bytes": 24576,
+          "sha256": "f5f52aa50a59f210187cf5e8ef9c7d6a0f08d83d7682a8f5e04a8e4fb28e53b3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-126.raw",
+          "bytes": 24576,
+          "sha256": "fd518572a56ba0e109efd89fc95655d1d0103b84051cb0b31e8a59c3a8a42a76",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-127.raw",
+          "bytes": 24576,
+          "sha256": "21b8a1a1119ecd28035e3b8d226dc84860734e1efee02f189bc32e3545d295ea",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-128.raw",
+          "bytes": 24576,
+          "sha256": "067346c339f6557f9f9a669893cb029768cb0541002e5628cc8609e81666701d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-129.raw",
+          "bytes": 24576,
+          "sha256": "8af7be8a9f4f122cfdaa87790680d13753fb09ba74b0e32e61d006219b0f9ab1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-130.raw",
+          "bytes": 24576,
+          "sha256": "79c048c7e42c4ac25cef01aaa799cc25e40026b9d9e813175a5ca863c5044f6e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-131.raw",
+          "bytes": 24576,
+          "sha256": "9a54b63fc530b4586e6500a065a055863a7c3b5d262d076709f948eb7c7b6895",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-132.raw",
+          "bytes": 24576,
+          "sha256": "cc12240751e936f705b0d54bcd20bddd5e451a22a66c85ea9bbac403c19c828e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-133.raw",
+          "bytes": 24576,
+          "sha256": "87682636f1d1afb792ad3cb5327399ebeba4dba7a86c9e989ec1a49dd8206776",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-134.raw",
+          "bytes": 24576,
+          "sha256": "79c048c7e42c4ac25cef01aaa799cc25e40026b9d9e813175a5ca863c5044f6e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-135.raw",
+          "bytes": 24576,
+          "sha256": "9a54b63fc530b4586e6500a065a055863a7c3b5d262d076709f948eb7c7b6895",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-136.raw",
+          "bytes": 24576,
+          "sha256": "cc12240751e936f705b0d54bcd20bddd5e451a22a66c85ea9bbac403c19c828e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-137.raw",
+          "bytes": 24576,
+          "sha256": "87682636f1d1afb792ad3cb5327399ebeba4dba7a86c9e989ec1a49dd8206776",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-138.raw",
+          "bytes": 24576,
+          "sha256": "a622282e57a9099c1f31bd9d79155eb695bb8e3f99dca548c7981fa43ae4d30a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-139.raw",
+          "bytes": 24576,
+          "sha256": "d5d8c6775f6fb1fa14507dfd2ba43f07781c4753c6d4168e4f5e1b7ba22ffcf1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-140.raw",
+          "bytes": 24576,
+          "sha256": "79c048c7e42c4ac25cef01aaa799cc25e40026b9d9e813175a5ca863c5044f6e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-141.raw",
+          "bytes": 24576,
+          "sha256": "9a54b63fc530b4586e6500a065a055863a7c3b5d262d076709f948eb7c7b6895",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-142.raw",
+          "bytes": 24576,
+          "sha256": "6aa09ad0b9a7862a6328e273391fc393b3ebf666bf46fcd62553d7f1273f660d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-143.raw",
+          "bytes": 24576,
+          "sha256": "bd5ba7a5a4bc9497acf17415afdedcb1fd5083aa517653bae462771fa77ea919",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-144.raw",
+          "bytes": 24576,
+          "sha256": "50ca897c4fda4d21c54588797cf74cb8d20844f38c0c3a2bc4de731ddb956329",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-145.raw",
+          "bytes": 24576,
+          "sha256": "f9f95e2951e628a103e3ac0c72af375a182175dd32e9fb8689a7540d8bbe0417",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-146.raw",
+          "bytes": 24576,
+          "sha256": "84f427638aea623ae2432bcd8b9f2997231d1dd16f68f4b58136ed8ab574f519",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-147.raw",
+          "bytes": 24576,
+          "sha256": "a4cdf9226f2310711456da3a3a19145a776f90a43f37b87437d3d1c46dbbdf77",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-148.raw",
+          "bytes": 24576,
+          "sha256": "1eeb816705182cc1bd2ae1086abd164f62960548fbe372eaa8bf2da7ef134aca",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-149.raw",
+          "bytes": 24576,
+          "sha256": "2f04a97eca18d42740400f57f5aa3aff64b1a8205b43859701d5bb3dcca54ab2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-150.raw",
+          "bytes": 24576,
+          "sha256": "84f427638aea623ae2432bcd8b9f2997231d1dd16f68f4b58136ed8ab574f519",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-151.raw",
+          "bytes": 24576,
+          "sha256": "a4cdf9226f2310711456da3a3a19145a776f90a43f37b87437d3d1c46dbbdf77",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-152.raw",
+          "bytes": 24576,
+          "sha256": "1eeb816705182cc1bd2ae1086abd164f62960548fbe372eaa8bf2da7ef134aca",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-153.raw",
+          "bytes": 24576,
+          "sha256": "2f04a97eca18d42740400f57f5aa3aff64b1a8205b43859701d5bb3dcca54ab2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-154.raw",
+          "bytes": 24576,
+          "sha256": "a313adb5938741d697d79109c96d71db2e0a20897caf8fa96a2b53d92aff8ceb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-155.raw",
+          "bytes": 24576,
+          "sha256": "88a657766fffc8cf807d779d86ee172d3d28e6aec5ea883bfbcca79981f265c0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-156.raw",
+          "bytes": 24576,
+          "sha256": "84f427638aea623ae2432bcd8b9f2997231d1dd16f68f4b58136ed8ab574f519",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-157.raw",
+          "bytes": 24576,
+          "sha256": "a4cdf9226f2310711456da3a3a19145a776f90a43f37b87437d3d1c46dbbdf77",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-158.raw",
+          "bytes": 24576,
+          "sha256": "8219c777d9796be3477f7b701e6c26213da20b3903cad7be2b7b45e1b449214b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-159.raw",
+          "bytes": 24576,
+          "sha256": "899dec5defbc3a530b486b0eae743c643e4e106c432fce5b35d97b67f80c18c3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-160.raw",
+          "bytes": 24576,
+          "sha256": "2aa3c613434c4db841346ddaeea76afa89d51a6b4754c4dd1bbcb0d95a0110d9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-161.raw",
+          "bytes": 24576,
+          "sha256": "788f22a42a8d110e85b762b7ae52a752aab27dfa50d81574f53552b6fc31b570",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-162.raw",
+          "bytes": 24576,
+          "sha256": "189c42c5a527866e0a00979b02a768eeaa20f4020ca1b6f824ad424494e67142",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-163.raw",
+          "bytes": 24576,
+          "sha256": "97c23d0052803213339a967dc0e33ce88cc5554bc207e6c3b07ca10202febd60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-164.raw",
+          "bytes": 24576,
+          "sha256": "0edba535f71c5053fe66d8cb6215f43d11a54475eb00d0d17ff1c55c976bc357",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-165.raw",
+          "bytes": 24576,
+          "sha256": "ef55e4353f2f8e206ff74e42fc68abc776debb0473cca622a8afbb6ab47105cf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-166.raw",
+          "bytes": 24576,
+          "sha256": "189c42c5a527866e0a00979b02a768eeaa20f4020ca1b6f824ad424494e67142",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-167.raw",
+          "bytes": 24576,
+          "sha256": "97c23d0052803213339a967dc0e33ce88cc5554bc207e6c3b07ca10202febd60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-168.raw",
+          "bytes": 24576,
+          "sha256": "0edba535f71c5053fe66d8cb6215f43d11a54475eb00d0d17ff1c55c976bc357",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-169.raw",
+          "bytes": 24576,
+          "sha256": "ef55e4353f2f8e206ff74e42fc68abc776debb0473cca622a8afbb6ab47105cf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-170.raw",
+          "bytes": 24576,
+          "sha256": "6ed3270459e2fce0f0a4ce0feb2591710817c25ac3cd6045e52245adab5a6a8f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-171.raw",
+          "bytes": 24576,
+          "sha256": "ac2f6c295559d45ef1ecb2077eb9a84778d2e1af9af7b079dea5ed7b77314ede",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-172.raw",
+          "bytes": 24576,
+          "sha256": "189c42c5a527866e0a00979b02a768eeaa20f4020ca1b6f824ad424494e67142",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-173.raw",
+          "bytes": 24576,
+          "sha256": "97c23d0052803213339a967dc0e33ce88cc5554bc207e6c3b07ca10202febd60",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-174.raw",
+          "bytes": 24576,
+          "sha256": "40590cc104818fbf223dcc49a586098e2f59c97e3c51c394c9f23eaba68b5c5c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-175.raw",
+          "bytes": 24576,
+          "sha256": "8e5f1a16eafa4b2612f69b7eabeaf371d27fa1fe5c9a3cd7a5128a17404dab7e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-176.raw",
+          "bytes": 24576,
+          "sha256": "e193845b7df9a0e6e9f1f9416c2417fa0917355dd5b1cc4279a94a57a6b2a43c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-177.raw",
+          "bytes": 24576,
+          "sha256": "1789b42150db7a4570a63ebdbaa8012c9ee8ea1e2996e7f0e89d0e1f0fe3ef24",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-178.raw",
+          "bytes": 24576,
+          "sha256": "d9fae7677c962856f32df8075e13a7d2bb2882ac0ed7d41194b9eb4db5af8d8d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-179.raw",
+          "bytes": 24576,
+          "sha256": "8db6c953ef0fcde767bb01ce6e7769050c8d11de5392e1db83005c5b0cbcfd9b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-180.raw",
+          "bytes": 24576,
+          "sha256": "36d1abdd75f4fe74359df3e07cc85bd09f8e9aed3c20caca244028e68b9a0eb7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-181.raw",
+          "bytes": 24576,
+          "sha256": "ba675b8556418be09ab32079d1b06f4d7c4f9d2a7ad5a95a6019c1b5578924ed",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-182.raw",
+          "bytes": 24576,
+          "sha256": "d9fae7677c962856f32df8075e13a7d2bb2882ac0ed7d41194b9eb4db5af8d8d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-183.raw",
+          "bytes": 24576,
+          "sha256": "8db6c953ef0fcde767bb01ce6e7769050c8d11de5392e1db83005c5b0cbcfd9b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-184.raw",
+          "bytes": 24576,
+          "sha256": "36d1abdd75f4fe74359df3e07cc85bd09f8e9aed3c20caca244028e68b9a0eb7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-185.raw",
+          "bytes": 24576,
+          "sha256": "ba675b8556418be09ab32079d1b06f4d7c4f9d2a7ad5a95a6019c1b5578924ed",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-186.raw",
+          "bytes": 24576,
+          "sha256": "3686eb8a185f284c5f53e2678ead9d986dae1bd5f5fa4d4de3892c3440c2d192",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-187.raw",
+          "bytes": 24576,
+          "sha256": "ff0bbff54467b23a6b0fd1defd3f91a871bc97c6418822338e38828a7a450950",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-188.raw",
+          "bytes": 24576,
+          "sha256": "d9fae7677c962856f32df8075e13a7d2bb2882ac0ed7d41194b9eb4db5af8d8d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-189.raw",
+          "bytes": 24576,
+          "sha256": "8db6c953ef0fcde767bb01ce6e7769050c8d11de5392e1db83005c5b0cbcfd9b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-190.raw",
+          "bytes": 24576,
+          "sha256": "8a1567885ddf5a4552ae8e970721d2191417287c5ca2f2df43996de381762403",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-191.raw",
+          "bytes": 24576,
+          "sha256": "67085f9c3f316ceee9be3e27501a120945fbf19ae7a215211fb20c55bbca77c9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-192.raw",
+          "bytes": 24576,
+          "sha256": "c43d201646a6f427f114d94c545769435dbecdbad405f278611fc3ac72bc40dc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-193.raw",
+          "bytes": 24576,
+          "sha256": "29d9d44b31253a71c4cd9c390d4a97eec55ce56acd08dcbcd5b0bf9a7308ed1e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-194.raw",
+          "bytes": 24576,
+          "sha256": "635b0f5e8b34096f930de582c094867d5437f1c4335edffa8fddbd6d63391a13",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-195.raw",
+          "bytes": 24576,
+          "sha256": "554849bfad9ca963630fdc717c4e75cccfe792a7083449b5e8b7fe5e820f78b3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-196.raw",
+          "bytes": 24576,
+          "sha256": "f28517326335353c0267c106af66b4ff3215007b333e384222190783601a954e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-197.raw",
+          "bytes": 24576,
+          "sha256": "aac55fc914353e89d2bbcb9f23036d738a1a00c1f1816e90495cc030a8aeddc3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-198.raw",
+          "bytes": 24576,
+          "sha256": "30c0d75a070eefd17d3f60d6cc919cdc4ab30cf10f4bc6b606a0e2c85a4ff6f0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-199.raw",
+          "bytes": 24576,
+          "sha256": "4a942dd2b6d2bdd81f5997869e57be4440aaeb65a1537cf2a821e533cd43a27f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-200.raw",
+          "bytes": 24576,
+          "sha256": "5fdba4a5ccb54f559998135d2ae52e597d7b2945c1c16185ea44c68efde8d273",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-201.raw",
+          "bytes": 24576,
+          "sha256": "a61d7c4ae557aa5f75cfe123bf33e146f9963dfb4d38850b3f5a142d7ebd9bbb",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-202.raw",
+          "bytes": 24576,
+          "sha256": "1a838362ad419f0da633d74ce024db8299379c37230f3353d08774a2ce795bf8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-203.raw",
+          "bytes": 24576,
+          "sha256": "75a23a59b47d05c340b8855fd24fa19de2cd3cfadf259c9261f56e03a03627ed",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-204.raw",
+          "bytes": 24576,
+          "sha256": "30c0d75a070eefd17d3f60d6cc919cdc4ab30cf10f4bc6b606a0e2c85a4ff6f0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-205.raw",
+          "bytes": 24576,
+          "sha256": "4a942dd2b6d2bdd81f5997869e57be4440aaeb65a1537cf2a821e533cd43a27f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-206.raw",
+          "bytes": 24576,
+          "sha256": "80a8e87d7a7eb4089304bf43a2bc4e20300a50874dbd8451b56445506f937dac",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-207.raw",
+          "bytes": 24576,
+          "sha256": "efe9e68441fbd3ea0aa9cc08e65a6b8fc2276b2ae53b0a3001bf253799cbbab7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-208.raw",
+          "bytes": 24576,
+          "sha256": "79ad71816a910dac59b797397a1950bb71a0e3a0d6af04708f4d47f702e62b08",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-209.raw",
+          "bytes": 24576,
+          "sha256": "f766368f198c03fcc2a98f1c5b261319320d55bc1a4738c0af53f77cb8be4bc1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-210.raw",
+          "bytes": 24576,
+          "sha256": "bf15660faeee9e77d7b097858f6948ebf6cb5a72c3b8980480adf574f830baa8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-211.raw",
+          "bytes": 24576,
+          "sha256": "d2c1dd3e95f449a4fa986546b7552f0a1101b94c0cdae0160468598eb159428f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-212.raw",
+          "bytes": 24576,
+          "sha256": "71bb7a65cfe6933231f3a383ab2d728c33f71760915ebfe85ecf971c21cb3a52",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-213.raw",
+          "bytes": 24576,
+          "sha256": "629bced81131e7bfb28d9b54f99f01170e5b8c0908ae1260a1e46a87b123bb85",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-214.raw",
+          "bytes": 24576,
+          "sha256": "6bd67d7de1028402710f7d840682aeb7e489b97e09c03cb4bded6810843c5f57",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-215.raw",
+          "bytes": 24576,
+          "sha256": "ba5acab706b1b5abac541d29b0c76f6433da48b6d358d6fecdc1984cfafedc03",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-216.raw",
+          "bytes": 24576,
+          "sha256": "a913eab9b4b17b4662b10bdbadcbbf86bc1c75f27613b18b40eb8011f1c67033",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-217.raw",
+          "bytes": 24576,
+          "sha256": "47cf4387448f4ee22b595b5db9bf9b22969cdda9ddbdba2c98d167cdf220199c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-218.raw",
+          "bytes": 24576,
+          "sha256": "83e184805651b34d0f31065a74db65a9bbfff9aa85d23648b468e2b549295b0d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-219.raw",
+          "bytes": 24576,
+          "sha256": "14f02123d41611265ff1a67560b053ae0e150ca878186cb34ed3322fb8aa76f6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-220.raw",
+          "bytes": 24576,
+          "sha256": "6bd67d7de1028402710f7d840682aeb7e489b97e09c03cb4bded6810843c5f57",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-221.raw",
+          "bytes": 24576,
+          "sha256": "ba5acab706b1b5abac541d29b0c76f6433da48b6d358d6fecdc1984cfafedc03",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-222.raw",
+          "bytes": 24576,
+          "sha256": "a2f53bcff0b2c0b0fccb3cd61d9fcb564672fec5a49446d03328af7933493cdd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-223.raw",
+          "bytes": 24576,
+          "sha256": "c025a6d8406f13a10a7f4e9d3cdb9edcad5c017a0ee31599cc86d47eff6e6002",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-224.raw",
+          "bytes": 24576,
+          "sha256": "9eacaa7c3ae066e68128901efc84ba70d249c1a9809996b4a6e5b4c71615848f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-225.raw",
+          "bytes": 24576,
+          "sha256": "db77f798d7782f5233c25acaa4fcf9ce07b3a8fc0ee493bc2b6129cc3fe46fcc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-226.raw",
+          "bytes": 24576,
+          "sha256": "262a71185142acefd3b270da2f1e875abb550170d40ebdc36c0ca9f6ea290ece",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-227.raw",
+          "bytes": 24576,
+          "sha256": "279f776818c397f8413a449c94cb44e72b8ad1a320c5cd221e315ee87b745ee1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-228.raw",
+          "bytes": 24576,
+          "sha256": "42134a2378f90dc7a5e907dcf4dfbcd9ec55c9708984102b85f793300b3c5e7d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-229.raw",
+          "bytes": 24576,
+          "sha256": "d7d69725906a27c2a2bfe011be44a18c0dfb163c09c586477f8e63968ec164e4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-230.raw",
+          "bytes": 24576,
+          "sha256": "7dd7f0a79eb1f45bb00af567f822c3066364cf029cdd4c4825059b2e00f6666f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-231.raw",
+          "bytes": 24576,
+          "sha256": "6c6aa7207bb3b78464dbfeb9960dddd2a104f15595bcab5ae772354edabbe9a0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-232.raw",
+          "bytes": 24576,
+          "sha256": "fe749ad7b6b78f2c657cff68ea58fec28cb91f6354cf4b583a78b3ce83143f09",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-233.raw",
+          "bytes": 24576,
+          "sha256": "af8b48be64816736b4b66ab9f9d39ab235ff37f12e4a738c6140c11827af68d6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-234.raw",
+          "bytes": 24576,
+          "sha256": "bd8967fa4efbdd8337177b7f83917dbb0f638450ef80b841fe71a7c20473f4d6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-235.raw",
+          "bytes": 24576,
+          "sha256": "a90bf54737b5a0fc208d64d1a9237d9baef985b31c5b9a60191edb799f08d389",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-236.raw",
+          "bytes": 24576,
+          "sha256": "7dd7f0a79eb1f45bb00af567f822c3066364cf029cdd4c4825059b2e00f6666f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-237.raw",
+          "bytes": 24576,
+          "sha256": "6c6aa7207bb3b78464dbfeb9960dddd2a104f15595bcab5ae772354edabbe9a0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-238.raw",
+          "bytes": 24576,
+          "sha256": "63df56ac15dfd69ba005bf269c139fb4b70322fe982bdce8a5626e3a8d12bdf1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-239.raw",
+          "bytes": 24576,
+          "sha256": "cb01e87cca264d98200aba3f811b03ab6e2103c6b44ba7286ec4220911927402",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-240.raw",
+          "bytes": 24576,
+          "sha256": "66828ad1c72617ec9a3fce1e64c1c4a2ec6924dcee66812bfe92421b30c974e8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-241.raw",
+          "bytes": 24576,
+          "sha256": "07c0aae6da4eeb9f31c6b1532009c869bc3e25db817ca1cd864bbd05b67f40cc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-242.raw",
+          "bytes": 24576,
+          "sha256": "18224ecd17bdb21a290763d8028a958d1bcc94e2ac981c75ea91290e3959be37",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-243.raw",
+          "bytes": 24576,
+          "sha256": "f8b5f1c5529d00ec77b50025f522a71e96b4e0e54be7f4802394cdb00bf74707",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-244.raw",
+          "bytes": 24576,
+          "sha256": "74b40a78af10da3950484c63c57637ffa3e8032dbffd0c85bcf08b4aabbcbac2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-245.raw",
+          "bytes": 24576,
+          "sha256": "50900cb5b7caff9a10bbd3433383c7a512cfd1788ddb0f8f978c9b403d7de251",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-246.raw",
+          "bytes": 24576,
+          "sha256": "b6d668db8cc015c7d4d518c452295260e7195964ed7f0218acb272d5434bb2f2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-247.raw",
+          "bytes": 24576,
+          "sha256": "a08060975988b4593b5c9503daeb0a83a53c1f82882fd3285fa4bdb53a249d58",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-248.raw",
+          "bytes": 24576,
+          "sha256": "a20b1fe5766b879c9f5db761dead6cc3b0613cae5dedaad798fd3eb8375f3a71",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-249.raw",
+          "bytes": 24576,
+          "sha256": "a0633c9b14d2fdb1b52f777c7506efb65b8711223de1367532fe73b1035c4d66",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-250.raw",
+          "bytes": 24576,
+          "sha256": "84c277605e516aa672bea6d6ba5290b3c07428cd343a01a3ab2c8ff69d3f5c53",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-251.raw",
+          "bytes": 24576,
+          "sha256": "6fde4281e966b2460e2deb772f159e9d019861cbc6627f420c3db18a030b3991",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-252.raw",
+          "bytes": 24576,
+          "sha256": "b6d668db8cc015c7d4d518c452295260e7195964ed7f0218acb272d5434bb2f2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-253.raw",
+          "bytes": 24576,
+          "sha256": "a08060975988b4593b5c9503daeb0a83a53c1f82882fd3285fa4bdb53a249d58",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-254.raw",
+          "bytes": 24576,
+          "sha256": "b92cf9444c1c7c87d75b386fc1f6f922d88c743c186b23c781f41f36993f6b77",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-255.raw",
+          "bytes": 24576,
+          "sha256": "74a133e3548e54daca0fe4c2ed9be31bfa70ab89c711a7476ba74267f0f9783a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-256.raw",
+          "bytes": 24576,
+          "sha256": "2aa3c613434c4db841346ddaeea76afa89d51a6b4754c4dd1bbcb0d95a0110d9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-257.raw",
+          "bytes": 24576,
+          "sha256": "788f22a42a8d110e85b762b7ae52a752aab27dfa50d81574f53552b6fc31b570",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-258.raw",
+          "bytes": 24576,
+          "sha256": "b6636f5bac5bef21dbeb963934577659ff997aa3326671ff40d35870a9a81a26",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-259.raw",
+          "bytes": 24576,
+          "sha256": "75196177829fe7831dc12d2ee67f8f8ff40ab7d9bd67217bcb797d6a0d2b2dd8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-260.raw",
+          "bytes": 24576,
+          "sha256": "aad8049da1b0b82c69750e817a6440b318c0cc7638ca59d2c2733a21a2d794db",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-261.raw",
+          "bytes": 24576,
+          "sha256": "307bd19aa64acfe925f20dd95d8266eeb8b645c788d9ffd6d08031b1ed6e7df5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-262.raw",
+          "bytes": 24576,
+          "sha256": "6785071053a651cdcbd12e9aca034a3cdff94298092808d87306d890acb5b227",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-263.raw",
+          "bytes": 24576,
+          "sha256": "2659e1c49276a61a1ebf8faef11ff5269c01c8e06036e8d43f402dd298b40a2d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-264.raw",
+          "bytes": 24576,
+          "sha256": "4288ced048470692a5109b0ffb4b5ff03751c31d06a352564ce3573a2e6b539c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-265.raw",
+          "bytes": 24576,
+          "sha256": "d3c5140faea5d92b1f3bfee9725e9e1bd1c85786ece3b02617ee1d06c2fbf507",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-266.raw",
+          "bytes": 24576,
+          "sha256": "21e8aac8f9a2fcc4aad30d71c2b7b1735359b4ebb55c169a060cfcbf6ee10725",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-267.raw",
+          "bytes": 24576,
+          "sha256": "d0ddcfc8286bd24f29a57689370670e8193569425d82b4658ec12c8e0d21a9ae",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-268.raw",
+          "bytes": 24576,
+          "sha256": "6785071053a651cdcbd12e9aca034a3cdff94298092808d87306d890acb5b227",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-269.raw",
+          "bytes": 24576,
+          "sha256": "2659e1c49276a61a1ebf8faef11ff5269c01c8e06036e8d43f402dd298b40a2d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-270.raw",
+          "bytes": 24576,
+          "sha256": "f304a40e386c69a1f08532da117c6ff20fc72a607d81c225cd5351d99fa1dbc7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-271.raw",
+          "bytes": 24576,
+          "sha256": "23271861ca1cafec24f28960a5da1d92eb52d9790fc53f990a9f979787f058ca",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-272.raw",
+          "bytes": 24576,
+          "sha256": "56d41c419de71448ff9d98f682a6c114d083e015f6188a68bf64f874445d0aa8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-273.raw",
+          "bytes": 24576,
+          "sha256": "e9698ab6b35e722796aa6da57ca31e48be0525c381aaeebcbfeb1e8f94057dae",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-274.raw",
+          "bytes": 24576,
+          "sha256": "7fd55dabc63c1ceb5af6299d9cf5c82c856b82ce75a262f3895a01de0738ef1e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-275.raw",
+          "bytes": 24576,
+          "sha256": "3c3902903fca1f68c7a1c91c619c2eef830e2cf2e3364ed5bcc4739d47dc1dee",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-276.raw",
+          "bytes": 24576,
+          "sha256": "d019f49edd7f4c61e0425c98e17e9b02f6cd4880782899438537eb5694c83534",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-277.raw",
+          "bytes": 24576,
+          "sha256": "b29c9408b76c3d19fb0c3a0efd83891bb3b579d7a271dc1f83e5001cd7d10479",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-278.raw",
+          "bytes": 24576,
+          "sha256": "8a63a122ec21409d039d07968c759b9b74af404bd8534af181279275d18602dd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-279.raw",
+          "bytes": 24576,
+          "sha256": "8c77773cbdf9f1cf2f86700cd6bc6e15b2bd2355cc8a296eb7e6e844c36e169b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-280.raw",
+          "bytes": 24576,
+          "sha256": "e0a9390c0639f890b1f131c3d2e2ed60ec268c980e49048701650a3b3c385fbf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-281.raw",
+          "bytes": 24576,
+          "sha256": "22c95cded3c196921e2e9c6fcabdf8a79a27f44904f33c791e4737c751e2ac2c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-282.raw",
+          "bytes": 24576,
+          "sha256": "5ea5a85bbfdbae9507329dfe2f8bc9ccd272e5dd4e5fdba5ab55e1b86265afe0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-283.raw",
+          "bytes": 24576,
+          "sha256": "b0d3971aa1b896c8f101acc1ddd821e62b547560b8d67ef70c0192c4fd7d5f04",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-284.raw",
+          "bytes": 24576,
+          "sha256": "8a63a122ec21409d039d07968c759b9b74af404bd8534af181279275d18602dd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-285.raw",
+          "bytes": 24576,
+          "sha256": "8c77773cbdf9f1cf2f86700cd6bc6e15b2bd2355cc8a296eb7e6e844c36e169b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-286.raw",
+          "bytes": 24576,
+          "sha256": "d11e7a3ac178442004a92cd3ce4f266c0007eec5b5b5aa0a937bea4b41711696",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-287.raw",
+          "bytes": 24576,
+          "sha256": "992a48aa22f7422cf41d4984914da04fd1c46cb377dd942b93731d38d61126a5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-288.raw",
+          "bytes": 24576,
+          "sha256": "d4267d1ff1ee85ea56f6c6947413919171cd61212696868d0fbbea71958ecc00",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-289.raw",
+          "bytes": 24576,
+          "sha256": "6b1d5ef3b23295865b48a0f5ad009fec865a4fdad598f9874e6a5b85292ca2ea",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-290.raw",
+          "bytes": 24576,
+          "sha256": "396789fedb81ba2b97ea03d193d2610cc87212fb6e4d6983e39bf7a9ec8d7e42",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-291.raw",
+          "bytes": 24576,
+          "sha256": "40052e8dfd8058690fa948ce5d6794dd95f556d3f68a59f8abcdf09182c9161f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-292.raw",
+          "bytes": 24576,
+          "sha256": "88c0c3b863752d80be806eb0507dd58564bf9ab6188724063d59510377ee0935",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-293.raw",
+          "bytes": 24576,
+          "sha256": "3b1b7786104d401b8d52348fff3d0ce3c286a71f515e8283404c462feea854f6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-294.raw",
+          "bytes": 24576,
+          "sha256": "28bb60ea4f4ac5be3d51865132fb0f8e0f3201748965ef64f84fd0e7e586b23f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-295.raw",
+          "bytes": 24576,
+          "sha256": "20d39287044be32c2df866e3fe0e8bdc6c1d70902e4fd3f4798a38d3d504ad9c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-296.raw",
+          "bytes": 24576,
+          "sha256": "50634e8bcc2402955fa29762228709e9940b9d945b353288b8f37affbbffe213",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-297.raw",
+          "bytes": 24576,
+          "sha256": "9ff9cafc451a46306caedf4f5e08ed2270117dce2b4e17a2eb78346f9b783e1a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-298.raw",
+          "bytes": 24576,
+          "sha256": "5b31032cfc46767a15eb57b9603e42fd4089b8ea6d8b077ad6c9039d59fc0c53",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-299.raw",
+          "bytes": 24576,
+          "sha256": "195204f23c1714f717dee89c1230512fadb6cc24290d0e9665ef6d43977091a2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-300.raw",
+          "bytes": 24576,
+          "sha256": "28bb60ea4f4ac5be3d51865132fb0f8e0f3201748965ef64f84fd0e7e586b23f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-301.raw",
+          "bytes": 24576,
+          "sha256": "20d39287044be32c2df866e3fe0e8bdc6c1d70902e4fd3f4798a38d3d504ad9c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-302.raw",
+          "bytes": 24576,
+          "sha256": "9b14960308ff195235c03a5b595fa801c820a946d93f178573b00ca45c1e9349",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-303.raw",
+          "bytes": 24576,
+          "sha256": "4438d9dc2de017f1a9a18d2592f9e2975e7c7fc20e6aceeaf90119ec06ad8e2d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-304.raw",
+          "bytes": 24576,
+          "sha256": "097ae5eb4bbb835ca4c2227f948c24f9ad498531fe3fbad52b2d2453b9ed2dae",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-305.raw",
+          "bytes": 24576,
+          "sha256": "1e1e9ee92f091fe7c0a1c1051783e5951c9c900538d4ecc02cd9f4515dc8a560",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-306.raw",
+          "bytes": 24576,
+          "sha256": "7c23a617658fc907371f01b30b3c469a2cdb558f4f0e2807fc7da7caed582fd8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-307.raw",
+          "bytes": 24576,
+          "sha256": "af8e1bd365d00b9f01004782a4eb35d3cbd3bbfdfe570dd7a291d52ceb80b5f6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-308.raw",
+          "bytes": 24576,
+          "sha256": "a721448678a8cd64f48a2011dae840b58bc818c00ba131c72daeb4531338ef74",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-309.raw",
+          "bytes": 24576,
+          "sha256": "e89bfbe77437dc1a8e927d00ff0a93e9ad9c4525f213e7bc4206743692bd0032",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-310.raw",
+          "bytes": 24576,
+          "sha256": "2a8f9ef7092164fb8bddb7678fa52bd5382794fe1a8a222d3d38a4b6ebdccd9a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-311.raw",
+          "bytes": 24576,
+          "sha256": "67053bd27253bbea373111e2d210d477e9c7694c78fa77f48517196e5b06793a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-312.raw",
+          "bytes": 24576,
+          "sha256": "014a7ded05098c9d0452f0e1e230613550282cfaea34906b78ad63a0f83f21ed",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-313.raw",
+          "bytes": 24576,
+          "sha256": "40bb55f2459eb93b3aa4304ee7d30fb6eef76eb9ed296c460c00fe16d4e1e070",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-314.raw",
+          "bytes": 24576,
+          "sha256": "b991061c046bd8b85f0009a23ece8877798a6bff4db246041af61f0df9427af7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-315.raw",
+          "bytes": 24576,
+          "sha256": "db3940488c60a8a29a970317b77ceb9b56a04c760c9dab9ccf9249a4167df82c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-316.raw",
+          "bytes": 24576,
+          "sha256": "2a8f9ef7092164fb8bddb7678fa52bd5382794fe1a8a222d3d38a4b6ebdccd9a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-317.raw",
+          "bytes": 24576,
+          "sha256": "67053bd27253bbea373111e2d210d477e9c7694c78fa77f48517196e5b06793a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-318.raw",
+          "bytes": 24576,
+          "sha256": "3eef0ef12d3775b4b044be426609b7df05caf592da9581fd5ead0b430e5793f8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-319.raw",
+          "bytes": 24576,
+          "sha256": "ad8b9037471e17a23716f3c24977a59d1f6bc2678cd8d3210ed57ee5694e196b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-320.raw",
+          "bytes": 24576,
+          "sha256": "067346c339f6557f9f9a669893cb029768cb0541002e5628cc8609e81666701d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-321.raw",
+          "bytes": 24576,
+          "sha256": "8af7be8a9f4f122cfdaa87790680d13753fb09ba74b0e32e61d006219b0f9ab1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-322.raw",
+          "bytes": 24576,
+          "sha256": "374fa9c285bbcda7a12c0c48755c6e7d45e6c0fa72b0be7eb6eb8af85cb8cff8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-323.raw",
+          "bytes": 24576,
+          "sha256": "6733b3cd4ceef8227d76f59e50f9493651a2c5f5cb019aabbef8ec401d599a3c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-324.raw",
+          "bytes": 24576,
+          "sha256": "a00bd47e720db86f0e1f3e165ae049b87fb82e12b232153bc39c18da5bc020c3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-325.raw",
+          "bytes": 24576,
+          "sha256": "77c3661bbe79693706958064064e2c534e6fbb504318a351bf6f4e9ca81ec15e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-326.raw",
+          "bytes": 24576,
+          "sha256": "5854887c2f1a98797dd5a9be08b563059227b4e2ff1c3ef391a0a3eefcb2e790",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-327.raw",
+          "bytes": 24576,
+          "sha256": "83990e6841678af040437793ebd6a15f2116e952e97a81fc8556943bbd1be02e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-328.raw",
+          "bytes": 24576,
+          "sha256": "fd1800f01887b3ea309930d08b5b8c970e95f963d471606ca313cde6b404932f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-329.raw",
+          "bytes": 24576,
+          "sha256": "46fd2aeb951b3855c47120620dae1f7b1126dc7c8c5c4b544c9413247d5b65e3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-330.raw",
+          "bytes": 24576,
+          "sha256": "2c5625e573f2171f01e3f206a1076d1dfca6a1383baee584811941cb64732bee",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-331.raw",
+          "bytes": 24576,
+          "sha256": "e9f42cb4e6badfa03d372d52c3532def38e236e343e3d60885208a739c916f14",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-332.raw",
+          "bytes": 24576,
+          "sha256": "5854887c2f1a98797dd5a9be08b563059227b4e2ff1c3ef391a0a3eefcb2e790",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-333.raw",
+          "bytes": 24576,
+          "sha256": "83990e6841678af040437793ebd6a15f2116e952e97a81fc8556943bbd1be02e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-334.raw",
+          "bytes": 24576,
+          "sha256": "e9eac290a7b5b8e7aff766845088839a624eb5bc5e92da7323fefe9bbc6c0c66",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-335.raw",
+          "bytes": 24576,
+          "sha256": "d1ba0712d9a40f7a68207da1d79e66c41d9dc4e4052667fa15ede47c9bf8bad3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-336.raw",
+          "bytes": 24576,
+          "sha256": "50ca897c4fda4d21c54588797cf74cb8d20844f38c0c3a2bc4de731ddb956329",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-337.raw",
+          "bytes": 24576,
+          "sha256": "f9f95e2951e628a103e3ac0c72af375a182175dd32e9fb8689a7540d8bbe0417",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-338.raw",
+          "bytes": 24576,
+          "sha256": "fb819e8d06d83ac6dd1c7c24a6e011c46b60b4db621e615df6f7b25c535f06de",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-339.raw",
+          "bytes": 24576,
+          "sha256": "d7d633475e87a531c899a9a7f8c3eb1dcbbc9372ef2208c1679598c814e50c52",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-340.raw",
+          "bytes": 24576,
+          "sha256": "4259590eba2a446f70123c8270e3f7940cc7d1f29069d14a498d6038fe6a4d41",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-341.raw",
+          "bytes": 24576,
+          "sha256": "f09308751c7ac158f026a24a7c45ed02181235b9d96b556e5abc42c928edf4d3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-342.raw",
+          "bytes": 24576,
+          "sha256": "259fe9a3a4fd6dc34904651882549f6d7a8b28bf79508207da252c96645faeda",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-343.raw",
+          "bytes": 24576,
+          "sha256": "c6d58a8812364eeff0690c391db04636526974b2a3692df6e67cc60d9e41be26",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-344.raw",
+          "bytes": 24576,
+          "sha256": "4b3e1d3a86e8945249136a3173bdf1c8535e8667ba533cbcad22e10a39d30bc3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-345.raw",
+          "bytes": 24576,
+          "sha256": "aa6b349145c65943f64666fd687d542aec79e7b7027f495143b76a28411bb60a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-346.raw",
+          "bytes": 24576,
+          "sha256": "7ad777cecdc3cd531d2c32c787005a802d68df5a419d59f6d1fc1b9c3444efe7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-347.raw",
+          "bytes": 24576,
+          "sha256": "3e2e859eca33d60611862473e9b43a94ce63d7528d301d253ea56f1a103990f3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-348.raw",
+          "bytes": 24576,
+          "sha256": "259fe9a3a4fd6dc34904651882549f6d7a8b28bf79508207da252c96645faeda",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-349.raw",
+          "bytes": 24576,
+          "sha256": "c6d58a8812364eeff0690c391db04636526974b2a3692df6e67cc60d9e41be26",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-350.raw",
+          "bytes": 24576,
+          "sha256": "b7ca11e0dab02f7ecc1e11124312228a09b191180c4b35c435c1dc4a38d29f02",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-351.raw",
+          "bytes": 24576,
+          "sha256": "164e1162366acfc73ba8f359fd1748a576ab9344e603e0873afde1bf13ba8a84",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-352.raw",
+          "bytes": 24576,
+          "sha256": "2aa3c613434c4db841346ddaeea76afa89d51a6b4754c4dd1bbcb0d95a0110d9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-353.raw",
+          "bytes": 24576,
+          "sha256": "788f22a42a8d110e85b762b7ae52a752aab27dfa50d81574f53552b6fc31b570",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-354.raw",
+          "bytes": 24576,
+          "sha256": "c5896996dd3324d440664cac3a103e9606a52524cf796df5c531c82e50f2e88c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-355.raw",
+          "bytes": 24576,
+          "sha256": "a7fe3595a653e2330bc307c614affe7ac416af85d72a55c19d7da3865ec02dc4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-356.raw",
+          "bytes": 24576,
+          "sha256": "8a87e85fcb21d7180209aeb4783aa29f153817ca11e25dac29da2115bd488d8c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-357.raw",
+          "bytes": 24576,
+          "sha256": "55d720891288e18f81f6f6cf225e3ab11a9a91f3b66dcd05033a65011b6d1408",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-358.raw",
+          "bytes": 24576,
+          "sha256": "3847a6d4fd7eb7dd691ac45ebfd28ad575810487c756657ff50fb4fcc09b6bad",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-359.raw",
+          "bytes": 24576,
+          "sha256": "787513dca9b8317b23127be0c3d99dc2bbb2b64f12aad673921cd0fb6a97d907",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-360.raw",
+          "bytes": 24576,
+          "sha256": "c54772682ab7c008960f4d9686545d0452a9ce809c69e28aaa1429ee678f2006",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-361.raw",
+          "bytes": 24576,
+          "sha256": "07eae47ddbd756c505243c1b22d5326afc5922618d82b1e852df032512d4b97f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-362.raw",
+          "bytes": 24576,
+          "sha256": "2a437d61ccf4df27fb99041fc5daf19cda6bc77bdf6e39f5376db0dbb4a0cd6e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-363.raw",
+          "bytes": 24576,
+          "sha256": "7fe861652a2a55160eefeeec3620cd0fd099e79ca3c4fa81869ffb67a4014c09",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-364.raw",
+          "bytes": 24576,
+          "sha256": "3847a6d4fd7eb7dd691ac45ebfd28ad575810487c756657ff50fb4fcc09b6bad",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-365.raw",
+          "bytes": 24576,
+          "sha256": "787513dca9b8317b23127be0c3d99dc2bbb2b64f12aad673921cd0fb6a97d907",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-366.raw",
+          "bytes": 24576,
+          "sha256": "d3a8e8d34eec83a3cfb96c198120c21c5a143292cd88c1cb40439f6a8166e6f1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-367.raw",
+          "bytes": 24576,
+          "sha256": "496074c0af6b467cc939b70b242590e824336d02afbf8e60139d4327a79e124a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-368.raw",
+          "bytes": 24576,
+          "sha256": "e193845b7df9a0e6e9f1f9416c2417fa0917355dd5b1cc4279a94a57a6b2a43c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-369.raw",
+          "bytes": 24576,
+          "sha256": "1789b42150db7a4570a63ebdbaa8012c9ee8ea1e2996e7f0e89d0e1f0fe3ef24",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-370.raw",
+          "bytes": 24576,
+          "sha256": "c9a3127003656e49507a9998905d698fd206e999ea8496f4697d00454088062a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-371.raw",
+          "bytes": 24576,
+          "sha256": "42c123c7a2fc19f16f365b6136531ed93cd6cb7375b33755e6be5b49a4f8c3b7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-372.raw",
+          "bytes": 24576,
+          "sha256": "a354796514dd32bb0f2bd5fe88cf3cdb74ec74ca59dd9e7fea33cc0fd1e355d1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-373.raw",
+          "bytes": 24576,
+          "sha256": "618f9357e001839d93ba6438c1a23c1b8710a33394a8e2c08f26685991502960",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-374.raw",
+          "bytes": 24576,
+          "sha256": "c43ca72a38f81fe0f7f9d380cde799a7ea20a7f8d1bb7d98c4a1ad658cf25d75",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-375.raw",
+          "bytes": 24576,
+          "sha256": "28258958c0828209a2c4362ae149c02a2d8927c6ad3d0578f36b4062650e61b4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-376.raw",
+          "bytes": 24576,
+          "sha256": "3575f6cfe456daf3ce6d556fcc5ccdf2cf606613064893d8aeaa5bdcb6d16755",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-377.raw",
+          "bytes": 24576,
+          "sha256": "67ac14c45cc4407bcae1551b1ee3f61b15eee178f0699b520396b483888cb443",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-378.raw",
+          "bytes": 24576,
+          "sha256": "7ece4d882a88585ce08debef646e8b4b9f921a7647b50bef90b50f6a56d3db01",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-379.raw",
+          "bytes": 24576,
+          "sha256": "1b24540dfd2f80c95e039363112ee83a5953f0a8a86610a4c9d5439c4e0fd58e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-380.raw",
+          "bytes": 24576,
+          "sha256": "c43ca72a38f81fe0f7f9d380cde799a7ea20a7f8d1bb7d98c4a1ad658cf25d75",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-381.raw",
+          "bytes": 24576,
+          "sha256": "28258958c0828209a2c4362ae149c02a2d8927c6ad3d0578f36b4062650e61b4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-382.raw",
+          "bytes": 24576,
+          "sha256": "066b2fa22227f3f5a6a6e4aad7378a4dadf46879af8fb351c5a0869d335453b8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-383.raw",
+          "bytes": 24576,
+          "sha256": "cddde9f4dae8f6a422c132dea48c122e41ee0cab4f1f4b2915f4ad60c32d4cf4",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-384.raw",
+          "bytes": 24576,
+          "sha256": "c43d201646a6f427f114d94c545769435dbecdbad405f278611fc3ac72bc40dc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-385.raw",
+          "bytes": 24576,
+          "sha256": "29d9d44b31253a71c4cd9c390d4a97eec55ce56acd08dcbcd5b0bf9a7308ed1e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-386.raw",
+          "bytes": 24576,
+          "sha256": "7e31e8e4a5ed939281bd27d4bade838d20e023612c917ac7759517c121966aa5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-387.raw",
+          "bytes": 24576,
+          "sha256": "c48c7ea9f0aee2cf08a5dce864fd2c5c53d2caf82c9dd19a3811c1d38dedbd94",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-388.raw",
+          "bytes": 24576,
+          "sha256": "a241401ff8cd092c086dc70ab0cf1b581aad90817ab43a59fc9cb9123d461a32",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-389.raw",
+          "bytes": 24576,
+          "sha256": "44671ee7f4b56df30a60381229920e5ca7b9a1a830c07cc88bfed478c40fd514",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-390.raw",
+          "bytes": 24576,
+          "sha256": "f708e89ce9f46a0fb17df605b940ecc307a2691ceebf93630d71a044aeb5bc3d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-391.raw",
+          "bytes": 24576,
+          "sha256": "a80ed68585cd483071a702e6a3379274d1583ebe713df3ede4cd7b13d704f200",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-392.raw",
+          "bytes": 24576,
+          "sha256": "06265953a8f41b9ac02a4e29f3191aedc2d311644ea97be806f8892e182fd7da",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-393.raw",
+          "bytes": 24576,
+          "sha256": "68e1e0c20aebd11d61868abbb3c59d5aa36fc01e1fc63f04dcb9ae21edb0b7b8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-394.raw",
+          "bytes": 24576,
+          "sha256": "3fee3f9ed10fde99cfac064629779f35d0a491efc54d76009dbf41b2cd00d3e8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-395.raw",
+          "bytes": 24576,
+          "sha256": "8fb08d89a4ae044708d05a7d1b910141714f6699b4f5b4c2361576fc52ab937a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-396.raw",
+          "bytes": 24576,
+          "sha256": "642c9ab090a9ab96de8c404441c9071565b41be691d84734c22ec5be0fd4b32c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-397.raw",
+          "bytes": 24576,
+          "sha256": "ad57e5b0260833fcd3a2f0296b94733b6ea01073011cc2698e49ed096852a97d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-398.raw",
+          "bytes": 24576,
+          "sha256": "b99cd70ba6387486984bfa831330afb09c2b671d94c1e8ac173b1e8ed388b662",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-399.raw",
+          "bytes": 24576,
+          "sha256": "cbeebcde632070ae957cdcf45987ae557a801a44b7bebe335b5f5a9b7f6547e3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-400.raw",
+          "bytes": 24576,
+          "sha256": "79ad71816a910dac59b797397a1950bb71a0e3a0d6af04708f4d47f702e62b08",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-401.raw",
+          "bytes": 24576,
+          "sha256": "f766368f198c03fcc2a98f1c5b261319320d55bc1a4738c0af53f77cb8be4bc1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-402.raw",
+          "bytes": 24576,
+          "sha256": "92b7e622787aea5384df0d9eb883b43f54635940315d3e2c248816a340756872",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-403.raw",
+          "bytes": 24576,
+          "sha256": "a65d60095faedfc611718d4bf809a3b6fc41f6c0666cfa6f3c8b293244eda353",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-404.raw",
+          "bytes": 24576,
+          "sha256": "b3effbd7ca99d8e6cf2139437ff201eda7c91a08986eeffdf283be040c3d8035",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-405.raw",
+          "bytes": 24576,
+          "sha256": "4b00839f1e7f4787d864c34b84736acbf674149fe6e9fc8771b165f9ae41df20",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-406.raw",
+          "bytes": 24576,
+          "sha256": "0e1a621057c5ff4ae61d297d317c3d51a9d37a8840288aa0a9e0965d64f9ab3c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-407.raw",
+          "bytes": 24576,
+          "sha256": "abd96fa5050b52a33002aa7febea038add838a94dbd2bd0e073495fe01a7e6b5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-408.raw",
+          "bytes": 24576,
+          "sha256": "8354b0c6a67c1a1225512240a816327524ce735319b5f247e2f4fdd1ade1603a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-409.raw",
+          "bytes": 24576,
+          "sha256": "cc333d93310d192a1051d219be9412ba9aeb88d2c7710463e6c3875453c145e8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-410.raw",
+          "bytes": 24576,
+          "sha256": "926ac2445de6a92e55fdf3e931aaf48cd5ecfaacb775167c6e341419a549dcaa",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-411.raw",
+          "bytes": 24576,
+          "sha256": "45f70b84c9c55b8d5843dee3f39491f901d6dd5c6ec9633c65312c537fe05ae7",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-412.raw",
+          "bytes": 24576,
+          "sha256": "c9be05b01c9dfa9f196a1b497d3e19faec176fe093c4e926414a852a557cafc6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-413.raw",
+          "bytes": 24576,
+          "sha256": "e247f351e79f2f52d0633d1b8ca5c4005da722fefab45c7f52d80b5ba42fb32a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-414.raw",
+          "bytes": 24576,
+          "sha256": "a2f53bcff0b2c0b0fccb3cd61d9fcb564672fec5a49446d03328af7933493cdd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-415.raw",
+          "bytes": 24576,
+          "sha256": "c025a6d8406f13a10a7f4e9d3cdb9edcad5c017a0ee31599cc86d47eff6e6002",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-416.raw",
+          "bytes": 24576,
+          "sha256": "9eacaa7c3ae066e68128901efc84ba70d249c1a9809996b4a6e5b4c71615848f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-417.raw",
+          "bytes": 24576,
+          "sha256": "db77f798d7782f5233c25acaa4fcf9ce07b3a8fc0ee493bc2b6129cc3fe46fcc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-418.raw",
+          "bytes": 24576,
+          "sha256": "f67074448f5a31276630da3f09c1b5b2160b67c61009e7a6160b7a91ca4f7292",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-419.raw",
+          "bytes": 24576,
+          "sha256": "e94f3405a44fcdcbbad1a67c2f77bc067e6781c4288e060529c84d7405ad7326",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-420.raw",
+          "bytes": 24576,
+          "sha256": "3158773a43bade97537d801ed7704869f4132dd7d670355949772ec22d912832",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-421.raw",
+          "bytes": 24576,
+          "sha256": "4a81cafa51be23cbca85809941c46377039c644c3b85a580d48a02a37fafd161",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-422.raw",
+          "bytes": 24576,
+          "sha256": "7f8095ab0f7b73a36df46bf7ae33b85d4a7ec89b457cce08d2ebdb420479dd3b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-423.raw",
+          "bytes": 24576,
+          "sha256": "18b3d84005ab1aae0fc24df93d2279acc7d0e339b0bb55401b67ad7c7a3d9123",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-424.raw",
+          "bytes": 24576,
+          "sha256": "41f1c66408eccc4486f970821924e760f306860e0a5ca32f0be8e5a9c982b669",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-425.raw",
+          "bytes": 24576,
+          "sha256": "b62bcf83960145f1a06382c1eee9ca870c4de7621d16bb6452e8d1e423ea0e40",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-426.raw",
+          "bytes": 24576,
+          "sha256": "b9af40b4091374a34a2e29ccdd9413228aea6847961b97e62b64f8611fc07bcf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-427.raw",
+          "bytes": 24576,
+          "sha256": "2d8ed1e5809f64dd224f1553145d1c161a4403476b5ccf5438ed98153c2bfca2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-428.raw",
+          "bytes": 24576,
+          "sha256": "0a9b3480b94034449de30b8fe2ac2e4f8bd7fde0df7834df7d5d361e692730a5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-429.raw",
+          "bytes": 24576,
+          "sha256": "66c11a9c132e03e46cce3d09adffff5a5193cf2a77cd70ef8cf676b27976f603",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-430.raw",
+          "bytes": 24576,
+          "sha256": "e331c1ac9f86a195e0a9d80eb990fa8ec8e3f198de03af809bb9eecfb52e6481",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-431.raw",
+          "bytes": 24576,
+          "sha256": "157ffd567abd2991e89efb12184c620d96486f4796ae8218ba24199e107ca77d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-432.raw",
+          "bytes": 24576,
+          "sha256": "66828ad1c72617ec9a3fce1e64c1c4a2ec6924dcee66812bfe92421b30c974e8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-433.raw",
+          "bytes": 24576,
+          "sha256": "07c0aae6da4eeb9f31c6b1532009c869bc3e25db817ca1cd864bbd05b67f40cc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-434.raw",
+          "bytes": 24576,
+          "sha256": "2408053368af2007d012ac9c686ad22980b263295cd6bb207f06747b990667f0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-435.raw",
+          "bytes": 24576,
+          "sha256": "0eba501ba94749babcfd7e09ccce2001aca2605257b43d23d6b1244e1e0ee0c1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-436.raw",
+          "bytes": 24576,
+          "sha256": "37bd3d3a633008863c14486ded26906325e2cf97e4656ef85b74c3cef002c012",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-437.raw",
+          "bytes": 24576,
+          "sha256": "f61eaa29561fe851fdb5752a9c06a86ead7e7207bad097245e31214389338f3e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-438.raw",
+          "bytes": 24576,
+          "sha256": "73f5c756d9f8ed7d26df44b97a550bd68670316240314bd31fbcce93c2f206a9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-439.raw",
+          "bytes": 24576,
+          "sha256": "49e58557d90bbf07c7e21da74ff6cab5d35d2e64fc2c43d22b63f0a0b7f0cb23",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-440.raw",
+          "bytes": 24576,
+          "sha256": "b1b8621098d205cdd9b8c42b7efe0625ad9f3ca339816688a9d14acd26a4c4b3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-441.raw",
+          "bytes": 24576,
+          "sha256": "43231356613d1dad3275c4f0f266707e2c8c69bfd27dedeaa2cb8e357192040c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-442.raw",
+          "bytes": 24576,
+          "sha256": "8380e29009576110768f3ca56b29b5e732142903d919784ada874fcff0fd2fc9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-443.raw",
+          "bytes": 24576,
+          "sha256": "75775f0016cfeacbcf99ac2d23bf87a9593431af43b463477764eeeddb57e794",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-444.raw",
+          "bytes": 24576,
+          "sha256": "4fc38ac131ea3297cca5a01b812b6d25c1e207e6300100adf24d83707de53f93",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-445.raw",
+          "bytes": 24576,
+          "sha256": "a783795fc29eee378322d1d42f2a2c4d06a393c3afc927bc414f103be0bf4b69",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-446.raw",
+          "bytes": 24576,
+          "sha256": "b92cf9444c1c7c87d75b386fc1f6f922d88c743c186b23c781f41f36993f6b77",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-447.raw",
+          "bytes": 24576,
+          "sha256": "74a133e3548e54daca0fe4c2ed9be31bfa70ab89c711a7476ba74267f0f9783a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-448.raw",
+          "bytes": 24576,
+          "sha256": "2aa3c613434c4db841346ddaeea76afa89d51a6b4754c4dd1bbcb0d95a0110d9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-449.raw",
+          "bytes": 24576,
+          "sha256": "788f22a42a8d110e85b762b7ae52a752aab27dfa50d81574f53552b6fc31b570",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-450.raw",
+          "bytes": 24576,
+          "sha256": "d5ab375a59fbb5f983d69a969544468c54ef70130f494af45849bedd65e39b36",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-451.raw",
+          "bytes": 24576,
+          "sha256": "721d96dcfa49cb34ac8eb3357eefe89cbeb75682053df9c58e68f98a07e6f82e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-452.raw",
+          "bytes": 24576,
+          "sha256": "d0e198d136dd86b2c1fad15007b1dac2c2e2923c4de55500f1a8d717a65bab11",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-453.raw",
+          "bytes": 24576,
+          "sha256": "2bd4c30e91b6eebf21c5651835a712cb845eb816f5e1cb4400ee00c14a1a858e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-454.raw",
+          "bytes": 24576,
+          "sha256": "bb0f314b4d2d1283f7b5d770a9f165138bad09feb49e06cf6d60f39b9f483a66",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-455.raw",
+          "bytes": 24576,
+          "sha256": "c90bb269ce7a39517dacc5739a215480af0eb4c51869bcf6998ff110cfef729f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-456.raw",
+          "bytes": 24576,
+          "sha256": "015c372f22edad4ec4b4ccc9ece7203e3b041864cf4b5fc84a2361e8fb94e356",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-457.raw",
+          "bytes": 24576,
+          "sha256": "012a18d2ff878796830eba0e8bd930c265cd2e7c0c1cd06d829eb9927eaf373f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-458.raw",
+          "bytes": 24576,
+          "sha256": "c7352898a92d827b076181cada990df92715f334e3fddabc0448528ad11969a6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-459.raw",
+          "bytes": 24576,
+          "sha256": "4bf9d2b3ce79f2d330c2464dc1cfedbaf6574c177eed1ec776a813f91a2e1ea1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-460.raw",
+          "bytes": 24576,
+          "sha256": "aa3ffc162577011804cf03296e9887c7e537b44a8a10f4930f64ad8bee2e1cde",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-461.raw",
+          "bytes": 24576,
+          "sha256": "a52ae228ef8732c899fb6489768c4e82a4d9059bddf298af78f044ef1ffc3ef6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-462.raw",
+          "bytes": 24576,
+          "sha256": "58125f0c45bd82f8479980e6a2c6b21656ab3c3f782e8523f613676ce48a0ffd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-463.raw",
+          "bytes": 24576,
+          "sha256": "7555e373e56a6b8c323eeb45a03c763a3f19af8a8d630fcc03f66755fbc16448",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-464.raw",
+          "bytes": 24576,
+          "sha256": "56d41c419de71448ff9d98f682a6c114d083e015f6188a68bf64f874445d0aa8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-465.raw",
+          "bytes": 24576,
+          "sha256": "e9698ab6b35e722796aa6da57ca31e48be0525c381aaeebcbfeb1e8f94057dae",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-466.raw",
+          "bytes": 24576,
+          "sha256": "bb53c9ab70195a6a2d91f21578d329b937f83c944206e8f8ce2500f9f9c7747d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-467.raw",
+          "bytes": 24576,
+          "sha256": "9d3249007495b2f28b7211c659e86edd55013f545621d58ef9309adc0e36b145",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-468.raw",
+          "bytes": 24576,
+          "sha256": "5ef72bf6bfd31eaf2e8ada0bb9be13821a80583edb3c464ac62259e39e18b495",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-469.raw",
+          "bytes": 24576,
+          "sha256": "cd22cec38a7ef89086de5027db2a63458189f2189de4e5bd73fbaeb144de6926",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-470.raw",
+          "bytes": 24576,
+          "sha256": "4ef468b504d2acfb306a09881625cd7f979d3c00a0902532eb468c979e01f365",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-471.raw",
+          "bytes": 24576,
+          "sha256": "8bd0b07d3fc32eae393d19e733a4bf09bd8cd29a6a45800f3ff9104d9cad1895",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-472.raw",
+          "bytes": 24576,
+          "sha256": "e7fa99caec29768b774522b9a9ca6536e8560d4e25b348706b42361c93eeb14e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-473.raw",
+          "bytes": 24576,
+          "sha256": "a853bf300f8bd665a31e19f329304b3e85b43a63f25d0d7a8e431c8ecf6acbc3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-474.raw",
+          "bytes": 24576,
+          "sha256": "2bdf937dea40913ab0b628febb4357c07a2d2555a4d5d2549b7f98042c64e4e3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-475.raw",
+          "bytes": 24576,
+          "sha256": "76526b04c5dbfcad4f5a4effd847e5dc88052585ddf364d07d9143202f6c6009",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-476.raw",
+          "bytes": 24576,
+          "sha256": "6b5ba34a572d46e9de53f305e3c8568d01daeead4b246cc67187e9064034128a",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-477.raw",
+          "bytes": 24576,
+          "sha256": "f0706b39663767e422740148813600edd264bf15cc8faa663edfa86860354a53",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-478.raw",
+          "bytes": 24576,
+          "sha256": "d11e7a3ac178442004a92cd3ce4f266c0007eec5b5b5aa0a937bea4b41711696",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-479.raw",
+          "bytes": 24576,
+          "sha256": "992a48aa22f7422cf41d4984914da04fd1c46cb377dd942b93731d38d61126a5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-480.raw",
+          "bytes": 24576,
+          "sha256": "d4267d1ff1ee85ea56f6c6947413919171cd61212696868d0fbbea71958ecc00",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-481.raw",
+          "bytes": 24576,
+          "sha256": "6b1d5ef3b23295865b48a0f5ad009fec865a4fdad598f9874e6a5b85292ca2ea",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-482.raw",
+          "bytes": 24576,
+          "sha256": "153d6866fc78bb5094767691bd003f1b87ce0c15ad50ff8f49df6ab25cc63fe8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-483.raw",
+          "bytes": 24576,
+          "sha256": "f00e97c43c092ce61edf521753de8558de9bdb8ed0b4917c9b07627eb4660f01",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-484.raw",
+          "bytes": 24576,
+          "sha256": "b686076e762b5b0e684efd5e8e1fcc73f507e6c827d83275940011e2d9c58149",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-485.raw",
+          "bytes": 24576,
+          "sha256": "a9fa913a6cc0b2ff3bee58866ff4f579260312ebc2bc49d4a087ea1924447595",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-486.raw",
+          "bytes": 24576,
+          "sha256": "a81474731a2e52496e9dd9af4ba60fdc0cff67d5e17f2c29cb33126a68ca6657",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-487.raw",
+          "bytes": 24576,
+          "sha256": "25c8e92f7e216ce4b31465dcc03b28afe9371e846099bcedbb816d07be709e88",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-488.raw",
+          "bytes": 24576,
+          "sha256": "90b5d67fb5952669e64f18268bbdecdc39c5caa513ea7aee8a32ce25322701e5",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-489.raw",
+          "bytes": 24576,
+          "sha256": "1415692929973eb81cfffb4666203b0d2e12e0a4783c0a4cdba2d6c24a6f2f61",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-490.raw",
+          "bytes": 24576,
+          "sha256": "ab826cf9bbcb36721bb486facbeffb914cb7cf656c1efedc0d6687c15f53661f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-491.raw",
+          "bytes": 24576,
+          "sha256": "7889f44906fe7a0b7c09f948734ac1b0508700ca733f69334f96637a963fa689",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-492.raw",
+          "bytes": 24576,
+          "sha256": "ae9300b720ac6195f0ff9b88fb91aadda635e3ec9d6b6f404612bf3af24e93cc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-493.raw",
+          "bytes": 24576,
+          "sha256": "6070015d3421e1c8f314285b1c617a7ceb4c3753fa0fa60273b732ed7ed629f2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-494.raw",
+          "bytes": 24576,
+          "sha256": "788048270fe068f4a26bad3b041c0a67969c9dc38a545678b28fc53dea3ab229",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-495.raw",
+          "bytes": 24576,
+          "sha256": "ee7f48cc389274d15186958e80d8d4641801149eb323adb37d5f9cb92ca362f9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-496.raw",
+          "bytes": 24576,
+          "sha256": "097ae5eb4bbb835ca4c2227f948c24f9ad498531fe3fbad52b2d2453b9ed2dae",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-497.raw",
+          "bytes": 24576,
+          "sha256": "1e1e9ee92f091fe7c0a1c1051783e5951c9c900538d4ecc02cd9f4515dc8a560",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-498.raw",
+          "bytes": 24576,
+          "sha256": "913e4fd3e57ec8537ab6dcae2c16fe8ad3953d9835a6d11088b825a7d71be096",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-499.raw",
+          "bytes": 24576,
+          "sha256": "5e14f4e60c13cf133cf509e454656f6e80360462dc660d981c39f9a32b8d5e81",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-500.raw",
+          "bytes": 24576,
+          "sha256": "0b6b7663579a7d28258632f1e763a0e35a2b9f30613fe43ac808051ce6dcaa08",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-501.raw",
+          "bytes": 24576,
+          "sha256": "8619516a2cf2ce40f998170f537e4ec77af5ea96f27c7f61845c96810eac266d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-502.raw",
+          "bytes": 24576,
+          "sha256": "de34c037af50120851093244e75ce50a41644b66ac7f8ef7859800185645a11d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-503.raw",
+          "bytes": 24576,
+          "sha256": "9fafb0aeb2f2d7edefcedf064c7429222e8ff6dd2482a461b09dbf8c4988a145",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-504.raw",
+          "bytes": 24576,
+          "sha256": "256e4ebe12ff7678e4470c6615432543be42ceb412e053caace86650f7554502",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-505.raw",
+          "bytes": 24576,
+          "sha256": "f452dcb1aa88a160323f1532d7bd25bf23d90afdf55b54bc4fea8a5b62c2d613",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-506.raw",
+          "bytes": 24576,
+          "sha256": "941c9a9222b300c638e46fd46e722fda49a256294e8a020aa0107600364083fc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-507.raw",
+          "bytes": 24576,
+          "sha256": "2e3ef08728b4a2102d3072d3b223e39b5c47bda9531dc6589d75702d771b25c9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-508.raw",
+          "bytes": 24576,
+          "sha256": "2fe4eba0d76efe93b3d73e27bd9084c1796bdc35260229b41b301801e6a8b91b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-509.raw",
+          "bytes": 24576,
+          "sha256": "cd316696e3e74af5f713ff7dc8d3f520b032d326ca5073304d17d802eec9077e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-510.raw",
+          "bytes": 24576,
+          "sha256": "3eef0ef12d3775b4b044be426609b7df05caf592da9581fd5ead0b430e5793f8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-511.raw",
+          "bytes": 24576,
+          "sha256": "ad8b9037471e17a23716f3c24977a59d1f6bc2678cd8d3210ed57ee5694e196b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-512.raw",
+          "bytes": 24576,
+          "sha256": "067346c339f6557f9f9a669893cb029768cb0541002e5628cc8609e81666701d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-513.raw",
+          "bytes": 24576,
+          "sha256": "8af7be8a9f4f122cfdaa87790680d13753fb09ba74b0e32e61d006219b0f9ab1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-514.raw",
+          "bytes": 24576,
+          "sha256": "08fd507f1303c399f33373068e644c107d90dc53556e674920e12d727b9a96c0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-515.raw",
+          "bytes": 24576,
+          "sha256": "0ef7407caf4c1942c95b09b1d56d8812b0cff040f7eece1529a99686ce517c21",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-516.raw",
+          "bytes": 24576,
+          "sha256": "4d604fa34239c4eba047f7b9245df277a61bc9a8a0796dd314dc7da4e0dd4eff",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-517.raw",
+          "bytes": 24576,
+          "sha256": "4f308bfc6da0826675cf92ba5012e5399b4f34142294d29e4e4cdba272704b33",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-518.raw",
+          "bytes": 24576,
+          "sha256": "c546327790a010aca107584abbcb5064e39d070fcd56b408fdbae411e0cc25af",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-519.raw",
+          "bytes": 24576,
+          "sha256": "3634d00e8da02ce287451864401be67bf99dc0ca0ad184f02f58862296bc380d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-520.raw",
+          "bytes": 24576,
+          "sha256": "fe0d09cadb52a05d13a77050da6ba08128b371e6d374a6de6ee93763abefffcf",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-521.raw",
+          "bytes": 24576,
+          "sha256": "1c24c8ca506950730f0c62f4afca0a7d571057a0bf2c702eefdf8d8555b6b89c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-522.raw",
+          "bytes": 24576,
+          "sha256": "149c7838b254951a746f00ddd59a40473417966fd83e957ed75619ffb26f46e0",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-523.raw",
+          "bytes": 24576,
+          "sha256": "3b8b7a1dc617f3b171a564616fc218070e7f8354f47fbfdc21a33e276ec3c12c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-524.raw",
+          "bytes": 24576,
+          "sha256": "7fb1ff063a4a33ec737b5127f5c05c28bb6b5e5ecb49d75fcb37a62237d32b3f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-525.raw",
+          "bytes": 24576,
+          "sha256": "f927bc7afa1e77da13b0b43d07f87ff74eb2ea315de3b549fdc13b5265c4c31c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-526.raw",
+          "bytes": 24576,
+          "sha256": "20ab0395324536a2b4815d0dcdad0f92ad382fa0888041f4ff89b5e16fc76d0f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-527.raw",
+          "bytes": 24576,
+          "sha256": "3bcf4321fddf4f2729e9650f4e8c85086857e5fee169a7da36ffa3ef22ef7c9e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-528.raw",
+          "bytes": 24576,
+          "sha256": "50ca897c4fda4d21c54588797cf74cb8d20844f38c0c3a2bc4de731ddb956329",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-529.raw",
+          "bytes": 24576,
+          "sha256": "f9f95e2951e628a103e3ac0c72af375a182175dd32e9fb8689a7540d8bbe0417",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-530.raw",
+          "bytes": 24576,
+          "sha256": "f68c3883a9da861ed603b99f852bc7098a86ccb8aa3a1320b44013e4f03b5c5b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-531.raw",
+          "bytes": 24576,
+          "sha256": "0737688ceae033e19b0286a5dd61c6c4dbbc61d0793d6f68bbe60c95ccc85fc6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-532.raw",
+          "bytes": 24576,
+          "sha256": "895e18664f3a7ebe89f361f2f34ec1d85794dffe247761d8695cf1e54627357f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-533.raw",
+          "bytes": 24576,
+          "sha256": "adf49fca64eb31610cdfd3ec3ba0405ce3aa8f86b72b4f7ab950c85cfe2fcb82",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-534.raw",
+          "bytes": 24576,
+          "sha256": "7ab065075251d8e98b916fa9a889d6bcd1c86853737beced0f032568bc8344f1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-535.raw",
+          "bytes": 24576,
+          "sha256": "40d372e7a68ad34964431e223e6ff102b48b046c32efe2d3a0096a2e0e5590d2",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-536.raw",
+          "bytes": 24576,
+          "sha256": "74f8be440e01cc170e406e4214fceb65bbe8de234819fb323227b299e816a30c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-537.raw",
+          "bytes": 24576,
+          "sha256": "6269681b4532bbd0a3925d9c4b303c3e2d743ce8245d5a38c901faffefaac26b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-538.raw",
+          "bytes": 24576,
+          "sha256": "6a6a4bace05378ea2c6ea5002e4fba657f7d472176aa7282ebda7ea2b5f249c8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-539.raw",
+          "bytes": 24576,
+          "sha256": "dd57bf4e6ec0e8b05726444c5a321cf6b596374618badfdaadb192c14c94bf24",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-540.raw",
+          "bytes": 24576,
+          "sha256": "33149618b6b48c789c025790a5256435fdc820cf5777f717fe7cd90314f5353e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-541.raw",
+          "bytes": 24576,
+          "sha256": "746d99ec890bb55a5ffe52ff0a7a902e0ae4100f1f7aa35b362ca22a970c33cc",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-542.raw",
+          "bytes": 24576,
+          "sha256": "b7ca11e0dab02f7ecc1e11124312228a09b191180c4b35c435c1dc4a38d29f02",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-543.raw",
+          "bytes": 24576,
+          "sha256": "164e1162366acfc73ba8f359fd1748a576ab9344e603e0873afde1bf13ba8a84",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-544.raw",
+          "bytes": 24576,
+          "sha256": "2aa3c613434c4db841346ddaeea76afa89d51a6b4754c4dd1bbcb0d95a0110d9",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-545.raw",
+          "bytes": 24576,
+          "sha256": "788f22a42a8d110e85b762b7ae52a752aab27dfa50d81574f53552b6fc31b570",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-546.raw",
+          "bytes": 24576,
+          "sha256": "5f85fa852841c093d1a332e50b636a95ca35097682684667aaa19304d75b6fcd",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-547.raw",
+          "bytes": 24576,
+          "sha256": "e56cd3e08cada8a39d7cfc4e172e24571626fc681f0ec9b9bdab74a3b6205308",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-548.raw",
+          "bytes": 24576,
+          "sha256": "148d7e658c1a66defb0f8f4a2d4db25f66d93263839db0bc89b370955002d11f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-549.raw",
+          "bytes": 24576,
+          "sha256": "90be744275877db1dca386d4e48e56fb8049ebc6a19547f27886460e31197c9d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-550.raw",
+          "bytes": 24576,
+          "sha256": "c1e593571009bc271b63edbf2ba621a17c676fb5f74f0a33befb4bae5f5ccd50",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-551.raw",
+          "bytes": 24576,
+          "sha256": "14948377cb626b3852020245230e1fc38438ac5419c579d0e9e03fb6e80c8f0f",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-552.raw",
+          "bytes": 24576,
+          "sha256": "3d8550a45b84b5325fbb26db46428566384972f2d8da36dbf53b90c0c9dee211",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-553.raw",
+          "bytes": 24576,
+          "sha256": "eefa3e0a48496f612bd6b6db9ff2b2efcc1021c0a7d1f722f78b40fb91600c76",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-554.raw",
+          "bytes": 24576,
+          "sha256": "ff816db5ca6b730198a92d55012af5a89c3c355fe37fc554fa453dc56091a02e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-555.raw",
+          "bytes": 24576,
+          "sha256": "c8d856319ef2e7cc8050a971f93053cadc902bceb501008d358cfb695d37acd3",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-556.raw",
+          "bytes": 24576,
+          "sha256": "1de541af5a4ab8921851a804f9d501cc53488307c0dd830ce6fa828b9a931002",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-557.raw",
+          "bytes": 24576,
+          "sha256": "2c0677392e0d614c1f6e0e345cd49b3f45403540eedb20bed4f03f019d398e04",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-558.raw",
+          "bytes": 24576,
+          "sha256": "8fd64269407797ef7dc167e5be3550f63e6791baa3914d7ceebd2a02fc7fc569",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-559.raw",
+          "bytes": 24576,
+          "sha256": "61c39f2046d86fd1b3c75312e641f6a461a34bb769349e20ccec34bfbf9fb96b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-560.raw",
+          "bytes": 24576,
+          "sha256": "e193845b7df9a0e6e9f1f9416c2417fa0917355dd5b1cc4279a94a57a6b2a43c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-561.raw",
+          "bytes": 24576,
+          "sha256": "1789b42150db7a4570a63ebdbaa8012c9ee8ea1e2996e7f0e89d0e1f0fe3ef24",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-562.raw",
+          "bytes": 24576,
+          "sha256": "256f208b4d3ddeb600b114ebde225a44b2c6d3ee691b824295a7696d063a1483",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-563.raw",
+          "bytes": 24576,
+          "sha256": "897289ef142b94704035d5e290b59e90d630f17fd242fe87e84c7d20f99e520b",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-564.raw",
+          "bytes": 24576,
+          "sha256": "13661837aedacbe1896d883e4c4d8200dd0fee9f109a83adf5c4d65687e4b0c1",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-565.raw",
+          "bytes": 24576,
+          "sha256": "20dfd3d98b71672ce3f93386f69d91222943d6c9df9de63d73578d2500828caa",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-566.raw",
+          "bytes": 24576,
+          "sha256": "a9d2b54e0e3f4d241c00af91d5fb4d996329c53bf3fecdcc6bc01cde8a3fdd19",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-567.raw",
+          "bytes": 24576,
+          "sha256": "f69c760fac64653ccb19739f20c5c39fc614e6f11b46e2bec46da5e68d5aaa3d",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-568.raw",
+          "bytes": 24576,
+          "sha256": "aa038cd71c95d43ee971c6d19baba2b3056a96e96757c25728fa03a78da80b68",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-569.raw",
+          "bytes": 24576,
+          "sha256": "12eb251cf74491d8a7dfd45eb8c99317e37aacae4f63942b7a7ec5d1d231c49e",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-570.raw",
+          "bytes": 24576,
+          "sha256": "4960091a684a361885731d238b8f4886e569966f8321f13f9986a1ad503398e6",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-571.raw",
+          "bytes": 24576,
+          "sha256": "0cd55aa3e4c75a76b8d9724f740965c7c71c2ab886e870f9a5942ecaabc60494",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-572.raw",
+          "bytes": 24576,
+          "sha256": "215ba8739ce2a9f0548981070e7a83f7ebc20428e29669b6282dc07b0e4a16c8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-573.raw",
+          "bytes": 24576,
+          "sha256": "1a42a7801b332c81b7b76f68542f4a0205f66c07410a267033015a33f5ab647c",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-574.raw",
+          "bytes": 24576,
+          "sha256": "066b2fa22227f3f5a6a6e4aad7378a4dadf46879af8fb351c5a0869d335453b8",
+          "suffix": ".raw"
+        },
+        {
+          "name": "sampler-mip-575.raw",
+          "bytes": 24576,
+          "sha256": "cddde9f4dae8f6a422c132dea48c122e41ee0cab4f1f4b2915f4ad60c32d4cf4",
+          "suffix": ".raw"
+        }
+      ]
+    }
+  ],
+  "historical_result_preserved": true,
+  "normal_records_zip_not_copied": true,
+  "source_snapshot_zip_not_copied": true,
+  "cross_checked_original_member_manifest": true
+}

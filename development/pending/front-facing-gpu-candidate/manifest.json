@@ -1,0 +1,285 @@
+{
+  "name": "front-facing-gpu-candidate",
+  "gpu_execution": false,
+  "android_execution": false,
+  "source_snapshot": [
+    {
+      "path": "nvn-native/CMakeLists.txt",
+      "before_sha256": "cf2bc83eb9713c934f92df991ebcebec351ed69631b8c40d89e4252e67056021",
+      "sha256": "d889569cfacb3109d5402d7ffcec8352cbc36ca2fbd9c85e895724405b7c11d7",
+      "bytes": 79837,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/CMakeLists.txt"
+    },
+    {
+      "path": "nvn-native/tools/build_android_probe.py",
+      "before_sha256": "202897ec4aa05ed3bf5b3882af6a12096fe5c74e43354b2344b5996c46cc5b13",
+      "sha256": "55c7e02e6ddfe0e4439de77c56e42899e15aa9936c86eb9540ddf1253331cac8",
+      "bytes": 65120,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tools/build_android_probe.py"
+    },
+    {
+      "path": "nvn-native/tools/run_android_probe.py",
+      "before_sha256": "e14ff4c28853501a7a2a131e06c58bbddf6e28b4745fd1e4bf195466cb3473e7",
+      "sha256": "c7cdbf5d467ef9287d2a1cf123ec32b73f7cac8c0d2555b77d8533481a746c71",
+      "bytes": 55962,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tools/run_android_probe.py"
+    },
+    {
+      "path": "nvn-native/tests/front_facing_probe.c",
+      "before_sha256": null,
+      "sha256": "dcd558a32746874e1be16e6e0f0cbea64c11cb4e18ad7e23413f08ded784ebea",
+      "bytes": 11003,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tests/front_facing_probe.c"
+    },
+    {
+      "path": "nvn-native/tests/d2r_bridge/front_facing_probe_host.c",
+      "before_sha256": null,
+      "sha256": "079ea03049a48bfb985adc94e63956f7895fedcb923bfe0021ceb36aa0c43cf5",
+      "bytes": 3571,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tests/d2r_bridge/front_facing_probe_host.c"
+    },
+    {
+      "path": "nvn-native/tests/test_front_facing_validation.py",
+      "before_sha256": null,
+      "sha256": "71c47d6ffa7ea5acec2fc9fc630bd7806b9d1350070849908776cbfb9c86ce4e",
+      "bytes": 4800,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tests/test_front_facing_validation.py"
+    },
+    {
+      "path": "nvn-native/tools/front_facing_qualification.py",
+      "before_sha256": null,
+      "sha256": "1496fd186a413439aa921102ebfd24475182ca289be786c4b6c93a1d8bb5b48f",
+      "bytes": 8824,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tools/front_facing_qualification.py"
+    },
+    {
+      "path": "nvn-native/tools/front_facing_validation.py",
+      "before_sha256": null,
+      "sha256": "5623aacc7de9dd1fc1f4201253e1ca56fc8be9a61d34ab81a8742085f1eff4ea",
+      "bytes": 6384,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tools/front_facing_validation.py"
+    },
+    {
+      "path": "nvn-native/tools/front_facing_runner.py",
+      "before_sha256": null,
+      "sha256": "783b16d56e4e0a659d8388163eceec89c01aa98672b650bc8eed6121c1ee5800",
+      "bytes": 1394,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tools/front_facing_runner.py"
+    },
+    {
+      "path": "nvn-native/tools/check_front_facing_probe.py",
+      "before_sha256": null,
+      "sha256": "c44490172e4fc9f9a3da9889f50b9bdb7366cc51ccd0ed1882e1a3fe53157e8c",
+      "bytes": 6728,
+      "snapshot": "candidates/front-facing-gpu-candidate/source/nvn-native/tools/check_front_facing_probe.py"
+    }
+  ],
+  "records": [
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/front-facing-gpu-candidate/tree/.local/qualification-v4/check.json",
+        "bytes": 550760,
+        "sha256": "51c9f350de77d0a2f3e9d56105a1d95974ccee64f751c22c96a1955597690ad2"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "raw-native-front-facing-qualification-v1",
+        "passed": true,
+        "gpu_execution": false,
+        "producer_sha256": "1496fd186a413439aa921102ebfd24475182ca289be786c4b6c93a1d8bb5b48f",
+        "compiler_record": "${LEGACY_WORKTREE}/.local/nvn-native/ir3-front-storage-integrated-v1/build-record.json",
+        "fdl_root": "${LEGACY_WORKTREE}",
+        "fdl_check": "${LEGACY_WORKTREE}/.local/nvn-native/runtime-fdl-front-storage-integrated-v1/check.json",
+        "header": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-gpu-candidate/tree/.local/qualification-v4/front_facing_qualification.h",
+        "jobs": 320,
+        "draws": 384,
+        "submissions": 640,
+        "finishes": 640,
+        "files": 512,
+        "cases": 192,
+        "replays": 192,
+        "max_fragcoord_channel_error": 1,
+        "exact_face_channels": true,
+        "exact_D32F_depth": true,
+        "original_FS12_texture106_still_unknown": true,
+        "nvn_api": false,
+        "game_modules_executed": false
+      },
+      "container_counts": {
+        "native_libraries": 4,
+        "recipes": 3,
+        "targets": 2,
+        "depth_view": 7,
+        "formats": 2,
+        "sequence_offsets": 2,
+        "inputs": 2494,
+        "artifacts": 61
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 2494,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 61,
+          "missing": [],
+          "mismatches": []
+        }
+      }
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/front-facing-gpu-candidate/tree/.local/host-v4/check.json",
+        "bytes": 3472504,
+        "sha256": "b1a55fd4c043874747c2aa1fe1bf7ee60d5b398731fbe991982ba934b37e0bfd"
+      },
+      "facts": {
+        "schema": 1,
+        "kind": "raw-native-front-facing-probe-host-v1",
+        "passed": true,
+        "gpu_execution": false,
+        "android_execution": false,
+        "HOST_nonexecuting_submits_per_sanitizer": 640,
+        "actual_GPU_submits": 0,
+        "ambiguous_owners_per_sanitizer": 22,
+        "constructor_faults_per_sanitizer": 3,
+        "negative_cases": 24,
+        "cli_mode_negative_cases": 3,
+        "default_OFF_closed": true
+      },
+      "container_counts": {
+        "runs": 83,
+        "oracle": 7,
+        "inputs": 2760,
+        "artifacts": 10376
+      },
+      "direct_hash_validation": {
+        "inputs": {
+          "checked": 2760,
+          "missing": [],
+          "mismatches": []
+        },
+        "artifacts": {
+          "checked": 10376,
+          "missing": [],
+          "mismatches": []
+        }
+      },
+      "oracle_summary": {
+        "passed": true,
+        "host_only": true,
+        "gpu_execution": false,
+        "nonexecuting_HOST_pixels_rejected": true,
+        "positive_synthetic_cases": 384,
+        "negative_cases": 24
+      }
+    },
+    {
+      "record": {
+        "path": ".local/nvn-native/parallel/front-facing-gpu-candidate/tree/.local/apk-v2/build-record.json",
+        "bytes": 1202423,
+        "sha256": "34346b2b9afec3f244fcbc0151ca18dd614dad86c4362fb617fcb2c394bc15ea"
+      },
+      "facts": {
+        "schema": 1,
+        "shader_check": null,
+        "shader_case": null,
+        "nvn_api": false,
+        "compute_call": false,
+        "compute_indirect": false,
+        "compute_indirect_validation": null,
+        "maxwell_check": null,
+        "graphics_check": null,
+        "graphics_draw_batch": false,
+        "device_inspect": false,
+        "nvn_graphics_check": null,
+        "texture_check": null,
+        "nvn_external_image_check": null,
+        "external_image_slots": null,
+        "nvn_window_check": null,
+        "window_slots": null,
+        "window_source_check": null,
+        "window_source_slots": null,
+        "fullsize_display_check": null,
+        "fullsize_display_slots": null,
+        "nvn_counter_check": null,
+        "nvn_copy_check": null,
+        "iocoherent_inspect": false,
+        "bc_sampled_check": null,
+        "texture_texels_check": null,
+        "volume_texture_check": null,
+        "buffer_texture_check": null,
+        "volume_shadow_check": null,
+        "public_volume_copy_check": null,
+        "clear_color_check": null,
+        "public_copy_check": null,
+        "public_copy_call": false,
+        "public_packaged_copy_check": null,
+        "block_copy_check": null,
+        "texture_conversion_check": null,
+        "native_pipeline_check": null,
+        "native_depth_check": null,
+        "native_depth_sampled_check": null,
+        "native_depth_shadow_check": null,
+        "native_gather_check": null,
+        "native_sampler_mip_check": null,
+        "native_color_target_check": null,
+        "nvn_pipeline_runtime_views_check": null,
+        "nvn_pipeline_check": null,
+        "nvn_pipeline_call": false,
+        "casc_gather_depth_check": null,
+        "nvn_color_target_check": null,
+        "nvn_pipeline_buffer_check": null,
+        "nvn_pipeline_bc_check": null,
+        "nvn_pipeline_sampled_check": null,
+        "nvn_pipeline_bc_mips_check": null,
+        "nvn_pipeline_gob_check": null,
+        "nvn_texture_bridge_check": null,
+        "texture_bridge_diagnostics": false,
+        "nvn_sampler_check": null,
+        "nvn_texture_check": null,
+        "texture_device_flags": null,
+        "texture_noaccess_pool": false,
+        "texture_modes": false,
+        "texture_uncached_pools": false,
+        "texture_descriptor_flags": 0,
+        "ahb_inspect": false,
+        "ahb_graphics_check": null,
+        "ahb_present_check": null,
+        "activity": "android.app.NativeActivity",
+        "d2r_host": null,
+        "compute_driverparams_check": null,
+        "scope": "Standalone native KGSL qualification; no real ARM64 game module execution"
+      },
+      "container_counts": {
+        "source": 865,
+        "commands": 6,
+        "compiled_inputs": 2556,
+        "native_front_facing_check": 30,
+        "nvn_contract": 9,
+        "tools": 11,
+        "artifacts": 2
+      },
+      "direct_hash_validation": {
+        "artifacts": {
+          "checked": 2,
+          "missing": [],
+          "mismatches": []
+        }
+      }
+    }
+  ],
+  "status": "ready-thin-patch",
+  "ready": {
+    "path": ".local/nvn-native/parallel/front-facing-gpu-candidate/ready.json",
+    "bytes": 2483,
+    "sha256": "789f660f9443aa52e79ad57d664be0d1ffe77b0efc8381d37ab62a3fa6511725"
+  },
+  "patch": {
+    "path": ".local/nvn-native/parallel/front-facing-gpu-candidate/minimal-promote.patch",
+    "bytes": 54376,
+    "sha256": "a4ce5d04c4b751f3cb82c76148ffdb7918635a03264629d1b9c0a4f52bdc1543"
+  },
+  "proprietary_artifacts_excluded": true
+}

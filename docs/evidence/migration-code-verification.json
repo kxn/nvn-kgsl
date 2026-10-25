@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "kind": "standalone-migration-code-verification-v1",
+  "scope": "source/host compilation and mocked validation only; no Android process, ADB, GPU or game execution",
+  "core_android": {
+    "passed": true,
+    "translation_units": 29,
+    "local_dependency_source_files": 129,
+    "external_D2R_required": false,
+    "external_frontend_required": false
+  },
+  "authored_host_tests": {
+    "passed": true,
+    "test_cases": 27,
+    "suites": [
+      "shader_fixture",
+      "copy_tools",
+      "probe_provenance",
+      "pool_policy_diagnostic"
+    ],
+    "data": "synthetic metadata/readback fixtures only; subprocess/ADB mocks"
+  },
+  "public_shader_frontend": {
+    "passed": true,
+    "project_count": 4,
+    "source_files": 370,
+    "artifacts": 64,
+    "separate_source_root": true,
+    "source_manifest_fully_verified": true
+  },
+  "authored_shader_compilation": {
+    "passed": true,
+    "cases": 4,
+    "pipeline": "authored GLSL to SPIR-V to actual NIR/IR3 and A650 storage sidecars",
+    "GPU_executed": false,
+    "private_game_input": false,
+    "Mesa_compiler": "pre-existing pinned source/hash closure revalidated against standalone overlay bytes"
+  },
+  "external_D2R_host_family": {
+    "passed": true,
+    "assertions": 22,
+    "modes": [
+      {
+        "mode": "activity",
+        "enabled": true,
+        "original_host_sources": 36,
+        "compiled_sources": 67
+      },
+      {
+        "mode": "host",
+        "enabled": true,
+        "original_host_sources": 36,
+        "compiled_sources": 66
+      },
+      {
+        "mode": "activity",
+        "enabled": false,
+        "original_host_sources": 36,
+        "compiled_sources": 66
+      }
+    ],
+    "game_modules_executed": false
+  },
+  "canonical_external_D2R_activity": {
+    "passed": true,
+    "host_abi": 2,
+    "rewrite_abi": "elfdesc",
+    "rules": "native",
+    "original_NSOs_rebuilt": 3,
+    "game_executed": false,
+    "private_inputs_and_outputs": "excluded from public repository; only existing canonical external rewrite pipeline used",
+    "normal_verify_passed": true
+  },
+  "limitations": [
+    "whole tests/test_*.py unittest discovery is not supported: legacy files include direct CLI programs and private historical-evidence readers; use check_standalone.py for public baseline",
+    "Original-game first Draw/Submit/Present and first frame remain incomplete; migration adds no hardware feature claim",
+    "Historic records remain unchanged and historical; new source-root records are regenerated, never path-rewritten into false passes"
+  ]
+}

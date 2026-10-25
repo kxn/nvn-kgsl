@@ -1,0 +1,1695 @@
+--- a/nvn-native/include/nvn_native/pipeline.h
++++ b/nvn-native/include/nvn_native/pipeline.h
+@@ -45,6 +45,10 @@
+     /* Actual compiler-logical bindings, separate from NVN API slots. */
+     const struct nn_pipeline_storage_types *storage_types;
+     struct nn_pipeline_buffer storage[2][16];
++    /* Explicit actual compiler facts; pointer must equal Program-owned proof.
++     * Raw native DrawID is caller data. No NVN DrawID mapping is inferred. */
++    const struct nn_pipeline_runtime_constants *runtime_constants;
++    uint32_t runtime_draw_id;
+ };
+ struct nn_pipeline_submission {nn_bo *job;size_t command_bytes;nn_bo *resources[128];size_t resource_count;};
+ /* Full-target viewport helper has unambiguous qualified0/1 origin+depth modes;
+--- a/nvn-native/include/nvn_native/pipeline_nvn.h
++++ b/nvn-native/include/nvn_native/pipeline_nvn.h
+@@ -4,11 +4,13 @@
+ #include "nvn_native/pipeline_source.h"
+ struct nn_pipeline_depth_archive;
+ struct nn_pipeline_storage_archive;
++struct nn_pipeline_runtime_archive;
+ #ifdef __cplusplus
+ extern "C" {
+ #endif
+ int nn_nvn_register_pipeline_depth_archive(NVNdevice *,const struct nn_pipeline_depth_archive *);
+ int nn_nvn_register_pipeline_storage_archive(NVNdevice *,const struct nn_pipeline_storage_archive *);
++int nn_nvn_register_pipeline_runtime_archive(NVNdevice *,const struct nn_pipeline_runtime_archive *);
+ 
+ /* Strict bounded read callback: returns exact bytes read or a short/negative
+  * count; errno accompanies negative return. It must not reenter NVN or alter
+--- a/nvn-native/include/nvn_native/pipeline_recipe.h
++++ b/nvn-native/include/nvn_native/pipeline_recipe.h
+@@ -7,7 +7,8 @@
+ #define NN_PIPELINE_MAX_BINDINGS 16u
+ /* Native compiler bindings, NEVER NVN API slots or descriptor pool IDs. */
+ enum nn_pipeline_patch_role { NN_PIPELINE_CODE,NN_PIPELINE_UBO,
+-    NN_PIPELINE_SAMPLERS,NN_PIPELINE_TEXTURES,NN_PIPELINE_STORAGE };
++    NN_PIPELINE_SAMPLERS,NN_PIPELINE_TEXTURES,NN_PIPELINE_STORAGE,
++    NN_PIPELINE_DRIVER_PARAMS,NN_PIPELINE_DYNAMIC_UBO };
+ struct nn_pipeline_address_patch {
+     uint32_t word,role,stage,binding,offset,bytes;
+ };
+@@ -44,3 +45,19 @@
+  const uint32_t *spirv[2];size_t spirv_bytes[2];
+  uint32_t mask[2],operations[2][16]; /* READ1 / WRITE2 / SIZE4 */
+ };
++
++/* Actual lowered common-IR3 constant requirements. DWORD mask identifies the
++ * consumed words, independently from padded upload allocation. UBO mask is
++ * residual native binding space after actual constant-range pushing, never
++ * an NVN API slot mask. This layout alone grants no runtime admission. */
++struct nn_pipeline_runtime_layout {
++ uint32_t version;
++ const struct nn_pipeline_shader_recipe *recipe;
++ uint32_t driver_dwords[2],driver_mask[2],driver_offset_vec4[2],driver_upload_vec4[2];
++ uint32_t ubo_mask[2],ubo_entries[2];
++};
++struct nn_pipeline_runtime_constants {
++ uint32_t version;
++ const struct nn_pipeline_runtime_layout *layout;
++ const uint32_t *spirv[2];size_t spirv_bytes[2];
++};
+--- /dev/null
++++ b/nvn-native/include/nvn_native/pipeline_runtime_constants.h
+@@ -0,0 +1,47 @@
++/* SPDX-License-Identifier: MIT. Actual common IR3 runtime constants. */
++#pragma once
++#include "pipeline_shader.h"
++#include "graphics.h"
++#ifdef __cplusplus
++extern "C" {
++#endif
++struct nn_pipeline_native_artifact;
++/* Structural, actual recipe/SPIR-V identity and exact packet coverage. No BO
++ * allocations/maps/submission. NULL is allowed only for a recipe with no new
++ * address roles. Native bindings are never NVN API indices. */
++int nn_pipeline_runtime_constants_validate(const struct nn_pipeline_runtime_constants *,
++ const struct nn_pipeline_shader_recipe *,const struct nn_offline_graphics_stage *const [2]);
++/* Caller supplies an explicit native DrawID. Indirect packets start their own
++ * GPU draw index and require draw_id==0. No indirect BO is mapped or read.
++ * Public NVN must independently establish any DrawID mapping before admission. */
++int nn_pipeline_runtime_draw(const struct nn_pipeline_runtime_constants *,const struct nn_gfx_draw *,
++ uint32_t draw_id,uint32_t words[16],uint32_t *indirect_dst_vec4);
++/* Descriptor's entire declared range is included, not only the first push
++ * range. Exact vec4 extents avoid exposing unrelated end padding. Strict
++ * 16-byte alignment and <=64KiB range are the current implemented subset. */
++int nn_pipeline_runtime_ubo_descriptor(struct nn_pipeline_buffer,uint32_t words[2]);
++const struct nn_pipeline_runtime_constants *nn_pipeline_program_runtime_constants(const nn_pipeline_program *);
++struct nn_pipeline_typed_archive;
++struct nn_pipeline_runtime_archive {
++ uint32_t version;const struct nn_pipeline_typed_archive *typed;
++ const struct nn_pipeline_runtime_constants *const *pairs;size_t pair_count;
++};
++int nn_pipeline_runtime_archive_validate(const struct nn_pipeline_runtime_archive *);
++int nn_pipeline_select_runtime_constants(const struct nn_pipeline_runtime_archive *,
++ const struct nn_offline_graphics_stage *,const struct nn_offline_graphics_stage *,
++ const struct nn_pipeline_shader_recipe *,const struct nn_pipeline_runtime_constants **);
++/* Explicit constructors preserve legacy admission. Optional depth/storage
++ * sidecars retain their existing independent feature checks and identities. */
++int nn_pipeline_program_create_native_runtime(nn_device *,const struct nn_pipeline_native_artifact *,
++ const struct nn_pipeline_depth_export *,const struct nn_pipeline_storage_types *,
++ const struct nn_pipeline_runtime_constants *,nn_pipeline_program **,nn_pipeline_program **);
++int nn_pipeline_program_create_typed_runtime(nn_device *,const struct nn_offline_graphics_archive *,
++ const struct nn_offline_graphics_stage *,const struct nn_offline_graphics_stage *,const struct nn_pipeline_texture_types *,
++ const struct nn_pipeline_depth_export *,const struct nn_pipeline_storage_types *,
++ const struct nn_pipeline_runtime_constants *,nn_pipeline_program **,nn_pipeline_program **);
++int nn_pipeline_shader_preflight_runtime(const struct nn_offline_graphics_stage *const [2],
++ const struct nn_pipeline_shader_recipe *,const struct nn_pipeline_depth_export *,
++ const struct nn_pipeline_runtime_constants *,const struct nn_pipeline_buffer [2][16]);
++#ifdef __cplusplus
++}
++#endif
+--- a/nvn-native/include/nvn_native/pipeline_shader.h
++++ b/nvn-native/include/nvn_native/pipeline_shader.h
+@@ -12,6 +12,7 @@
+      * disjoint from shader commands and each other. Never caller CPU tables. */
+     nn_bo *job;size_t command_offset,sampler_offset,texture_offset;
+     size_t storage_offset;
++    size_t driver_params_offset;
+ };
+ /* Fully validate before writing. out_words=0 on error, job untouched. Actual
+  * immutable C1 overrides only its reflected native binding; conflicting input
+--- a/nvn-native/shader/graphics_ir3.c
++++ b/nvn-native/shader/graphics_ir3.c
+@@ -270,17 +270,25 @@
+ 
+ #ifdef NVN_PIPELINE_RECIPE_MAIN
+ int nvn_pipeline_artifact(const struct ir3_shader_variant *, const struct ir3_shader_variant *,
+- const struct ir3_shader_linkage *,uint32_t,uint32_t,const uint32_t[2],const char *);
++ const struct ir3_shader_linkage *,uint32_t,uint32_t,const uint32_t[2],bool,const char *);
+ #endif
+ 
+ int main(int argc, char **argv)
+ {
+     bool modes = false;
++    bool runtime_constants = false;
+     int positional = 1;
+     for (int i = 1; i < argc; ++i) {
+         if (!strcmp(argv[i], "--unit-render-scale")) {
+             if(nvn_unit_render_scale_requested)return 2;
+             nvn_unit_render_scale_requested=true;
++        } else if (!strcmp(argv[i], "--runtime-constants")) {
++#ifdef NVN_PIPELINE_RECIPE_MAIN
++            if(runtime_constants)return 2;
++            runtime_constants=true;
++#else
++            fprintf(stderr,"--runtime-constants requires standalone pipeline recipe producer\n");return 2;
++#endif
+         } else if (!strcmp(argv[i], "--modes")) {
+             if (modes) { fprintf(stderr, "duplicate --modes\n"); return 2; }
+             modes = true;
+@@ -359,7 +367,7 @@
+             reject("depth recipe requires actual float32 scalar FragDepth declaration");
+     }
+     const uint32_t storage_masks[2]={vs_usage.storage_mask,fs_usage.storage_mask};
+-    int pipeline_error=nvn_pipeline_artifact(vs,fs,&linkage,fs_usage.texture_mask,fs_usage.sampler_mask,storage_masks,argv[3]);
++    int pipeline_error=nvn_pipeline_artifact(vs,fs,&linkage,fs_usage.texture_mask,fs_usage.sampler_mask,storage_masks,runtime_constants,argv[3]);
+     if(pipeline_error)return pipeline_error;
+     if(storage_masks[0]||storage_masks[1]) {
+       snprintf(prefix,sizeof(prefix),"%s.pipeline.storage.json",argv[3]);
+--- /dev/null
++++ b/nvn-native/shader/ir3_runtime_constants_overlay.py
+@@ -0,0 +1,80 @@
++#!/usr/bin/env python3
++"""Read-only typed compiler facts from pinned common IR3 lowering.
++
++Changes no NIR, IR3, allocation or machine-code decisions. The exact lowerings
++that allocate constants expose the used DWORDs and remaining bindful UBOs;
++textual NIR/disassembly is diagnostic only, never parsed into the contract.
++"""
++PROFILE = 'mesa-26.2.5-ir3-runtime-constants-facts-v1'
++FILES = ('src/freedreno/ir3/ir3_shader.h',
++         'src/freedreno/ir3/ir3_nir.c',
++         'src/freedreno/ir3/ir3_nir_analyze_ubo_ranges.c')
++
++def replace(data, old, new):
++    old, new = old.encode(), new.encode()
++    if data.count(old) != 1:
++        raise ValueError('pinned common IR3 runtime-fact hook changed')
++    return data.replace(old, new)
++
++def patch(name, data):
++    if name == FILES[0]:
++        return replace(data, '   unsigned num_driver_params; /* scalar */', '''   unsigned num_driver_params; /* scalar */
++
++   /* Independent standalone consumer facts, not compiler policy. Masks come
++    * from actual const-state NIR passes; unknown inputs are separately marked.
++    * These fields never affect compilation or driver code generation. */
++   uint32_t nvn_driver_word_mask;
++   bool nvn_driver_unknown;
++   uint32_t nvn_remaining_ubo_mask;
++   bool nvn_remaining_ubo_unknown;''')
++    if name == FILES[1]:
++        return replace(data, '''   const_state->num_driver_params =
++      ir3_nir_scan_driver_consts(compiler, nir, &const_state->image_dims);''', '''   const_state->num_driver_params =
++      ir3_nir_scan_driver_consts(compiler, nir, &const_state->image_dims);
++
++   /* Observe the same actual driver-param intrinsics used by the allocator.
++    * Four-DWORD aligned allocation alone does not identify consumed values. */
++   const_state->nvn_driver_word_mask = 0;
++   const_state->nvn_driver_unknown = false;
++   nir_foreach_function (f, nir) {
++      if (!f->impl) continue;
++      nir_foreach_block (b, f->impl) {
++         nir_foreach_instr (i, b) {
++            if (i->type != nir_instr_type_intrinsic) continue;
++            nir_intrinsic_instr *intr = nir_instr_as_intrinsic(i);
++            struct driver_param_info p;
++            if (!ir3_get_driver_param_info(nir, intr, &p)) continue;
++            unsigned count = p.extra_size + nir_intrinsic_dest_components(intr);
++            if (p.offset >= 32 || count > 32 - p.offset) {
++               const_state->nvn_driver_unknown = true;
++            } else {
++               for (unsigned k = 0; k < count; k++)
++                  const_state->nvn_driver_word_mask |= 1u << (p.offset + k);
++            }
++         }
++      }
++   }''')
++    if name == FILES[2]:
++        return replace(data, '''      ir3_const_state_mut(v)->num_ubos = num_ubos;''', '''      ir3_const_state_mut(v)->num_ubos = num_ubos;
++
++      /* Observe residual loads AFTER the real push-range lowering. This is
++       * native compiler binding space, not a guessed application UBO table. */
++      struct ir3_const_state *facts = ir3_const_state_mut(v);
++      facts->nvn_remaining_ubo_mask = 0;
++      facts->nvn_remaining_ubo_unknown = false;
++      nir_foreach_function (f, nir) {
++         if (!f->impl) continue;
++         nir_foreach_block (b, f->impl) {
++            nir_foreach_instr (i, b) {
++               if (!instr_is_load_ubo(i)) continue;
++               struct ir3_ubo_info ubo = {};
++               if (!get_ubo_info(nir_instr_as_intrinsic(i), &ubo) ||
++                   ubo.bindless || ubo.global || ubo.block >= 16) {
++                  facts->nvn_remaining_ubo_unknown = true;
++               } else {
++                  facts->nvn_remaining_ubo_mask |= 1u << ubo.block;
++               }
++            }
++         }
++      }''')
++    raise ValueError('unknown common IR3 overlay path')
+--- a/nvn-native/shader/pipeline_artifact.cc
++++ b/nvn-native/shader/pipeline_artifact.cc
+@@ -13,7 +13,7 @@
+ #include "nvn_pipeline_recipe.h"
+ namespace {
+ static bool supported(const ir3_shader_variant *vs,const ir3_shader_variant *fs,
+-                      const ir3_shader_linkage *link)
++                      const ir3_shader_linkage *link,bool runtime_constants)
+ {
+     if(!vs||!fs||!link||vs->compiler!=fs->compiler||vs->compiler->gen!=6||
+        vs->compiler->dev_id->chip_id!=0x06050002||link->cnt>32||link->max_loc>128||
+@@ -26,11 +26,22 @@
+            v->info.max_reg<0||v->info.max_reg>=48||v->info.max_half_reg!=-1||!v->mergedregs||
+            v->constlen%4||v->constlen>128||v->bindless_tex||v->bindless_samp||v->bindless_ibo||
+            v->bindless_ubo||v->clip_mask||v->cull_mask||v->stream_output.num_outputs||
+-           v->num_sampler_prefetch||v->num_samp>16||c->num_ubos||c->num_driver_params||
++           v->num_sampler_prefetch||v->num_samp>16||(!runtime_constants&&(c->num_ubos||c->num_driver_params))||
+            c->driver_params_ubo.idx>=0||c->consts_ubo.idx>=0||c->primitive_map_ubo.idx>=0||
+            c->primitive_param_ubo.idx>=0||v->imm_state.count>128||
+            (v->imm_state.count&&(!v->imm_state.values||v->imm_state.size<align(v->imm_state.count,4))))
+             return false;
++        if(runtime_constants) {
++            const auto &a=c->allocs.consts[IR3_CONST_ALLOC_DRIVER_PARAMS];
++            if(c->nvn_driver_unknown||c->nvn_remaining_ubo_unknown||c->num_ubos>16||
++               c->nvn_remaining_ubo_mask>65535u||
++               (c->num_ubos?(!c->nvn_remaining_ubo_mask||unsigned(32-__builtin_clz(c->nvn_remaining_ubo_mask))!=c->num_ubos):c->nvn_remaining_ubo_mask))return false;
++            if(c->num_driver_params) {
++                if(v!=vs||c->num_driver_params!=4||!c->nvn_driver_word_mask||
++                   c->nvn_driver_word_mask&~7u||!a.offset_vec4||a.size_vec4!=4||
++                   a.offset_vec4%4||a.offset_vec4+a.size_vec4>v->constlen)return false;
++            }else if(c->nvn_driver_word_mask||a.size_vec4)return false;
++        }
+         if(v->imm_state.count&&c->allocs.max_const_offset_vec4+DIV_ROUND_UP(v->imm_state.count,4)>v->constlen)
+             return false;
+         for(unsigned i=0;i<c->ubo_state.num_enabled;i++) {
+@@ -95,9 +106,9 @@
+ }
+ }
+ extern "C" int nvn_pipeline_artifact(const ir3_shader_variant *vs,const ir3_shader_variant *fs,
+- const ir3_shader_linkage *link,uint32_t texture_mask,uint32_t sampler_mask,const uint32_t storage_masks[2],const char *prefix)
++ const ir3_shader_linkage *link,uint32_t texture_mask,uint32_t sampler_mask,const uint32_t storage_masks[2],bool runtime_constants,const char *prefix)
+ {
+-    if(!prefix||!storage_masks||strlen(prefix)>4000||!supported(vs,fs,link)||
++    if(!prefix||!storage_masks||strlen(prefix)>4000||!supported(vs,fs,link,runtime_constants)||
+        (storage_masks[0]|storage_masks[1])>65535u||
+        (vs->num_uavs&&!storage_masks[0])||(fs->num_uavs&&!storage_masks[1])) {
+         fprintf(stderr,"pipeline recipe: unsupported A650 shader/linkage feature\n");return 9;
+@@ -153,6 +164,23 @@
+                 CP_LOAD_STATE6_0_STATE_SRC(SS6_INDIRECT)|CP_LOAD_STATE6_0_STATE_BLOCK(block)|CP_LOAD_STATE6_0_NUM_UNIT((r.end-r.start)/16));
+             address(NN_PIPELINE_UBO,stage,r.ubo.block,r.start,r.end-r.start);
+         }
++        if(runtime_constants&&c->num_driver_params) {
++            const auto &a=c->allocs.consts[IR3_CONST_ALLOC_DRIVER_PARAMS];
++            p7(op,3);words.push_back(CP_LOAD_STATE6_0_DST_OFF(a.offset_vec4)|CP_LOAD_STATE6_0_STATE_TYPE(ST6_CONSTANTS)|
++                CP_LOAD_STATE6_0_STATE_SRC(SS6_INDIRECT)|CP_LOAD_STATE6_0_STATE_BLOCK(block)|CP_LOAD_STATE6_0_NUM_UNIT(a.size_vec4));
++            address(NN_PIPELINE_DRIVER_PARAMS,stage,0,0,a.size_vec4*16);
++        }
++        if(runtime_constants&&c->num_ubos) {
++            /* Native 64-bit UBO descriptors, exactly the Gallium ST6_UBO table
++             * contract. Holes are zero; runtime resolves each used full range. */
++            p7(op,3+2*c->num_ubos);words.push_back(CP_LOAD_STATE6_0_STATE_TYPE(ST6_UBO)|
++                CP_LOAD_STATE6_0_STATE_SRC(SS6_DIRECT)|CP_LOAD_STATE6_0_STATE_BLOCK(block)|CP_LOAD_STATE6_0_NUM_UNIT(c->num_ubos));
++            words.insert(words.end(),{0,0});
++            for(unsigned b=0;b<c->num_ubos;b++) {
++                if(c->nvn_remaining_ubo_mask&(1u<<b))address(NN_PIPELINE_DYNAMIC_UBO,stage,b,0,16);
++                else words.insert(words.end(),{0,0});
++            }
++        }
+         if(v->imm_state.count) {
+             unsigned count=align(v->imm_state.count,4);p7(op,3+count);
+             words.push_back(CP_LOAD_STATE6_0_DST_OFF(c->allocs.max_const_offset_vec4)|CP_LOAD_STATE6_0_STATE_TYPE(ST6_CONSTANTS)|
+@@ -250,6 +278,20 @@
+     fprintf(f,"};\nstatic const struct nn_pipeline_shader_recipe nn_pipeline_recipe={%u,0x06050002,{%u,%u},{nn_pipeline_code_0,nn_pipeline_code_1},nn_pipeline_words,%zu,nn_pipeline_patches,%zu,nn_pipeline_inputs,%zu,%u,%u,%u,%u,%u,%u,%u};\n",
+         writes_depth?NN_PIPELINE_DEPTH_RECIPE_VERSION:NN_PIPELINE_RECIPE_VERSION,vs->info.size,fs->info.size,words.size(),patches.size(),inputs.size(),
+         ir3_find_sysval_regid(vs,SYSTEM_VALUE_VERTEX_ID),ir3_find_sysval_regid(vs,SYSTEM_VALUE_INSTANCE_ID),texture_mask,sampler_mask,fs->num_samp,fs->fragcoord_compmask,fs->has_kill);
++    if(runtime_constants&&(ir3_const_state(vs)->num_driver_params||ir3_const_state(fs)->num_driver_params||ir3_const_state(vs)->num_ubos||ir3_const_state(fs)->num_ubos)) {
++        fprintf(f,"static const struct nn_pipeline_runtime_layout nn_pipeline_runtime={.version=1,.recipe=&nn_pipeline_recipe");
++        const char *names[]={"driver_dwords","driver_mask","driver_offset_vec4","driver_upload_vec4","ubo_mask","ubo_entries"};
++        for(unsigned field=0;field<6;field++) {
++            fprintf(f,",.%s={",names[field]);
++            for(unsigned stage=0;stage<2;stage++) {
++                const auto *c=ir3_const_state(stage?fs:vs);const auto &a=c->allocs.consts[IR3_CONST_ALLOC_DRIVER_PARAMS];
++                uint32_t values[]={c->num_driver_params,c->nvn_driver_word_mask,a.offset_vec4,a.size_vec4,c->nvn_remaining_ubo_mask,c->num_ubos};
++                fprintf(f,"%s%u",stage?",":"",values[field]);
++            }
++            fprintf(f,"}");
++        }
++        fprintf(f,"};\n");
++    }
+     if(writes_depth)fprintf(f,"static const struct nn_pipeline_depth_export nn_pipeline_depth={1,&nn_pipeline_recipe,1,%u,%u,1,1};\n",depth_regid,color_outputs);
+     if(fclose(f))return 5;
+     snprintf(path,sizeof(path),"%s.pipeline.json",prefix);f=fopen(path,"w");if(!f)return 5;
+@@ -263,5 +305,12 @@
+     fprintf(f,"]");
+     if(writes_depth)fprintf(f,",\"depth_export\":{\"schema\":1,\"recipe_version\":2,\"writes_depth\":true,\"regid\":%u,\"color_outputs\":%u,\"late_z_required\":true,\"lrz_disabled_required\":true}",depth_regid,color_outputs);
+     if(fs->frag_face)fprintf(f,",\"front_facing\":{\"schema\":1,\"half_scalar\":true,\"merged_registers\":true,\"max_full_register\":%d,\"max_separate_half_register\":%d,\"regid\":%u,\"live\":%s,\"need_size\":%s}",fs->info.max_reg,fs->info.max_half_reg,face,valid(face)?"true":"false",size?"true":"false");
+-    fprintf(f,"}\n");return fclose(f)?5:0;
++    fprintf(f,"}\n");if(fclose(f))return 5;
++    snprintf(path,sizeof(path),"%s.pipeline.runtime.json",prefix);f=fopen(path,"w");if(!f)return 5;
++    fprintf(f,"{\"schema\":1,\"basis\":\"actual common IR3 const-state allocation and post-push NIR UBO lowering\",\"enabled\":%s,\"stages\":[",runtime_constants?"true":"false");
++    for(unsigned stage=0;stage<2;stage++) {
++        const auto *c=ir3_const_state(stage?fs:vs);const auto &a=c->allocs.consts[IR3_CONST_ALLOC_DRIVER_PARAMS];
++        fprintf(f,"%s{\"driver_dwords\":%u,\"driver_mask\":%u,\"driver_offset_vec4\":%u,\"driver_upload_vec4\":%u,\"ubo_mask\":%u,\"ubo_entries\":%u,\"driver_unknown\":%s,\"ubo_unknown\":%s}",stage?",":"",c->num_driver_params,c->nvn_driver_word_mask,a.offset_vec4,a.size_vec4,c->nvn_remaining_ubo_mask,c->num_ubos,c->nvn_driver_unknown?"true":"false",c->nvn_remaining_ubo_unknown?"true":"false");
++    }
++    fprintf(f,"]}\n");return fclose(f)?5:0;
+ }
+--- /dev/null
++++ b/nvn-native/shaders/runtime_constants.frag
+@@ -0,0 +1,15 @@
++#version 450
++#ifndef CASE
++#define CASE 0
++#endif
++layout(location=0) in vec4 color;
++layout(location=0) out vec4 result;
++#if CASE >= 4
++layout(std140,binding=15) uniform DynamicFS { vec4 values[1024]; } data;
++#endif
++void main() {
++    result=color;
++#if CASE >= 4
++    result+=data.values[uint(gl_FragCoord.x)&255u];
++#endif
++}
+--- /dev/null
++++ b/nvn-native/shaders/runtime_constants.vert
+@@ -0,0 +1,28 @@
++#version 450
++#extension GL_ARB_shader_draw_parameters : require
++#ifndef CASE
++#define CASE 0
++#endif
++#if CASE >= 4
++layout(std140,binding=1) uniform DynamicVS { vec4 values[1024]; } data;
++#endif
++layout(location=0) in vec2 position;
++layout(location=0) out vec4 color;
++void main() {
++    uint v=uint(gl_VertexIndex);
++    vec4 result=vec4(0.0);
++#if CASE == 0 || CASE == 3 || CASE == 5
++    result.x=float(gl_BaseInstanceARB);
++#endif
++#if CASE == 1 || CASE == 3 || CASE == 5
++    result.y=float(gl_BaseVertexARB);
++#endif
++#if CASE == 2 || CASE == 3 || CASE == 5
++    result.z=float(gl_DrawIDARB);
++#endif
++#if CASE >= 4
++    result+=data.values[v&255u];
++#endif
++    color=result;
++    gl_Position=vec4(position,0.0,1.0);
++}
+--- a/nvn-native/src/nvn.c
++++ b/nvn-native/src/nvn.c
+@@ -13,6 +13,16 @@
+ #include "nvn_native/pipeline_frontend.h"
+ #include "nvn_native/pipeline_resource_queries.h"
+ #include "nvn_native/pipeline_storage.h"
++#include "nvn_native/pipeline_runtime_constants.h"
++#ifndef NN_NVN_GRAPHICS_RUNTIME_CONSTANTS
++#define NN_NVN_GRAPHICS_RUNTIME_CONSTANTS 0
++#endif
++#ifndef NN_PIPELINE_RUNTIME_CONSTANTS
++#define NN_PIPELINE_RUNTIME_CONSTANTS 0
++#endif
++#if NN_NVN_GRAPHICS_RUNTIME_CONSTANTS && (!NN_PIPELINE_RUNTIME_CONSTANTS || !NN_NVN_GRAPHICS_SOURCE_CACHE)
++#error "Public graphics runtime constants need native runtime constants and source cache"
++#endif
+ #ifndef NN_NVN_GRAPHICS_STORAGE
+ #define NN_NVN_GRAPHICS_STORAGE 0
+ #endif
+@@ -312,6 +322,7 @@
+     struct nn_shader_source_catalogue *shader_sources;
+     const struct nn_pipeline_depth_archive *pipeline_depth;
+     const struct nn_pipeline_storage_archive *pipeline_storage;
++    const struct nn_pipeline_runtime_archive *pipeline_runtime;
+     const struct nn_pipeline_typed_archive *pipeline_types; /* immutable normal actual-NIR facts */
+     const struct nn_tex_native_view *pipeline_views; size_t pipeline_view_count; /* immutable Device catalogue */
+     struct nn_pipeline_views *pipeline_runtime_views; /* owned CPU metadata, no eviction */
+--- a/nvn-native/src/nvn_pipeline_draw_prepare.inc
++++ b/nvn-native/src/nvn_pipeline_draw_prepare.inc
+@@ -529,6 +529,16 @@
+   if((e=pipeline_native_sample(device,p,binding,map)))goto fail;
+  }
+  s->native.texture_bound=recipe->texture_mask;s->native.sampler_bound=recipe->sampler_mask;
++#if NN_NVN_GRAPHICS_RUNTIME_CONSTANTS
++ if(device->pipeline_runtime){
++  const struct nn_pipeline_runtime_constants*t=NULL;
++  if((e=nn_pipeline_select_runtime_constants(device->pipeline_runtime,s->stages[0],s->stages[1],recipe,&t)))goto fail;
++  /* NVN DrawID -> source builtin mapping is unproved. The original twelve
++   * BaseInstance-only recipes do not consume word0. Never infer DrawID zero. */
++  if(t&&((t->layout->driver_mask[0]|t->layout->driver_mask[1])&1u)){e=ENOTSUP;goto fail;}
++  s->native.runtime_constants=t;s->native.runtime_draw_id=0;
++ }else for(size_t i=0;i<recipe->patch_count;i++)if(recipe->patches[i].role==NN_PIPELINE_DRIVER_PARAMS||recipe->patches[i].role==NN_PIPELINE_DYNAMIC_UBO){e=ENOTSUP;goto fail;}
++#endif
+ #if NN_NVN_GRAPHICS_STORAGE
+  if((e=pipeline_prepare_storage(device,p)))goto fail;
+ #endif
+@@ -547,6 +557,10 @@
+    const struct nn_pipeline_buffer *b=s->native.ubo[stage]+native;const struct bound *actual=s->uniforms[stage]+i;
+    if(b->bo==actual->pool->bo&&b->offset==actual->offset&&b->bytes==actual->size){
+     if((e=gpu_bound_access(actual,"NVN pipeline UBO")))goto fail;
++#if NN_NVN_GRAPHICS_RUNTIME_CONSTANTS
++    if(s->native.runtime_constants){struct descriptor_entry span={.pool=actual->pool,.offset=actual->offset,.size=actual->size};
++     if((e=bridge_feedback(recorded->target,&span))||(e=bridge_feedback(recorded->depth,&span)))goto fail;}
++#endif
+ #if NN_NVN_COLOR_TARGETS
+     if((e=pipeline_target_bound_alias(recorded->target,actual)))goto fail;
+ #endif
+--- a/nvn-native/src/nvn_pipeline_draw_submit.inc
++++ b/nvn-native/src/nvn_pipeline_draw_submit.inc
+@@ -45,6 +45,15 @@
+   e=nn_pipeline_select_texture_types(device->pipeline_types,p->stages[0],p->stages[1],p->recipe,&types);
+   if(!e&&types!=p->native.texture_types)e=EINVAL;
+   if(!e){
++#if NN_NVN_GRAPHICS_RUNTIME_CONSTANTS
++   if(p->native.runtime_constants){
++    const struct nn_pipeline_depth_export*depth=NULL;
++#if NN_NVN_DEPTH_TARGETS
++    if(draw->depth)depth=prepared->depth_export;
++#endif
++    e=nn_pipeline_program_create_typed_runtime(device->gpu,archive->stages,p->stages[0],p->stages[1],types,depth,p->native.storage_types,p->native.runtime_constants,&program,&retained);
++   }else
++#endif
+ #if NN_NVN_GRAPHICS_STORAGE
+    if(p->native.storage_types){
+     const struct nn_pipeline_depth_export*depth=NULL;
+--- a/nvn-native/src/nvn_pipeline_source.inc
++++ b/nvn-native/src/nvn_pipeline_source.inc
+@@ -129,3 +129,17 @@
+  (void)key;(void)a;return ENOTSUP;
+ #endif
+ }
++
++int nn_nvn_register_pipeline_runtime_archive(NVNdevice*key,const struct nn_pipeline_runtime_archive*a)
++{
++#if NN_NVN_GRAPHICS_SOURCE_CACHE && NN_NVN_GRAPHICS_RUNTIME_CONSTANTS
++ struct object*d=find(key,DEVICE);if(!d)return nn_nvn_error();
++ int e=nn_pipeline_runtime_archive_validate(a);if(e)return e;
++ if(a->typed!=d->pipeline_types||a->typed->archive!=d->pipeline_archive)return EINVAL;
++ if(d->pipeline_runtime)return EEXIST;
++ for(struct object*o=objects;o;o=o->next)if(o->kind==PROGRAM&&o->device==d)return EBUSY;
++ d->pipeline_runtime=a;return 0;
++#else
++ (void)key;(void)a;return ENOTSUP;
++#endif
++}
+--- a/nvn-native/src/pipeline.c
++++ b/nvn-native/src/pipeline.c
+@@ -5,6 +5,10 @@
+ #include "nvn_native/pm4.h"
+ #include "nvn_native/depth_native.h"
+ #include "nvn_native/pipeline_storage.h"
++#include "nvn_native/pipeline_runtime_constants.h"
++#ifndef NN_PIPELINE_RUNTIME_CONSTANTS
++#define NN_PIPELINE_RUNTIME_CONSTANTS 0
++#endif
+ #ifndef NN_PIPELINE_GRAPHICS_STORAGE
+ #define NN_PIPELINE_GRAPHICS_STORAGE 0
+ #endif
+@@ -47,7 +51,7 @@
+ #include "nvn_native/depth_sampled_native.h"
+ #endif
+ enum {COMMAND_CAPACITY=8192,ZERO_OFFSET=32768,SAMPLER_OFFSET=36864,TEXTURE_OFFSET=40960,
+-      SEQUENCE_OFFSET=45056,STORAGE_OFFSET=45120,JOB_BYTES=NN_PIPELINE_GRAPHICS_STORAGE?47168:45060};
++      SEQUENCE_OFFSET=45056,STORAGE_OFFSET=45120,DRIVER_OFFSET=47168,JOB_BYTES=NN_PIPELINE_RUNTIME_CONSTANTS?47232:NN_PIPELINE_GRAPHICS_STORAGE?47168:45060};
+ struct builder {uint32_t words[COMMAND_CAPACITY];size_t count;};
+ static int append(struct builder *b,const uint32_t *words,size_t count)
+ {if(count>COMMAND_CAPACITY-b->count)return EOVERFLOW;memcpy(b->words+b->count,words,count*4);b->count+=count;return 0;}
+@@ -142,8 +146,8 @@
+ }
+ /* Project's generic A650 Draw packet implementation (graphics.c), independent
+  * from its legacy image scan/replacement. Native code here has no driverparams;
+- * producer rejects any variant requiring them, including draw-id lowering. */
+-static int draw(struct builder *b,const struct nn_gfx_draw *d,struct nn_pipeline_submission *s)
++ * new typed runtime-constant profile supplies GPU-updated VS driver params. */
++static int draw(struct builder *b,const struct nn_gfx_draw *d,struct nn_pipeline_submission *s,uint32_t driver_dst)
+ {
+  static const uint32_t primitives[]={9,2,7,3,4,6,5};
+  if(d->mode>NN_GFX_DRAW_INDIRECT_COUNT||d->indexed>1||d->index_type>2||d->primitive<4||d->primitive>=7)return ENOTSUP;
+@@ -170,7 +174,7 @@
+  } else {
+   int counted=d->mode==NN_GFX_DRAW_INDIRECT_COUNT;
+   b->words[b->count++]=nvn_pm4_packet7(0x2a,d->indexed?(counted?11:9):(counted?8:6));b->words[b->count++]=ctl;
+-  b->words[b->count++]=d->indexed?(counted?7:4):(counted?6:2);b->words[b->count++]=d->max_draws;
++  b->words[b->count++]=(d->indexed?(counted?7:4):(counted?6:2))|(driver_dst<<8);b->words[b->count++]=d->max_draws;
+   if(d->indexed){b->words[b->count++]=(uint32_t)addresses[0];b->words[b->count++]=(uint32_t)(addresses[0]>>32);b->words[b->count++]=(uint32_t)indices;}
+   b->words[b->count++]=(uint32_t)addresses[1];b->words[b->count++]=(uint32_t)(addresses[1]>>32);
+   if(counted){b->words[b->count++]=(uint32_t)addresses[2];b->words[b->count++]=(uint32_t)(addresses[2]>>32);}
+@@ -234,8 +238,8 @@
+  }
+  for(size_t i=0;i<r->input_count;i++){unsigned location=r->inputs[i].location;if(location>=32||s->vertex.attributes[location].stream>=32)return EINVAL;
+   if((e=depth_alias(a,s->vertex.buffers[s->vertex.attributes[location].stream])))return e;}
+- for(size_t i=0;i<r->patch_count;i++){const struct nn_pipeline_address_patch*q=r->patches+i;if(q->role==NN_PIPELINE_UBO){if(q->stage>=2||q->binding>=16)return EINVAL;if((e=depth_alias(a,s->ubo[q->stage][q->binding])))return e;}}
+- struct builder command={0};struct nn_pipeline_submission refs={0};if((e=draw(&command,&s->draw,&refs)))return e;
++ for(size_t i=0;i<r->patch_count;i++){const struct nn_pipeline_address_patch*q=r->patches+i;if(q->role==NN_PIPELINE_UBO||q->role==NN_PIPELINE_DYNAMIC_UBO){if(q->stage>=2||q->binding>=16)return EINVAL;if((e=depth_alias(a,s->ubo[q->stage][q->binding])))return e;}}
++ struct builder command={0};struct nn_pipeline_submission refs={0};if((e=draw(&command,&s->draw,&refs,0)))return e;
+  for(size_t i=0;i<refs.resource_count;i++)if((e=depth_alias(a,(struct nn_pipeline_buffer){refs.resources[i],0,nn_bo_size(refs.resources[i])})))return e;
+  return 0;
+ }
+@@ -419,10 +423,27 @@
+  for(unsigned stage=0;stage<2;stage++)for(unsigned i=0;i<16;i++)if(state->storage[stage][i].bo||state->storage[stage][i].offset||state->storage[stage][i].bytes)return ENOTSUP;
+ #endif
+  (void)storage_entries;
++ uint32_t driver_words[16]={0},driver_dst=0;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++ if((e=nn_pipeline_runtime_constants_validate(state->runtime_constants,recipe,stages))||
++    (e=nn_pipeline_runtime_draw(state->runtime_constants,&state->draw,state->runtime_draw_id,driver_words,&driver_dst)))return e;
++#else
++ if(state->runtime_constants||state->runtime_draw_id)return ENOTSUP;
++#endif
++ (void)driver_words;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++ if(state->runtime_constants)for(unsigned stage=0;stage<2;stage++)for(unsigned binding=0;binding<16;binding++)
++  if((state->runtime_constants->layout->ubo_mask[stage]&(1u<<binding))&&
++     state->ubo[stage][binding].bo&&state->ubo[stage][binding].bo==state->target.buffer.bo)return ENOTSUP;
++#endif
+  struct builder builder={0};struct nn_pipeline_submission resources={0};
+- if((e=draw(&builder,&state->draw,&resources)))return e;
++ if((e=draw(&builder,&state->draw,&resources,driver_dst)))return e;
+  if((e=segment_validate(&platform->begin))||(e=segment_validate(&platform->end)))return e;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++ if((e=nn_pipeline_shader_preflight_runtime(stages,recipe,depth,state->runtime_constants,state->ubo)))return e;
++#else
+  if((e=(depth?nn_pipeline_shader_preflight_depth(stages,depth,state->ubo):nn_pipeline_shader_preflight(stages,recipe,state->ubo))))return e;
++#endif
+  size_t depth_count=0;
+ #if NN_PIPELINE_DEPTH_NATIVE
+  if(depth&&(e=planned_depth?nn_depth_native_plan(planned_depth,depth,controls,&depth_count):nn_depth_native_words(attachment,depth,controls,NULL,0,&depth_count)))return e;
+@@ -445,6 +466,7 @@
+   * free-form Draw label or an expected archive variant used as actual state. */
+  if(state->texture_types!=nn_pipeline_program_texture_types(program))return EINVAL;
+  if(state->storage_types!=nn_pipeline_program_storage_types(program))return EINVAL;
++ if(state->runtime_constants!=nn_pipeline_program_runtime_constants(program))return EINVAL;
+ #if NN_PIPELINE_DEPTH_NATIVE
+  if(nn_pipeline_program_depth_export(program)!=depth)return ENOTSUP;
+ #else
+@@ -454,6 +476,10 @@
+  struct nn_pipeline_draw_state validation=*state;
+  for(unsigned i=0;i<2;i++){
+   struct nn_pipeline_stage_view view;int e=nn_pipeline_program_stage(program,i,&view);if(e)return e;source[i]=view.source;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++  if(state->runtime_constants&&state->target.buffer.bo&&
++     (state->target.buffer.bo==view.code||state->target.buffer.bo==view.c1))return ENOTSUP;
++#endif
+ #if NN_PIPELINE_GRAPHICS_STORAGE
+   if(state->storage_types)for(unsigned st=0;st<2;st++)for(unsigned b=0;b<16;b++)if((state->storage_types->mask[st]&(1u<<b))&&(state->storage_types->operations[st][b]&NN_PIPELINE_STORAGE_WRITE)&&
+      (state->storage[st][b].bo==view.code||state->storage[st][b].bo==view.c1))return ENOTSUP;
+@@ -569,7 +595,11 @@
+  }
+  struct builder builder={0};
+  /* Preflight Draw before allocation; no CPU reads from indirect/index data. */
+- if((e=draw(&builder,&state->draw,&result)))return e;
++ uint32_t driver_words[16]={0},driver_dst=0;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++ if((e=nn_pipeline_runtime_draw(state->runtime_constants,&state->draw,state->runtime_draw_id,driver_words,&driver_dst)))return e;
++#endif
++ if((e=draw(&builder,&state->draw,&result,driver_dst)))return e;
+  uint32_t draw_words[24];size_t draw_count=builder.count;if(draw_count>24)return EOVERFLOW;
+  memcpy(draw_words,builder.words,draw_count*4);builder.count=0;
+  nn_bo *job=NULL;if((e=nn_bo_alloc(device,JOB_BYTES,&job))){*retained=job;return e;}
+@@ -577,6 +607,11 @@
+  memset(nn_bo_map(job),0,nn_bo_size(job));
+  memcpy((unsigned char *)nn_bo_map(job)+SAMPLER_OFFSET,samplers,sizeof(samplers));
+  memcpy((unsigned char *)nn_bo_map(job)+TEXTURE_OFFSET,descriptors,sizeof(descriptors));
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++ memcpy((unsigned char *)nn_bo_map(job)+DRIVER_OFFSET,driver_words,sizeof(driver_words));
++#else
++ (void)driver_words;
++#endif
+ #if NN_PIPELINE_GRAPHICS_STORAGE
+  memcpy((unsigned char *)nn_bo_map(job)+STORAGE_OFFSET,storage_descriptors,sizeof(storage_descriptors));
+ #else
+@@ -603,7 +638,7 @@
+ #endif
+  }
+  reg(&builder,0x80f0,0);reg(&builder,0x80f1,(width-1)|((height-1)<<16));
+- struct nn_pipeline_shader_bindings binding={.job=job,.command_offset=builder.count*4,.sampler_offset=SAMPLER_OFFSET,.texture_offset=TEXTURE_OFFSET,.storage_offset=STORAGE_OFFSET};
++ struct nn_pipeline_shader_bindings binding={.job=job,.command_offset=builder.count*4,.sampler_offset=SAMPLER_OFFSET,.texture_offset=TEXTURE_OFFSET,.storage_offset=STORAGE_OFFSET,.driver_params_offset=DRIVER_OFFSET};
+  memcpy(binding.ubo,state->ubo,sizeof(binding.ubo));size_t shader_words=0;
+  if((e=(depth?nn_pipeline_shader_encode_depth(program,depth,&binding,COMMAND_CAPACITY-builder.count,&shader_words):nn_pipeline_shader_encode(program,recipe,&binding,COMMAND_CAPACITY-builder.count,&shader_words))))goto failed;
+  if((e=append(&builder,(const uint32_t *)((const unsigned char *)nn_bo_map(job)+binding.command_offset),shader_words)))goto failed;
+--- a/nvn-native/src/pipeline_frontend.c
++++ b/nvn-native/src/pipeline_frontend.c
+@@ -1,6 +1,10 @@
+ /* SPDX-License-Identifier: MIT. No shader parser, address whitelist or first variant. */
+ #include "nvn_native/pipeline_frontend.h"
+ #include "nvn_native/depth_native.h"
++#include "nvn_native/pipeline_runtime_constants.h"
++#ifndef NN_PIPELINE_RUNTIME_CONSTANTS
++#define NN_PIPELINE_RUNTIME_CONSTANTS 0
++#endif
+ #ifndef NN_PIPELINE_DEPTH_NATIVE
+ #define NN_PIPELINE_DEPTH_NATIVE 0
+ #endif
+@@ -37,18 +41,25 @@
+  struct nn_pipeline_buffer proposed[16]={0};
+  for(size_t i=0;i<r->patch_count;i++) {
+   const struct nn_pipeline_address_patch *p=r->patches+i;
+-  if(p->role!=NN_PIPELINE_UBO||p->stage!=s->stage)continue;
++  if((p->role!=NN_PIPELINE_UBO&&p->role!=NN_PIPELINE_DYNAMIC_UBO)||p->stage!=s->stage)continue;
++#if !NN_PIPELINE_RUNTIME_CONSTANTS
++  if(p->role==NN_PIPELINE_DYNAMIC_UBO)return ENOTSUP;
++#endif
+   if(p->binding>=16||!p->bytes||(uint64_t)p->offset+p->bytes>SIZE_MAX)return EINVAL;
+   unsigned b=p->binding;size_t need=(size_t)p->offset+p->bytes;
+   uint32_t slot=source[b];
+   if(slot==1) {
+    /* Full immutable C1 belongs to the uploaded owner, never an API binding. */
+    if(!s->source||!s->code_bytes||s->source_bytes==s->code_bytes||
+-      need>s->source_bytes-s->code_bytes)return ENOTSUP;
++      need>s->source_bytes-s->code_bytes||
++      (p->role==NN_PIPELINE_DYNAMIC_UBO&&((s->source_bytes-s->code_bytes)>65536||(s->source_bytes-s->code_bytes)%16)))return ENOTSUP;
+    continue;
+   }
+   if(slot<3||slot>16)return ENOTSUP; /* Includes unknown/injected binding0. */
+   int e=range(api+slot-3,need);if(e)return e;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++  if(p->role==NN_PIPELINE_DYNAMIC_UBO){uint32_t desc[2];if((e=nn_pipeline_runtime_ubo_descriptor(api[slot-3],desc)))return e;}
++#endif
+   proposed[b]=api[slot-3];used|=1u<<b;
+  }
+  for(unsigned b=0;b<16;b++)if(used&(1u<<b))out[b]=proposed[b];
+--- a/nvn-native/src/pipeline_program.c
++++ b/nvn-native/src/pipeline_program.c
+@@ -3,6 +3,10 @@
+ #include "nvn_native/pipeline_native_program.h"
+ #include "nvn_native/resource_access.h"
+ #include "nvn_native/pipeline_storage.h"
++#include "nvn_native/pipeline_runtime_constants.h"
++#ifndef NN_PIPELINE_RUNTIME_CONSTANTS
++#define NN_PIPELINE_RUNTIME_CONSTANTS 0
++#endif
+ #ifndef NN_PIPELINE_GRAPHICS_STORAGE
+ #define NN_PIPELINE_GRAPHICS_STORAGE 0
+ #endif
+@@ -27,6 +31,7 @@
+     const struct nn_pipeline_texture_types *texture_types;
+     const struct nn_pipeline_depth_export *depth_export;
+     const struct nn_pipeline_storage_types *storage_types;
++    const struct nn_pipeline_runtime_constants *runtime_constants;
+ };
+ static int release(nn_pipeline_program *p)
+ {
+@@ -86,7 +91,7 @@
+     return e;
+ }
+ static int create_native(nn_device*d,const struct nn_pipeline_native_artifact*a,
+- const struct nn_pipeline_depth_export*depth,const struct nn_pipeline_storage_types*storage,nn_pipeline_program**out,nn_pipeline_program**retained)
++ const struct nn_pipeline_depth_export*depth,const struct nn_pipeline_storage_types*storage,const struct nn_pipeline_runtime_constants*runtime,nn_pipeline_program**out,nn_pipeline_program**retained)
+ {
+  if(out)*out=NULL;
+  if(retained)*retained=NULL;
+@@ -121,8 +126,20 @@
+   return ENOTSUP;
+ #endif
+  }
++ unsigned needs_runtime=0;
++ for(size_t i=0;i<a->recipe->patch_count;i++)needs_runtime|=a->recipe->patches[i].role==NN_PIPELINE_DRIVER_PARAMS||a->recipe->patches[i].role==NN_PIPELINE_DYNAMIC_UBO;
++ if(needs_runtime||runtime){
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++  struct nn_offline_graphics_stage owned[2]={{.stage=0,.spirv=(const unsigned char*)a->spirv[0],.spirv_bytes=a->spirv_bytes[0]},
++   {.stage=1,.spirv=(const unsigned char*)a->spirv[1],.spirv_bytes=a->spirv_bytes[1]}};
++  const struct nn_offline_graphics_stage *stages[2]={owned,owned+1};
++  int e=nn_pipeline_runtime_constants_validate(runtime,a->recipe,stages);if(e)return e;
++#else
++  return ENOTSUP;
++#endif
++ }
+  nn_pipeline_program*p=calloc(1,sizeof(*p));if(!p)return ENOMEM;
+- p->device=d;p->texture_types=a->textures;p->depth_export=depth;p->storage_types=storage;p->native_pair=(struct nn_offline_graphics_pair){.chip=0x06050002,.vs_index=0,.fs_index=1,
++ p->device=d;p->texture_types=a->textures;p->depth_export=depth;p->storage_types=storage;p->runtime_constants=runtime;p->native_pair=(struct nn_offline_graphics_pair){.chip=0x06050002,.vs_index=0,.fs_index=1,
+   .vs_code=(const unsigned char*)a->recipe->code[0],.fs_code=(const unsigned char*)a->recipe->code[1],
+   .vs_bytes=a->recipe->code_bytes[0],.fs_bytes=a->recipe->code_bytes[1],.compiler_json="{\"basis\":\"normal native SPIR-V artifact; not Maxwell\"}"};
+  p->pair=&p->native_pair;int e=0;
+@@ -168,7 +185,7 @@
+ 
+ static int create_typed(nn_device *d,const struct nn_offline_graphics_archive *archive,
+  const struct nn_offline_graphics_stage *vs,const struct nn_offline_graphics_stage *fs,
+- const struct nn_pipeline_texture_types *types,const struct nn_pipeline_depth_export *depth,const struct nn_pipeline_storage_types *storage,nn_pipeline_program **out,nn_pipeline_program **retained)
++ const struct nn_pipeline_texture_types *types,const struct nn_pipeline_depth_export *depth,const struct nn_pipeline_storage_types *storage,const struct nn_pipeline_runtime_constants *runtime,nn_pipeline_program **out,nn_pipeline_program **retained)
+ {
+  if(out)*out=NULL;
+  if(retained)*retained=NULL;
+@@ -206,24 +223,32 @@
+   return ENOTSUP;
+ #endif
+  }
++ unsigned needs_runtime=0;for(size_t i=0;i<r->patch_count;i++)needs_runtime|=r->patches[i].role==NN_PIPELINE_DRIVER_PARAMS||r->patches[i].role==NN_PIPELINE_DYNAMIC_UBO;
++ if(needs_runtime||runtime){
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++  if((e=nn_pipeline_runtime_constants_validate(runtime,r,stages)))return e;
++#else
++  return ENOTSUP;
++#endif
++ }
+  /* Source-cache caller first selects this immutable table from the exact
+   * typed archive. This constructor additionally verifies both original stage
+   * owners/native code/SPIR-V before publishing any Program metadata. It does
+   * not answer actual resource queries or promote a source dimension. */
+  e=nn_pipeline_program_create(d,archive,vs,fs,vs->specialization,fs->specialization,out,retained);
+- if(!e){(*out)->texture_types=types;(*out)->depth_export=depth;(*out)->storage_types=storage;}
++ if(!e){(*out)->texture_types=types;(*out)->depth_export=depth;(*out)->storage_types=storage;(*out)->runtime_constants=runtime;}
+  return e;
+ }
+ 
+ int nn_pipeline_program_create_typed(nn_device*d,const struct nn_offline_graphics_archive*a,const struct nn_offline_graphics_stage*vs,const struct nn_offline_graphics_stage*fs,const struct nn_pipeline_texture_types*t,nn_pipeline_program**out,nn_pipeline_program**retained)
+-{return create_typed(d,a,vs,fs,t,NULL,NULL,out,retained);}
++{return create_typed(d,a,vs,fs,t,NULL,NULL,NULL,out,retained);}
+ int nn_pipeline_program_create_typed_depth(nn_device*d,const struct nn_offline_graphics_archive*a,const struct nn_offline_graphics_stage*vs,const struct nn_offline_graphics_stage*fs,const struct nn_pipeline_texture_types*t,const struct nn_pipeline_depth_export*depth,nn_pipeline_program**out,nn_pipeline_program**retained)
+-{if(!depth){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_typed(d,a,vs,fs,t,depth,NULL,out,retained);}
++{if(!depth){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_typed(d,a,vs,fs,t,depth,NULL,NULL,out,retained);}
+ 
+ int nn_pipeline_program_create_native(nn_device*d,const struct nn_pipeline_native_artifact*a,nn_pipeline_program**out,nn_pipeline_program**retained)
+-{return create_native(d,a,NULL,NULL,out,retained);}
++{return create_native(d,a,NULL,NULL,NULL,out,retained);}
+ int nn_pipeline_program_create_native_depth(nn_device*d,const struct nn_pipeline_native_artifact*a,const struct nn_pipeline_depth_export*depth,nn_pipeline_program**out,nn_pipeline_program**retained)
+-{if(!depth){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_native(d,a,depth,NULL,out,retained);}
++{if(!depth){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_native(d,a,depth,NULL,NULL,out,retained);}
+ const struct nn_pipeline_depth_export *nn_pipeline_program_depth_export(const nn_pipeline_program*p)
+ {return p&&p->ready?p->depth_export:NULL;}
+ 
+@@ -231,9 +256,16 @@
+ {return p&&p->ready?p->storage_types:NULL;}
+ int nn_pipeline_program_create_native_storage(nn_device*d,const struct nn_pipeline_native_artifact*a,
+  const struct nn_pipeline_depth_export*depth,const struct nn_pipeline_storage_types*storage,nn_pipeline_program**out,nn_pipeline_program**retained)
+-{if(!storage){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_native(d,a,depth,storage,out,retained);}
++{if(!storage){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_native(d,a,depth,storage,NULL,out,retained);}
+ 
+ int nn_pipeline_program_create_typed_storage(nn_device*d,const struct nn_offline_graphics_archive*a,
+  const struct nn_offline_graphics_stage*vs,const struct nn_offline_graphics_stage*fs,const struct nn_pipeline_texture_types*t,
+  const struct nn_pipeline_depth_export*depth,const struct nn_pipeline_storage_types*storage,nn_pipeline_program**out,nn_pipeline_program**retained)
+-{if(!storage){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_typed(d,a,vs,fs,t,depth,storage,out,retained);}
++{if(!storage){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_typed(d,a,vs,fs,t,depth,storage,NULL,out,retained);}
++
++const struct nn_pipeline_runtime_constants *nn_pipeline_program_runtime_constants(const nn_pipeline_program*p)
++{return p&&p->ready?p->runtime_constants:NULL;}
++int nn_pipeline_program_create_native_runtime(nn_device*d,const struct nn_pipeline_native_artifact*a,const struct nn_pipeline_depth_export*depth,const struct nn_pipeline_storage_types*storage,const struct nn_pipeline_runtime_constants*runtime,nn_pipeline_program**out,nn_pipeline_program**retained)
++{if(!runtime){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_native(d,a,depth,storage,runtime,out,retained);}
++int nn_pipeline_program_create_typed_runtime(nn_device*d,const struct nn_offline_graphics_archive*a,const struct nn_offline_graphics_stage*vs,const struct nn_offline_graphics_stage*fs,const struct nn_pipeline_texture_types*t,const struct nn_pipeline_depth_export*depth,const struct nn_pipeline_storage_types*storage,const struct nn_pipeline_runtime_constants*runtime,nn_pipeline_program**out,nn_pipeline_program**retained)
++{if(!runtime){if(out)*out=NULL;if(retained)*retained=NULL;return EINVAL;}return create_typed(d,a,vs,fs,t,depth,storage,runtime,out,retained);}
+--- /dev/null
++++ b/nvn-native/src/pipeline_runtime_constants.c
+@@ -0,0 +1,138 @@
++/* SPDX-License-Identifier: MIT. Actual Adreno register/descriptor contracts,
++ * common IR3 allocation facts; no source-ID or query-based parameter guesses. */
++#include "nvn_native/pipeline_native_program.h"
++#include "nvn_native/pipeline_runtime_constants.h"
++#include "nvn_native/pm4.h"
++#include "nvn_native/pipeline_archive.h"
++#include <errno.h>
++#include <limits.h>
++#include <string.h>
++static unsigned high(uint32_t n){unsigned b=0;while(n){b++;n>>=1;}return b;}
++int nn_pipeline_runtime_constants_validate(const struct nn_pipeline_runtime_constants *t,
++ const struct nn_pipeline_shader_recipe *r,const struct nn_offline_graphics_stage *const stages[2])
++{
++ if(!r||!r->words||!r->patches||r->word_count>4096||r->patch_count>128)return EINVAL;
++ unsigned needs=0;for(size_t i=0;i<r->patch_count;i++)needs+=r->patches[i].role==NN_PIPELINE_DRIVER_PARAMS||r->patches[i].role==NN_PIPELINE_DYNAMIC_UBO;
++ if(!t)return needs?ENOTSUP:0;
++ if(t->version!=1||!t->layout||t->layout->version!=1||t->layout->recipe!=r||!stages||!needs)return EINVAL;
++ const struct nn_pipeline_runtime_layout *l=t->layout;
++ unsigned driver_seen[2]={0},ubo_seen[2]={0};uint32_t ubo_mask[2]={0};
++ for(unsigned s=0;s<2;s++){
++  const struct nn_offline_graphics_stage *v=stages[s];
++  if(!v||v->stage!=s||!v->spirv||v->spirv_bytes<20||v->spirv_bytes%4||v->spirv_bytes>1048576||
++     !t->spirv[s]||t->spirv_bytes[s]!=v->spirv_bytes||memcmp(t->spirv[s],v->spirv,v->spirv_bytes))return EINVAL;
++  if(l->driver_dwords[s]){
++   if(s||l->driver_dwords[s]!=4||!l->driver_mask[s]||(l->driver_mask[s]&~7u)||
++      !l->driver_offset_vec4[s]||l->driver_offset_vec4[s]%4||l->driver_offset_vec4[s]>124||l->driver_upload_vec4[s]!=4)return ENOTSUP;
++  }else if(l->driver_mask[s]||l->driver_offset_vec4[s]||l->driver_upload_vec4[s])return EINVAL;
++  if(l->ubo_mask[s]>65535u||l->ubo_entries[s]!=high(l->ubo_mask[s]))return EINVAL;
++ }
++ for(size_t at=0;at<r->word_count;){
++  uint32_t n=nvn_pm4_packet_words(r->words[at]);if(!n||n>r->word_count-at)return EINVAL;
++  if((r->words[at]>>28)==7){
++   unsigned op=(r->words[at]>>16)&127u;
++   if(op==50||op==52){
++    if(n<4)return EINVAL;
++    unsigned s=op==52;uint32_t ctl=r->words[at+1],type=(ctl>>14)&3,src=(ctl>>16)&3,block=(ctl>>18)&15,units=ctl>>22;
++    if(type==2){
++     if(!l->ubo_entries[s]||src||block!=(s?12u:8u)||(ctl&16383u)||units!=l->ubo_entries[s]||
++        n!=4u+2u*units||r->words[at+2]||r->words[at+3]||ubo_seen[s]++)return EINVAL;
++     for(unsigned b=0;b<units;b++){
++      unsigned match=0;
++      for(size_t i=0;i<r->patch_count;i++){
++       const struct nn_pipeline_address_patch*p=r->patches+i;
++       if(p->word!=at+4+2*b)continue;
++       if(p->role!=NN_PIPELINE_DYNAMIC_UBO||p->stage!=s||p->binding!=b||p->offset||p->bytes!=16)return EINVAL;
++       match++;
++      }
++      if(match!=!!(l->ubo_mask[s]&(1u<<b))||r->words[at+4+2*b]||r->words[at+5+2*b])return EINVAL;
++      if(match)ubo_mask[s]|=1u<<b;
++     }
++    }
++   }
++  }
++  for(size_t i=0;i<r->patch_count;i++){
++   const struct nn_pipeline_address_patch*p=r->patches+i;
++   if(p->word<at||p->word>=at+n)continue;
++   if(p->role==NN_PIPELINE_DRIVER_PARAMS){
++    unsigned s=p->stage;if(s>1||!l->driver_dwords[s]||p->binding||p->offset||p->bytes!=64||p->word!=at+2||n!=4||
++      r->words[at]!=nvn_pm4_packet7(s?52:50,3)||r->words[at+1]!=(l->driver_offset_vec4[s]|(1u<<14)|(2u<<16)|((s?12u:8u)<<18)|(4u<<22))||
++      r->words[p->word]||r->words[p->word+1]||driver_seen[s]++)return EINVAL;
++   }else if(p->role==NN_PIPELINE_DYNAMIC_UBO){
++    if(p->stage>1||p->binding>=16||!(ubo_mask[p->stage]&(1u<<p->binding))||
++       r->words[at]!=nvn_pm4_packet7(p->stage?52:50,3+2*l->ubo_entries[p->stage])||
++       p->word!=at+4+2*p->binding||((r->words[at+1]>>14)&3)!=2)return EINVAL;
++   }
++  }
++  at+=n;
++ }
++ for(unsigned s=0;s<2;s++)if(driver_seen[s]!=!!l->driver_dwords[s]||ubo_seen[s]!=!!l->ubo_entries[s]||ubo_mask[s]!=l->ubo_mask[s])return EINVAL;
++ return 0;
++}
++int nn_pipeline_runtime_draw(const struct nn_pipeline_runtime_constants *t,const struct nn_gfx_draw*d,
++ uint32_t draw_id,uint32_t words[16],uint32_t *dst)
++{
++ if(!words||!dst)return EINVAL;
++ memset(words,0,64);*dst=0;if(!d)return EINVAL;
++ if(!t)return draw_id?EINVAL:0;
++ if(!t->layout||t->version!=1||t->layout->version!=1)return EINVAL;
++ const struct nn_pipeline_runtime_layout*l=t->layout;
++ if(d->mode>NN_GFX_DRAW_INDIRECT_COUNT||d->indexed>1)return EINVAL;
++ if(!l->driver_dwords[0])return draw_id?EINVAL:0;
++ if(l->driver_dwords[0]!=4||!l->driver_mask[0]||(l->driver_mask[0]&~7u)||!l->driver_offset_vec4[0]||l->driver_offset_vec4[0]>124||l->driver_offset_vec4[0]%4||l->driver_upload_vec4[0]!=4)return ENOTSUP;
++ if(d->mode!=NN_GFX_DRAW_DIRECT){if(draw_id)return ENOTSUP;*dst=l->driver_offset_vec4[0];return 0;}
++ words[0]=draw_id;words[1]=d->indexed?(uint32_t)d->base_vertex:d->first;words[2]=d->base_instance;
++ /* vtxcnt_max is inactive: this profile independently excludes streamout. */
++ return 0;
++}
++int nn_pipeline_runtime_ubo_descriptor(struct nn_pipeline_buffer b,uint32_t out[2])
++{
++ if(!out)return EINVAL;
++ out[0]=out[1]=0;
++ if(!b.bo||!b.bytes||b.bytes>65536||b.bytes%16||b.offset%16||b.offset>nn_bo_size(b.bo)||b.bytes>nn_bo_size(b.bo)-b.offset)return EINVAL;
++ uint64_t a=nn_bo_address(b.bo);if(!a||b.offset>UINT64_MAX-a||b.bytes>UINT64_MAX-a-b.offset)return EOVERFLOW;
++ a+=b.offset;if(a%16||a>>49||(a+b.bytes-1)>>49)return EOVERFLOW;
++ out[0]=(uint32_t)a;out[1]=(uint32_t)(a>>32)|((uint32_t)(b.bytes/16)<<17);return 0;
++}
++
++int nn_pipeline_runtime_archive_validate(const struct nn_pipeline_runtime_archive*a)
++{
++ if(!a||a->version!=1||!a->typed||!a->pairs)return EINVAL;
++ int e=nn_pipeline_typed_archive_validate(a->typed);if(e)return e;
++ const struct nn_pipeline_archive*b=a->typed->archive;
++ if(!a->pair_count||a->pair_count!=b->pair_count)return EINVAL;
++ for(size_t i=0;i<a->pair_count;i++){
++  const struct nn_pipeline_pair_recipe*p=b->pairs+i;
++  if(p->vs_index>=b->stages->stage_count||p->fs_index>=b->stages->stage_count)return EINVAL;
++  const struct nn_offline_graphics_stage*s[2]={b->stages->stages+p->vs_index,b->stages->stages+p->fs_index};
++  if((e=nn_pipeline_runtime_constants_validate(a->pairs[i],p->recipe,s)))return e;
++  if(a->pairs[i])for(unsigned stage=0;stage<2;stage++){
++   uint32_t mask=a->pairs[i]->layout->ubo_mask[stage],seen=0;
++   if(s[stage]->source_bytes<s[stage]->code_bytes)return EINVAL;
++   if(s[stage]->cbuf_count>16||(s[stage]->cbuf_count&&!s[stage]->cbufs))return EINVAL;
++   for(size_t j=0;j<s[stage]->cbuf_count;j++){
++    const struct nn_offline_cbuf*r=s[stage]->cbufs+j;
++    if(r->binding>=16||(seen&(1u<<r->binding)))return EINVAL;
++    seen|=1u<<r->binding;
++    if(mask&(1u<<r->binding)){
++     if(r->slot==1){size_t bytes=s[stage]->source_bytes-s[stage]->code_bytes;if(!bytes||bytes>65536||bytes%16)return ENOTSUP;}
++     else if(r->slot<3||r->slot>16)return ENOTSUP;
++    }
++   }
++   if(mask&~seen)return EINVAL;
++  }
++ }
++ return 0;
++}
++int nn_pipeline_select_runtime_constants(const struct nn_pipeline_runtime_archive*a,
++ const struct nn_offline_graphics_stage*vs,const struct nn_offline_graphics_stage*fs,
++ const struct nn_pipeline_shader_recipe*r,const struct nn_pipeline_runtime_constants**out)
++{
++ if(!out)return EINVAL;
++ *out=NULL;int e=nn_pipeline_runtime_archive_validate(a);if(e)return e;
++ const struct nn_pipeline_shader_recipe*selected=NULL;
++ if((e=nn_pipeline_select_pair(a->typed->archive,vs,fs,&selected)))return e;
++ if(selected!=r)return EINVAL;
++ for(size_t i=0;i<a->pair_count;i++)if(a->typed->archive->pairs[i].recipe==r){*out=a->pairs[i];return 0;}
++ return ENOTSUP;
++}
+--- a/nvn-native/src/pipeline_shader.c
++++ b/nvn-native/src/pipeline_shader.c
+@@ -4,6 +4,10 @@
+ #include "nvn_native/depth_native.h"
+ #include "nvn_native/pipeline_native_program.h"
+ #include "nvn_native/pipeline_storage.h"
++#include "nvn_native/pipeline_runtime_constants.h"
++#ifndef NN_PIPELINE_RUNTIME_CONSTANTS
++#define NN_PIPELINE_RUNTIME_CONSTANTS 0
++#endif
+ #ifndef NN_PIPELINE_GRAPHICS_STORAGE
+ #define NN_PIPELINE_GRAPHICS_STORAGE 0
+ #endif
+@@ -87,10 +91,19 @@
+             } else {
+                 uint32_t control=r->words[at+1],type=(control>>14)&3,src=(control>>16)&3,
+                     block=(control>>18)&15,units=control>>22;
+-                if(length!=4||p->word!=at+2||src!=2||!units||opcode!=(p->role==NN_PIPELINE_STORAGE?LOAD_SHARED:p->stage?LOAD_FRAG:LOAD_GEOM))return EINVAL;
+-                if(p->role==NN_PIPELINE_CODE) {
++                if(p->role==NN_PIPELINE_DYNAMIC_UBO) {
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++                    if(type!=2||src||!units||units>16||length!=4+2*units||p->binding>=units||p->word!=at+4+2*p->binding||
++                       block!=(p->stage?12u:8u)||opcode!=(p->stage?LOAD_FRAG:LOAD_GEOM))return EINVAL;
++#else
++                    return ENOTSUP;
++#endif
++                }else if(length!=4||p->word!=at+2||src!=2||!units||opcode!=(p->role==NN_PIPELINE_STORAGE?LOAD_SHARED:p->stage?LOAD_FRAG:LOAD_GEOM))return EINVAL;
++                if(p->role==NN_PIPELINE_DYNAMIC_UBO) {
++                    if(p->offset||p->bytes!=16)return EINVAL;
++                }else if(p->role==NN_PIPELINE_CODE) {
+                     if(type||block!=(p->stage?12u:8u)||units>(p->bytes+127u)/128u)return EINVAL;
+-                } else if(p->role==NN_PIPELINE_UBO) {
++                } else if(p->role==NN_PIPELINE_UBO||p->role==NN_PIPELINE_DRIVER_PARAMS) {
+                     if(type!=1||block!=(p->stage?12u:8u)||p->bytes!=units*16u)return EINVAL;
+                 } else if(p->role==NN_PIPELINE_SAMPLERS||p->role==NN_PIPELINE_TEXTURES) {
+                     if(block!=4||type!=(p->role==NN_PIPELINE_SAMPLERS?0u:1u)||units!=r->texture_table_entries)return EINVAL;
+@@ -100,6 +113,13 @@
+             if(p->role==NN_PIPELINE_CODE) {
+                 if(p->binding||p->offset||p->bytes!=r->code_bytes[p->stage])return EINVAL;
+                 code_count[p->stage]++;
++            } else if(p->role==NN_PIPELINE_DRIVER_PARAMS||p->role==NN_PIPELINE_DYNAMIC_UBO) {
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++                if(p->role==NN_PIPELINE_DRIVER_PARAMS&&(p->stage||p->binding||p->offset||p->bytes!=64))return EINVAL;
++                if(p->role==NN_PIPELINE_DYNAMIC_UBO&&(p->offset||p->bytes!=16))return EINVAL;
++#else
++                return ENOTSUP;
++#endif
+             } else if(p->role==NN_PIPELINE_UBO) {
+                 if(p->offset%64||p->bytes%64)return EINVAL;
+             } else if(p->role==NN_PIPELINE_SAMPLERS||p->role==NN_PIPELINE_TEXTURES) {
+@@ -130,10 +150,15 @@
+     return 0;
+ }
+ static int shader_preflight(const struct nn_offline_graphics_stage *const stages[2],
+- const struct nn_pipeline_shader_recipe *r,const struct nn_pipeline_depth_export *depth,const struct nn_pipeline_buffer ubo[2][16])
++ const struct nn_pipeline_shader_recipe *r,const struct nn_pipeline_depth_export *depth,const struct nn_pipeline_runtime_constants *runtime,const struct nn_pipeline_buffer ubo[2][16])
+ {
+  int e=recipe_validate(r,depth);if(e)return e;
+  if(!stages||!ubo)return EINVAL;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++ if((e=nn_pipeline_runtime_constants_validate(runtime,r,stages)))return e;
++#else
++ if(runtime)return ENOTSUP;
++#endif
+  size_t c1[2]={0};uint32_t c1_binding[2]={UINT32_MAX,UINT32_MAX};
+  for(unsigned i=0;i<2;i++) {
+   const struct nn_offline_graphics_stage *s=stages[i];
+@@ -148,10 +173,17 @@
+  }
+  for(size_t j=0;j<r->patch_count;j++) {
+   const struct nn_pipeline_address_patch *p=r->patches+j;
+-  if(p->role!=NN_PIPELINE_UBO)continue;
++  if(p->role!=NN_PIPELINE_UBO&&p->role!=NN_PIPELINE_DYNAMIC_UBO)continue;
+   struct nn_pipeline_buffer v=ubo[p->stage][p->binding];
+   if(c1[p->stage]&&p->binding==c1_binding[p->stage]) {
+-   if(v.bo||v.offset||v.bytes||p->offset>c1[p->stage]||p->bytes>c1[p->stage]-p->offset)return EINVAL;
++   if(v.bo||v.offset||v.bytes||p->offset>c1[p->stage]||p->bytes>c1[p->stage]-p->offset||
++      (p->role==NN_PIPELINE_DYNAMIC_UBO&&(c1[p->stage]>65536||c1[p->stage]%16)))return EINVAL;
++  }else if(p->role==NN_PIPELINE_DYNAMIC_UBO){
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++   uint32_t descriptor[2];if((e=nn_pipeline_runtime_ubo_descriptor(v,descriptor)))return e;
++#else
++   return ENOTSUP;
++#endif
+   }else{uint64_t address;if((e=view_address(v,p->offset,p->bytes,&address)))return e;}
+  }
+  return 0;
+@@ -184,6 +216,16 @@
+     if(nn_pipeline_program_storage_types(program))return ENOTSUP;
+ #endif
+     size_t storage_bytes=(size_t)storage_entries*64;
++    size_t driver_bytes=0;
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++    const struct nn_pipeline_runtime_constants *runtime=nn_pipeline_program_runtime_constants(program);
++    const struct nn_offline_graphics_stage *runtime_sources[2]={stage[0].source,stage[1].source};
++    int re=nn_pipeline_runtime_constants_validate(runtime,r,runtime_sources);if(re)return re;
++    if(runtime&&runtime->layout->driver_dwords[0])driver_bytes=64;
++#else
++    if(nn_pipeline_program_runtime_constants(program))return ENOTSUP;
++#endif
++
+ 
+     if(!b->job||!nn_bo_map(b->job)||b->command_offset%4||b->command_offset>nn_bo_size(b->job)||
+        commands>nn_bo_size(b->job)-b->command_offset)return EINVAL;
+@@ -197,25 +239,40 @@
+        overlap(b->command_offset,commands,b->storage_offset,storage_bytes)||
+        (samplers&&overlap(b->sampler_offset,samplers,b->storage_offset,storage_bytes))||
+        (textures&&overlap(b->texture_offset,textures,b->storage_offset,storage_bytes))))return EINVAL;
++    if(driver_bytes&&(b->driver_params_offset%64||b->driver_params_offset>nn_bo_size(b->job)||driver_bytes>nn_bo_size(b->job)-b->driver_params_offset||
++       overlap(b->command_offset,commands,b->driver_params_offset,driver_bytes)||
++       (samplers&&overlap(b->sampler_offset,samplers,b->driver_params_offset,driver_bytes))||
++       (textures&&overlap(b->texture_offset,textures,b->driver_params_offset,driver_bytes))||
++       (storage_bytes&&overlap(b->storage_offset,storage_bytes,b->driver_params_offset,driver_bytes))))return EINVAL;
+     for(size_t j=0;j<r->patch_count;j++) {
+         const struct nn_pipeline_address_patch *p=r->patches+j;
+         struct nn_pipeline_buffer view={0};size_t offset=p->offset;
+         if(p->role==NN_PIPELINE_CODE) {
+             if(p->bytes!=stage[p->stage].code_bytes)return EINVAL;
+             view=(struct nn_pipeline_buffer){stage[p->stage].code,0,stage[p->stage].code_bytes};
+-        }else if(p->role==NN_PIPELINE_UBO) {
++        }else if(p->role==NN_PIPELINE_UBO||p->role==NN_PIPELINE_DYNAMIC_UBO) {
+             view=b->ubo[p->stage][p->binding];if(view.bo==b->job)return EINVAL;
+             if(stage[p->stage].c1&&p->binding==stage[p->stage].c1_native_binding) {
+                 if(view.bo&&(view.bo!=stage[p->stage].c1||view.offset||view.bytes!=stage[p->stage].c1_bytes))return EINVAL;
+                 view=(struct nn_pipeline_buffer){stage[p->stage].c1,0,stage[p->stage].c1_bytes};
+             }
++        }else if(p->role==NN_PIPELINE_DRIVER_PARAMS){
++            view=(struct nn_pipeline_buffer){b->job,b->driver_params_offset,driver_bytes};
+         }else if(p->role==NN_PIPELINE_STORAGE){
+             view=(struct nn_pipeline_buffer){b->job,b->storage_offset,storage_bytes};
+         }else {
+             size_t bytes=p->role==NN_PIPELINE_SAMPLERS?samplers:textures;
+             view=(struct nn_pipeline_buffer){b->job,p->role==NN_PIPELINE_SAMPLERS?b->sampler_offset:b->texture_offset,bytes};
+         }
+-        int e=view_address(view,offset,p->bytes,out->address+j);if(e)return e;
++        int e=0;
++        if(p->role==NN_PIPELINE_DYNAMIC_UBO){
++#if NN_PIPELINE_RUNTIME_CONSTANTS
++            uint32_t descriptor[2];if((e=nn_pipeline_runtime_ubo_descriptor(view,descriptor)))return e;
++            out->address[j]=(uint64_t)descriptor[0]|(uint64_t)descriptor[1]<<32;
++#else
++            return ENOTSUP;
++#endif
++        }else if((e=view_address(view,offset,p->bytes,out->address+j)))return e;
+         if((e=add(out,view.bo)))return e;
+     }
+     return add(out,b->job);
+@@ -241,9 +298,12 @@
+     memcpy(bos,values.bos,values.count*sizeof(*bos));return 0;
+ }
+ 
+-int nn_pipeline_shader_preflight(const struct nn_offline_graphics_stage *const s[2],const struct nn_pipeline_shader_recipe*r,const struct nn_pipeline_buffer u[2][16]){return shader_preflight(s,r,NULL,u);}
+-int nn_pipeline_shader_preflight_depth(const struct nn_offline_graphics_stage *const s[2],const struct nn_pipeline_depth_export*d,const struct nn_pipeline_buffer u[2][16]){return !d?EINVAL:shader_preflight(s,d->recipe,d,u);}
++int nn_pipeline_shader_preflight(const struct nn_offline_graphics_stage *const s[2],const struct nn_pipeline_shader_recipe*r,const struct nn_pipeline_buffer u[2][16]){return shader_preflight(s,r,NULL,NULL,u);}
++int nn_pipeline_shader_preflight_depth(const struct nn_offline_graphics_stage *const s[2],const struct nn_pipeline_depth_export*d,const struct nn_pipeline_buffer u[2][16]){return !d?EINVAL:shader_preflight(s,d->recipe,d,NULL,u);}
+ int nn_pipeline_shader_encode(const nn_pipeline_program*p,const struct nn_pipeline_shader_recipe*r,const struct nn_pipeline_shader_bindings*b,size_t n,size_t*out){return shader_encode(p,r,b,NULL,n,out);}
+ int nn_pipeline_shader_encode_depth(const nn_pipeline_program*p,const struct nn_pipeline_depth_export*d,const struct nn_pipeline_shader_bindings*b,size_t n,size_t*out){if(!d){if(out)*out=0;return EINVAL;}return shader_encode(p,d->recipe,b,d,n,out);}
+ int nn_pipeline_shader_resources(const nn_pipeline_program*p,const struct nn_pipeline_shader_recipe*r,const struct nn_pipeline_shader_bindings*b,nn_bo**bos,size_t n,size_t*out){return shader_resources(p,r,b,NULL,bos,n,out);}
+ int nn_pipeline_shader_resources_depth(const nn_pipeline_program*p,const struct nn_pipeline_depth_export*d,const struct nn_pipeline_shader_bindings*b,nn_bo**bos,size_t n,size_t*out){if(!d){if(out)*out=0;return EINVAL;}return shader_resources(p,d->recipe,b,d,bos,n,out);}
++
++int nn_pipeline_shader_preflight_runtime(const struct nn_offline_graphics_stage *const s[2],const struct nn_pipeline_shader_recipe*r,const struct nn_pipeline_depth_export*d,const struct nn_pipeline_runtime_constants*t,const struct nn_pipeline_buffer u[2][16])
++{return shader_preflight(s,r,d,t,u);}
+--- a/nvn-native/src/texture_bridge_core.inc
++++ b/nvn-native/src/texture_bridge_core.inc
+@@ -175,7 +175,7 @@
+         for(unsigned stage=0;stage<2;stage++)
+             if(p->stages[stage]->source_bytes>p->stages[stage]->code_bytes)n++; /* immutable C1 */
+         for(size_t i=0;i<recipe->patch_count;i++)
+-            if(recipe->patches[i].role==NN_PIPELINE_UBO)n++;
++            if(recipe->patches[i].role==NN_PIPELINE_UBO||recipe->patches[i].role==NN_PIPELINE_DYNAMIC_UBO)n++;
+         if(p->native.storage_types)for(unsigned stage=0;stage<2;stage++)for(unsigned i=0;i<16;i++)if(p->native.storage_types->mask[stage]&(1u<<i))n++;
+         n+=p->native.draw.indexed?1u:0u;
+         n+=p->native.draw.mode!=NN_GFX_DRAW_DIRECT?1u:0u;
+--- /dev/null
++++ b/nvn-native/tests/d2r_bridge/pipeline_runtime_constants.c
+@@ -0,0 +1,65 @@
++/* HOST full-original-source/API/runtime-constants/Call ownership, no GPU execution. */
++#define main source_identity_fixture
++#include NN_SOURCE_FIXTURE
++#undef main
++static void pool_create(NVNdevice*d,NVNmemoryPoolBuilder*b,NVNmemoryPool*p,void**storage,size_t bytes,int flags){T(!posix_memalign(storage,4096,bytes));memset(*storage,0,bytes);OK(api_nvnMemoryPoolBuilderSetDefaults(b));OK(api_nvnMemoryPoolBuilderSetDevice(b,d));OK(api_nvnMemoryPoolBuilderSetStorage(b,*storage,bytes));OK(api_nvnMemoryPoolBuilderSetFlags(b,flags));T(api_nvnMemoryPoolInitialize(p,b));}
++static void full_state(NVNcommandBuffer*c)
++{
++ NVNcolorState color;NVNchannelMaskState mask;NVNpolygonState polygon;NVNdepthStencilState depth;NVNmultisampleState multi;NVNblendState blend;
++ OK(api_nvnColorStateSetDefaults(&color));OK(api_nvnChannelMaskStateSetDefaults(&mask));OK(api_nvnPolygonStateSetDefaults(&polygon));OK(api_nvnDepthStencilStateSetDefaults(&depth));OK(api_nvnMultisampleStateSetDefaults(&multi));OK(api_nvnBlendStateSetDefaults(&blend));
++ OK(api_nvnCommandBufferBindColorState(c,&color));OK(api_nvnCommandBufferBindChannelMaskState(c,&mask));OK(api_nvnCommandBufferBindPolygonState(c,&polygon));OK(api_nvnCommandBufferBindDepthStencilState(c,&depth));OK(api_nvnCommandBufferBindMultisampleState(c,&multi));OK(api_nvnCommandBufferBindBlendState(c,&blend));OK(api_nvnCommandBufferSetDepthBounds(c,0,0,1));
++}
++static void inspect_original_runtime(struct object*d,const struct nn_offline_graphics_stage*const stages[2],unsigned pair_index)
++{
++ const struct nn_pipeline_runtime_constants*t=NN_GRAPHICS_PIPELINE_RUNTIME_ARCHIVE.pairs[pair_index];
++ unsigned programs=0;
++ for(struct job*j=d->retired;j;j=j->next)if(j->pipeline_owner){
++  nn_pipeline_program*p=j->pipeline_owner;T(nn_pipeline_program_runtime_constants(p)==t);programs++;
++  for(unsigned stage=0;stage<2;stage++){
++   struct nn_pipeline_stage_view v;T(!nn_pipeline_program_stage(p,stage,&v));
++   size_t bytes=stages[stage]->source_bytes-stages[stage]->code_bytes;
++   T(v.c1_bytes==bytes);
++   if(bytes){T(v.c1&&memcmp(nn_bo_map(v.c1),stages[stage]->source+stages[stage]->code_bytes,bytes)==0);}
++   if(t&&t->layout->ubo_mask[stage]){
++    T(v.c1&&v.c1_native_binding<16&&(t->layout->ubo_mask[stage]&(1u<<v.c1_native_binding)));
++    unsigned refs=0;for(size_t i=0;i<mock_ref_count;i++)refs+=mock_refs[i]==v.c1;T(refs==1);
++    uint32_t descriptor[2];T(!nn_pipeline_runtime_ubo_descriptor((struct nn_pipeline_buffer){v.c1,0,bytes},descriptor));
++    T(((descriptor[1]>>17)*16u)==bytes);
++   }
++  }
++ }
++ T(programs==1);
++}
++static int one(unsigned pair_index,unsigned call,unsigned mode)
++{
++ const struct nn_pipeline_archive*a=&NN_GRAPHICS_PIPELINE_ARCHIVE;const struct nn_pipeline_pair_recipe*pair=a->pairs+pair_index;const struct nn_offline_graphics_stage*stages[2]={a->stages->stages+pair->vs_index,a->stages->stages+pair->fs_index};
++ unsigned select=0;T(!nn_pipeline_storage_source_selector(0,0,84,&select)&&select==4);T(!nn_pipeline_storage_source_selector(0,0,88,&select)&&select==5);T(nn_pipeline_storage_source_selector(0,0,196,&select)==ENOTSUP);T(nn_pipeline_storage_source_selector(1,0,196,&select)==ENOTSUP);T(nn_pipeline_storage_source_selector(0,1,84,&select)==ENOTSUP);T(nn_pipeline_storage_source_selector(0,0,85,&select)==ENOTSUP);T(nn_pipeline_storage_source_selector(1,0,324+64,&select)==ENOTSUP);
++ mock_submits=0;mock_submit_error=0;NVNdeviceBuilder db={0};NVNdevice dk={0};OK(api_nvnDeviceBuilderSetDefaults(&db));T(api_nvnDeviceInitialize(&dk,&db));struct object*d=find(&dk,DEVICE);
++ T(!nn_nvn_register_typed_pipeline_archive(&dk,&NN_GRAPHICS_PIPELINE_TYPED_ARCHIVE,reader,ranges));if(mode!=4)T(!nn_nvn_register_pipeline_storage_archive(&dk,&NN_GRAPHICS_PIPELINE_STORAGE_ARCHIVE));if(mode!=5)T(!nn_nvn_register_pipeline_runtime_archive(&dk,&NN_GRAPHICS_PIPELINE_RUNTIME_ARCHIVE));
++ struct nn_fdl_image_desc fd={.schema=1,.chip=0x06050002,.format=37,.target=1,.width=64,.height=64,.levels=1,.layers=1,.level_count=1,.layer_count=1,.usage=NN_FDL_SAMPLED|NN_FDL_COLOR_TARGET};struct nn_fdl_image_view fv;T(!nn_fdl_image(&fd,&fv));
++ struct nn_tex_native_view v={.schema=1,.chip=fv.chip,.format=fv.format,.target=1,.levels=1,.layers=1,.samples=1,.width=64,.height=64,.pitch=fv.level[0].pitch,.layer_bytes=fv.level[0].layer_stride,.bytes=fv.bytes,.alignment=fv.alignment,.required_span_bytes=fv.required_span,.descriptor_address_word=fv.descriptor_address_word,.descriptor_address_mask=fv.descriptor_address_mask,.rb_mrt_buf_info=fv.rb_mrt_buf_info,.rb_mrt_pitch=fv.rb_mrt_pitch,.rb_mrt_array_pitch=fv.rb_mrt_array_pitch,.sp_ps_mrt_reg=fv.sp_ps_mrt_reg};memcpy(v.texture_descriptor,fv.descriptor,64);T(!nn_nvn_register_pipeline_views(&dk,&v,1));
++ enum{VS,FS,ARENA,DATA,RT,SB4,SB5,UNUSED,PARENT_ARENA,N};NVNmemoryPoolBuilder pb[N]={0};NVNmemoryPool pools[N]={0};void*storage[N]={0};for(unsigned i=0;i<N;i++)pool_create(&dk,pb+i,pools+i,storage+i,65536,i==UNUSED?0x14:0x24);
++ NVNshaderData shaders[2];unsigned char controls[2][0x898];range_count=0;allow(shaders,sizeof(shaders));for(unsigned i=0;i<2;i++){T(stages[i]->source_bytes<=65536);memcpy(storage[i],stages[i]->source,stages[i]->source_bytes);memcpy(controls[i],stages[i]->control,stages[i]->control_bytes);allow(storage[i],65536);allow(controls[i],sizeof(controls[i]));shaders[i]=(NVNshaderData){api_nvnMemoryPoolGetBufferAddress(pools+i),controls[i]};}
++ NVNprogram pk={0};T(api_nvnProgramInitialize(&pk,&dk));T(api_nvnProgramSetShaders(&pk,2,shaders));
++ /* Original inputs are caller-owned; actual Program source/C1 must survive overwrite. */
++ for(unsigned i=0;i<2;i++){memset(storage[i],0xcc,65536);memset(controls[i],0xcc,sizeof(controls[i]));}
++ NVNtextureBuilder tb={0};NVNtexture tk={0};OK(api_nvnTextureBuilderSetDefaults(&tb));OK(api_nvnTextureBuilderSetDevice(&tb,&dk));OK(api_nvnTextureBuilderSetFlags(&tb,NVN_TEXTURE_FLAGS_LINEAR));OK(api_nvnTextureBuilderSetSize2D(&tb,64,64));OK(api_nvnTextureBuilderSetFormat(&tb,NVN_FORMAT_RGBA8));OK(api_nvnTextureBuilderSetStride(&tb,256));OK(api_nvnTextureBuilderSetStorage(&tb,pools+RT,4096));T(api_nvnTextureInitialize(&tk,&tb));
++ NVNcommandBuffer child={0},parent={0};_Alignas(16)unsigned char control[2][4096];T(api_nvnCommandBufferInitialize(&child,&dk));OK(api_nvnCommandBufferAddCommandMemory(&child,pools+ARENA,0,65536));OK(api_nvnCommandBufferAddControlMemory(&child,control[0],4096));OK(api_nvnCommandBufferBeginRecording(&child));full_state(&child);
++ OK(api_nvnCommandBufferBindProgram(&child,&pk,NVN_SHADER_STAGE_VERTEX_BIT|NVN_SHADER_STAGE_FRAGMENT_BIT));NVNvertexAttribState attrib[16];for(unsigned i=0;i<16;i++){OK(api_nvnVertexAttribStateSetDefaults(attrib+i));OK(api_nvnVertexAttribStateSetFormat(attrib+i,NVN_FORMAT_RGBA32F,i*16));OK(api_nvnVertexAttribStateSetStreamIndex(attrib+i,0));}OK(api_nvnCommandBufferBindVertexAttribState(&child,16,attrib));NVNvertexStreamState stream;OK(api_nvnVertexStreamStateSetDefaults(&stream));OK(api_nvnVertexStreamStateSetStride(&stream,256));OK(api_nvnCommandBufferBindVertexStreamState(&child,1,&stream));uint64_t data=api_nvnMemoryPoolGetBufferAddress(pools+DATA);OK(api_nvnCommandBufferBindVertexBuffer(&child,0,data+4096,4096));
++ for(unsigned st=0;st<2;st++)for(unsigned i=0;i<14;i++)OK(api_nvnCommandBufferBindUniformBuffer(&child,(NVNshaderStage)st,i,data+8192+i*4096,4096));
++ const NVNtexture*targets[]={&tk};OK(api_nvnCommandBufferSetRenderTargets(&child,1,targets,NULL,NULL,NULL));OK(api_nvnCommandBufferSetViewport(&child,0,0,64,64));OK(api_nvnCommandBufferSetScissor(&child,0,0,64,64));OK(api_nvnCommandBufferSetDepthRange(&child,0,1));
++ NVNcommandBuffer*bindings=&child;
++ if(call){T(api_nvnCommandBufferInitialize(&parent,&dk));OK(api_nvnCommandBufferAddCommandMemory(&parent,pools+PARENT_ARENA,0,65536));OK(api_nvnCommandBufferAddControlMemory(&parent,control[1],4096));OK(api_nvnCommandBufferBeginRecording(&parent));bindings=&parent;}
++ uint64_t unused=api_nvnMemoryPoolGetBufferAddress(pools+UNUSED);for(unsigned st=0;st<2;st++)for(unsigned i=0;i<16;i++)OK(api_nvnCommandBufferBindStorageBuffer(bindings,(NVNshaderStage)st,i,unused,4096));
++ for(unsigned st=0;st<2;st++)for(size_t j=0;j<stages[st]->storage_count;j++){unsigned api=0;const struct nn_offline_storage_binding*b=stages[st]->storage+j;T(!nn_pipeline_storage_source_selector(st,b->cbuf_slot,b->cbuf_word,&api));T(api==4||api==5);unsigned pool=api==4?SB4:SB5;if(mode==3)pool=RT;OK(api_nvnCommandBufferBindStorageBuffer(bindings,(NVNshaderStage)st,mode==1?0:(int)api,api_nvnMemoryPoolGetBufferAddress(pools+pool)+4096+(mode==2?4:0),8192));}
++ OK(api_nvnCommandBufferDrawArraysInstanced(&child,NVN_DRAW_PRIMITIVE_TRIANGLES,0,3,17,2));NVNcommandHandle h=api_nvnCommandBufferEndRecording(&child);T(h&&!nn_nvn_error());NVNcommandHandle child_handle=h;
++ if(call){OK(api_nvnCommandBufferCallCommands(&parent,1,&h));h=api_nvnCommandBufferEndRecording(&parent);T(h&&!nn_nvn_error());OK(api_nvnDeviceFinalizeCommandHandle(&dk,child_handle));OK(api_nvnCommandBufferFinalize(&child));}
++ NVNqueueBuilder qb={0};NVNqueue q={0};OK(api_nvnQueueBuilderSetDefaults(&qb));OK(api_nvnQueueBuilderSetDevice(&qb,&dk));T(api_nvnQueueInitialize(&q,&qb));
++ struct pipeline_batch batch={0};struct handle*projected=NULL;int admission=0;if(call){struct handle*body=handles;while(body&&body->id!=h)body=body->next;T(body);struct nn_command_state initial={0},final;admission=command_project_sequence(find(&q,QUEUE),body,&initial,&final,&projected);if(!admission)admission=pipeline_batch_prepare_owned(find(&q,QUEUE),1,&projected,&batch);}else admission=pipeline_batch_prepare(find(&q,QUEUE),1,&h,&batch);if(mode){T(admission==ENOTSUP&&!mock_submits);nn_nvn_clear_error();pipeline_batch_discard(&batch);if(projected)command_body_destroy(projected);}else{if(admission)fprintf(stderr,"pair%u call%u admission%d\n",pair_index,call,admission);T(!admission);const struct pipeline_prepared_draw*prepared=batch.draws;T(prepared&&prepared->draw.pipeline.native.storage_types);const struct nn_pipeline_draw_state*state=&prepared->draw.pipeline.native;T(state->runtime_constants==NN_GRAPHICS_PIPELINE_RUNTIME_ARCHIVE.pairs[pair_index]&&state->draw.base_instance==17&&state->draw.instances==2);unsigned active_pool=N;
++ for(unsigned st=0;st<2;st++)for(size_t j=0;j<stages[st]->storage_count;j++){const struct nn_offline_storage_binding*b=stages[st]->storage+j;if(!(state->storage_types->mask[st]&(1u<<b->binding)))continue;unsigned api=0;T(!nn_pipeline_storage_source_selector(st,b->cbuf_slot,b->cbuf_word,&api));active_pool=api==4?SB4:SB5;T(state->storage[st][b->binding].bo==find(pools+active_pool,POOL)->bo&&state->storage[st][b->binding].offset==4096);}
++ pipeline_batch_discard(&batch);if(projected)command_body_destroy(projected);
++ for(unsigned replay=0;replay<2;replay++){OK(api_nvnQueueSubmitCommands(&q,1,&h));T(mock_submits==replay+1);T(!nn_bo_idle(find(pools+UNUSED,POOL)->bo));unsigned sbrefs=0;for(size_t i=0;i<mock_ref_count;i++)sbrefs+=mock_refs[i]==find(pools+SB4,POOL)->bo||mock_refs[i]==find(pools+SB5,POOL)->bo;T(sbrefs>0);inspect_original_runtime(d,stages,pair_index);OK(api_nvnQueueFinish(&q));}
++ T(active_pool<N);mock_submit_error=EIO;ERR(api_nvnQueueSubmitCommands(&q,1,&h),EIO);mock_submit_error=0;T(mock_submits==3&&d->retired&&nn_bo_idle(find(pools+active_pool,POOL)->bo)==EBUSY);ERR(api_nvnMemoryPoolFinalize(pools+active_pool),EBUSY);ERR(api_nvnProgramFinalize(&pk),EBUSY);OK(api_nvnQueueFinish(&q));T(!d->retired);}
++ OK(api_nvnDeviceFinalizeCommandHandle(&dk,h));OK(api_nvnCommandBufferFinalize(call?&parent:&child));OK(api_nvnQueueFinalize(&q));OK(api_nvnProgramFinalize(&pk));OK(api_nvnTextureFinalize(&tk));for(unsigned i=0;i<N;i++){OK(api_nvnMemoryPoolFinalize(pools+i));free(storage[i]);}OK(api_nvnDeviceFinalize(&dk));while(objects){T(objects->kind==DB||objects->kind==PB||objects->kind==TB||objects->kind==QB);remove_object(objects);}T(!handles);(void)d;return 0;
++}
++int main(void){T(NN_GRAPHICS_PIPELINE_ARCHIVE.pair_count==25);T(!nn_pipeline_runtime_archive_validate(&NN_GRAPHICS_PIPELINE_RUNTIME_ARCHIVE));T(!nn_pipeline_storage_archive_validate(&NN_GRAPHICS_PIPELINE_STORAGE_ARCHIVE));for(unsigned i=0;i<25;i++)for(unsigned call=0;call<2;call++)T(!one(i,call,0));for(unsigned mode=1;mode<=4;mode++)for(unsigned call=0;call<2;call++)T(!one(0,call,mode));unsigned runtime_pair=0;while(runtime_pair<25&&!NN_GRAPHICS_PIPELINE_RUNTIME_ARCHIVE.pairs[runtime_pair])runtime_pair++;T(runtime_pair<25);for(unsigned call=0;call<2;call++)T(!one(runtime_pair,call,5));printf("{\"checks\":%u,\"original_pairs\":25,\"mock_submits\":150,\"mock_failed_submits\":50,\"negative_cases\":10,\"gpu_execution\":false}\n",checks);return 0;}
+--- /dev/null
++++ b/nvn-native/tests/d2r_bridge/runtime_constants.c
+@@ -0,0 +1,103 @@
++/* HOST only: real production metadata/encoders, RAM never executes a shader. */
++#define _POSIX_C_SOURCE 200809L
++#define nn_bo_alloc ram_alloc
++#define nn_bo_map ram_map
++#define nn_bo_destroy ram_destroy
++#include NN_MEMORY_BACKEND
++#undef nn_bo_alloc
++#undef nn_bo_map
++#undef nn_bo_destroy
++#include "nvn_native/pipeline_native_program.h"
++#include "nvn_native/pipeline_runtime_constants.h"
++#include "nvn_native/pipeline.h"
++#include "nvn_native/pm4.h"
++#include NN_RUNTIME_NATIVE_ARTIFACT
++#include NN_RUNTIME_PLATFORM
++static unsigned checks,allocs,destroys,fail_alloc_at,fail_destroy_at,map_null_new,jobs;
++static nn_bo*last_alloc,*deny_map[3];
++#define CHECK(x) do{checks++;if(!(x)){fprintf(stderr,"line%u: %s\n",__LINE__,#x);abort();}}while(0)
++int nn_bo_alloc(nn_device*d,size_t n,nn_bo**out){++allocs;*out=NULL;if(allocs==fail_alloc_at)return ENOMEM;int e=ram_alloc(d,n,out);last_alloc=*out;return e;}
++void*nn_bo_map(const nn_bo*b){for(unsigned i=0;i<3;i++)CHECK(!b||b!=deny_map[i]);return map_null_new&&b==last_alloc?NULL:ram_map(b);}
++int nn_bo_destroy(nn_bo*b){if(++destroys==fail_destroy_at)return EIO;return ram_destroy(b);}
++#ifndef NN_TEST_RUNTIME_OFF
++static struct nn_tex_native_view target_view(void){
++ struct nn_fdl_image_desc d={.schema=1,.chip=0x06050002,.format=37,.target=1,.width=73,.height=41,.levels=1,.layers=1,.level_count=1,.layer_count=1,.usage=NN_FDL_SAMPLED|NN_FDL_COLOR_TARGET};struct nn_fdl_image_view a;CHECK(!nn_fdl_image(&d,&a));
++ struct nn_tex_native_view v={.schema=1,.chip=a.chip,.format=a.format,.target=1,.levels=1,.layers=1,.samples=1,.width=a.width,.height=a.height,.pitch=a.level[0].pitch,.layer_bytes=a.level[0].layer_stride,.bytes=a.bytes,.alignment=a.alignment,.required_span_bytes=a.required_span,.descriptor_address_word=a.descriptor_address_word,.descriptor_address_mask=a.descriptor_address_mask,.rb_mrt_buf_info=a.rb_mrt_buf_info,.rb_mrt_pitch=a.rb_mrt_pitch,.rb_mrt_array_pitch=a.rb_mrt_array_pitch,.sp_ps_mrt_reg=a.sp_ps_mrt_reg};memcpy(v.texture_descriptor,a.descriptor,64);return v;
++}
++static void reject(nn_device*d,nn_pipeline_program*p,const struct nn_pipeline_draw_state*s){struct nn_pipeline_submission out;nn_bo*kept=(void*)1;unsigned before=allocs;CHECK(nn_pipeline_encode(d,p,&nn_pipeline_recipe,&nn_pipeline_device,s,&out,&kept)!=0&&!out.job&&!kept&&!out.resource_count&&allocs==before);}
++static void inspect(const struct nn_pipeline_submission*out,const struct nn_pipeline_draw_state*s){
++ const uint32_t*w=ram_map(out->job);unsigned params=0,tables[2]={0},draws=0;const struct nn_pipeline_runtime_layout*l=nn_runtime_constants.layout;
++ for(size_t at=0;at<out->command_bytes/4;){unsigned n=nvn_pm4_packet_words(w[at]);CHECK(n&&n<=out->command_bytes/4-at);unsigned op=(w[at]>>16)&127u;
++  if((w[at]>>28)==7&&(op==50||op==52)){
++   unsigned stage=op==52;uint32_t ctl=w[at+1];unsigned type=(ctl>>14)&3;
++   if(type==2){tables[stage]++;CHECK(n==4+2*l->ubo_entries[stage]&&(ctl>>22)==l->ubo_entries[stage]);
++    for(unsigned b=0;b<l->ubo_entries[stage];b++){
++     uint64_t desc=(uint64_t)w[at+4+2*b]|(uint64_t)w[at+5+2*b]<<32;
++     if(!(l->ubo_mask[stage]&(1u<<b))){CHECK(!desc);continue;}
++     const struct nn_pipeline_buffer*v=&s->ubo[stage][b];uint64_t address=nn_bo_address(v->bo)+v->offset;
++     CHECK(desc==(address|((uint64_t)(v->bytes/16)<<49)));
++     unsigned refs=0;for(size_t i=0;i<out->resource_count;i++)refs+=out->resources[i]==v->bo;CHECK(refs==1);
++    }
++   }else if(!stage&&l->driver_dwords[0]&&type==1&&(ctl&16383u)==l->driver_offset_vec4[0]){
++    params++;CHECK(n==4&&((ctl>>16)&3)==2&&(ctl>>22)==4);uint64_t a=(uint64_t)w[at+2]|(uint64_t)w[at+3]<<32;
++    CHECK(a>=nn_bo_address(out->job)&&a-nn_bo_address(out->job)<=nn_bo_size(out->job)-64);
++    const uint32_t*p=(const uint32_t*)((const char*)ram_map(out->job)+(size_t)(a-nn_bo_address(out->job)));
++    for(unsigned k=0;k<16;k++){uint32_t expected=0;if(s->draw.mode==NN_GFX_DRAW_DIRECT){if(k==0)expected=s->runtime_draw_id;if(k==1)expected=s->draw.indexed?(uint32_t)s->draw.base_vertex:s->draw.first;if(k==2)expected=s->draw.base_instance;}CHECK(p[k]==expected);}
++   }
++  }
++  if((w[at]>>28)==7&&(op==0x38||op==0x2a)){draws++;CHECK((op==0x38)==(s->draw.mode==NN_GFX_DRAW_DIRECT));if(op==0x2a)CHECK(((w[at+2]>>8)&16383u)==(l->driver_dwords[0]?l->driver_offset_vec4[0]:0));}
++  at+=n;
++ }CHECK(params==!!l->driver_dwords[0]&&tables[0]==!!l->ubo_entries[0]&&tables[1]==!!l->ubo_entries[1]&&draws==1);
++}
++#endif
++int main(void){
++ nn_device*d=NULL;CHECK(!nn_device_open(&d));nn_pipeline_program*p=NULL,*kept=NULL;unsigned before=allocs;
++ CHECK(nn_pipeline_program_create_native(d,&NN_RUNTIME_ARTIFACT,&p,&kept)==ENOTSUP&&!p&&!kept&&allocs==before);
++#ifdef NN_TEST_RUNTIME_OFF
++ CHECK(nn_pipeline_program_create_native_runtime(d,&NN_RUNTIME_ARTIFACT,NULL,NULL,&nn_runtime_constants,&p,&kept)==ENOTSUP&&!p&&!kept&&allocs==before);
++#else
++ struct nn_pipeline_runtime_constants wrong=nn_runtime_constants;wrong.spirv_bytes[0]-=4;
++ CHECK(nn_pipeline_program_create_native_runtime(d,&NN_RUNTIME_ARTIFACT,NULL,NULL,&wrong,&p,&kept)==EINVAL&&!p&&!kept&&allocs==before);
++ struct nn_pipeline_runtime_layout badlayout=*nn_runtime_constants.layout;wrong=nn_runtime_constants;wrong.layout=&badlayout;
++ if(badlayout.driver_dwords[0])badlayout.driver_mask[0]|=16;else badlayout.ubo_mask[0]|=1;
++ CHECK(nn_pipeline_program_create_native_runtime(d,&NN_RUNTIME_ARTIFACT,NULL,NULL,&wrong,&p,&kept)!=0&&!p&&!kept&&allocs==before);
++ CHECK(!nn_pipeline_program_create_native_runtime(d,&NN_RUNTIME_ARTIFACT,NULL,NULL,&nn_runtime_constants,&p,&kept)&&p&&!kept&&nn_pipeline_program_runtime_constants(p)==&nn_runtime_constants);
++ struct nn_tex_native_view view=target_view();nn_bo*target=NULL,*vertices=NULL,*ubos[2]={0},*args[3]={0};CHECK(!nn_bo_alloc(d,view.required_span_bytes,&target));CHECK(!nn_bo_alloc(d,4096,&vertices));
++ for(unsigned i=0;i<2;i++){CHECK(!nn_bo_alloc(d,32768,ubos+i));memset(ram_map(ubos[i]),0x31+i,32768);}
++ for(unsigned i=0;i<3;i++){CHECK(!nn_bo_alloc(d,4096,args+i));memset(ram_map(args[i]),0xa1+i,4096);deny_map[i]=args[i];}
++ struct nn_pipeline_draw_state s={.target={&view,{target,0,view.required_span_bytes}},.texture_types=NN_RUNTIME_ARTIFACT.textures,.runtime_constants=&nn_runtime_constants};
++ CHECK(!nn_pipeline_full_raster(73,41,0,1,&s.raster));nn_render_state_defaults(&s.render);s.vertex.attribute_count=1;s.vertex.stream_count=1;s.vertex.streams[0]=(struct nn_pipeline_stream){8,0};s.vertex.buffers[0]=(struct nn_pipeline_buffer){vertices,0,4096};s.vertex.attributes[0]=(struct nn_pipeline_attribute){0x16,0,0};
++ for(unsigned stage=0;stage<2;stage++)for(unsigned b=0;b<16;b++)if(nn_runtime_constants.layout->ubo_mask[stage]&(1u<<b))s.ubo[stage][b]=(struct nn_pipeline_buffer){ubos[stage],0,16384};
++ const struct nn_offline_graphics_stage*stages[2];for(unsigned i=0;i<2;i++){struct nn_pipeline_stage_view v;CHECK(!nn_pipeline_program_stage(p,i,&v));stages[i]=v.source;}
++ const unsigned offsets[]={0,16,256,4096};
++ for(unsigned mode=0;mode<3;mode++)for(unsigned indexed=0;indexed<2;indexed++)for(unsigned scenario=0;scenario<4;scenario++)for(unsigned replay=0;replay<2;replay++){
++  s.draw=(struct nn_gfx_draw){.mode=mode,.primitive=4,.indexed=indexed,.index_type=1,.count=3,.instances=2,.first=scenario,.base_vertex=-(int32_t)(scenario*7),.base_instance=13*scenario};
++  if(indexed)s.draw.index=(struct nn_gfx_buffer){args[0],0,4096};
++  if(mode){s.draw.indirect=(struct nn_gfx_buffer){args[1],0,4096};s.draw.max_draws=3;s.draw.stride=32;if(mode==2)s.draw.indirect_count=(struct nn_gfx_buffer){args[2],0,4};}
++  s.runtime_draw_id=mode||!nn_runtime_constants.layout->driver_dwords[0]?0:scenario*5;
++  for(unsigned stage=0;stage<2;stage++)for(unsigned b=0;b<16;b++)if(s.ubo[stage][b].bo)s.ubo[stage][b].offset=offsets[scenario];
++  CHECK(!nn_pipeline_preflight(d,stages,&nn_pipeline_recipe,&nn_pipeline_device,&s,0));
++  struct nn_pipeline_submission out;nn_bo*job_kept=NULL;CHECK(!nn_pipeline_encode(d,p,&nn_pipeline_recipe,&nn_pipeline_device,&s,&out,&job_kept)&&out.job&&!job_kept);jobs++;inspect(&out,&s);
++  /* Simulated unknown submit ownership: no RAM execution or fake completion. */
++  for(size_t i=0;i<out.resource_count;i++)out.resources[i]->busy++;
++  CHECK(nn_pipeline_program_destroy(p)==EBUSY&&nn_bo_destroy(out.job)==EBUSY);
++  for(unsigned stage=0;stage<2;stage++)if(nn_runtime_constants.layout->ubo_mask[stage])CHECK(nn_bo_destroy(ubos[stage])==EBUSY);
++  if(mode){CHECK(nn_bo_destroy(args[1])==EBUSY);}
++  if(mode==2){CHECK(nn_bo_destroy(args[2])==EBUSY);}
++  if(indexed){CHECK(nn_bo_destroy(args[0])==EBUSY);}
++  for(size_t i=0;i<out.resource_count;i++)out.resources[i]->busy--;
++  CHECK(!nn_bo_destroy(out.job));
++ }
++ struct nn_pipeline_draw_state bad=s;bad.runtime_constants=NULL;reject(d,p,&bad);bad=s;bad.runtime_constants=&wrong;reject(d,p,&bad);bad=s;bad.runtime_draw_id=1;reject(d,p,&bad);
++ for(unsigned stage=0;stage<2;stage++)for(unsigned b=0;b<16;b++)if(s.ubo[stage][b].bo){
++  bad=s;bad.ubo[stage][b]=(struct nn_pipeline_buffer){target,0,16384};reject(d,p,&bad);
++  bad=s;bad.ubo[stage][b].bytes=0;reject(d,p,&bad);bad=s;bad.ubo[stage][b].bytes=65552;reject(d,p,&bad);bad=s;bad.ubo[stage][b].bytes=16383;reject(d,p,&bad);bad=s;bad.ubo[stage][b].offset=4;reject(d,p,&bad);bad=s;bad.ubo[stage][b].offset=32768;reject(d,p,&bad);
++ }
++ unsigned n=d->bos;struct nn_pipeline_submission out;nn_bo*job_kept=NULL;fail_alloc_at=allocs+1;CHECK(nn_pipeline_encode(d,p,&nn_pipeline_recipe,&nn_pipeline_device,&s,&out,&job_kept)==ENOMEM&&!out.job&&!job_kept&&d->bos==n);fail_alloc_at=0;
++ map_null_new=1;fail_destroy_at=destroys+1;CHECK(nn_pipeline_encode(d,p,&nn_pipeline_recipe,&nn_pipeline_device,&s,&out,&job_kept)!=0&&!out.job&&job_kept&&d->bos==n+1);map_null_new=0;fail_destroy_at=0;CHECK(!nn_bo_destroy(job_kept)&&d->bos==n);
++ for(unsigned stage=0;stage<2;stage++)for(unsigned i=0;i<32768;i++)CHECK(((unsigned char*)ram_map(ubos[stage]))[i]==0x31+stage);
++ for(unsigned a=0;a<3;a++)for(unsigned i=0;i<4096;i++)CHECK(((unsigned char*)ram_map(args[a]))[i]==0xa1+a);
++ CHECK(!nn_pipeline_program_destroy(p));CHECK(!nn_bo_destroy(target)&&!nn_bo_destroy(vertices));for(unsigned i=0;i<2;i++)CHECK(!nn_bo_destroy(ubos[i]));for(unsigned i=0;i<3;i++)CHECK(!nn_bo_destroy(args[i]));
++#endif
++ CHECK(!d->bos);CHECK(!nn_device_close(d));printf("{\"checks\":%u,\"jobs\":%u,\"gpu_execution\":false}\n",checks,jobs);return 0;
++}
+--- a/nvn-native/tools/build_ir3.py
++++ b/nvn-native/tools/build_ir3.py
+@@ -35,6 +35,10 @@
+     spec = importlib.util.spec_from_file_location('nvn_ir3_parser_overlay', rule_path)
+     parser_rule = importlib.util.module_from_spec(spec)
+     spec.loader.exec_module(parser_rule)
++    runtime_rule_path = root / 'shader/ir3_runtime_constants_overlay.py'
++    runtime_spec = importlib.util.spec_from_file_location('nvn_ir3_runtime_overlay', runtime_rule_path)
++    runtime_rule = importlib.util.module_from_spec(runtime_spec)
++    runtime_spec.loader.exec_module(runtime_rule)
+     out = args.out.resolve()
+     if out == root or out in root.parents or args.jobs < 1:
+         parser.error('use a dedicated output directory and positive job count')
+@@ -101,6 +105,9 @@
+             elif relative == 'src/freedreno/ir3/ir3_lexer.l':
+                 expected = parser_rule.patch(original)
+                 overlay[relative] = expected
++            if relative in runtime_rule.FILES:
++                expected = runtime_rule.patch(relative, expected)
++                overlay[relative] = expected
+             path = source / relative
+             if relative not in overlay and (not path.is_file() or path.read_bytes() != expected):
+                 parser.error('isolated source changed outside overlay: ' + relative)
+@@ -143,7 +150,8 @@
+     (out / 'source-hashes.json').write_text(source_record)
+     record = {'mesa_archive_sha256': MESA_SHA, 'source_manifest_sha256': sha(source_record.encode()),
+               'builder_sha256': sha(Path(__file__).read_bytes()),
+-              'source_rules': {str(rule_path.relative_to(root)): sha(rule_path.read_bytes())},
++              'source_rules': {str(rule_path.relative_to(root)): sha(rule_path.read_bytes()), str(runtime_rule_path.relative_to(root)): sha(runtime_rule_path.read_bytes())},
++              'runtime_constants_profile': runtime_rule.PROFILE,
+               'parser_profile': parser_rule.PROFILE,
+               'overlay': {k: sha(v) for k, v in overlay.items()}, 'commands': commands,
+               'tools': {str(p): sha(p.read_bytes()) for p in tool_paths},
+--- /dev/null
++++ b/nvn-native/tools/check_pipeline_runtime_constants.py
+@@ -0,0 +1,55 @@
++#!/usr/bin/env python3
++"""Normal original source/API/Call runtime constants HOST owner test, not GPU/game."""
++import argparse,hashlib,importlib.util,json,shutil,subprocess
++from pathlib import Path
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def module(p):
++ s=importlib.util.spec_from_file_location('graphics_storage_normal_fdl',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
++
++def check(root,pipeline_check,fdl_root,fdl_check,depth_check,ndk,out):
++ if out.exists()or not out.is_relative_to(root/'.local'):raise ValueError('fresh ignored output required')
++ n=root/'nvn-native';fdl_tool=fdl_root/'nvn-native/tools/build_runtime_fdl.py';_,fdl=module(fdl_tool).verify(fdl_root,fdl_check);inputs=dict(fdl['inputs']);inputs.update(fdl['artifacts']);inputs[str(fdl_check)]=sha(fdl_check)
++ def checked(path,kind):
++  c=json.loads(path.read_text());inputs[str(path)]=sha(path)
++  if c.get('kind')!=kind or c.get('gpu_execution')is not False:raise ValueError('wrong normal record')
++  for group in ('inputs','artifacts','outputs'):
++   for f,h in c.get(group,{}).items():
++    if sha(f)!=h:raise ValueError('source/product changed '+f)
++    inputs[f]=h
++  return c
++ pipeline=checked(pipeline_check,'native-graphics-pipeline-recipes-v1');depth=checked(depth_check,'native-depth-fdl-foundation-v1')
++ if not pipeline['publish_runtime_constants']or not pipeline['publish_storage_recipes']or len(pipeline['pairs'])!=25:raise ValueError('need actual 25-original-source runtime-constant catalogue')
++ modules=[n/'src'/(s+'.c')for s in ('compute','graphics','external_image','order','render_state','sampler_state','texture_source','texture_bridge','counter','offline_graphics','pipeline_program','pipeline_shader','pipeline_vertex','pipeline','pipeline_archive','pipeline_source','pipeline_frontend','pipeline_resource_queries','block_copy','texture_bc_shadow','sampled_image','texture_buffer_sample','pipeline_storage','pipeline_runtime_constants')]
++ fixture=n/'tests/d2r_bridge/pipeline_runtime_constants.c';include=['-std=c11','-O2','-g','-Wall','-Wextra','-Werror','-ffunction-sections','-fdata-sections','-I'+str(n/'include'),'-I'+str(n/'third_party/nvn'),'-I'+str(n/'third_party/kgsl')]
++ defs=['-DNN_NVN_GRAPHICS_SOURCE_CACHE=1','-DNN_NVN_GRAPHICS_STORAGE=1','-DNN_PIPELINE_GRAPHICS_STORAGE=1','-DNN_NVN_GRAPHICS_RUNTIME_CONSTANTS=1','-DNN_PIPELINE_RUNTIME_CONSTANTS=1']
++ for macro,path in [('NN_TEST_NVN_SOURCE',n/'src/nvn.c'),('NN_MEMORY_BACKEND_SOURCE',n/'tests/d2r_bridge/pipeline_draw_memory.c'),('NN_REAL_MEMORY_BACKEND',n/'tests/d2r_bridge/memory_backend.c'),('NN_SOURCE_FIXTURE',n/'tests/d2r_bridge/pipeline_nvn_source.c'),('NN_PIPELINE_ARCHIVE',pipeline_check.parent/'offline_graphics_pipelines.h')]:defs.append('-D'+macro+'='+json.dumps(str(path)))
++ for folder in ('src','include','third_party','tests/d2r_bridge'):
++  for f in (n/folder).rglob('*'):
++   if f.is_file()and f.suffix in ('.c','.cc','.h','.inc'):inputs[str(f)]=sha(f)
++ inputs[str(Path(__file__).resolve())]=sha(__file__)
++ out.mkdir(parents=True);commands=[]
++ def run(a,cwd=None):
++  a=list(map(str,a));r=subprocess.run(a,cwd=cwd,text=True,capture_output=True);commands.append(dict(argv=a,cwd=str(cwd)if cwd else None,returncode=r.returncode,stdout=r.stdout,stderr=r.stderr));(out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n')
++  if r.returncode:raise ValueError(r.stdout+r.stderr)
++  return r.stdout
++ normal=json.loads((fdl_check.parent/'commands.json').read_text());results=[]
++ for cc,cpp,san in [('gcc','g++',['-fsanitize=address,undefined','-fno-omit-frame-pointer','-fno-sanitize-recover=all']),('clang','clang++',['-fsanitize=function','-fsanitize-trap=function'])]:
++  objs=[]
++  for i,f in enumerate([fixture,*modules]):
++   o=out/(cc+'-'+str(i)+'.o');run([cc,*include,*defs,*san,'-fno-pie','-c',f,'-o',o]);objs.append(o)
++  template=next(x for x in normal if x['argv'][0]==cpp);a=template['argv'];start=a.index('-I'+str(fdl_root/'nvn-native/include'));end=a.index('-Wl,--as-needed');flags=a[1:start]+['-I'+str(n/'include'),'-I'+str(n/'third_party/nvn')];libs=a[end:-2]
++  binary=out/cc;run([cpp,*flags,*san,'-fno-pie','-no-pie',n/'src/runtime_fdl.cc',n/'src/depth_fdl.cc',n/'src/depth_native.cc',*objs,*libs,'-Wl,--gc-sections','-o',binary],template['cwd']);result=json.loads(run([binary]).strip().splitlines()[-1]);results.append(result)
++  for tool in (cc,cpp):f=Path(shutil.which(tool)).resolve();inputs[str(f)]=sha(f)
++ if results[0]!=results[1]or results[0]['original_pairs']!=25 or results[0]['mock_submits']!=150 or results[0]['mock_failed_submits']!=50 or results[0]['negative_cases']!=10:raise ValueError('incomplete original storage family')
++ tools=ndk/'toolchains/llvm/prebuilt/linux-x86_64/bin';cc=tools/'aarch64-linux-android29-clang';cpp=tools/'aarch64-linux-android29-clang++';recipe=json.loads((fdl_check.parent/'source-closure/compile-recipes.json').read_text())[3];o=out/'depth-native.o';run([cpp,*recipe['flags'],'-I'+str(n/'include'),'-Werror','-c',n/'src/depth_native.cc','-o',o],fdl_check.parent/'android-build')
++ real=[n/'src/nvn.c',n/'src/kgsl.c',*modules,*[n/'android'/(s+'.c')for s in ('window_session','window_android','present','present_pacer','window_display','ahb')]]
++ run([cc,*include,*defs,'-fPIC','-shared',*real,o,depth['static_library'],fdl['static_library'],'-Wl,--no-undefined','-Wl,--gc-sections','-landroid','-ldl','-lm','-o',out/'libgraphics-storage-real-api29.so'])
++ run([cc,*include,*defs,'-DNN_HOST_TEST_WINDOW_SESSION_FAILURE_BACKEND=1',fixture,*modules,o,depth['static_library'],fdl['static_library'],'-Wl,--no-undefined','-Wl,--gc-sections','-lm','-o',out/'graphics-storage-api29-not-executed'])
++ for tool in (cc,cpp,tools/'ld.lld'):inputs[str(tool.resolve())]=sha(tool)
++ for f,h in inputs.items():
++  if sha(f)!=h:raise ValueError('source/product changed during checks '+f)
++ record=dict(schema=1,kind='public-original-source-runtime-constants-host-v1',passed=True,host_only=True,gpu_execution=False,android_execution=False,results=results,commands=commands,inputs=inputs,artifacts={str(f):sha(f)for f in out.iterdir()if f.is_file()},scope='25 unchanged original VS/fullcontrol/C1 and fixed original diagnostic FS, explicit authored specialization; Actual driver BaseInstance17/2instances, native residual C1/API full-range bindings + storage API4/5 mapping, unused unqualified bindings, Call inherited state and retirement only, not observed game Program pairing or GPU qualification');(out/'check.json').write_text(json.dumps(record,indent=2)+'\n');return out/'check.json'
++if __name__=='__main__':
++ p=argparse.ArgumentParser(description=__doc__)
++ for k in ('root','pipeline-check','fdl-root','fdl-check','depth-check','ndk','out'):p.add_argument('--'+k,type=Path,required=True)
++ a=p.parse_args();print(check(*[getattr(a,k).resolve()for k in ('root','pipeline_check','fdl_root','fdl_check','depth_check','ndk','out')]))
+--- /dev/null
++++ b/nvn-native/tools/check_runtime_constants.py
+@@ -0,0 +1,64 @@
++#!/usr/bin/env python3
++"""Fresh normal VS runtime-constant hooks: HOST RAM/fault checks, real API29 links. No GPU."""
++import argparse,hashlib,importlib.util,json,shutil,subprocess
++from pathlib import Path
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def module(p):
++ s=importlib.util.spec_from_file_location('native_depth_runtime_fdl',p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
++def check(root,shader_check,fdl_root,fdl_check,depth_check,ndk,out):
++ if out.exists()or not out.is_relative_to(root/'.local'):raise ValueError('fresh ignored output required')
++ own=root/'nvn-native';fdl_tool=fdl_root/'nvn-native/tools/build_runtime_fdl.py';_,fdl=module(fdl_tool).verify(fdl_root,fdl_check);inputs=dict(fdl['inputs']);inputs.update(fdl['artifacts']);inputs[str(fdl_check)]=sha(fdl_check);inputs[str(fdl_tool)]=sha(fdl_tool)
++ def checked(path,kind):
++  c=json.loads(path.read_text());inputs[str(path)]=sha(path)
++  if c.get('kind')!=kind or c.get('passed')is not True or c.get('gpu_execution')is not False:raise ValueError('invalid input record '+str(path))
++  for mapping in (c['inputs'],c['artifacts']):
++   for p,h in mapping.items():
++    if sha(p)!=h:raise ValueError('source/product changed '+p)
++    inputs[p]=h
++  return c
++ shaders=checked(shader_check,'native-authored-runtime-constants-v1');depth=checked(depth_check,'native-depth-fdl-foundation-v1')
++ if Path(fdl['ndk'])!=ndk:raise ValueError('wrong shader/NDK profile')
++ sources=['src/pipeline.c','src/pipeline_storage.c','src/pipeline_runtime_constants.c','src/pipeline_archive.c','src/pipeline_program.c','src/pipeline_shader.c','src/pipeline_vertex.c','src/depth_attachment.c','src/render_state.c','src/sampler_state.c','src/offline_graphics.c','tests/d2r_bridge/runtime_constants.c'];cpp_sources=['src/depth_fdl.cc','src/depth_native.cc','src/runtime_fdl.cc'];all_sources=sources+cpp_sources+['src/kgsl.c','tools/check_runtime_constants.py','tests/d2r_bridge/memory_backend.c','tests/d2r_bridge/window_session_backend.inc']
++ for p in [*[own/s for s in all_sources],*list((own/'include').rglob('*.h')),own/'third_party/nvn/nvn.h',own/'third_party/kgsl/msm_kgsl.h']:inputs[str(p)]=sha(p)
++ out.mkdir(parents=True);commands=[]
++ def run(a,cwd=None):
++  a=list(map(str,a));r=subprocess.run(a,cwd=cwd,text=True,capture_output=True);commands.append(dict(argv=a,cwd=str(cwd)if cwd else None,returncode=r.returncode,stdout=r.stdout,stderr=r.stderr));(out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n')
++  if r.returncode:raise ValueError(r.stdout+r.stderr)
++  return r.stdout
++ cbase=['-std=c11','-O2','-g','-Wall','-Wextra','-Werror','-ffunction-sections','-fdata-sections','-I'+str(own/'include'),'-I'+str(own/'third_party/nvn'),'-I'+str(own/'third_party/kgsl'),'-DNN_MEMORY_BACKEND="'+str(own/'tests/d2r_bridge/memory_backend.c')+'"','-DNN_RUNTIME_NATIVE_ARTIFACT="'+shaders['cases'][0]['header']+'"','-DNN_RUNTIME_PLATFORM="'+str(shader_check.parent/'device.platform.h')+'"']
++ normal_commands=json.loads((fdl_check.parent/'commands.json').read_text());results=[]
++ for cc,cpp,san in [('gcc','g++',['-fsanitize=address,undefined','-fno-omit-frame-pointer']),('clang','clang++',['-fsanitize=function','-fsanitize-trap=function'])]:
++  template=next(c for c in normal_commands if c['argv'][0]==cpp);a=template['argv'];start=a.index('-I'+str(fdl_root/'nvn-native/include'));end=a.index('-Wl,--as-needed');cpp_flags=a[1:start]+['-I'+str(own/'include'),'-I'+str(own/'third_party/nvn')];libs=a[end:-2]
++  for case in shaders['cases']:
++   cbase=[a for a in cbase if not a.startswith('-DNN_RUNTIME_NATIVE_ARTIFACT=')]+['-DNN_RUNTIME_NATIVE_ARTIFACT="'+case['header']+'"']
++   for enabled in [0,1]:
++    definitions=['-DNN_PIPELINE_RUNTIME_CONSTANTS='+str(enabled)]+([]if enabled else['-DNN_TEST_RUNTIME_OFF=1']);objects=[]
++    for i,src in enumerate(sources):
++     obj=out/(cc+str(case['case'])+str(enabled)+'-'+str(i)+'.o');run([cc,*cbase,*definitions,*san,'-fno-pie','-c',own/src,'-o',obj]);objects.append(obj)
++    # C++ metadata and packet helper, actual original FDL libraries.
++    binary=out/(cc+'-'+str(case['case'])+'-'+str(enabled));run([cpp,*cpp_flags,*san,'-fno-pie','-no-pie',*[own/s for s in cpp_sources],*objects,*libs,'-Wl,--gc-sections','-o',binary],template['cwd']);result=json.loads(run([binary],template['cwd']).strip().splitlines()[-1]);result['case']=case['case'];result['enabled']=enabled;result['compiler']=cc;results.append(result)
++  for t in (cc,cpp):p=Path(shutil.which(t)).resolve();inputs[str(p)]=sha(p)
++ tools=ndk/'toolchains/llvm/prebuilt/linux-x86_64/bin';cc=tools/'aarch64-linux-android29-clang';cpp=tools/'aarch64-linux-android29-clang++';recipe=json.loads((fdl_check.parent/'source-closure/compile-recipes.json').read_text())[3];fs=recipe['flags'];native=out/'depth-native-api29.o';run([cpp,*fs,'-I'+str(own/'include'),'-Werror','-c',own/'src/depth_native.cc','-o',native],fdl_check.parent/'android-build')
++ for case in shaders['cases']:
++  cbase=[a for a in cbase if not a.startswith('-DNN_RUNTIME_NATIVE_ARTIFACT=')]+['-DNN_RUNTIME_NATIVE_ARTIFACT="'+case['header']+'"']
++  for enabled in [0,1]:
++   definitions=['-DNN_PIPELINE_RUNTIME_CONSTANTS='+str(enabled)]+([]if enabled else['-DNN_TEST_RUNTIME_OFF=1']);objects=[]
++   for i,src in enumerate(sources):
++    obj=out/('ndk'+str(case['case'])+str(enabled)+'-'+str(i)+'.o');run([cc,*cbase,*definitions,'-c',own/src,'-o',obj]);objects.append(obj)
++   run([cc,*objects,native,depth['static_library'],fdl['static_library'],'-Wl,--gc-sections','-Wl,--no-undefined','-lm','-o',out/('api29-'+str(case['case'])+'-'+str(enabled)+'-not-executed')])
++ # Also link the same actual runtime C modules against the real KGSL backend.
++ platform=out/'actual-kgsl.o';run([cc,*cbase,'-fPIC','-c',own/'src/kgsl.c','-o',platform]);real=[]
++ for i,src in enumerate(sources[:-1]):
++  obj=out/('actual'+str(i)+'.o');run([cc,*cbase,'-fPIC','-DNN_PIPELINE_RUNTIME_CONSTANTS=1','-c',own/src,'-o',obj]);real.append(obj)
++ run([cc,'-shared',*real,platform,native,depth['static_library'],fdl['static_library'],'-Wl,--gc-sections','-Wl,--no-undefined','-lm','-o',out/'libdepth-runtime-real-kgsl.so'])
++ for t in [cc,cpp,tools/'ld.lld']:inputs[str(t)]=sha(t)
++ for p,h in inputs.items():
++  if sha(p)!=h:raise ValueError('source changed during checks '+p)
++ active=[r for r in results if r['enabled']];inactive=[r for r in results if not r['enabled']]
++ if len(active)!=12 or len(inactive)!=12 or any(r['jobs']!=48 for r in active)or any(r['jobs']for r in inactive)or any(a['checks']!=b['checks']for a,b in zip(active[:6],active[6:])):raise ValueError('HOST result mismatch')
++ result=dict(schema=1,kind='native-runtime-constants-host-v1',passed=True,host_only=True,android_execution=False,gpu_execution=False,host=results,inputs=inputs,artifacts={str(p):sha(p)for p in out.rglob('*')if p.is_file()},scope='Actual typed VS driver params and residual native UBO table/direct indexed indirect-count Draw roles + FDL/native encoder; HOST RAM/owner/fault/transaction checks and nonexecuted API29 links only, not GPU/publicNVN/game')
++ (out/'check.json').write_text(json.dumps(result,indent=2)+'\n');return out/'check.json'
++if __name__=='__main__':
++ p=argparse.ArgumentParser(description=__doc__)
++ for k in ['root','shader-check','fdl-root','fdl-check','depth-check','ndk','out']:p.add_argument('--'+k,type=Path,required=True)
++ a=p.parse_args();print(check(*[getattr(a,k).resolve()for k in ['root','shader_check','fdl_root','fdl_check','depth_check','ndk','out']]))
+--- /dev/null
++++ b/nvn-native/tools/check_runtime_constants_legacy.py
+@@ -0,0 +1,44 @@
++#!/usr/bin/env python3
++"""Re-run existing explicit native pairs; byte regression, no new source pairing."""
++import argparse,json,os,subprocess,hashlib
++from pathlib import Path
++from package_graphics_pipelines import compiler_record,checked,sha
++
++def check(root,compiler,references,historical_repo,origins,out):
++ n=Path(__file__).resolve().parents[1]
++ if out.exists()or not out.is_relative_to(root/'.local'):raise ValueError('fresh ignored output required')
++ inputs={str(Path(__file__).resolve()):sha(__file__),str(n/'tools/package_graphics_pipelines.py'):sha(n/'tools/package_graphics_pipelines.py'),str(origins):sha(origins)};cc,_,record=compiler_record(compiler,n,inputs);history=json.loads(origins.read_text());by_path={r['path']:r for r in history};out.mkdir(parents=True);commands=[];pairs=0;compared={};checks=[]
++ for reference in references:
++  proof=json.loads(reference.read_text());inputs[str(reference)]=sha(reference)
++  if proof.get('passed')is not True or proof.get('gpu_execution')is not False:raise ValueError('wrong historical reference')
++  for group in ('inputs','artifacts','outputs'):
++   for file,h in proof.get(group,{}).items():
++    p=Path(file)
++    if p.is_file()and sha(p)==h:inputs[file]=h;continue
++    if group!='inputs'or file not in by_path:raise ValueError('changed historical product/source '+file)
++    row=by_path[file]
++    if row['expected_sha256']!=h or row['git_path']!=str(p.relative_to(historical_repo)):raise ValueError('source origin mismatches declared reference')
++    raw=subprocess.check_output(['git','-C',str(historical_repo),'show',row['git_commit']+':'+row['git_path']])
++    if hashlib.sha256(raw).hexdigest()!=h:raise ValueError('historical git blob changed')
++    dest=out/'historical-producer-source'/row['git_path'];dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw);inputs[str(dest)]=h
++  rows=proof.get('commands')or json.loads((reference.parent/'commands.json').read_text())
++  for row in rows:
++   old=row['argv'];name=Path(old[0]).name;sp=[j for j,a in enumerate(old)if str(a).endswith('.spv')]
++   if name not in ('nvn-pipeline-ir3','nvn-graphics-ir3')or len(sp)!=2:continue
++   old_prefix=old[sp[1]+1];new_prefix=out/f'pair{pairs}';a=old.copy();a[0]=str(cc.with_name(name));a[sp[1]+1]=str(new_prefix);r=subprocess.run(a,text=True,capture_output=True,env=dict(os.environ,IR3_SHADER_DEBUG='asmroundtrip'));commands.append(dict(argv=a,returncode=r.returncode,stdout=r.stdout,stderr=r.stderr));(out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n')
++   if r.returncode!=row['returncode']:raise ValueError('legacy returncode changed '+old_prefix)
++   for suffix in ('.vs.bin','.fs.bin','.link.json','.vs.io.json','.fs.io.json','.pipeline.h','.pipeline.json','.pipeline.types.json','.pipeline.storage.json'):
++    p=Path(old_prefix+suffix)
++    if not p.exists():continue
++    q=Path(str(new_prefix)+suffix)
++    if not q.is_file()or sha(p)!=sha(q):raise ValueError('legacy exact artifact changed '+str(p))
++    inputs[str(p)]=sha(p);compared[suffix]=compared.get(suffix,0)+1
++   checks.append(dict(reference=str(reference),old_prefix=old_prefix,new_prefix=str(new_prefix),returncode=r.returncode));pairs+=1
++ checked(inputs,{})
++ if pairs<293 or compared.get('.vs.bin',0)<293 or compared.get('.pipeline.h',0)<104:raise ValueError('incomplete original whole-family byte regression')
++ proof=dict(schema=1,kind='runtime-constants-legacy-native-byte-regression-v1',passed=True,gpu_execution=False,android_execution=False,native_pair_invocations=pairs,artifact_comparisons=compared,default_profiles_unchanged=True,original_pairings_unchanged=True,checks=checks,historical_producer_origins=history,inputs=inputs,artifacts={str(p):sha(p)for p in out.rglob('*')if p.is_file()},scope='Current normal compiler reruns only existing explicit native pair commands; historical sources/outputs remain immutable byte references, not relabelled as current deployment qualification')
++ (out/'check.json').write_text(json.dumps(proof,indent=2)+'\n');return out/'check.json'
++if __name__=='__main__':
++ p=argparse.ArgumentParser(description=__doc__)
++ for k in ('root','compiler','historical-repo','origins','out'):p.add_argument('--'+k,type=Path,required=True)
++ p.add_argument('--reference',type=Path,action='append',required=True);a=p.parse_args();print(check(a.root.resolve(),a.compiler.resolve(),[p.resolve()for p in a.reference],a.historical_repo.resolve(),a.origins.resolve(),a.out.resolve()))
+--- /dev/null
++++ b/nvn-native/tools/check_runtime_constants_original.py
+@@ -0,0 +1,57 @@
++#!/usr/bin/env python3
++"""Normal actual original25 NIR/IR3 diagnostic, preserving historical failure/code evidence.
++The fixed diagnostic FS and explicitly specialized source artefacts are not an
++observed game pair. Historical producer input bytes are pinned, never relabelled.
++"""
++import argparse,json,os,subprocess,hashlib
++from pathlib import Path
++from package_graphics_pipelines import compiler_record,checked,sha
++
++def check(root,compiler,reference,historical_repo,historical_ref,out):
++ n=Path(__file__).resolve().parents[1]
++ if out.exists()or not out.is_relative_to(root/'.local'):raise ValueError('fresh ignored output required')
++ old=json.loads(reference.read_text())
++ if old.get('kind')!='graphics-storage-original25-normal-diagnostic-v1'or old.get('passed')is not True or len(old['results'])!=25:raise ValueError('wrong original reference')
++ inputs={str(Path(__file__).resolve()):sha(__file__),str(reference):sha(reference)};cc,_,record=compiler_record(compiler,n,inputs);out.mkdir(parents=True);history=[]
++ commit=subprocess.check_output(['git','-C',str(historical_repo),'rev-parse',historical_ref+'^{commit}'],text=True).strip()
++ for group in ('inputs','artifacts'):
++  for file,h in old[group].items():
++   p=Path(file)
++   if p.is_file()and sha(p)==h:inputs[str(p)]=h;continue
++   if group!='inputs'or not p.is_relative_to(historical_repo/'nvn-native'):raise ValueError('historical input/product changed '+file)
++   rel=str(p.relative_to(historical_repo));raw=subprocess.check_output(['git','-C',str(historical_repo),'show',commit+':'+rel])
++   if hashlib.sha256(raw).hexdigest()!=h:raise ValueError('historical source does not match declared original bytes '+file)
++   dest=out/'historical-producer-source'/rel;dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(raw);inputs[str(dest)]=h
++   history.append(dict(original_path=file,git_commit=commit,git_path=rel,sha256=h,snapshot=str(dest),scope='Historical compiler source for existing byte reference only; not current deployment/compiler qualification'))
++ commands=[];results=[]
++ def run(a):
++  a=list(map(str,a));r=subprocess.run(a,env=dict(os.environ,IR3_SHADER_DEBUG='asmroundtrip'),text=True,capture_output=True);commands.append(dict(argv=a,returncode=r.returncode,stdout=r.stdout,stderr=r.stderr));(out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n');return r
++ for row in old['results']:
++  i=row['index'];args=row['command'];sp=[j for j,x in enumerate(args)if x.endswith('.spv')]
++  if len(sp)!=2:raise ValueError('bad original SPIR-V reference')
++  prefix=args[sp[1]+1]
++  for j in sp:
++   if args[j]not in inputs:raise ValueError('original SPIR-V identity missing from immutable reference inputs')
++  strict=list(args);strict[0]=str(cc);strict[sp[1]+1]=str(out/f'strict{i}');r=run(strict)
++  if r.returncode!=row['strict_returncode']:raise ValueError('legacy explicit producer gate changed')
++  extended=strict.copy();extended[sp[1]+1]=str(out/f'runtime{i}');extended.insert(1,'--runtime-constants');new=run(extended)
++  if new.returncode:raise ValueError('original diagnostic extended recipe rejected '+str(i))
++  for suffix in ('.vs.bin','.fs.bin'):
++   p=Path(prefix+suffix)
++   if not p.is_file()or sha(p)!=sha(str(out/f'runtime{i}')+suffix):raise ValueError('original native code changed')
++  if not row['strict_returncode']:
++   for suffix in ('.pipeline.h','.pipeline.json','.pipeline.types.json'):
++    p=Path(prefix+suffix)
++    if p.is_file()and (sha(p)!=sha(str(out/f'strict{i}')+suffix)or sha(p)!=sha(str(out/f'runtime{i}')+suffix)):raise ValueError('old exact recipe bytes changed')
++  actual=json.loads(Path(str(out/f'runtime{i}')+'.pipeline.runtime.json').read_text());vs=actual['stages'][0];fs=actual['stages'][1]
++  if vs['driver_dwords']!=row['actual_num_driver_params']or vs['ubo_entries']!=row['actual_num_ubos']or fs['driver_dwords']or fs['ubo_entries']or any(x['driver_unknown']or x['ubo_unknown']for x in actual['stages']):raise ValueError('actual typed facts changed domains')
++  if vs['driver_dwords']and(vs['driver_mask']!=4 or vs['driver_offset_vec4']!=4 or vs['driver_upload_vec4']!=4):raise ValueError('original VS actual BaseInstance domain differs')
++  if vs['ubo_entries']and vs['ubo_mask']!=2:raise ValueError('original VS residual binding differs')
++  results.append(dict(index=i,vs_resource=row['vs_resource'],vs_source_ids=row['vs_source_ids'],old_classification=row['classification'],old_returncode=r.returncode,new_returncode=new.returncode,runtime=actual,source_sbufs=row['source_sbufs'],scope=row['scope']))
++ checked(inputs,{})
++ proof=dict(schema=1,kind='runtime-constants-original25-normal-diagnostic-v1',passed=True,gpu_execution=False,android_execution=False,results=results,counts=dict(original_vs=25,previous_native_successes=10,previous_driver_gates=12,previous_residual_ubo_gates=3,new_native_recipes=25,native_stage_bins_unchanged=50),historical_producer_sources=history,inputs=inputs,artifacts={str(p):sha(p)for p in out.rglob('*')if p.is_file()},scope='Normal standalone compiler using unchanged actual original VS and fixed original diagnostic FS/full source-control-C1 provenance; explicit preexisting authored specialization, not observed game pairing or GPU/publicNVN qualification')
++ (out/'check.json').write_text(json.dumps(proof,indent=2)+'\n');return out/'check.json'
++if __name__=='__main__':
++ p=argparse.ArgumentParser(description=__doc__)
++ for k in ('root','compiler','reference','historical-repo','out'):p.add_argument('--'+k,type=Path,required=True)
++ p.add_argument('--historical-source-ref',required=True);a=p.parse_args();print(check(a.root.resolve(),a.compiler.resolve(),a.reference.resolve(),a.historical_repo.resolve(),a.historical_source_ref,a.out.resolve()))
+--- /dev/null
++++ b/nvn-native/tools/compile_runtime_constants.py
+@@ -0,0 +1,37 @@
++#!/usr/bin/env python3
++"""Actual authored VS driver parameters/dynamic native UBOs, no fake guest source."""
++import argparse,json,os,subprocess
++from pathlib import Path
++from package_graphics_pipelines import compiler_record,checked,sha,texture_types
++
++def build(root,compiler,tools,out):
++ n=Path(__file__).resolve().parents[1]
++ if out.exists()or not out.is_relative_to(root/'.local'):raise ValueError('fresh ignored output required')
++ inputs={str(Path(__file__).resolve()):sha(__file__)};cc,platform,record=compiler_record(compiler,n,inputs)
++ for p in [n/'shaders/runtime_constants.vert',n/'shaders/runtime_constants.frag',n/'tools/package_graphics_pipelines.py',n/'tools/package_graphics_stages.py',*[tools/x for x in ('glslc','spirv-val','spirv-dis')]]:inputs[str(p)]=sha(p)
++ out.mkdir(parents=True);commands=[];cases=[]
++ def run(a):
++  a=list(map(str,a));r=subprocess.run(a,text=True,capture_output=True,env=dict(os.environ,IR3_SHADER_DEBUG='asmroundtrip'));commands.append(dict(argv=a,returncode=r.returncode,stdout=r.stdout,stderr=r.stderr));(out/'commands.json').write_text(json.dumps(commands,indent=2)+'\n')
++  if r.returncode:raise ValueError(r.stderr)
++ for case in range(6):
++  for st in ('vert','frag'):
++   src=n/f'shaders/runtime_constants.{st}';p=out/f'case{case}.{st}.spv';run([tools/'glslc','--target-env=vulkan1.1','--target-spv=spv1.3','-O','-DCASE='+str(case),src,'-o',p]);run([tools/'spirv-val','--target-env','spv1.3',p]);run([tools/'spirv-dis',p,'-o',p.with_suffix('.spvasm')])
++  prefix=out/f'case{case}';run([cc,'--runtime-constants',out/f'case{case}.vert.spv',out/f'case{case}.frag.spv',prefix,0,'0x06050002'])
++  actual=json.loads(Path(str(prefix)+'.link.json').read_text());recipe=json.loads(Path(str(prefix)+'.pipeline.json').read_text());texture_types(json.loads(Path(str(prefix)+'.pipeline.types.json').read_text()),recipe,actual);runtime=json.loads(Path(str(prefix)+'.pipeline.runtime.json').read_text())
++  expected_mask=[4,2,1,7,0,7][case]
++  if runtime['stages'][0]['driver_mask']!=expected_mask or runtime['stages'][1]['driver_mask']:raise ValueError('actual driver masks differ from authored source')
++  if case>=4 and (runtime['stages'][0]['ubo_mask']!=2 or runtime['stages'][1]['ubo_mask']!=1<<15):raise ValueError('actual residual native UBO mask differs')
++  lines=['/* Authored GLSL actual runtime constants. No Maxwell/control/C1 envelope. */','#pragma once','#include "nvn_native/pipeline_native_program.h"',Path(str(prefix)+'.pipeline.h').read_text()]
++  for st in ('vert','frag'):
++   raw=(out/f'case{case}.{st}.spv').read_bytes();lines+=['static const uint32_t nn_runtime_'+st+'[]={'+','.join(str(int.from_bytes(raw[i:i+4],'little'))for i in range(0,len(raw),4))+'};']
++  lines+=['static const struct nn_pipeline_texture_types nn_runtime_textures={.version=1,.recipe=&nn_pipeline_recipe,.spirv={nn_runtime_vert,nn_runtime_frag},.spirv_bytes={sizeof(nn_runtime_vert),sizeof(nn_runtime_frag)}};',
++  'static const struct nn_pipeline_runtime_constants nn_runtime_constants={.version=1,.layout=&nn_pipeline_runtime,.spirv={nn_runtime_vert,nn_runtime_frag},.spirv_bytes={sizeof(nn_runtime_vert),sizeof(nn_runtime_frag)}};',
++  'static const struct nn_pipeline_native_artifact NN_RUNTIME_ARTIFACT={.version=1,.recipe=&nn_pipeline_recipe,.spirv={nn_runtime_vert,nn_runtime_frag},.spirv_bytes={sizeof(nn_runtime_vert),sizeof(nn_runtime_frag)},.textures=&nn_runtime_textures};']
++  header=out/f'case{case}.native.h';header.write_text('\n'.join(lines)+'\n');cases.append(dict(case=case,header=str(header),runtime=runtime))
++ run([platform,'0x06050002',1179648,out/'device']);checked(inputs,{})
++ result=dict(schema=1,kind='native-authored-runtime-constants-v1',passed=True,gpu_execution=False,cases=cases,commands=commands,inputs=inputs,artifacts={str(p):sha(p)for p in out.iterdir()if p.is_file()},compiler_record=str(compiler/'build-record.json'),scope='Actual standalone NIR/IR3 source compilation only; no GPU/publicNVN/game execution')
++ (out/'check.json').write_text(json.dumps(result,indent=2)+'\n');return out/'check.json'
++if __name__=='__main__':
++ p=argparse.ArgumentParser(description=__doc__)
++ for k in ('root','compiler','spirv-tools','out'):p.add_argument('--'+k,type=Path,required=True)
++ a=p.parse_args();print(build(a.root.resolve(),a.compiler.resolve(),a.spirv_tools.resolve(),a.out.resolve()))
+--- a/nvn-native/tools/package_graphics_pipelines.py
++++ b/nvn-native/tools/package_graphics_pipelines.py
+@@ -157,10 +157,28 @@
+   if actual[label]['num_uavs']>((16 if stage else 0)+masks[stage].bit_length()if masks[stage]else 0):raise ValueError('native storage slots exceed proven logical table')
+  return facts
+ 
+-def build(root,stages,compiler,gmem,out,verify=False,*,defer_depth_recipes=False,publish_depth_recipes=False,publish_storage_recipes=False):
++def runtime_constants_types(facts,actual):
++ if not isinstance(facts,dict)or set(facts)!={'schema','basis','enabled','stages'}or facts['schema']!=1 or facts['basis']!='actual common IR3 const-state allocation and post-push NIR UBO lowering' or facts['enabled']is not True or not isinstance(facts['stages'],list)or len(facts['stages'])!=2:raise ValueError('unknown runtime-constant compiler proof')
++ any_used=False
++ keys={'driver_dwords','driver_mask','driver_offset_vec4','driver_upload_vec4','ubo_mask','ubo_entries','driver_unknown','ubo_unknown'}
++ for stage,label in enumerate(('vs','fs')):
++  row=facts['stages'][stage]
++  if not isinstance(row,dict)or set(row)!=keys or row['driver_unknown']is not False or row['ubo_unknown']is not False:raise ValueError('unknown driver/UBO lowering domain')
++  if any(type(row[k])is not int or row[k]<0 for k in keys-{'driver_unknown','ubo_unknown'}):raise ValueError('invalid runtime-constant fact values')
++  alloc=next((a for a in actual[label]['const_allocations']if a['kind']==3),None)
++  if not alloc or alloc['offset_vec4']!=row['driver_offset_vec4']or alloc['size_vec4']!=row['driver_upload_vec4']:raise ValueError('actual IR3 allocation and runtime sidecar disagree')
++  if row['driver_dwords']:
++   if stage or row['driver_dwords']!=4 or not 0<row['driver_mask']<8 or not row['driver_offset_vec4']or row['driver_offset_vec4']%4 or row['driver_upload_vec4']!=4 or row['driver_offset_vec4']+4>actual[label]['constlen']:raise ValueError('unsupported actual driver constant profile')
++  elif row['driver_mask']or row['driver_offset_vec4']or row['driver_upload_vec4']:raise ValueError('empty driver allocation has runtime values')
++  if row['ubo_mask']>65535 or row['ubo_entries']!=row['ubo_mask'].bit_length():raise ValueError('residual native UBO extent/mask disagreement')
++  any_used|=bool(row['driver_dwords']or row['ubo_entries'])
++ return facts if any_used else None
++
++def build(root,stages,compiler,gmem,out,verify=False,*,defer_depth_recipes=False,publish_depth_recipes=False,publish_storage_recipes=False,publish_runtime_constants=False):
+  root=root.resolve();native=Path(__file__).resolve().parents[1];out=out.resolve();compiler=compiler.resolve()
+  if type(defer_depth_recipes)is not bool or type(publish_depth_recipes)is not bool or (defer_depth_recipes and publish_depth_recipes):raise ValueError('invalid/mutually exclusive depth consumer options')
+  if type(publish_storage_recipes)is not bool:raise ValueError('storage consumer option must be boolean')
++ if type(publish_runtime_constants)is not bool:raise ValueError('runtime-constants consumer option must be boolean')
+  if not out.is_relative_to(root/'.local'):raise ValueError('ignored output required')
+  if verify:
+   p=out/'check.json';d=json.loads(p.read_text())
+@@ -168,6 +186,7 @@
+   if d.get('stage_check')!=str(Path(stages).resolve()) or d.get('compiler_record')!=str(compiler/'build-record.json') or d.get('gmem_bytes')!=gmem:raise ValueError('cached pipeline options changed')
+   if d.get('defer_depth_recipes',False)!=defer_depth_recipes or d.get('publish_depth_recipes',False)!=publish_depth_recipes:raise ValueError('cached depth consumer options changed')
+   if type(d.get('publish_storage_recipes',False))is not bool or d.get('publish_storage_recipes',False)!=publish_storage_recipes:raise ValueError('cached storage consumer option changed')
++  if type(d.get('publish_runtime_constants',False))is not bool or d.get('publish_runtime_constants',False)!=publish_runtime_constants:raise ValueError('cached runtime-constant consumer option changed')
+   checked(d['inputs'],{});checked(d['outputs'],{})
+   compiler_record(compiler,native,{})
+   if d['inputs'].get(str(Path(__file__).resolve()))!=sha(__file__):raise ValueError('package generator changed')
+@@ -186,11 +205,13 @@
+   commands.append({'argv':argv,'returncode':r.returncode,'stdout':r.stdout,'stderr':r.stderr})
+   if r.returncode:raise ValueError('normal compiler failed: '+r.stderr[-1500:])
+  run([platform,'0x06050002',gmem,out/'device'])
+- header.append((out/'device.platform.h').read_text());pair_init=[];pair_metadata=[];types_init=[];depth_init=[];storage_init=[]
++ header.append((out/'device.platform.h').read_text());pair_init=[];pair_metadata=[];types_init=[];depth_init=[];storage_init=[];runtime_init=[]
+  if publish_depth_recipes:
+   header.append('#include "nvn_native/pipeline_depth_archive.h"');path=native/'include/nvn_native/pipeline_depth_archive.h';inputs[str(path)]=sha(path)
+  if publish_storage_recipes:
+   header.append('#include "nvn_native/pipeline_storage.h"');path=native/'include/nvn_native/pipeline_storage.h';inputs[str(path)]=sha(path)
++ if publish_runtime_constants:
++  header.append('#include "nvn_native/pipeline_runtime_constants.h"');path=native/'include/nvn_native/pipeline_runtime_constants.h';inputs[str(path)]=sha(path)
+  compile_check=json.loads(Path(stages).read_text());decls={s['request_sha256']:s for s in manifest['stages']}
+  accepted=[p for p in compile_check['pairs']if p['passed'] and p['vs']in decls and p['fs']in decls]
+  # The stage packager's bounded common-NIR interface decision is authoritative.
+@@ -201,12 +222,14 @@
+  for compile_index,p in enumerate(accepted):
+   if(p['vs'],p['fs'])in rejected:continue
+   v=compile_check['stages'][p['vs']];f=compile_check['stages'][p['fs']];i=len(pair_init);prefix=out/('pair-'+str(compile_index))
+-  run([tools,*(['--unit-render-scale']if native_policy['unit_render_scale']else []),v['prefix']+'.spv',f['prefix']+'.spv',prefix,'0','0x06050002'])
++  run([tools,*(['--runtime-constants']if publish_runtime_constants else []),*(['--unit-render-scale']if native_policy['unit_render_scale']else []),v['prefix']+'.spv',f['prefix']+'.spv',prefix,'0','0x06050002'])
+   for stage in ('vs','fs'):
+    a=Path(p['prefix']+'.'+stage+'.bin');b=Path(str(prefix)+'.'+stage+'.bin')
+    if a.read_bytes()!=b.read_bytes():raise ValueError('recipe compiler native code differs from exact stage archive')
+   actual=json.loads(Path(str(prefix)+'.link.json').read_text())
+   compiled_recipe=json.loads(Path(str(prefix)+'.pipeline.json').read_text())
++  runtime=None
++  if publish_runtime_constants:runtime=runtime_constants_types(json.loads(Path(str(prefix)+'.pipeline.runtime.json').read_text()),actual)
+   storage=None;storage_path=Path(str(prefix)+'.pipeline.storage.json')
+   if storage_path.exists():
+    storage=storage_types(json.loads(storage_path.read_text()),actual)
+@@ -232,7 +255,7 @@
+     'native_texture_types':facts,'metadata':compiled_recipe})
+    continue
+   code=(Path(str(prefix)+'.pipeline.h')).read_text()
+-  for name in ('nn_pipeline_code_0','nn_pipeline_code_1','nn_pipeline_words','nn_pipeline_patches','nn_pipeline_inputs','nn_pipeline_recipe',*(['nn_pipeline_depth']if publish_depth_recipes else [])):
++  for name in ('nn_pipeline_code_0','nn_pipeline_code_1','nn_pipeline_words','nn_pipeline_patches','nn_pipeline_inputs','nn_pipeline_recipe',*(['nn_pipeline_depth']if publish_depth_recipes else []),*(['nn_pipeline_runtime']if runtime else [])):
+    code=re.sub(r'\b'+name+r'\b',name+'_pair_'+str(i),code)
+   header.append(code);vi=decls[p['vs']]['index'];fi=decls[p['fs']]['index']
+   facts=texture_types(json.loads(Path(str(prefix)+'.pipeline.types.json').read_text()),compiled_recipe,actual)
+@@ -241,6 +264,12 @@
+   if facts.get('gather_usage'):
+    gather_init=',.gathers={'+','.join('['+str(g['binding'])+']={'+','.join(str(g[k])for k in ('count','component_mask','semantic_sampler_mask','offsets'))+'}'for g in facts['gather_usage'])+'}'
+   header.append('static const struct nn_pipeline_texture_types '+typename+'={.version=1,.recipe=&nn_pipeline_recipe_pair_'+str(i)+',.spirv={(const uint32_t*)nn_ogs_'+str(vi)+'_spv,(const uint32_t*)nn_ogs_'+str(fi)+'_spv},.spirv_bytes={sizeof(nn_ogs_'+str(vi)+'_spv),sizeof(nn_ogs_'+str(fi)+'_spv)},.texture_mask='+str(facts['texture_mask'])+',.sampler_mask='+str(facts['sampler_mask'])+',.dimensions={'+','.join(map(str,facts['dimensions']))+'},.operations={'+','.join(map(str,facts['operations']))+'}'+gather_init+'};')
++  if publish_runtime_constants:
++   if runtime:
++    runtime_name='nn_pipeline_runtime_types_pair_'+str(i)
++    header.append('static const struct nn_pipeline_runtime_constants '+runtime_name+'={.version=1,.layout=&nn_pipeline_runtime_pair_'+str(i)+',.spirv={(const uint32_t*)nn_ogs_'+str(vi)+'_spv,(const uint32_t*)nn_ogs_'+str(fi)+'_spv},.spirv_bytes={sizeof(nn_ogs_'+str(vi)+'_spv),sizeof(nn_ogs_'+str(fi)+'_spv)}};')
++    runtime_init.append('&'+runtime_name)
++   else:runtime_init.append('NULL')
+   if publish_storage_recipes:
+    if storage:
+     storage_name='nn_pipeline_storage_pair_'+str(i)
+@@ -288,6 +317,9 @@
+   '#define NN_GRAPHICS_PIPELINE_HAS_TEXTURE_TYPES 1']
+  if publish_depth_recipes:
+   header+=['static const struct nn_pipeline_depth_export *const nn_pipeline_depth_pairs[]={'+','.join(depth_init)+'};','static const struct nn_pipeline_depth_archive NN_GRAPHICS_PIPELINE_DEPTH_ARCHIVE={1,&NN_GRAPHICS_PIPELINE_TYPED_ARCHIVE,nn_pipeline_depth_pairs,'+str(len(depth_init))+'};','#define NN_GRAPHICS_PIPELINE_HAS_DEPTH_ARCHIVE 1']
++ if publish_runtime_constants:
++  header.append('static const struct nn_pipeline_runtime_constants *const nn_pipeline_runtime_pairs[]={'+','.join(runtime_init)+'};')
++  header.append('static const struct nn_pipeline_runtime_archive NN_GRAPHICS_PIPELINE_RUNTIME_ARCHIVE={1,&NN_GRAPHICS_PIPELINE_TYPED_ARCHIVE,nn_pipeline_runtime_pairs,'+str(len(pair_init))+'};')
+  if publish_storage_recipes:
+   header.append('static const struct nn_pipeline_storage_types *const nn_pipeline_storage_pairs[]={'+','.join(storage_init)+'};')
+   header.append('static const struct nn_pipeline_storage_archive NN_GRAPHICS_PIPELINE_STORAGE_ARCHIVE={1,&NN_GRAPHICS_PIPELINE_TYPED_ARCHIVE,nn_pipeline_storage_pairs,'+str(len(pair_init))+'};')
+@@ -296,9 +328,9 @@
+  checked(inputs,{})
+  result={'schema':1,'kind':'native-graphics-pipeline-recipes-v1','gpu_execution':False,'nvn_runtime_registered':False,
+   'runtime_compiler':False,'draw_template':False,'chip':0x06050002,'gmem_bytes':gmem,'stage_check':str(Path(stages).resolve()),'compiler_record':str(compiler/'build-record.json'),'inputs':inputs,'outputs':outputs,
+-  'commands':commands,'native_backend_policy':native_policy,'defer_depth_recipes':defer_depth_recipes,'publish_depth_recipes':publish_depth_recipes,'publish_storage_recipes':publish_storage_recipes,'deferred_pairs':deferred,'pairs':pair_metadata,'requirements':requirements,
++  'commands':commands,'native_backend_policy':native_policy,'defer_depth_recipes':defer_depth_recipes,'publish_depth_recipes':publish_depth_recipes,'publish_storage_recipes':publish_storage_recipes,'publish_runtime_constants':publish_runtime_constants,'deferred_pairs':deferred,'pairs':pair_metadata,'requirements':requirements,
+   'scope':'original full source/control/C1 matching plus explicit actual runtime queries required; native recipe generation and HOST only'}
+  (out/'check.json').write_text(json.dumps(result,indent=2)+'\n');return h
+ if __name__=='__main__':
+- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--stages',type=Path,required=True);p.add_argument('--compiler',type=Path,required=True);p.add_argument('--gmem-bytes',type=lambda x:int(x,0),required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--verify',action='store_true');p.add_argument('--defer-depth-recipes',action='store_true',help='retain normally compiled full shader sources but publish no depth Draw recipe');p.add_argument('--publish-depth-recipes',action='store_true',help='publish real v2 exports and verified ordinary raster-depth sidecars for explicit native depth consumer');p.add_argument('--publish-storage-recipes',action='store_true',help='explicit real typed graphics-storage consumer and source/API mapping required');a=p.parse_args()
+- print(build(a.root,a.stages,a.compiler,a.gmem_bytes,a.out,a.verify,defer_depth_recipes=a.defer_depth_recipes,publish_depth_recipes=a.publish_depth_recipes,publish_storage_recipes=a.publish_storage_recipes))
++ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--root',type=Path,required=True);p.add_argument('--stages',type=Path,required=True);p.add_argument('--compiler',type=Path,required=True);p.add_argument('--gmem-bytes',type=lambda x:int(x,0),required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--verify',action='store_true');p.add_argument('--defer-depth-recipes',action='store_true',help='retain normally compiled full shader sources but publish no depth Draw recipe');p.add_argument('--publish-depth-recipes',action='store_true',help='publish real v2 exports and verified ordinary raster-depth sidecars for explicit native depth consumer');p.add_argument('--publish-storage-recipes',action='store_true',help='explicit real typed graphics-storage consumer and source/API mapping required');p.add_argument('--publish-runtime-constants',action='store_true',help='explicit actual VS driver/native UBO constants consumer; public DrawID remains separately unsupported');a=p.parse_args()
++ print(build(a.root,a.stages,a.compiler,a.gmem_bytes,a.out,a.verify,defer_depth_recipes=a.defer_depth_recipes,publish_depth_recipes=a.publish_depth_recipes,publish_storage_recipes=a.publish_storage_recipes,publish_runtime_constants=a.publish_runtime_constants))

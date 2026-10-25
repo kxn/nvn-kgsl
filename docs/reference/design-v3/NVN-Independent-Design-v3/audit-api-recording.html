@@ -1,0 +1,42 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>修订3：命令录制、同步与对象 ABI 对抗审查</title><style>body{font:16px/1.75 system-ui,"Microsoft YaHei",sans-serif;margin:0;color:#172b37;background:#f1f5f7}main{max-width:1120px;margin:auto;padding:36px 44px;background:white}h1{font-size:29px;line-height:1.4}h2{margin-top:38px;color:#164c66;border-bottom:1px solid #d4e1e8}h3{color:#315569}a{color:#006c9e;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;padding:18px;font:13px/1.6 ui-monospace,monospace}code{font:14px ui-monospace,monospace;background:#eef3f6}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #cddce4;padding:9px;vertical-align:top}th{background:#eaf1f5}.wide{overflow:auto}nav{background:#eaf1f5;padding:18px}input{width:95%;font-size:17px;padding:10px}details{border-bottom:1px solid #d4e1e8;padding:10px}summary{cursor:pointer;font-weight:600}small{color:#526b78}@media(max-width:650px){main{padding:18px}table{min-width:650px}}@media print{body{background:white}main{padding:0}h2{break-after:avoid}nav,input{display:none}}</style></head><body><main><nav><a href="index.html">目录</a> · <a href="api-search.html">调用检索</a></nav><h1 id="--3------------ABI-----">修订3：命令录制、同步与对象 ABI 对抗审查</h1>
+<p>审查范围：固定版本 kxn 5803e32592ba2cdfc6d3460bb61267453c2ee5fe、nxnative e454ac912ad5181ef1c137931a7c22d78bf43274；第10章和 api-contracts.json。本文不是原机语义认证。新增实现合同见 recording-abi-contract.md。没有运行游戏、原始代码或 GPU 测试。</p>
+<h2 id="--">结论</h2>
+<p>现有清单足够定位入口，不足以直接作为实现规格。下列问题会造成错误结果、死锁或内存破坏，而不是仅影响性能。CPU recorder、registry、patch cache 和 mock backend 可以立即开工；D2R 完整资格仍有明确语义门禁，不能把 P0 当作已闭合支持。</p>
+<h2 id="A1-----------ABI-----">A1：候选头文件存在返回 ABI 自相矛盾</h2>
+<p>api-contracts.json 的 nvnCommandBufferGetMemoryCallbackData 是 <code>void (*)(const NVNcommandBuffer*)</code>，但契约是“返回 MemoryCallbackData”。来源 nvn_protos.h:467 本身就写 void。不能相信生成头文件而发出不返回寄存器的 trampoline，也不能仅凭名称擅自宣布真实 ABI 为 void*。</p>
+<p>修复：标 ABI-GATE，候选修正为 void*，待另一独立声明或调用点返回寄存器证据核对；内部 recorder getter 可以正常返回 uintptr_t。P2，不阻断已知 D2R 静态集合。自动检查增加：任何 getter 宣称返回值但声明 void 必须人工批准；这不是所有 void getter 都错，因为一些使用 out 参数。</p>
+<h2 id="A2----generation-----------">A2：对象 generation 不能替代对象布局合同</h2>
+<p>kxn nvn.h:109–135 的 texture=0xC0、view=0x28、commandBuffer=0xA0、sync=0x40 只是该候选头版本。nxnative docs/agents/03-bringup.md:290–306 给出实际失败：SDK16 texture=0x80、view=16；program host 由112涨到168字节破坏下一对象；游戏直接写 commandBuffer+0x10，旧 host end 指针因此被破坏。nxnative nvn_obj.h:65–79 专门保留 nvn_flag10。</p>
+<p>反例：新实现初始化 memset(object,0,sizeof(NVNtexture))，即使全部实际数据都在 registry，仍把游戏0x80分配后的64字节清零。</p>
+<p>修复：建立 AbiProfile，所有对象 host state 移至 registry；guest 写入限于 profile 明确的 byte ranges。不能先写 magic 再查 profile。对未知 SDK 不声称兼容。已知 inline write 字段不等于知道其完整语义，必要时在调用边界读取并按 profile 解释，禁止覆盖。</p>
+<h2 id="A3------------------------">A3：命令内存预算不是后端包大小，也不是普通调试统计</h2>
+<p>kxn hle_nvn.c:764–774 每 Begin 写8字节 OP_BEGIN；nxnative hle_nvn.c:790–802 删除它，注释记录 BotW 数百次小录制因此超过资源表预算一页。nxnative :2060–2069 记录 Fire Emblem 按 AddCommandMemory 之后的累计 used 回收16MB ring；若按 Begin 清零，约15秒后回调永远等不到空闲。</p>
+<p>修复：至少区分 guest-budget、host-IR、native-packet 三套计数。typed profile 不能声称数值等同硬件，但要固定自身契约；raw profile 必须保持已验证占用、patch偏移和起算点。GetControlMemory* 不应套用“LM3 patch纹理”的测试作为完整验收。control arena 的占用/回调必须单独验证。</p>
+<h2 id="A4-AddControlMemory-------------">A4：AddControlMemory 无操作被隐藏在宽泛契约下</h2>
+<p>kxn hle_nvn.c:751、nxnative :769 均忽略控制存储；D2R 静态有2处调用。候选枚举 nvn.h:712–718 明确区分 OUT_OF_COMMAND_MEMORY=0 与 OUT_OF_CONTROL_MEMORY=1。现文档只有“回调扩容”不足以决定哪种资源消耗何种预算。</p>
+<p>修复：私有 typed profile 明确定义 control record 格式和独立 arena，支持同步控制内存补充回调；raw profile 的实际 control 编码/占用仍门禁。不得把 host malloc 成功等同 guest control capacity 足够，也不能每个 draw 为内部缓存收费。</p>
+<h2 id="A5-CopyCommands------OP_CALL-------flatten------">A5：CopyCommands 不能由旧 OP_CALL 证明，递归 flatten 也未必正确</h2>
+<p>kxn hle_nvn.c:777–779 的 Copy 仅写 OP_CALL；nxnative :2086 的 Call 直接调用 Copy，并明确说 replay treats both alike。第10章虽然指出差异，仍没有定义“复制包含 Call 的块”究竟复制什么。</p>
+<p>反例：A 含 Call(B)，Copy A→C 后修改 B。如果只复制 A 的字节，则 C 保留对B的调用；递归 flatten 则冻结B。两者不同。另 Copy A→C 后释放或改写 A，OP_CALL 实现会让 C 变化或悬空。</p>
+<p>修复：私有typed语义为 shallow command-stream copy，复制直接记录及其值载荷，保留嵌套 Call 的引用边；禁止默认递归 flatten。正式 NVN 语义待独立证据。D2R 仅在来源及传递子块均保持不可变且存活到目标执行完成，或获得已验证 copy 语义时准入。仅“目前看起来没改”不是证明，检查命令写集和生命周期证据。</p>
+<h2 id="A6----------generation-------------">A6：外部句柄没有自带 generation，地址复用存在不可消除歧义</h2>
+<p>kxn EndRecording 返回 begin 地址。内部把句柄写成 (handle,generation) 不能使 guest 的 uint64 同时携带旧/新代数。若同一地址重录后出现旧数值，接口本身无法区分 guest 想引用哪代。</p>
+<p>修复：typed模式可返回不重用的64位 registry token；raw模式以存储 epoch 配合显式 lifetime 规则解析，禁止已封存且仍有合法消费者的存储重用。FinalizeCommandHandle 释放未来引用资格，不取消已提交 ticket。检测违反复用合同必须报诊断，不能“自动找旧代数”。</p>
+<h2 id="A7-WaitSync------------">A7：WaitSync 只记录对象身份仍不足够</h2>
+<p>当前表写“record仅保留sync对象身份/generation；执行等待其ticket”。同一个 sync 未 Finalize 却反复 QueueFenceSync，不改变对象generation，ticket却变化。</p>
+<p>反例：S先绑定Q0提交1；录制Wait(S)；S重新绑定Q0提交2；提交包含Wait的Q1。等待1还是2必须由 NVN消费时点决定，而不是实现线程调度偶然决定。更严重的是Q1等待被未来重绑定成Q1自身的点。</p>
+<p>修复：加入 FenceEpoch，并显式选择 profile 的 latch 点。私有typed采用入队线性化时锁存 FenceEpoch，随后 immutable dependency；NVN正式 WaitSync record-time/submit-time 仍列验证项，不声称已确定。Fence condition=1 GRAPHICS_WORLD_SPACE_COMPLETE 与 condition=0 不等价；全队列完成作为保守策略会损失并行度，且互相等待时可能产生额外死锁，不能无条件替代。</p>
+<h2 id="A8-Event----------------host---">A8：Event 是内存位置，不是可任意换代的 host 标志</h2>
+<p>候选 nvn.h:653–675 给出 EQUAL=0、GEQUAL_WRAP=1、WRITE=0、ADD=1、TOP=0/VERTEX_PIPE=1/BOTTOM=2。WaitEvent没有 mask 参数，旧共享测试“masked wait”误导。SignalEvent 的 loc/flags 被 kxn :780–784 丢掉；CPU EventSignal :648 是 volatile read-modify-write，不保证与GPU并发ADD原子。</p>
+<p>修复：IR存 logical pool/range + mode/value/location/flags；事件存储alias参与资源图。GEQUAL_WRAP需验证半环规则，不能直接 unsigned &gt;=。ADD需经过硬件/CPU共享原子一致性资格或依赖证明串行化；volatile不能充当协议。内核队列等待/CSF wait若不能观测CPU cache发布，硬件支持比较也不够。</p>
+<h2 id="A9-ReportCounter-----------------">A9：ReportCounter “写回结构精确”仍不是可实现规格</h2>
+<p>D2R有8个静态ReportCounter点、2个ResetCounter点，但清单没有每点实际枚举。kxn nvn_mtl.m:880–889 写16字节 <code>{counter,timestamp}</code>；其他不支持counter返回0；:736 ticks=ns*12/625。这是实现证据，不是所有counter报告ABI证明。旧回调时间戳是提交完成CPU时间，不能表示命令位置。</p>
+<p>修复：P0先以实际调用枚举清单准入，而不是给全部17种counter统一16字节报告。私有typed先定义Timestamp/Top/SamplesPassed的16字节小端输出，余类明确Unsupported。GPU timestamp按位置采集，频率换算用溢出安全宽整数；query reset创建新epoch，跨tile求和不能重复计算。正式report字段/精度/可见性需要独立语义证据，不能自造availability字段。</p>
+<h2 id="A10-----------------------">A10：描述符池录制时快照会改变合法后续注册的可见性</h2>
+<p>记录 BindTexture(handle) 时复制 handle 数值合理，但把整个 texture pool、slot_generation 同时冻结会让“录制→注册槽新纹理→提交”看到旧纹理。反之每执行draw读裸host指针又引入并发改写race。</p>
+<p>修复：录制保持 PoolRef 和 selector；按已资格消费点选择 slot版本形成 submission-view，并保存版本使用集至 GPU完成。仅更新有在途冲突的槽/表页，不复制整个池。shader动态索引必须声明可达slot集合/保守范围，不能只保护CPU直接bind的slot。是否允许提交后、GPU读取前修改，必须单独 profile；不支持时门禁，不暗中降为record快照。</p>
+<h2 id="------vs-----">可立即开工 vs 必须阻断</h2>
+<p>可开工：registry与代数、双arena recorder、事务式扩容、typed字节码解码器、shallow Copy/Call DAG、dirty-range编译缓存、query/event内部IR和mock后端；所有合同以私有profile明确。</p>
+<p>D2R资格阻断：Copy来源存活/不可变证明或真实复制语义；实际 Event枚举/flags与同步锁存语义；实际 ReportCounter枚举和输出ABI；实际 SDK对象可写范围。通用后端额外阻断：未知raw patch模板、控制存储格式、外部inline对象字段、全部counter与扩展ABI。它们不阻止先写CPU模块，但阻止宣称游戏已可正确运行。</p>
+<h2 id="------">固定版本来源</h2>
+<ul><li><a href="https://github.com/kxn/d2r-mobile/blob/5803e32592ba2cdfc6d3460bb61267453c2ee5fe/dm/gfx/nvn/hle_nvn.c#L588-L805">kxn 录制/同步实现</a></li><li><a href="https://github.com/kxn/d2r-mobile/blob/5803e32592ba2cdfc6d3460bb61267453c2ee5fe/dm/gfx/nvn/include/nvn.h#L105-L135">kxn 候选声明及对象范围</a></li><li><a href="https://github.com/kxn/d2r-mobile/blob/5803e32592ba2cdfc6d3460bb61267453c2ee5fe/dm/gfx/nvn/include/nvn.h#L653-L718">kxn Event/Sync/Counter 枚举</a></li><li><a href="https://github.com/kxn/d2r-mobile/blob/5803e32592ba2cdfc6d3460bb61267453c2ee5fe/dm/gfx/nvn/nvn_protos.h#L467">kxn GetMemoryCallbackData 候选错误声明</a></li><li><a href="https://github.com/kxn/d2r-mobile/blob/5803e32592ba2cdfc6d3460bb61267453c2ee5fe/dm/gfx/nvn/nvn_mtl.m#L860-L890">kxn 完成回调写回计数</a></li><li><a href="https://github.com/seedds/nxnative/blob/e454ac912ad5181ef1c137931a7c22d78bf43274/docs/agents/03-bringup.md#L290-L306">nxnative 对象大小、inline字段与patch事故</a></li><li><a href="https://github.com/seedds/nxnative/blob/e454ac912ad5181ef1c137931a7c22d78bf43274/dm/gfx/nvn/nvn_obj.h#L65-L79">nxnative commandBuffer inline字段保留</a></li><li><a href="https://github.com/seedds/nxnative/blob/e454ac912ad5181ef1c137931a7c22d78bf43274/dm/gfx/nvn/hle_nvn.c#L790-L807">nxnative 去掉BEGIN记录</a></li><li><a href="https://github.com/seedds/nxnative/blob/e454ac912ad5181ef1c137931a7c22d78bf43274/dm/gfx/nvn/hle_nvn.c#L2060-L2086">nxnative 累计内存计数与Call/Copy别名</a></li></ul></main></body></html>

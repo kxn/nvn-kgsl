@@ -1,0 +1,67 @@
+[
+  {
+    "path": "HANDOFF.md",
+    "bytes": 4018,
+    "sha256": "a5ffa9b9ac56c8484f9ad36e101c141940e1b1abb9b2150dbe0d889bcaa1332d"
+  },
+  {
+    "path": "files.json",
+    "bytes": 1677,
+    "sha256": "c132031e2d1ecae656f9d8d8433350d94de265d627491e3b19a10df04e4a1790"
+  },
+  {
+    "path": "manifest.json",
+    "bytes": 5627,
+    "sha256": "beb7a773353fd6894bc9b3da41db7421034116aed56b791b825d1aa58b83a91a"
+  },
+  {
+    "path": "minimal-promote.patch",
+    "bytes": 35489,
+    "sha256": "52ebf246559a1657511d4b69eb03dc4a65490f806b95e98b805f9702a0fa071d"
+  },
+  {
+    "path": "ready.json",
+    "bytes": 1199,
+    "sha256": "2f8f4af00cdfd8e3f2ad09a25590f2e74bc4a61835babbc1c88546c0fb8236f6"
+  },
+  {
+    "path": "source/nvn-native/CMakeLists.txt",
+    "bytes": 83208,
+    "sha256": "8766e21ab17cd9e01a232ba235a7c89b0fcca980205b44d033ce6b3f132a8f97"
+  },
+  {
+    "path": "source/nvn-native/adapters/d2r/host_bridge.c",
+    "bytes": 52523,
+    "sha256": "4c4187c7116e438c862da978f465f0d2181b0326a55236ddf5949306d5a20251"
+  },
+  {
+    "path": "source/nvn-native/tools/build_d2r_activity.py",
+    "bytes": 38759,
+    "sha256": "7cce17eb7b132f3acd98c04e465a4050f08edde66e34af47c5b5d16367a5b896"
+  },
+  {
+    "path": "source/nvn-native/tools/build_d2r_activity_apk.py",
+    "bytes": 10557,
+    "sha256": "9696485e584c06ab2ae6218779f19761849b0be6f95f00fecb8dc3e6350747c4"
+  },
+  {
+    "path": "source/nvn-native/tools/build_d2r_host.py",
+    "bytes": 35375,
+    "sha256": "c68b0287e6b90057abe89a929c30ead007b994e6397acc52b0b783bbf704d4bd"
+  },
+  {
+    "path": "source/nvn-native/tools/check_graphics_storage_feature.py",
+    "bytes": 11487,
+    "sha256": "edc5bde83a06418ab8c13bf35b54e28681731511d127804d6f08182a69bd9e77"
+  },
+  {
+    "path": "source/nvn-native/tools/graphics_storage_feature.py",
+    "bytes": 5226,
+    "sha256": "cdd8fd91b28f8f4fbbdf573a09a5449196ce09b17f564ee40762fa78dd475efc"
+  },
+  {
+    "path": "source/nvn-native/tools/run_d2r_host.py",
+    "bytes": 34761,
+    "sha256": "a343f94f71399cb6db1361fc16ae7b1f2e61761fd287071d5ff5160a656f273a"
+  }
+]

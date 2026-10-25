@@ -1,0 +1,7 @@
+{
+  "joint_ready": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ready.json",
+  "joint_ready_sha256": "9ebd3cc42ee73edbb437d271568dccfabc84bb5a85414fd70b4f8e3237c27452",
+  "FF_ready": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-matrix-extension-candidate/ready.json",
+  "FF_ready_sha256": "e722103536da698d5517dd38579bcf1eca3499e888a05f3c045462e3313ee1ec",
+  "compiler": "${LEGACY_WORKTREE}/.local/nvn-native/parallel/front-facing-storage-joint-candidate/ir3-normal-v1"
+}

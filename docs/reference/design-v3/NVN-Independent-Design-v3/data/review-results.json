@@ -1,0 +1,62 @@
+{
+  "scope": "static_source_and_document_consistency_only",
+  "api_count": 524,
+  "static_used": 216,
+  "abi_gates": 46,
+  "revision3_source_links_checked": 38,
+  "errors": [],
+  "models": {
+    "kind": "pure-host-reference-contract-tests",
+    "backend_validated": false,
+    "seeds": [
+      5133902,
+      5133903,
+      5133904
+    ],
+    "tests_run": 11,
+    "failures": 0,
+    "errors": 0,
+    "random_range_cases": 300,
+    "random_byte_sequences": 500,
+    "operations_per_byte_sequence": 20,
+    "negative_controls_detected": [
+      "handle_address_only_decoded_cache",
+      "copy_is_call_alias",
+      "pool_id_alias_key",
+      "per_view_copy_breaks_intra_draw_alias",
+      "poll_as_data_reader_wait_cycle",
+      "logical_resource_only_resolution_cache",
+      "mutable_root_overwrites_inflight_A",
+      "record_time_descriptor_freeze",
+      "global_max_scalar_retirement",
+      "epochless_completion_ABA",
+      "producer_only_omits_WAR",
+      "snapshot_diff_loses_store_of_old_value",
+      "page_upload_clobbers_unwritten_GPU_bytes",
+      "query_event_per_tile_2",
+      "query_event_per_tile_3",
+      "query_event_per_tile_8",
+      "query_event_per_tile_64",
+      "arbitrary_texture_as_tile_local_input",
+      "move_signal_to_epilogue_deadlock",
+      "availability_before_visible_result",
+      "whole_submit_rollback_after_prefix_accepted",
+      "unknown_ioctl_means_not_submitted",
+      "failed_submit_fake_publication"
+    ],
+    "seeded_mutant_counterexamples": {
+      "pool_alias": 200,
+      "war": 200,
+      "scalar": 200,
+      "old_value_diff": 200
+    },
+    "passed": true
+  },
+  "memory_examples_passed": 12,
+  "c11_interface_compile": "PASS",
+  "cpp17_interface_compile": "PASS",
+  "gpu_tests": "NOT_RUN",
+  "mesa_build": "NOT_RUN",
+  "device_deployment": "NOT_RUN",
+  "model_private_profile_is_not_nvn_oracle": true
+}

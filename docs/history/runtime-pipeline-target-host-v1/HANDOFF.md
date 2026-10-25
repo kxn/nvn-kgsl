@@ -1,0 +1,29 @@
+> 历史文档 / Historical record. 本文保留当时结论与失败，不代表当前支持范围。当前状态以 [STATUS](../../STATUS.md) 为准；旧证据的公开边界见 [HISTORICAL_EVIDENCE](../../HISTORICAL_EVIDENCE.md)。本地路径和设备标识已替换，少量SDK原指令摘录已改为语义描述。
+
+# Actual runtime FDL RGBA8 target views — candidate frozen
+
+Normal metadata-only Device cache replaces finite size lookup only with explicit --pipeline-target-fdl-check. DefaultOFF preserves existing finite qualification API/path. Cache keys are immutable chip,width,height,explicitNativePitch; source GOB passes pitch0, native LINEAR passes its actual stride and must cover actual required_span. Original FDL (usage sampled|target) returns native dimensions/pitch/span/descriptor/MRT pack fields; this adapter only maps returned fields to existing nn_tex_native_view. No descriptor/pitch formula, game identity, target-size whitelist, new compiler, CPU pixel conversion or public size/alignment changes. Format remainsRGBA8, ordinary2D/mip1/layer1/sample1/LINEAR/nonUBWC.
+
+Cache values have stable addresses, no eviction, no GPU BO and no external mutable reference. Device owns all nodes until DeviceFinalize succeeds after refs/retired jobs and device close. Close failure/unknown GPU completion retains Device/cache. Recorded views and submitted owners therefore cannot dangle. Failed creation/node allocation preserves old values and returns actual positive error. A repeated key does not call FDL or allocate. Distinct native explicit pitches are distinct entries. This adds CPU metadata storage proportional to distinct keys and an O(N) CPU lookup; it does not optimize per-Draw shader/BO uploads or claim profile/FPS benefit. Frontend existing serialization is unchanged, no new concurrent access guarantee.
+
+Common pipeline image_layout/full_raster already accept1..16384 RGBA8 sizes and dynamic pitch/span/raster. It emits sysmem target state directly from FDL view, not a full-target GMEM tile. GMEM identity still must match actual checked platform. Existing source-shadow conversion validates actual W/H/pitch/span and preserves canonical source allocation. Unsupported texture formats/targets/attachment/depth/MSAA states keep their prior gates. pipeline.c/h and the other agent's16volume files are NOT in this patch. The minimal patch was compared against latest root after volume promotion; it includes no rollback hunk for those files.
+
+## Executed HOST/NDK evidence
+
+normal-host-v2/check.json: actual verified root FDL47 archive;201cachekeys with zero/nonzero native pitch, min/max/noncatalogued dimensions, full metadata comparison,2allocator failures, immutable pointer stability and exact release. Actual public NVN73×41 LINEAR and canonical GOB target record/enqueue/replay/CopyCommands,17drawcontrolbudget,failed submit/inflight/Finish/Finalize behavior exercised with HOST memory backend; no GPU packet execution. Dual ASan/UBSan and function sanitizer, actual API29 fixture/realKGSL whole shared closure links, and explicitOFF link with no new module/FDL library all passed.
+
+snapshot-v1/.local/production-feature-v1/check.json: normal isolated FDL producer and source archive; normal Activity/CLI targets link all36originalhost sources, explicitON and OFF, actual CMake source/macro/archive audit, prerequisite/verify-argv checks. HOST ONLY, no NSO or Android process. These are isolated pre-volume-runtime source proofs; root's final integration should rerun against latest promoted volume files and current normal shader check, not relabel historical records.
+
+Feature is independent of BC. If both are enabled, normal tooling/CMake requires identical verified FDL archive. Manifest records full FDL inputs/artifacts and module/header source hashes; ordinary host/APK verify reconstructs the option. No qualifier is linked into production.
+
+## Normal migration after promotion
+
+Use fresh outputs and actual root normal records; no compiler source changed in this patch. Runtime FDL47 record may be reused only if normal verify passes. Existing shader/common compiler rebuilds needed for the unrelated volume batch remain root's responsibility.
+
+- Rerun tools/check_pipeline_runtime_views.py --root ROOT --runtime ROOT/nvn-native --fdl-check CURRENT_FDL/check.json --pipeline-check CURRENT_PIPELINES/check.json --bridge-check CURRENT_BRIDGE/check.json --ndk NDK --out FRESH.
+- Run tools/check_pipeline_views_feature.py --root ROOT --ndk NDK --fdl-check CURRENT_FDL/check.json --graphics-check CURRENT_PIPELINES/check.json --names CURRENT_NAMES/names.inc.h --out FRESH.
+- Existing normal build_d2r_activity.py/build_d2r_host.py accept --pipeline-target-fdl-check CURRENT_FDL/check.json with --graphics-pipeline-check. Default absent remainsOFF; no texture-bridge/block prerequisite for pureLINEAR. GOB targets still independently require the actual conversion registration. APK/CLI verification forwards the exact option. All normal source closures change and need a fresh host/APK build, never altered records.
+
+## Required actual GPU qualifier (not executed here)
+
+Reuse current public nvn_pipeline_probe color transport/independent oracle, never internal pipeline encode: enable helper before Programs, do not register static views. Choose noncatalogued73×41,257×113 and a larger odd size1153×641; LINEAR explicit native pitches from actual FDL input producer and canonical flags9 GOB separately. Existing checked finite views may be emitted only as qualification allocation/oracle metadata; they must not be registered or used as production selection. Exercise4drawmodes×2replay×3sizes per transport, exact readonly/guards, actual runtime cache hits and static-registration count0, ordinaryUID Activity and strict-stop. Root can parameterize the existing normal probe rather than duplicate runtime/transport. Actual native images/vertices/UBO and image output must be GPU-produced under current shaders. No GPU qualification follows from HOST RAM submits. No new game frame is claimed.

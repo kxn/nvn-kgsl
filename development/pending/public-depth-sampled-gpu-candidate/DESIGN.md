@@ -1,0 +1,22 @@
+# Public joined depth sampling qualification (new, not yet frozen)
+
+This candidate follows the frozen complete-source catalogue delivery. It edits no production runtime, depth foundation, compiler, existing raw60/publicCASC72 proof or records. ROOT alone runs ADB. Raw-native60 and publicCASC72 are prerequisites, not public depth-source sampling proof.
+
+The qualification will use unchanged normal original a767 SAMPLE and original CASC GatherR+FragDepth code, complete declared graphics control0x880 and actual C1 (CASC256B, firstfloat -1). Native pair indices are explicit normal producer outputs corroborated by full identities; no runtime first-variant or expected-query answers. All tests use actual public registered D16/D24X8/D32F source textures, normal typed stage metadata, hardware depth FDL views, noncomparison sampler state and actual selected mip descriptor snapshots. SAMPLE explicitly selects R001. Gather consumes proved R only. This does not claim shadow comparison, stencil sampling, default depth G/B/A, public FETCH/SIZE GPU coverage or actual captured D2R bindings.
+
+## Planned independent matrix
+
+2 original shader roles ×3 depth source formats ×2 geometries/mip selections ×2 window origins ×3 record routes (Direct/Copy/Call) ×2 same-handle submissions =144 real submissions/Finish/readbacks,72 recorded leaf cases. Geometry0 is odd17×11 source mip0; geometry1 is34×22 parent/2mips with selected mip1 (effective17×11), so no pretending volume/array is2D. Targets64² and73×41 are separate source/canonical geometries. Both roles use nearest/clamp, explicitly noncomparison. Broader sampler/array behavior stays independent.
+
+- SAMPLE: original a767 full triangle, actual API VS0/FS0 UBOs set gamma=contrast=1,mix0, white vertex color. R001 sample produces (R,0,0,1); source is a nonuniform authored quantized depth bank changed on replay. Canonical GOB RGBA8 target has full initial bytepattern, scissored GPU update, full canonical raw readback. Its red expectation comes from original closed shader algebra and normalized encoded depth, not IR3 evaluation.
+- GatherR+FragDepth: unchanged original CASC VS API3→sourceCB6, T10/S3, original C1=-1 means parity-dependent min/max. Canonical D32F target, truezeroCOLOR, explicit depth comparison/clear endpoints. Output oracle uses normalized source depth bank and real shader closed algebra; D16/D24 input quantization is applied before gathering, and no change to original C1 or shader is permitted.
+
+Each source pool includes every canonical mip and guard. Texture registration happens after recording; object is immediately finalized. The same slot is replaced after enqueue with another backing to test immutable in-flight snapshots; selected-level data and descriptor base change on replay through new actual registration. CPU source pools and slot/version/Program references remain alive per public ownership rules. Full source/read-only payloads, command/control memory, untouched levels, GOBpadding and prefix/tail guards are checked. D24 active X8 is not assigned texture semantics; its original source byte remains read-only, while target here isD32F to avoid inventing X8 output guarantees.
+
+The existing public probe allocator/reader/cleanup/nonce/Activity/collector/strictstop and NumPy inverse-sector oracle are reused. There is no CPU runtime pixel conversion, private pipeline encode call, new GPU timer or measurement system. Before any device run, the HOST RAM seam must execute the entire144 case/record/Call/Copy/owner matrix and all error/unknown completion seams; first-case fault tests alone do not establish the family.
+
+## Owned new files / thin hooks
+
+New independent public_depth_sampled_probe.c, case/layout header producer, source-role/normal-input qualification module, independent algebra+raw validator and tests, and HOST all-matrix fixture/checker. Existingtests/nvn_pipeline_probe.c remains helper-only as already supported. Only minimal normal CMake/build_android_probe/run_android_probe and shared Activity selection hooks will be proposed; no nvn.c/pipeline/core/shader/depth owner change. Existing default modes and all option forwarding must remain byte/behavior compatible. New explicit option defaults OFF.
+
+This is a plan, not compilation, GPU qualification or game progress. It will be implemented against a fresh immutable post-catalogue snapshot and actual current normal inputs. Unknown query/format/owner/profile outcomes remain errors rather than fallback values.

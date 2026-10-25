@@ -1,0 +1,10 @@
+D2R_NATIVE_ACTIVITY_1 {
+ global:
+  nn_d2r_activity_host_token;
+  nn_d2r_activity_host_attach;
+  nn_d2r_activity_host_close;
+  nn_d2r_activity_host_run;
+  nn_d2r_activity_host_check_bootstrap;
+  nn_d2r_activity_host_notify_focus;
+ local: *;
+};

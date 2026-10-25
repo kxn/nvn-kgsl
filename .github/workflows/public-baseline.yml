@@ -1,0 +1,13 @@
+name: Public baseline
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  source-and-publication:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Audit public candidate and every reviewed archive member
+        run: python3 tools/audit_public.py --out .local/public-audit.json
+      - name: Run authored tests without private inputs
+        run: python3 nvn-native/tools/check_standalone.py --out .local/smoke

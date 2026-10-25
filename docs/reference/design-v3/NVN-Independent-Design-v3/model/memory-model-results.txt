@@ -1,0 +1,17 @@
+test_m01_cross_pool_canonical_and_generation (__main__.MemoryModelTests.test_m01_cross_pool_canonical_and_generation) ... ok
+test_m02_alias_union_not_view_copy (__main__.MemoryModelTests.test_m02_alias_union_not_view_copy) ... ok
+test_m03_cancel_does_not_publish (__main__.MemoryModelTests.test_m03_cancel_does_not_publish) ... ok
+test_m03_war_and_stale_conversion (__main__.MemoryModelTests.test_m03_war_and_stale_conversion) ... ok
+test_m04_snapshot_extent_vector (__main__.MemoryModelTests.test_m04_snapshot_extent_vector) ... ok
+test_m05_fault_wait_cycle (__main__.MemoryModelTests.test_m05_fault_wait_cycle) ... ok
+test_m06_line_false_sharing (__main__.MemoryModelTests.test_m06_line_false_sharing) ... ok
+test_m07_export_failure_does_not_unsubmit (__main__.MemoryModelTests.test_m07_export_failure_does_not_unsubmit) ... ok
+test_m07_unknown_preserves_prefix (__main__.MemoryModelTests.test_m07_unknown_preserves_prefix) ... ok
+test_m08_generation_and_all_refs (__main__.MemoryModelTests.test_m08_generation_and_all_refs) ... ok
+test_m09_sealed_command_copy (__main__.MemoryModelTests.test_m09_sealed_command_copy) ... ok
+test_m10_signal_does_not_wait_poll_retirement (__main__.MemoryModelTests.test_m10_signal_does_not_wait_poll_retirement) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.000s
+
+OK

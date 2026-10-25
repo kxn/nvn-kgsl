@@ -1,0 +1,303 @@
+{
+  "schema": 1,
+  "reviewed_archives": {
+    "data/evidence/a650-canonical-depth648-v1/full-readbacks.zip": {
+      "sha256": "eba4df900b96fd8efe878dbe53e68f252c6173be35c1c6fb77becbed84ea6b37",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "data/evidence/a650-native-depth-sampled60-v1/full-readbacks.zip": {
+      "sha256": "ab974b877145d7dea248c757d8f80e6293fff586ef330306fbc3aa6c3f765116",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "data/evidence/a650-native-depth396-v1/failed-full-readbacks.zip": {
+      "sha256": "071b299d2070c002a874731f74494e7e73454a77bd507900218b49024f6a4501",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "data/evidence/a650-native-depth396-v1/full-readbacks.zip": {
+      "sha256": "1a724c2c9a00762de32df2e411a3c0177154a48fc67a333d93c6b0be9f64e840",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "data/evidence/a650-native-depth432-v1/full-readbacks.zip": {
+      "sha256": "cde6cf97620974b5ff394475278ac92f4cb7710753ba06b14b46f59c7fd6dbc6",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "data/evidence/a650-native-gather96-v1/full-readbacks.zip": {
+      "sha256": "75283d03a3f07d2c1df8266e454bbf8467e126e033c878835d1797f36ab28fa3",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "data/evidence/a650-native-graphics-storage192-v1/full-readbacks.zip": {
+      "sha256": "afa1ddb3246ab2e2cf2e099b5525e50c39a1ffa7155c52d29b76d7bf95cafc6e",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "data/evidence/a650-native-sampler576-v1/full-readbacks.zip": {
+      "sha256": "f9a59bf42c8095cd81800774c3798793f1ba4b04554cf688b9cac073e1accc82",
+      "kind": "authored-gpu-readbacks",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    },
+    "docs/reference/design-v3/NVN-Turnip-Independent-Validation-Design-v3-20261023 (1).zip": {
+      "sha256": "c6ac76591f41843d448d88b36553949054ed674cabd90a39aaa451b4743c1878",
+      "kind": "user-supplied-design-reference",
+      "review": "Retained user design only, or original synthetic GPU workload; every member reviewed against source evidence manifest. No normal-record/source-snapshot ZIP is published."
+    }
+  },
+  "reviewed_binary_files": {
+    "data/evidence/window-ahb-fixtures/a650-ahb-direct-ahb-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-ahb-direct-ahb-case-1.rgba": {
+      "sha256": "fdabc87dc078a703bbc62c36fa06dad38f227a870111df52c58335f9d2e1aa35",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-ahb-direct-ahb-case-2.rgba": {
+      "sha256": "681fb3b6afd0011eb7e7c865a8fdb7f49ad8be7b5c3835fe64e493e753dbda80",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-ahb-direct-ahb-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-0-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-0-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-0-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-0-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-1-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-1-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-1-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-1-window-slot-1-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-0-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-0-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-0-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-0-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-1-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-1-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-1-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n2-gen-2-window-slot-1-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-0-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-0-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-0-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-0-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-1-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-1-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-1-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-1-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-2-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-2-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-2-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-1-window-slot-2-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-0-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-0-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-0-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-0-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-1-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-1-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-1-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-1-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-2-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-2-case-1.rgba": {
+      "sha256": "29520c5d84b7f85072c89f87d88be0bceb1a7ae5036d919ef5cce4de193fb5d5",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-2-case-2.rgba": {
+      "sha256": "62fb561c59d0cea247fc588f3311ee665375f35d8675b186e2792cb7dfcff88c",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-nvn-window-n3-gen-2-window-slot-2-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-present-ahb-case-0.rgba": {
+      "sha256": "0bcc07de1631aa0395013f35790f719bd754f61e4bb2847a86fdc2365d3d8d63",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-present-ahb-case-1.rgba": {
+      "sha256": "fdabc87dc078a703bbc62c36fa06dad38f227a870111df52c58335f9d2e1aa35",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-present-ahb-case-2.rgba": {
+      "sha256": "681fb3b6afd0011eb7e7c865a8fdb7f49ad8be7b5c3835fe64e493e753dbda80",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-present-ahb-case-3.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-present-first-present.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    },
+    "data/evidence/window-ahb-fixtures/a650-present-recreated-window-present.rgba": {
+      "sha256": "2b18ab72316060bb22ca0e926810442c823b3c68031de10075c0b37da6920010",
+      "kind": "authored-gpu-readback",
+      "review": "Authored AHB/window fixture, not a game screenshot or texture."
+    }
+  },
+  "excluded": "Private game originals, SDK dumps, extracted/compiled original shaders, logs containing code, APK/ELF, keys and complete unfiltered evidence stay in the separate private companion."
+}
