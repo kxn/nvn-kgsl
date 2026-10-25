@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "private_contents_published": false,
+  "complete": true,
+  "regular_files": 707865,
+  "regular_bytes": 81922811581,
+  "internal_symlinks": 1639,
+  "source_files_compared_exact": 700438,
+  "manifest_sha256": "be3b93d30923464c34e00d8d1156f09afef36a49f58fbd6a1f9e69dbcfbf2bbe",
+  "public_verifier": "tools/verify_private.py",
+  "historical_missing_generated_cache_links": 2,
+  "validation_source_tree": "cd86c184e2f7b8601024b59ae1a932d4caba392c",
+  "validation_bundle_independently_cloned_and_connectivity_checked": true,
+  "scope": "Separate private companion copied and every regular file SHA-256 indexed. Copied workspace/original-input files were byte-hash compared against their available source. No private contents or file-name inventory are published. Git internal metadata is excluded; two already-absent historical Python cache links are recorded, not research-data loss."
+}
